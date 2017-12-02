@@ -55,6 +55,7 @@ export default class Home extends Component {
                 onChangeText={null}
                 onClearText={null}
                 placeholderTextColor="#C7C7CD"
+                clearIcon
                 placeholder='Search for the Product...'
             />
         );
