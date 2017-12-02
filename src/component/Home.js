@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
     searchbarContainerStyle: {
-        width: window.width - 35,
-        height: (60 / 768) * window.height,
+        width: window.width - 65,
+        height: (50 / 768) * window.height,
         padding: 25,
         borderRadius: 25,
         backgroundColor: '#FFFFFF',
@@ -118,9 +118,9 @@ const styles = StyleSheet.create({
         ...Platform.select({
             ios: {
                 shadowColor: 'rgba(0,0,0, .2)',
-                shadowOffset: { height: 0, width: 0 },
+                shadowOffset: { height: 3, width: 0 },
                 shadowOpacity: 1,
-                shadowRadius: 1,
+                shadowRadius: 5,
             },
             android: {
                 elevation: 2,
@@ -129,6 +129,6 @@ const styles = StyleSheet.create({
     },
     searchBarStyle: {
         backgroundColor: '#FFFFFF',
-        width: window.width - 55
+        width: window.width - 75
     }
 });
