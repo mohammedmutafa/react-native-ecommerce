@@ -22,6 +22,10 @@ export default class Home extends Component {
                         style={styles.slide1}
                     />
                     <Image
+                        source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/photographyBanner.png?alt=media&token=d86028a6-fbaa-4398-960b-20a4b1afa952' }}
+                        style={styles.slide1}
+                    />
+                    <Image
                         source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/bikesBanner.png?alt=media&token=1bc56821-8262-4bfe-b67d-2a6129ec87d3' }}
                         style={styles.slide1}
                     />
