@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         height: (50 / 768) * window.height,
         padding: 25,
         borderRadius: 25,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
         })
     },
     searchBarStyle: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'transparent',
         width: window.width - 75
     }
 });
