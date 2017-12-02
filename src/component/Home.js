@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         width: window.width,
         overflow: 'hidden', // for hide the not important parts from circle
         //margin: 10,
-        height: window.width / 2,
+        height: window.width / 1.7,
     },
     sliderContainerStyle: {
         borderRadius: window.width, // border borderRadius same as width and height
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     wrapper: {
     },
     slide1: {
-        height: window.width / 2,// same width and height for the container
+        height: window.width / 1.7,// same width and height for the container
         width: window.width,
         position: 'absolute', // position it in circle
         bottom: 0, // position it in circle
