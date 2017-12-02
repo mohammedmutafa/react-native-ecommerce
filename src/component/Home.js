@@ -48,18 +48,31 @@ const categoryContainerHeight = (160 / 768) * window.height;
 
 const styles = StyleSheet.create({
     containerStyle: {
-        flex: 1,
-        flexDirection: 'column'
+        alignSelf: 'center',
+        //marginTop: 100,
+        width: window.width,
+        overflow: 'hidden', // for hide the not important parts from circle
+        //margin: 10,
+        height: window.width / 2,
     },
     sliderContainerStyle: {
-        height: (350 / 768) * window.height
+        borderRadius: window.width, // border borderRadius same as width and height
+        width: window.width * 2,
+        height: window.width * 2,
+        marginLeft: -(window.width / 2),// reposition the circle inside parent view
+        position: 'absolute',
+        bottom: 0, // show the bottom part of circle
+        overflow: 'hidden', // hide not important part of image
+
     },
     wrapper: {
     },
     slide1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        height: window.width / 2,// same width and height for the container
+        width: window.width,
+        position: 'absolute', // position it in circle
+        bottom: 0, // position it in circle
+        marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
         backgroundColor: '#9DD6EB',
-    },
+    }
 });
