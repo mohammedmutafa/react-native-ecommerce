@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry, Text, View, Image, Alert,
-    FlatList, StyleSheet, Dimensions, ScrollView,
-    TouchableOpacity, Button, ToolbarAndroid, Platform
+    View,
+    Image,
+    StyleSheet,
+    Dimensions,
+    ScrollView,
+    Platform
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { SearchBar } from 'react-native-elements'
+import { SearchBar, Icon } from 'react-native-elements';
 
 export default class Home extends Component {
     renderSwiper = () => {
@@ -37,7 +40,6 @@ export default class Home extends Component {
                             style={styles.slide1}
                         />
                     </Swiper>
-
                 </View>
                 {this.renderSearchBar()}
             </View >
@@ -56,29 +58,44 @@ export default class Home extends Component {
                 onClearText={null}
                 placeholderTextColor="#C7C7CD"
                 clearIcon
-                placeholder='Search for the Product...'
+                placeholder="Search for the Product..."
             />
         );
     }
 
+    renderFloatingMenu = () => {
+        return (
+            <View style={styles.floatingMenuButtonStyle}>
+                <Icon
+                    raised
+                    name='align-center'
+                    type='feather'
+                    color='#f50'
+                    onPress={() => console.log('hello')}
+                />
+            </View>
+
+        );
+    }
+
     render() {
-        const { sliderContainerStyle, containerStyle } = styles;
+        const { mainConatinerStyle } = styles;
 
         return (
-            <View >
+            <View style={mainConatinerStyle}>
                 {this.renderSwiper()}
+                {this.renderFloatingMenu()}
             </View>
         );
     }
 }
 
 const window = Dimensions.get('window');
-const categoryContainerHeight = (160 / 768) * window.height;
-
 
 const styles = StyleSheet.create({
     mainConatinerStyle: {
-
+        flexDirection: 'column',
+        flex: 1
     },
     containerStyle: {
         alignSelf: 'center',
@@ -96,7 +113,7 @@ const styles = StyleSheet.create({
         marginLeft: -(window.width / 2),// reposition the circle inside parent view
         position: 'absolute',
         bottom: 0, // show the bottom part of circle
-        overflow: 'hidden', // hide not important part of image
+        overflow: 'hidden' // hide not important part of image
 
     },
     wrapper: {
@@ -107,7 +124,7 @@ const styles = StyleSheet.create({
         position: 'absolute', // position it in circle
         bottom: 0, // position it in circle
         marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FFFFFF'
     },
     searchbarContainerStyle: {
         width: window.width - 65,
@@ -127,11 +144,17 @@ const styles = StyleSheet.create({
             },
             android: {
                 elevation: 2,
-            },
+            }
         })
     },
     searchBarStyle: {
         backgroundColor: 'transparent',
         width: window.width - 75
+    },
+    floatingMenuButtonStyle: {
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        bottom: 35,
+        paddingRight: 15
     }
 });
