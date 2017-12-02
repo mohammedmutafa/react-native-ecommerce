@@ -54,7 +54,9 @@ export default class Home extends Component {
                 noIcon={true}
                 onChangeText={null}
                 onClearText={null}
-                placeholder='Search for the Product' />
+                placeholderTextColor="#C7C7CD"
+                placeholder='Search for the Product...'
+            />
         );
     }
 
