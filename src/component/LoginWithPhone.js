@@ -4,7 +4,7 @@ import {
     StyleSheet,
     Dimensions
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon, Button } from 'react-native-elements';
 
 class LoginWithPhone extends Component {
     renderFloatingMenu = () => {
@@ -23,12 +23,20 @@ class LoginWithPhone extends Component {
         );
     }
 
+    renderSignInWithPhoneButton = () => {
+        return <Button
+            buttonStyle={styles.loginButtonStyle}
+            icon={{ name: 'phone', type: 'feather' }}
+            title='Sign In With Phone Number'
+        />
+    }
+
     render() {
         const { mainConatinerStyle, imageBackgroundStyle, semiTransparentLayer } = styles;
 
         return (
             <View style={mainConatinerStyle}>
-                <View style={semiTransparentLayer} />
+                {this.renderSignInWithPhoneButton()}
                 {this.renderFloatingMenu()}
             </View>
         );
@@ -40,18 +48,21 @@ const window = Dimensions.get('window');
 const styles = StyleSheet.create({
     mainConatinerStyle: {
         flexDirection: 'column',
-        flex: 1
-    },
-    semiTransparentLayer: {
-        backgroundColor: 'rgba(60, 60, 60, 0.8)',
-        position: 'absolute',
-        height: window.height,
-        width: window.width
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(60, 60, 60, 0.8)'
     },
     floatingMenuButtonStyle: {
         alignSelf: 'center',
         position: 'absolute',
         bottom: 35
+    },
+    loginButtonStyle: {
+        backgroundColor: 'transparent',
+        borderRadius: 25,
+        borderWidth: 1,
+        borderColor: '#f7f7f7'
     }
 });
 
