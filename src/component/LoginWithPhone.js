@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     Dimensions
 } from 'react-native';
@@ -35,9 +34,8 @@ class LoginWithPhone extends Component {
     renderNoteText = () => {
         return <Button
             buttonStyle={styles.noteContainerStyle}
-            icon={{ name: 'ios-warning-outline', type: 'ionicon', color: '#02b21f' }}
+            icon={{ name: 'ios-warning-outline', type: 'ionicon' }}
             title='Number will be visible to public users.'
-            color='#02b21f'
         />
     }
 
