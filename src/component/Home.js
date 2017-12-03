@@ -5,10 +5,14 @@ import {
     StyleSheet,
     Dimensions,
     ScrollView,
-    Platform
+    Platform,
+    Modal,
+    Text
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { SearchBar, Icon } from 'react-native-elements';
+
+import LoginWithPhoneComponent from '../component/LoginWithPhone';
 
 export default class Home extends Component {
     renderSwiper = () => {
@@ -64,6 +68,12 @@ export default class Home extends Component {
     }
 
     renderFloatingMenu = () => {
+        const { changeLoginWithPhoneModalViewState, isLoginWithPhoneModalVisible } = this.props;
+
+        if (isLoginWithPhoneModalVisible) {
+            return <View />
+        }
+
         return (
             <View style={styles.floatingMenuButtonStyle}>
                 <Icon
@@ -71,11 +81,28 @@ export default class Home extends Component {
                     name='align-center'
                     type='feather'
                     color='#f50'
-                    onPress={() => console.log('hello')}
+                    onPress={changeLoginWithPhoneModalViewState}
                 />
             </View>
-
         );
+    }
+
+    renserLoginWithPhoneModalView = () => {
+        const { isLoginWithPhoneModalVisible, changeLoginWithPhoneModalViewState } = this.props;
+
+        return (
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isLoginWithPhoneModalVisible}
+                onRequestClose={changeLoginWithPhoneModalViewState}
+            >
+                <LoginWithPhoneComponent
+                    changeLoginWithPhoneModalViewState={changeLoginWithPhoneModalViewState}
+                />
+            </Modal >
+        );
+
     }
 
     render() {
@@ -85,6 +112,7 @@ export default class Home extends Component {
             <View style={mainConatinerStyle}>
                 {this.renderSwiper()}
                 {this.renderFloatingMenu()}
+                {this.renserLoginWithPhoneModalView()}
             </View>
         );
     }
