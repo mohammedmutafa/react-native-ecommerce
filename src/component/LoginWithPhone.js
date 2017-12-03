@@ -49,10 +49,9 @@ const styles = StyleSheet.create({
         width: window.width
     },
     floatingMenuButtonStyle: {
-        alignSelf: 'flex-end',
+        alignSelf: 'center',
         position: 'absolute',
-        bottom: 35,
-        paddingRight: 15
+        bottom: 35
     }
 });
 
