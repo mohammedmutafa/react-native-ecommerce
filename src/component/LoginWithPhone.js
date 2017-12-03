@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     View,
+    Text,
     StyleSheet,
     Dimensions
 } from 'react-native';
@@ -31,11 +32,21 @@ class LoginWithPhone extends Component {
         />
     }
 
+    renderNoteText = () => {
+        return <Button
+            buttonStyle={styles.noteContainerStyle}
+            icon={{ name: 'ios-warning-outline', type: 'ionicon', color: '#02b21f' }}
+            title='Number will be visible to public users.'
+            color='#02b21f'
+        />
+    }
+
     render() {
         const { mainConatinerStyle, imageBackgroundStyle, semiTransparentLayer } = styles;
 
         return (
             <View style={mainConatinerStyle}>
+                {this.renderNoteText()}
                 {this.renderSignInWithPhoneButton()}
                 {this.renderFloatingMenu()}
             </View>
@@ -63,6 +74,10 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         borderWidth: 1,
         borderColor: '#f7f7f7'
+    },
+    noteContainerStyle: {
+        backgroundColor: 'transparent',
+        marginBottom: 25
     }
 });
 
