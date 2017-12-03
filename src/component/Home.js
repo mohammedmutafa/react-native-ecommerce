@@ -13,6 +13,7 @@ import Swiper from 'react-native-swiper';
 import { SearchBar, Icon } from 'react-native-elements';
 
 import LoginWithPhoneComponent from '../component/LoginWithPhone';
+import MenuComponent from '../component/Menu';
 
 export default class Home extends Component {
     renderSwiper = () => {
@@ -97,7 +98,7 @@ export default class Home extends Component {
                 visible={isLoginWithPhoneModalVisible}
                 onRequestClose={changeLoginWithPhoneModalViewState}
             >
-                <LoginWithPhoneComponent
+                <MenuComponent
                     changeLoginWithPhoneModalViewState={changeLoginWithPhoneModalViewState}
                 />
             </Modal >
