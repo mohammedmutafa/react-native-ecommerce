@@ -103,7 +103,6 @@ export default class Home extends Component {
                 />
             </Modal >
         );
-
     }
 
     render() {
