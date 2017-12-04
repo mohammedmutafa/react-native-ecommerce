@@ -14,6 +14,7 @@ import { SearchBar, Icon } from 'react-native-elements';
 
 import LoginWithPhoneComponent from '../component/LoginWithPhone';
 import MenuComponent from '../component/Menu';
+import CategoriesListComponent from '../component/CategoriesList';
 
 export default class Home extends Component {
     renderSwiper = () => {
@@ -111,8 +112,9 @@ export default class Home extends Component {
         return (
             <View style={mainConatinerStyle}>
                 {this.renderSwiper()}
-                {this.renderFloatingMenu()}
                 {this.renserLoginWithPhoneModalView()}
+                <CategoriesListComponent />
+                {this.renderFloatingMenu()}
             </View>
         );
     }
