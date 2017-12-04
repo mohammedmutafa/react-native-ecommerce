@@ -156,8 +156,7 @@ const styles = StyleSheet.create({
     },
     searchbarContainerStyle: {
         width: window.width - 65,
-        height: (50 / 768) * window.height,
-        padding: 25,
+        height: (60 / 768) * window.height,
         borderRadius: 25,
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
         justifyContent: 'center',
