@@ -37,7 +37,7 @@ class CategoriesList extends Component {
             renderItem={this.renderCategoryCard}
             removeClippedSubviews={false}
             showsHorizontalScrollIndicator={false}
-            // style={scrollViewStyle}
+            //style={styles.categoryCardStyle}
             keyExtractor={this.keyExtractor}
         />
     }
@@ -68,13 +68,15 @@ const styles = StyleSheet.create({
         height: window.width / 2 - 40,
         backgroundColor: '#FFFFFF',
         marginTop: 20,
-        marginHorizontal: 5,
+        padding: 5,
+        borderRadius: 10,
+        marginHorizontal: 10,
         ...Platform.select({
             ios: {
                 shadowColor: 'rgba(0,0,0, .2)',
-                shadowOffset: { height: 3, width: 0 },
+                shadowOffset: { height: 0, width: 0 },
                 shadowOpacity: 1,
-                shadowRadius: 5,
+                shadowRadius: 3,
             },
             android: {
                 elevation: 2,
