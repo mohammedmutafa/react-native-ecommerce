@@ -114,16 +114,18 @@ export default class Home extends Component {
                     backgroundColor="#FFFFFF"
                     stickyHeaderHeight={STICKY_HEADER_HEIGHT}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
+
+                    renderForeground={() => (
+                        <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                            {this.renderSwiper()}
+                        </View>
+                    )}
                     renderStickyHeader={() => (
                         <View key="sticky-header" style={stickySection}>
                             {this.renderSearchBar()}
                         </View>
                     )}
-                    renderForeground={() => (
-                        <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            {this.renderSwiper()}
-                        </View>
-                    )}>
+                >
                     {this.renserLoginWithPhoneModalView()}
                     <CategoriesListComponent />
                 </ParallaxScrollView>
@@ -135,7 +137,7 @@ export default class Home extends Component {
 
 const window = Dimensions.get('window');
 
-const STICKY_HEADER_HEIGHT = (150 / 768) * window.height;
+const STICKY_HEADER_HEIGHT = (110 / 768) * window.height;
 const SLIDER_HEIGHT = window.width / 1.7;
 
 const styles = StyleSheet.create({
@@ -206,6 +208,7 @@ const styles = StyleSheet.create({
         height: STICKY_HEADER_HEIGHT,
         width: window.width,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 10
     }
 });
