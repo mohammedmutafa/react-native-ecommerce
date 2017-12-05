@@ -37,10 +37,6 @@ export default class Home extends Component {
                             style={styles.slide1}
                         />
                         <Image
-                            source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/bikesBanner.png?alt=media&token=1bc56821-8262-4bfe-b67d-2a6129ec87d3' }}
-                            style={styles.slide1}
-                        />
-                        <Image
                             //Flag URL: https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/nepal.png?alt=media&token=aa5bcfc5-8a6a-4b69-92c8-2d208b2fc2b9
                             source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/basketBanner.png?alt=media&token=adeb788e-66df-448f-959d-db20b07f423c' }}
                             style={styles.slide1}
@@ -99,7 +95,7 @@ export default class Home extends Component {
                 visible={isLoginWithPhoneModalVisible}
                 onRequestClose={changeLoginWithPhoneModalViewState}
             >
-                <MenuComponent
+                <LoginWithPhoneComponent
                     changeLoginWithPhoneModalViewState={changeLoginWithPhoneModalViewState}
                 />
             </Modal >
