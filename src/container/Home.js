@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
 
 import HomeComponent from '../component/Home';
 
@@ -9,6 +10,10 @@ export default class Home extends Component {
         this.state = {
             isLoginWithPhoneModalVisible: false
         };
+    }
+    componentDidMount() {
+        StatusBar.setHidden(true);
+        //Temporary Solution .. need to hide for all app screen.
     }
 
     changeLoginWithPhoneModalViewState = () => {
