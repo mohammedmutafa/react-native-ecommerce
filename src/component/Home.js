@@ -10,6 +10,7 @@ import {
     Text
 } from 'react-native';
 import Swiper from 'react-native-swiper';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { SearchBar, Icon } from 'react-native-elements';
 
 import LoginWithPhoneComponent from '../component/LoginWithPhone';
@@ -103,20 +104,39 @@ export default class Home extends Component {
     }
 
     render() {
-        const { mainConatinerStyle } = styles;
+        const { mainConatinerStyle, stickySection } = styles;
 
         return (
             <View style={mainConatinerStyle}>
-                {this.renderSwiper()}
-                {this.renserLoginWithPhoneModalView()}
-                <CategoriesListComponent />
+                <ParallaxScrollView
+                    bounces={false}
+                    showsVerticalScrollIndicator={false}
+                    backgroundColor="#FFFFFF"
+                    stickyHeaderHeight={STICKY_HEADER_HEIGHT}
+                    parallaxHeaderHeight={SLIDER_HEIGHT}
+                    renderStickyHeader={() => (
+                        <View key="sticky-header" style={stickySection}>
+                            {this.renderSearchBar()}
+                        </View>
+                    )}
+                    renderForeground={() => (
+                        <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                            {this.renderSwiper()}
+                        </View>
+                    )}>
+                    {this.renserLoginWithPhoneModalView()}
+                    <CategoriesListComponent />
+                </ParallaxScrollView>
                 {this.renderFloatingMenu()}
-            </View>
+            </View >
         );
     }
 }
 
 const window = Dimensions.get('window');
+
+const STICKY_HEADER_HEIGHT = (150 / 768) * window.height;
+const SLIDER_HEIGHT = window.width / 1.7;
 
 const styles = StyleSheet.create({
     mainConatinerStyle: {
@@ -127,7 +147,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: window.width,
         overflow: 'hidden', // for hide the not important parts from circle
-        height: window.width / 1.7,
+        height: SLIDER_HEIGHT,
         justifyContent: 'center',
         alignItems: 'center'
 
@@ -145,7 +165,7 @@ const styles = StyleSheet.create({
     wrapper: {
     },
     slide1: {
-        height: window.width / 1.7,// same width and height for the container
+        height: SLIDER_HEIGHT,// same width and height for the container
         width: window.width,
         position: 'absolute', // position it in circle
         bottom: 0, // position it in circle
@@ -181,5 +201,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 35,
         paddingRight: 15
+    },
+    stickySection: {
+        height: STICKY_HEADER_HEIGHT,
+        width: window.width,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
