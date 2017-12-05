@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import {
     View,
     Image,
+    Text,
     FlatList,
     StyleSheet,
     Dimensions,
     ScrollView,
     Platform,
-    TouchableOpacity,
-    Text
+    TouchableOpacity
 } from 'react-native';
 import { SearchBar, Icon } from 'react-native-elements';
 
@@ -36,6 +36,7 @@ class CategoriesList extends Component {
             data={categoryAList}
             renderItem={this.renderCategoryCard}
             removeClippedSubviews={false}
+            showsHorizontalScrollIndicator={false}
             // style={scrollViewStyle}
             keyExtractor={this.keyExtractor}
         />
@@ -45,9 +46,11 @@ class CategoriesList extends Component {
         const { mainConatinerStyle } = styles;
 
         return (
-            <View style={mainConatinerStyle}>
+            <ScrollView style={mainConatinerStyle}>
                 {this.renderCatA()}
-            </View>
+                {this.renderCatA()}
+                {this.renderCatA()}
+            </ScrollView>
         );
     }
 }
@@ -57,13 +60,14 @@ const window = Dimensions.get('window');
 const styles = StyleSheet.create({
     mainConatinerStyle: {
         flexDirection: 'column',
-        flex: 1
+        marginTop: 25,
+        marginBottom: 25
     },
     categoryCardStyle: {
         width: window.width / 2,
-        height: window.width / 2,
+        height: window.width / 2 - 40,
         backgroundColor: '#FFFFFF',
-        marginTop: 30,
+        marginTop: 20,
         marginHorizontal: 5,
         ...Platform.select({
             ios: {
