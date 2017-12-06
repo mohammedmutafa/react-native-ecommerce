@@ -16,7 +16,7 @@ class LoginWithPhone extends Component {
                     raised
                     name='close'
                     type='evilIcons'
-                    color='#DAA520'
+                    color='#2a2a2a'
                     onPress={changeLoginWithPhoneModalViewState}
                 />
             </View>
@@ -34,7 +34,7 @@ class LoginWithPhone extends Component {
     renderNoteText = () => {
         return <Button
             buttonStyle={styles.noteContainerStyle}
-            icon={{ name: 'ios-warning-outline', type: 'ionicon' }}
+            icon={{ name: 'ios-warning-outline', type: 'ionicon', color:'#DAA520' }}
             title='Number will be visible to public users.'
         />
     }
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(60, 60, 60, 0.8)'
+        backgroundColor: '#2a2a2a'//'rgba(60, 60, 60, 0.8)'
     },
     floatingMenuButtonStyle: {
         alignSelf: 'center',
