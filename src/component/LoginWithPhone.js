@@ -16,7 +16,7 @@ class LoginWithPhone extends Component {
                     raised
                     name='close'
                     type='evilIcons'
-                    color='#f50'
+                    color='#DAA520'
                     onPress={changeLoginWithPhoneModalViewState}
                 />
             </View>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         borderRadius: 25,
         borderWidth: 1,
-        borderColor: '#f7f7f7'
+        borderColor: '#DAA520'
     },
     noteContainerStyle: {
         backgroundColor: 'transparent',
