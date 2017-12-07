@@ -20,9 +20,11 @@ class CategoriesList extends Component {
     keyExtractor = (item, index) => index;
 
     renderCategoryCard = ({ item }) => {
-        const { categoryCardStyle } = styles;
+        const { evenCategoryCardStyle, oddCategoryCardStyle } = styles;
+        const isEven = item.id % 2 === 0;
+
         return (
-            <TouchableOpacity onPress={null} style={categoryCardStyle}>
+            <TouchableOpacity onPress={null} style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}>
                 <Text >
                     {item.text}
                 </Text>
@@ -32,13 +34,11 @@ class CategoriesList extends Component {
 
     renderCatA = () => {
         return <FlatList
-            horizontal={true}
             data={categoryAList}
             renderItem={this.renderCategoryCard}
             removeClippedSubviews={false}
-            showsHorizontalScrollIndicator={false}
-            //style={styles.categoryCardStyle}
             keyExtractor={this.keyExtractor}
+            numColumns={2}
         />
     }
 
@@ -47,8 +47,6 @@ class CategoriesList extends Component {
 
         return (
             <ScrollView style={mainConatinerStyle}>
-                {this.renderCatA()}
-                {this.renderCatA()}
                 {this.renderCatA()}
             </ScrollView>
         );
@@ -61,28 +59,24 @@ const styles = StyleSheet.create({
     mainConatinerStyle: {
         flexDirection: 'column',
         marginTop: 25,
-        marginBottom: 25
+        marginBottom: 25,
+        marginHorizontal: 10
     },
-    categoryCardStyle: {
-        width: window.width / 2,
-        height: window.width / 2 - 40,
-        backgroundColor: '#FFFFFF',
-        marginTop: 10,
-        marginBottom: 10,
-        padding: 5,
-        borderRadius: 10,
-        marginHorizontal: 10,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .2)',
-                shadowOffset: { height: 0, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 2,
-            }
-        })
+    evenCategoryCardStyle: {
+        width: (window.width / 2) - 15,
+        height: (window.width / 2) - 15,
+        backgroundColor: '#F7F7F7',
+        marginTop: 5,
+        marginBottom: 5,
+        marginRight: 5
+    },
+    oddCategoryCardStyle: {
+        width: (window.width / 2) - 15,
+        height: (window.width / 2) - 15,
+        backgroundColor: '#F7F7F7',
+        marginTop: 5,
+        marginBottom: 5,
+        marginLeft: 5
     }
 });
 

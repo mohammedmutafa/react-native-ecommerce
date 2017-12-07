@@ -3,7 +3,11 @@ export default {
         { id: 0, text: 'Profile' },
         { id: 1, text: 'Location' },
         { id: 2, text: 'Favourites' },
-        { id: 3, text: 'Blood Bank' }
+        { id: 3, text: 'Blood Bank' },
+        { id: 4, text: 'Profile' },
+        { id: 5, text: 'Location' },
+        { id: 6, text: 'Favourites' },
+        { id: 7, text: 'Blood Bank' }
     ],
     /* categoryBList: [
          { id: 0, icon: laptop, text: 'Computers' },
