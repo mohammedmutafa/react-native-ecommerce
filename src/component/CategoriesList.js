@@ -20,14 +20,15 @@ class CategoriesList extends Component {
     keyExtractor = (item, index) => index;
 
     renderCategoryCard = ({ item }) => {
-        const { evenCategoryCardStyle, oddCategoryCardStyle } = styles;
+        const { evenCategoryCardStyle, oddCategoryCardStyle, imageRowStyle } = styles;
         const isEven = item.id % 2 === 0;
 
         return (
             <TouchableOpacity onPress={null} style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}>
-                <Text >
-                    {item.text}
-                </Text>
+                <Image
+                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
+                    style={imageRowStyle}
+                />
             </TouchableOpacity >
         );
     }
@@ -54,6 +55,7 @@ class CategoriesList extends Component {
 }
 
 const window = Dimensions.get('window');
+const cardWidth = (window.width / 2) - 15;
 
 const styles = StyleSheet.create({
     mainConatinerStyle: {
@@ -63,20 +65,25 @@ const styles = StyleSheet.create({
         marginHorizontal: 10
     },
     evenCategoryCardStyle: {
-        width: (window.width / 2) - 15,
-        height: (window.width / 2) - 15,
+        width: cardWidth,
+        height: cardWidth,
         backgroundColor: '#F7F7F7',
         marginTop: 5,
         marginBottom: 5,
         marginRight: 5
     },
     oddCategoryCardStyle: {
-        width: (window.width / 2) - 15,
-        height: (window.width / 2) - 15,
+        width: cardWidth,
+        height: cardWidth,
         backgroundColor: '#F7F7F7',
         marginTop: 5,
         marginBottom: 5,
         marginLeft: 5
+    },
+    imageRowStyle: {
+        height: cardWidth,
+        width: cardWidth,
+        resizeMode: 'cover'
     }
 });
 
