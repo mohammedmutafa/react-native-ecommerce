@@ -20,7 +20,7 @@ class CategoriesList extends Component {
     keyExtractor = (item, index) => index;
 
     renderCategoryCard = ({ item }) => {
-        const { evenCategoryCardStyle, oddCategoryCardStyle, imageRowStyle } = styles;
+        const { evenCategoryCardStyle, oddCategoryCardStyle, imageRowStyle, semiTransparentViewStyle } = styles;
         const isEven = item.id % 2 === 0;
 
         return (
@@ -29,6 +29,7 @@ class CategoriesList extends Component {
                     source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
                     style={imageRowStyle}
                 />
+                <View style={semiTransparentViewStyle} />
             </TouchableOpacity >
         );
     }
@@ -84,6 +85,12 @@ const styles = StyleSheet.create({
         height: cardWidth,
         width: cardWidth,
         resizeMode: 'cover'
+    },
+    semiTransparentViewStyle: {
+        height: cardWidth,
+        width: cardWidth,
+        position: 'absolute',
+        backgroundColor: 'rgba(60, 60, 60, 0.5)'
     }
 });
 
