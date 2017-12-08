@@ -70,7 +70,7 @@ class LoginWithPhone extends Component {
 
         return (
             <Animatable.View style={phoneNumberInputContainer} animation='fadeInLeft'>
-                <Text style={{ color: '#FFFFFF', fontSize: 20 }}> Nepal  (+977) </Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Nepal (+977)</Text>
                 {this.renderSeparator()}
                 <TextInput
                     style={{ height: 40 }}
