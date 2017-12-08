@@ -100,6 +100,15 @@ class LoginWithPhone extends Component {
     renderPhoneNumberInputUI = () => {
         return (
             <View style={styles.mainConatinerStyle}>
+                <View style={styles.backButtonStyle}>
+                    <Icon
+                        name='chevron-with-circle-left'
+                        type='entypo'
+                        color='#C7C7CD'
+                        size={30}
+                        onPress={this.props.changePhoneNumberInputUIState}
+                    />
+                </View>
                 {this.renderEnterPhoneNumberUI()}
                 {this.renderFloatingVerifyPhoneNumberButton()}
             </View>
@@ -149,6 +158,12 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: 15,
         width: window.width / 1.5,
+    },
+    backButtonStyle: {
+        alignSelf: 'center',
+        position: 'absolute',
+        top: 20,
+        left: 20
     }
 });
 
