@@ -21,7 +21,7 @@ class OTPVerificationUI extends Component {
                     type='entypo'
                     color='#C7C7CD'
                     size={30}
-                    onPress={this.props.changePhoneNumberInputUIState}
+                    onPress={this.props.changeOTPVerificationUIState}
                 />
             </View>
         );

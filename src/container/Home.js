@@ -10,7 +10,8 @@ export default class Home extends Component {
         this.state = {
             isLoginWithPhoneModalVisible: false,
             phoneNumberInput: undefined,
-            phoneNumberInputUIVisible: false
+            phoneNumberInputUIVisible: false,
+            otpVerificationUIVisible: false
         };
     }
     componentDidMount() {
@@ -24,6 +25,10 @@ export default class Home extends Component {
 
     changePhoneNumberInputUIState = () => {
         this.setState({ phoneNumberInputUIVisible: !this.state.phoneNumberInputUIVisible });
+    }
+
+    changeOTPVerificationUIState = () => {
+        this.setState({ otpVerificationUIVisible: !this.state.otpVerificationUIVisible });
     }
 
     onPhoneNumberInputChange = (text) => {
@@ -40,7 +45,8 @@ export default class Home extends Component {
     }
 
     render() {
-        const { isLoginWithPhoneModalVisible, phoneNumberInput, phoneNumberInputUIVisible } = this.state;
+        const { isLoginWithPhoneModalVisible, phoneNumberInput, phoneNumberInputUIVisible, otpVerificationUIVisible } = this.state;
+
         return (
             <HomeComponent
                 isLoginWithPhoneModalVisible={isLoginWithPhoneModalVisible}
@@ -49,6 +55,8 @@ export default class Home extends Component {
                 phoneNumberInputUIVisible={phoneNumberInputUIVisible}
                 onPhoneNumberInputChange={this.onPhoneNumberInputChange}
                 changePhoneNumberInputUIState={this.changePhoneNumberInputUIState}
+                otpVerificationUIVisible={otpVerificationUIVisible}
+                changeOTPVerificationUIState={this.changeOTPVerificationUIState}
             />
         );
     }

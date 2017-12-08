@@ -93,7 +93,9 @@ export default class Home extends Component {
             phoneNumberInput,
             onPhoneNumberInputChange,
             phoneNumberInputUIVisible,
-            changePhoneNumberInputUIState
+            changePhoneNumberInputUIState,
+            otpVerificationUIVisible,
+            changeOTPVerificationUIState
         } = this.props;
 
         return (
@@ -109,6 +111,8 @@ export default class Home extends Component {
                     phoneNumberInputUIVisible={phoneNumberInputUIVisible}
                     onPhoneNumberInputChange={onPhoneNumberInputChange}
                     changePhoneNumberInputUIState={changePhoneNumberInputUIState}
+                    otpVerificationUIVisible={otpVerificationUIVisible}
+                    changeOTPVerificationUIState={changeOTPVerificationUIState}
                 />
             </Modal >
         );

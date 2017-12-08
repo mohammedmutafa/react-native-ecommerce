@@ -29,7 +29,7 @@ class LoginWithPhone extends Component {
     }
 
     renderFloatingVerifyPhoneNumberButton = () => {
-        const { changeLoginWithPhoneModalViewState } = this.props;
+        const { changeLoginWithPhoneModalViewState, otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
 
         return (
             <View style={styles.floatingMenuButtonStyle}>
@@ -38,7 +38,7 @@ class LoginWithPhone extends Component {
                     name='chevron-thin-right'
                     type='entypo'
                     color='#2a2a2a'
-                    onPress={changeLoginWithPhoneModalViewState}
+                    onPress={!otpVerificationUIVisible ? changeOTPVerificationUIState : null}
                 />
             </View>
         );
@@ -117,9 +117,11 @@ class LoginWithPhone extends Component {
     }
 
     render() {
-        const { phoneNumberInputUIVisible } = this.props;
+        const { phoneNumberInputUIVisible, otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
 
-        // return <OTPVerificationUIComponent />
+        if (otpVerificationUIVisible) {
+            return <OTPVerificationUIComponent changeOTPVerificationUIState={changeOTPVerificationUIState} />
+        }
 
         return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
     }
