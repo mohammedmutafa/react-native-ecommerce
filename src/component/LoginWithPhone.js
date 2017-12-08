@@ -90,7 +90,7 @@ class LoginWithPhone extends Component {
 
     renderSignInWithPhoneUI = () => {
         return (
-            <View style={styles.mainConatinerStyle} animation='fadeInLeft'>
+            <View style={styles.mainConatinerStyle}>
                 {this.renderNoteText()}
                 {this.renderSignInWithPhoneButton()}
                 {this.renderFloatingMenu()}
