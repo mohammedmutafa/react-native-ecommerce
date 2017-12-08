@@ -9,6 +9,8 @@ import {
 import { Icon, Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 
+import OTPVerificationUIComponent from '../component/OTPVerificationUI';
+
 class LoginWithPhone extends Component {
     renderFloatingMenu = () => {
         const { changeLoginWithPhoneModalViewState } = this.props;
@@ -119,7 +121,9 @@ class LoginWithPhone extends Component {
     render() {
         const { phoneNumberInputUIVisible } = this.props;
 
-        return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
+        return <OTPVerificationUIComponent />
+
+        //return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
     }
 }
 
