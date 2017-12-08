@@ -87,7 +87,7 @@ export default class Home extends Component {
     }
 
     renserLoginWithPhoneModalView = () => {
-        const { isLoginWithPhoneModalVisible, changeLoginWithPhoneModalViewState } = this.props;
+        const { isLoginWithPhoneModalVisible, changeLoginWithPhoneModalViewState, phoneNumberInput, onPhoneNumberInputChange } = this.props;
 
         return (
             <Modal
@@ -98,6 +98,8 @@ export default class Home extends Component {
             >
                 <LoginWithPhoneComponent
                     changeLoginWithPhoneModalViewState={changeLoginWithPhoneModalViewState}
+                    phoneNumberInput={phoneNumberInput}
+                    onPhoneNumberInputChange={onPhoneNumberInputChange}
                 />
             </Modal >
         );

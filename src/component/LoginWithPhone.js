@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {
     View,
+    Text,
+    TextInput,
     StyleSheet,
     Dimensions
 } from 'react-native';
@@ -23,6 +25,22 @@ class LoginWithPhone extends Component {
         );
     }
 
+    renderFloatingVerifyPhoneNumberButton = () => {
+        const { changeLoginWithPhoneModalViewState } = this.props;
+
+        return (
+            <View style={styles.floatingMenuButtonStyle}>
+                <Icon
+                    raised
+                    name='chevron-thin-right'
+                    type='entypo'
+                    color='#2a2a2a'
+                    onPress={changeLoginWithPhoneModalViewState}
+                />
+            </View>
+        );
+    }
+
     renderSignInWithPhoneButton = () => {
         return <Button
             buttonStyle={styles.loginButtonStyle}
@@ -34,9 +52,37 @@ class LoginWithPhone extends Component {
     renderNoteText = () => {
         return <Button
             buttonStyle={styles.noteContainerStyle}
-            icon={{ name: 'ios-warning-outline', type: 'ionicon', color:'#DAA520' }}
+            icon={{ name: 'ios-warning-outline', type: 'ionicon', color: '#DAA520' }}
             title='Number will be visible to public users.'
         />
+    }
+
+    renderSeparator = () => {
+        return <View style={styles.separator} />
+    }
+
+    renderEnterPhoneNumberUI = () => {
+        const { phoneNumberInputContainer } = styles;
+        const { phoneNumberInput, onPhoneNumberInputChange } = this.props;
+
+        return (
+            <View style={phoneNumberInputContainer} >
+                <Text style={{ color: '#FFFFFF', fontSize: 20 }}> Nepal  (+977) </Text>
+                {this.renderSeparator()}
+                <TextInput
+                    style={{ height: 40 }}
+                    onChangeText={onPhoneNumberInputChange}
+                    value={phoneNumberInput}
+                    placeholderTextColor='#C7C7CD'
+                    color='#FFFFFF'
+                    keyboardType='phone-pad'
+                    maxLength={10}
+                    placeholder="Your Phone Number"
+                />
+                {this.renderSeparator()}
+                <Text style={{ color: '#FFFFFF', fontSize: 14, marginTop: 5 }}>You will receive OTP for verification.</Text>
+            </View>
+        );
     }
 
     render() {
@@ -44,9 +90,11 @@ class LoginWithPhone extends Component {
 
         return (
             <View style={mainConatinerStyle}>
-                {this.renderNoteText()}
-                {this.renderSignInWithPhoneButton()}
-                {this.renderFloatingMenu()}
+                {/*this.renderNoteText()}
+                {this.renderSignInWithPhoneButton()*/}
+                {this.renderEnterPhoneNumberUI()}
+                {/*this.renderFloatingMenu()*/}
+                {this.renderFloatingVerifyPhoneNumberButton()}
             </View>
         );
     }
@@ -76,6 +124,18 @@ const styles = StyleSheet.create({
     noteContainerStyle: {
         backgroundColor: 'transparent',
         marginBottom: 25
+    },
+    phoneNumberInputContainer: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-start'
+    },
+    separator: {
+        height: 0.5,//StyleSheet.hairlineWidth,
+        backgroundColor: '#DAA520',
+        marginTop: 15,
+        marginBottom: 15,
+        width: window.width / 1.5,
     }
 });
 

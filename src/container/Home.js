@@ -8,7 +8,8 @@ export default class Home extends Component {
         super(props);
 
         this.state = {
-            isLoginWithPhoneModalVisible: false
+            isLoginWithPhoneModalVisible: false,
+            phoneNumberInput: undefined
         };
     }
     componentDidMount() {
@@ -22,12 +23,27 @@ export default class Home extends Component {
         });
     }
 
+    onPhoneNumberInputChange = (text) => {
+        let newText = '';
+        let numbers = '0123456789';
+
+        for (var i = 0; i < text.length; i++) {
+            if (numbers.indexOf(text[i]) > -1) {
+                newText = newText + text[i];
+            }
+        }
+
+        this.setState({ phoneNumberInput: newText })
+    }
+
     render() {
-        const { isLoginWithPhoneModalVisible } = this.state;
+        const { isLoginWithPhoneModalVisible, phoneNumberInput } = this.state;
         return (
             <HomeComponent
                 isLoginWithPhoneModalVisible={isLoginWithPhoneModalVisible}
                 changeLoginWithPhoneModalViewState={this.changeLoginWithPhoneModalViewState}
+                phoneNumberInput={phoneNumberInput}
+                onPhoneNumberInputChange={this.onPhoneNumberInputChange}
             />
         );
     }
