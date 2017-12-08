@@ -62,9 +62,7 @@ class LoginWithPhone extends Component {
         />
     }
 
-    renderSeparator = () => {
-        return <View style={styles.separator} />
-    }
+    renderSeparator = () => <View style={styles.separator} />
 
     renderEnterPhoneNumberUI = () => {
         const { phoneNumberInputContainer } = styles;
@@ -121,9 +119,9 @@ class LoginWithPhone extends Component {
     render() {
         const { phoneNumberInputUIVisible } = this.props;
 
-        return <OTPVerificationUIComponent />
+        // return <OTPVerificationUIComponent />
 
-        //return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
+        return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
     }
 }
 
