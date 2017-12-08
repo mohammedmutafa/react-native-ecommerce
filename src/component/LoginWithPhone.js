@@ -7,6 +7,7 @@ import {
     Dimensions
 } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
+import * as Animatable from 'react-native-animatable';
 
 class LoginWithPhone extends Component {
     renderFloatingMenu = () => {
@@ -68,7 +69,7 @@ class LoginWithPhone extends Component {
         const { phoneNumberInput, onPhoneNumberInputChange } = this.props;
 
         return (
-            <View style={phoneNumberInputContainer} >
+            <Animatable.View style={phoneNumberInputContainer} animation='fadeInLeft'>
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}> Nepal  (+977) </Text>
                 {this.renderSeparator()}
                 <TextInput
@@ -83,23 +84,23 @@ class LoginWithPhone extends Component {
                 />
                 {this.renderSeparator()}
                 <Text style={{ color: '#FFFFFF', fontSize: 14, marginTop: 5 }}>You will receive OTP for verification.</Text>
-            </View>
+            </Animatable.View>
         );
     }
 
     renderSignInWithPhoneUI = () => {
         return (
-            <View style={styles.mainConatinerStyle}>
+            <View style={styles.mainConatinerStyle} animation='fadeInLeft'>
                 {this.renderNoteText()}
                 {this.renderSignInWithPhoneButton()}
                 {this.renderFloatingMenu()}
-            </View>
+            </View >
         );
     }
 
     renderPhoneNumberInputUI = () => {
         return (
-            <View style={styles.mainConatinerStyle}>
+            <View style={styles.mainConatinerStyle} >
                 <View style={styles.backButtonStyle}>
                     <Icon
                         name='chevron-with-circle-left'
