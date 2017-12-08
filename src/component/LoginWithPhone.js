@@ -42,10 +42,12 @@ class LoginWithPhone extends Component {
     }
 
     renderSignInWithPhoneButton = () => {
+        const { changePhoneNumberInputUIState } = this.props;
         return <Button
             buttonStyle={styles.loginButtonStyle}
             icon={{ name: 'phone', type: 'feather' }}
             title='Sign In With Phone Number'
+            onPress={changePhoneNumberInputUIState}
         />
     }
 
@@ -85,18 +87,29 @@ class LoginWithPhone extends Component {
         );
     }
 
-    render() {
-        const { mainConatinerStyle, imageBackgroundStyle, semiTransparentLayer } = styles;
-
+    renderSignInWithPhoneUI = () => {
         return (
-            <View style={mainConatinerStyle}>
-                {/*this.renderNoteText()}
-                {this.renderSignInWithPhoneButton()*/}
+            <View style={styles.mainConatinerStyle}>
+                {this.renderNoteText()}
+                {this.renderSignInWithPhoneButton()}
+                {this.renderFloatingMenu()}
+            </View>
+        );
+    }
+
+    renderPhoneNumberInputUI = () => {
+        return (
+            <View style={styles.mainConatinerStyle}>
                 {this.renderEnterPhoneNumberUI()}
-                {/*this.renderFloatingMenu()*/}
                 {this.renderFloatingVerifyPhoneNumberButton()}
             </View>
         );
+    }
+
+    render() {
+        const { phoneNumberInputUIVisible } = this.props;
+
+        return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
     }
 }
 

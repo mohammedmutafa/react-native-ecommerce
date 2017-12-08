@@ -9,7 +9,8 @@ export default class Home extends Component {
 
         this.state = {
             isLoginWithPhoneModalVisible: false,
-            phoneNumberInput: undefined
+            phoneNumberInput: undefined,
+            phoneNumberInputUIVisible: false
         };
     }
     componentDidMount() {
@@ -18,9 +19,11 @@ export default class Home extends Component {
     }
 
     changeLoginWithPhoneModalViewState = () => {
-        this.setState({
-            isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible
-        });
+        this.setState({ isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible });
+    }
+
+    changePhoneNumberInputUIState = () => {
+        this.setState({ phoneNumberInputUIVisible: !this.state.phoneNumberInputUIVisible });
     }
 
     onPhoneNumberInputChange = (text) => {
@@ -37,13 +40,15 @@ export default class Home extends Component {
     }
 
     render() {
-        const { isLoginWithPhoneModalVisible, phoneNumberInput } = this.state;
+        const { isLoginWithPhoneModalVisible, phoneNumberInput, phoneNumberInputUIVisible } = this.state;
         return (
             <HomeComponent
                 isLoginWithPhoneModalVisible={isLoginWithPhoneModalVisible}
                 changeLoginWithPhoneModalViewState={this.changeLoginWithPhoneModalViewState}
                 phoneNumberInput={phoneNumberInput}
+                phoneNumberInputUIVisible={phoneNumberInputUIVisible}
                 onPhoneNumberInputChange={this.onPhoneNumberInputChange}
+                changePhoneNumberInputUIState={this.changePhoneNumberInputUIState}
             />
         );
     }
