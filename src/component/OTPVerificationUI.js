@@ -11,6 +11,20 @@ import * as Animatable from 'react-native-animatable';
 
 class OTPVerificationUI extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.focusNextField = this.focusNextField.bind(this);
+        this.inputs = {};
+    }
+
+    focusNextField(id, text) {
+        if (!text) {
+            return;
+        }
+        this.inputs[id].focus();
+    }
+
     renderSeparator = () => <View style={styles.separator} />
 
     renderBackButton = () => {
@@ -27,18 +41,24 @@ class OTPVerificationUI extends Component {
         );
     }
 
-    renderCodeInput = () => {
-        return <TextInput
-            style={styles.verificationCodeInputStyle}
-            // onChangeText={onPhoneNumberInputChange}
-            // value={phoneNumberInput}
-            placeholderTextColor="#C7C7CD"
-            color="#FFFFFF"
-            keyboardType="phone-pad"
-            maxLength={1}
-            borderWidth={1}
-            borderColor="#DAA520"
-        />
+    renderCodeInput = (inputIndex) => {
+        return (
+            <TextInput
+                style={styles.verificationCodeInputStyle}
+                // onChangeText={onPhoneNumberInputChange}
+                // value={phoneNumberInput}
+                placeholderTextColor="#C7C7CD"
+                color="#FFFFFF"
+                keyboardType="phone-pad"
+                maxLength={1}
+                returnKeyType="next"
+                borderWidth={1}
+                borderColor="#DAA520"
+                blurOnSubmit={false}
+                ref={input => { this.inputs[String(inputIndex)] = input; }}
+                onChangeText={inputIndex < 4 ? (text) => this.focusNextField(String(inputIndex + 1), text) : null}
+            />
+        );
     }
 
     renderVerificationUI = () => {
@@ -51,10 +71,10 @@ class OTPVerificationUI extends Component {
                 {this.renderSeparator()}
                 <Text style={{ color: '#FFFFFF', fontSize: 14 }}>Please enter 4 digit verification code.</Text>
                 <View style={styles.verificationCodeInputContainer}>
-                    {this.renderCodeInput()}
-                    {this.renderCodeInput()}
-                    {this.renderCodeInput()}
-                    {this.renderCodeInput()}
+                    {this.renderCodeInput(1)}
+                    {this.renderCodeInput(2)}
+                    {this.renderCodeInput(3)}
+                    {this.renderCodeInput(4)}
                 </View>
             </Animatable.View>
         );
