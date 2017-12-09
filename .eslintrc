@@ -1,0 +1,46 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
+    },
+    "env": {
+        "browser": true
+    },
+    "plugins": [
+        "react",
+        "react-native"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+        /* "plugin:react-native/all" */
+    ],
+    "rules": {
+        // overrides
+        "arrow-parens": 2,
+        "react/jsx-no-bind": "error",
+        "react/prefer-es6-class": [
+            1,
+            "always"
+        ],
+        "react/prefer-stateless-function": [
+            1,
+            {
+                "ignorePureComponents": true
+            }
+        ],
+        "react/jsx-pascal-case": [
+            1
+        ],
+        "react/jsx-closing-bracket-location": 1,
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ]
+    }
+}
