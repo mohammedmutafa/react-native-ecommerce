@@ -17,9 +17,9 @@ class OTPVerificationUI extends Component {
         return (
             <View style={styles.backButtonStyle}>
                 <Icon
-                    name='chevron-with-circle-left'
-                    type='entypo'
-                    color='#C7C7CD'
+                    name="chevron-with-circle-left"
+                    type="entypo"
+                    color="#C7C7CD"
                     size={30}
                     onPress={this.props.changeOTPVerificationUIState}
                 />
@@ -32,12 +32,12 @@ class OTPVerificationUI extends Component {
             style={styles.verificationCodeInputStyle}
             // onChangeText={onPhoneNumberInputChange}
             // value={phoneNumberInput}
-            placeholderTextColor='#C7C7CD'
-            color='#FFFFFF'
-            keyboardType='phone-pad'
+            placeholderTextColor="#C7C7CD"
+            color="#FFFFFF"
+            keyboardType="phone-pad"
             maxLength={1}
             borderWidth={1}
-            borderColor='#DAA520'
+            borderColor="#DAA520"
         />
     }
 
@@ -46,7 +46,7 @@ class OTPVerificationUI extends Component {
         const { phoneNumberInput, onPhoneNumberInputChange } = this.props;
 
         return (
-            <Animatable.View style={phoneNumberInputContainer} animation='fadeInLeft'>
+            <Animatable.View style={phoneNumberInputContainer} animation="fadeInLeft">
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Verification Code</Text>
                 {this.renderSeparator()}
                 <Text style={{ color: '#FFFFFF', fontSize: 14 }}>Please enter 4 digit verification code.</Text>
