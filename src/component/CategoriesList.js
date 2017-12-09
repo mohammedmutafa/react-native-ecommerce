@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import Categories from '../styles/Categories';
+import * as Animatable from 'react-native-animatable';
 
 const { categoryAList } = Categories;
 
@@ -28,7 +29,7 @@ class CategoriesList extends Component {
                     style={imageRowStyle}
                 />
                 <View style={semiTransparentViewStyle}>
-                    <Text style={styles.titleTextStyle}>{item.text}</Text>
+                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft">{item.text}</Animatable.Text>
                 </View>
             </TouchableOpacity >
         );
