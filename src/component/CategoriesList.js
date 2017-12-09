@@ -19,7 +19,7 @@ class CategoriesList extends Component {
     keyExtractor = (item, index) => index;
 
     renderCategoryCard = ({ item }) => {
-        const { evenCategoryCardStyle, oddCategoryCardStyle, imageRowStyle, semiTransparentViewStyle } = styles;
+        const { evenCategoryCardStyle, oddCategoryCardStyle, imageRowStyle, semiTransparentViewStyle, textContainerStyle } = styles;
         const isEven = item.id % 2 === 0;
 
         return (
@@ -28,8 +28,13 @@ class CategoriesList extends Component {
                     source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
                     style={imageRowStyle}
                 />
-                <View style={semiTransparentViewStyle}>
+                <View style={semiTransparentViewStyle} />
+                <View style={textContainerStyle}>
                     <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft">{item.text}</Animatable.Text>
+                    <View>
+                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft">______  805</Animatable.Text>
+                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft">           Items</Animatable.Text>
+                    </View>
                 </View>
             </TouchableOpacity >
         );
@@ -95,11 +100,28 @@ const styles = StyleSheet.create({
         position: 'absolute',
         backgroundColor: 'rgba(60, 60, 60, 0.5)'
     },
+    textContainerStyle: {
+        height: cardWidth,
+        width: cardWidth,
+        position: 'absolute',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        backgroundColor: 'transparent'
+    },
     titleTextStyle: {
         color: '#FFFFFF',
         fontSize: 12,
         fontWeight: 'bold',
         padding: 15
+    },
+    itemsCountTextStyle: {
+        color: '#FFFFFF',
+        fontSize: 12,
+        fontStyle: 'italic',
+        paddingLeft: 15,
+        bottom: 5,
+        //left: 20
     }
 });
 
