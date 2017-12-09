@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import {
     View,
     Image,
-    Text,
     FlatList,
     StyleSheet,
     Dimensions,
     ScrollView,
-    Platform,
     TouchableOpacity
 } from 'react-native';
-import { SearchBar, Icon } from 'react-native-elements';
 
 import Categories from '../styles/Categories';
 
@@ -35,13 +32,15 @@ class CategoriesList extends Component {
     }
 
     renderCatA = () => {
-        return <FlatList
-            data={categoryAList}
-            renderItem={this.renderCategoryCard}
-            removeClippedSubviews={false}
-            keyExtractor={this.keyExtractor}
-            numColumns={2}
-        />
+        return (
+            <FlatList
+                data={categoryAList}
+                renderItem={this.renderCategoryCard}
+                removeClippedSubviews={false}
+                keyExtractor={this.keyExtractor}
+                numColumns={2}
+            />
+        );
     }
 
     render() {
