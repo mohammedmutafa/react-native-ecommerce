@@ -1,8 +1,8 @@
 export default {
     categoryAList: [
-        { id: 0, text: 'Profile' },
-        { id: 1, text: 'Location' },
-        { id: 2, text: 'Favourites' },
+        { id: 0, text: 'PROFILE' },
+        { id: 1, text: 'LOCATION' },
+        { id: 2, text: 'FAVOURITES' },
         { id: 3, text: 'Blood Bank' },
         { id: 4, text: 'Profile' },
         { id: 5, text: 'Location' },

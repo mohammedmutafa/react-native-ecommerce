@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     View,
+    Text,
     Image,
     FlatList,
     StyleSheet,
@@ -26,7 +27,9 @@ class CategoriesList extends Component {
                     source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
                     style={imageRowStyle}
                 />
-                <View style={semiTransparentViewStyle} />
+                <View style={semiTransparentViewStyle}>
+                    <Text style={styles.titleTextStyle}>{item.text}</Text>
+                </View>
             </TouchableOpacity >
         );
     }
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
     mainConatinerStyle: {
         flexDirection: 'column',
         marginTop: 25,
-        marginBottom: 25,
+        marginBottom: 15,
         marginHorizontal: 10
     },
     evenCategoryCardStyle: {
@@ -90,6 +93,12 @@ const styles = StyleSheet.create({
         width: cardWidth,
         position: 'absolute',
         backgroundColor: 'rgba(60, 60, 60, 0.5)'
+    },
+    titleTextStyle: {
+        color: '#FFFFFF',
+        fontSize: 12,
+        fontWeight: 'bold',
+        padding: 15
     }
 });
 
