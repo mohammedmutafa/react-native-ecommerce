@@ -77,9 +77,9 @@ export default class Home extends Component {
             <View style={styles.floatingMenuButtonStyle}>
                 <Icon
                     raised
-                    name='align-center'
-                    type='feather'
-                    color='#f50'
+                    name="align-center"
+                    type="feather"
+                    color="#2a2a2a"
                     onPress={changeLoginWithPhoneModalViewState}
                 />
             </View>
@@ -129,7 +129,6 @@ export default class Home extends Component {
                     backgroundColor="#FFFFFF"
                     stickyHeaderHeight={STICKY_HEADER_HEIGHT}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
-
                     renderForeground={() => (
                         <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                             {this.renderSwiper()}

@@ -14,9 +14,9 @@ class Menu extends Component {
             <View style={styles.floatingMenuButtonStyle}>
                 <Icon
                     raised
-                    name='close'
-                    type='evilIcons'
-                    color='#f50'
+                    name="close"
+                    type="evilIcons"
+                    color="#2a2a2a"
                     onPress={changeLoginWithPhoneModalViewState}
                 />
             </View>
