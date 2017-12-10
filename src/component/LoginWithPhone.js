@@ -73,7 +73,7 @@ class LoginWithPhone extends Component {
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Nepal (+977)</Text>
                 {this.renderSeparator()}
                 <TextInput
-                    style={{ height: 40, color: '#FFFFFF' }}
+                    style={{ height: 40, color: '#FFFFFF', width: window.width / 1.5 }}
                     onChangeText={onPhoneNumberInputChange}
                     value={phoneNumberInput}
                     placeholderTextColor='#C7C7CD'
