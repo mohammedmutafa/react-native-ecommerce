@@ -48,7 +48,6 @@ class OTPVerificationUI extends Component {
                 // onChangeText={onPhoneNumberInputChange}
                 // value={phoneNumberInput}
                 placeholderTextColor="#C7C7CD"
-                color="#FFFFFF"
                 keyboardType="phone-pad"
                 maxLength={1}
                 returnKeyType="next"
@@ -135,7 +134,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginHorizontal: 10,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: '#FFFFFF'
     }
 });
 
