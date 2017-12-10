@@ -14,6 +14,8 @@ import Categories from '../styles/Categories';
 import * as Animatable from 'react-native-animatable';
 
 const { categoryAList } = Categories;
+let delayTextAnimationTitle = 0;
+let delayTextAnimationCount = 0;
 
 class CategoriesList extends Component {
     keyExtractor = (item, index) => index;
@@ -21,6 +23,9 @@ class CategoriesList extends Component {
     renderCategoryCard = ({ item }) => {
         const { evenCategoryCardStyle, oddCategoryCardStyle, imageRowStyle, semiTransparentViewStyle, textContainerStyle } = styles;
         const isEven = item.id % 2 === 0;
+
+        delayTextAnimationTitle = delayTextAnimationTitle + 100;
+        delayTextAnimationCount = delayTextAnimationCount + 200;
 
         return (
             <TouchableOpacity onPress={null} style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}>
@@ -30,10 +35,10 @@ class CategoriesList extends Component {
                 />
                 <View style={semiTransparentViewStyle} />
                 <View style={textContainerStyle}>
-                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft">{item.text}</Animatable.Text>
+                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={delayTextAnimationTitle}>{item.text}</Animatable.Text>
                     <View>
-                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft">______  805</Animatable.Text>
-                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft">           Items</Animatable.Text>
+                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}>______  805</Animatable.Text>
+                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}>           Items</Animatable.Text>
                     </View>
                 </View>
             </TouchableOpacity >
