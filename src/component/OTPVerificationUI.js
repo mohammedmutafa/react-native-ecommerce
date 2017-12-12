@@ -55,7 +55,7 @@ class OTPVerificationUI extends Component {
                 borderColor="#DAA520"
                 blurOnSubmit={false}
                 ref={input => { this.inputs[String(inputIndex)] = input; }}
-                onChangeText={inputIndex < 4 ? (text) => this.focusNextField(String(inputIndex + 1), text) : null}
+                onChangeText={inputIndex < 6 ? (text) => this.focusNextField(String(inputIndex + 1), text) : null}
             />
         );
     }
@@ -74,6 +74,8 @@ class OTPVerificationUI extends Component {
                     {this.renderCodeInput(2)}
                     {this.renderCodeInput(3)}
                     {this.renderCodeInput(4)}
+                    {this.renderCodeInput(5)}
+                    {this.renderCodeInput(6)}
                 </View>
             </Animatable.View>
         );
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#DAA520',
         marginTop: 15,
         marginBottom: 15,
-        width: window.width / 1.5,
+        width: window.width / 1.3,
     },
     backButtonStyle: {
         alignSelf: 'center',
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
         width: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: 10,
+        marginHorizontal: 5,
         textAlign: 'center',
         color: '#FFFFFF'
     }
