@@ -68,7 +68,7 @@ class OTPVerificationUI extends Component {
             <Animatable.View style={phoneNumberInputContainer} animation="fadeInLeft">
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Verification Code</Text>
                 {this.renderSeparator()}
-                <Text style={{ color: '#FFFFFF', fontSize: 14 }}>Please enter 4 digit verification code.</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 14 }}>Please enter 6 digit verification code.</Text>
                 <View style={styles.verificationCodeInputContainer}>
                     {this.renderCodeInput(1)}
                     {this.renderCodeInput(2)}
