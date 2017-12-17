@@ -66,6 +66,16 @@ export default class Home extends Component {
         );
     }
 
+    renderAllCategoriesButton = () => {
+        return (
+            <View style={styles.allCategoriesButtonStyle}>
+                <Text>__________</Text>
+                <Text>All Categories</Text>
+                <Text>__________</Text>
+            </View>
+        );
+    }
+
     renderFloatingMenu = () => {
         const { changeLoginWithPhoneModalViewState, isLoginWithPhoneModalVisible } = this.props;
 
@@ -139,7 +149,7 @@ export default class Home extends Component {
                             {this.renderSearchBar()}
                         </View>
                     )}
-                >
+                >{this.renderAllCategoriesButton()}
                     {this.renserLoginWithPhoneModalView()}
                     <CategoriesListComponent />
                 </ParallaxScrollView>
@@ -224,5 +234,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10
+    },
+    allCategoriesButtonStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 5
     }
 });
