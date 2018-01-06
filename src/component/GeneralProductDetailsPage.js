@@ -27,6 +27,25 @@ class GeneralProductDetailsPage extends Component {
         );
     }
 
+    renderProductTitle = () => {
+        return (
+            <Text style={styles.titleTextStyle}>This is a demo title for the product descriptions.</Text>
+        );
+    }
+
+    renderProductDescription = () => {
+        return (
+            <Text style={styles.decsriptionTextStyle}>When numberOfLines is set, this prop defines how text will be truncated. numberOfLines must be set in conjunction with this prop.
+
+            This can be one of the following values:
+
+            head - The line is displayed so that the end fits in the container and the missing text at the beginning of the line is indicated by an ellipsis glyph. e.g., "...wxyz"
+            middle - The line is displayed so that the beginning and end fit in the container and the missing text in the middle is indicated by an ellipsis glyph. "ab...yz"
+            tail - The line is displayed so that the beginning fits in the container and the missing text at the end of the line is indicated by an ellipsis glyph. e.g., "abcd..."
+            clip - Lines are not drawn past the edge of the text container.</Text>
+        );
+    }
+
     renderFloatingShareButton = () => {
 
         return (
@@ -59,7 +78,9 @@ class GeneralProductDetailsPage extends Component {
                         </View>
                     )}
                 >
-                    {/*this.renserLoginWithPhoneModalView()*/}
+                    {this.renderProductTitle()}
+                    <Text style={styles.boldSeparator}>___</Text>
+                    {this.renderProductDescription()}
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
             </View >
@@ -90,7 +111,6 @@ const styles = StyleSheet.create({
         height: SLIDER_HEIGHT,
         justifyContent: 'center',
         alignItems: 'center'
-
     },
     slide1: {
         height: SLIDER_HEIGHT,// same width and height for the container
@@ -99,6 +119,32 @@ const styles = StyleSheet.create({
         bottom: 0, // position it in circle
         marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
         backgroundColor: '#FFFFFF'
+    },
+    titleTextStyle: {
+        // color: '#00',
+        fontSize: 16,
+        fontStyle: 'italic',
+        paddingLeft: 25,
+        paddingRight: 25,
+        paddingTop: 10,
+        bottom: 5,
+        textAlign: 'center',
+    },
+    decsriptionTextStyle: {
+        // color: '#00',
+        fontSize: 16,
+        //fontStyle: 'italic',
+        paddingLeft: 25,
+        paddingRight: 25,
+        paddingTop: 10,
+        bottom: 5,
+        textAlign: 'justify' //The value 'justify' is only supported on iOS and fallbacks to left on Android.
+    },
+    boldSeparator: {
+        color: '#DAA520',
+        fontWeight: 'bold',
+        fontSize: 30,
+        padding: 25
     }
 });
 
