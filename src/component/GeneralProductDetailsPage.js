@@ -15,7 +15,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 class GeneralProductDetailsPage extends Component {
 
     renderImageView = () => {
-        const { sliderContainerStyle, containerStyle } = styles;
+        const { containerStyle } = styles;
 
         return (
             <View style={containerStyle}>
@@ -92,18 +92,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
 
     },
-    sliderContainerStyle: {
-        borderRadius: window.width, // border borderRadius same as width and height
-        width: window.width * 2,
-        height: window.width * 2,
-        marginLeft: -(window.width / 2),// reposition the circle inside parent view
-        position: 'absolute',
-        bottom: 0, // show the bottom part of circle
-        overflow: 'hidden' // hide not important part of image
-
-    },
-    wrapper: {
-    },
     slide1: {
         height: SLIDER_HEIGHT,// same width and height for the container
         width: window.width,
@@ -111,11 +99,7 @@ const styles = StyleSheet.create({
         bottom: 0, // position it in circle
         marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
         backgroundColor: '#FFFFFF'
-    },
-    searchBarStyle: {
-        backgroundColor: 'transparent',
-        width: window.width - 75
-    },
+    }
 });
 
 export default GeneralProductDetailsPage;
