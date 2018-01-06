@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     },
     titleTextStyle: {
         // color: '#00',
-        fontSize: 16,
+        fontSize: 18,
         fontStyle: 'italic',
         paddingLeft: 25,
         paddingRight: 25,
