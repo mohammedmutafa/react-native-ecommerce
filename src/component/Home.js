@@ -151,7 +151,7 @@ export default class Home extends Component {
                     )}
                 >{this.renderAllCategoriesButton()}
                     {this.renserLoginWithPhoneModalView()}
-                    <CategoriesListComponent />
+                    <CategoriesListComponent navigation={this.props.navigation} />
                 </ParallaxScrollView>
                 {this.renderFloatingMenu()}
             </View >

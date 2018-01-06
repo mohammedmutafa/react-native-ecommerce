@@ -57,6 +57,7 @@ export default class Home extends Component {
                 changePhoneNumberInputUIState={this.changePhoneNumberInputUIState}
                 otpVerificationUIVisible={otpVerificationUIVisible}
                 changeOTPVerificationUIState={this.changeOTPVerificationUIState}
+                navigation={this.props.navigation}
             />
         );
     }

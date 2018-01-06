@@ -28,7 +28,7 @@ class CategoriesList extends Component {
         delayTextAnimationCount = delayTextAnimationCount + 200;
 
         return (
-            <TouchableOpacity onPress={null} style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('GeneralProductDetails')} style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}>
                 <Image
                     source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
                     style={imageRowStyle}
