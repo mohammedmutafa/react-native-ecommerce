@@ -87,7 +87,7 @@ class GeneralProductDetailsPage extends Component {
                     )}
                 >
                     {this.renderProductTitle()}
-                    <Text style={styles.boldSeparator}>___</Text>
+                    <Text style={styles.boldSeparator}>______</Text>
                     {this.renderProductDescription()}
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         color: '#DAA520',
         fontWeight: 'bold',
         fontSize: 30,
-        padding: 15
+        padding: 25
     },
     floatingButtonContainerStyle: {
         backgroundColor: '#2a2a2a',
