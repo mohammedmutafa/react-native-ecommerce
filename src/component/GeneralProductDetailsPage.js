@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
         paddingLeft: 25,
         paddingRight: 25,
         paddingTop: 10,
-        bottom: 5,
         textAlign: 'center',
     },
     decsriptionTextStyle: {
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
         color: '#DAA520',
         fontWeight: 'bold',
         fontSize: 30,
-        padding: 25
+        padding: 15
     }
 });
 
