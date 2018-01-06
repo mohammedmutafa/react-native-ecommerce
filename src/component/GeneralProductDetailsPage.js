@@ -47,14 +47,16 @@ class GeneralProductDetailsPage extends Component {
     }
 
     renderFloatingShareButton = () => {
+        const { floatingShareButtonStyle, floatingButtonContainerStyle } = styles;
 
         return (
-            <View style={styles.floatingShareButtonStyle}>
+            <View style={floatingShareButtonStyle}>
                 <Icon
                     raised
-                    name="phone-call"
-                    type="feather"
-                    color="#2a2a2a"
+                    name="phone"
+                    type="simple-line-icon"
+                    color="#DAA520"
+                    containerStyle={floatingButtonContainerStyle}
                     onPress={null}
                 />
             </View>
@@ -137,13 +139,18 @@ const styles = StyleSheet.create({
         paddingRight: 25,
         paddingTop: 10,
         bottom: 5,
-        textAlign: 'justify' //The value 'justify' is only supported on iOS and fallbacks to left on Android.
+        // textAlign: 'justify' //The value 'justify' is only supported on iOS and fallbacks to left on Android.
     },
     boldSeparator: {
         color: '#DAA520',
         fontWeight: 'bold',
         fontSize: 30,
         padding: 15
+    },
+    floatingButtonContainerStyle: {
+        backgroundColor: '#2a2a2a',
+        borderWidth: 0.5,
+        borderColor: '#DAA520'
     }
 });
 
