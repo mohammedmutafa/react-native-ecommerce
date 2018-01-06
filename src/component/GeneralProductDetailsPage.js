@@ -33,7 +33,7 @@ class GeneralProductDetailsPage extends Component {
             <View style={styles.floatingShareButtonStyle}>
                 <Icon
                     raised
-                    name="align-center"
+                    name="phone-call"
                     type="feather"
                     color="#2a2a2a"
                     onPress={null}
