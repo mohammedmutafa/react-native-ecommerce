@@ -11,11 +11,12 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import * as Animatable from 'react-native-animatable';
 
 class GeneralProductDetailsPage extends Component {
 
     renderImageView = () => {
-        const { containerStyle } = styles;
+        const { containerStyle, semiTransparentViewStyle } = styles;
 
         return (
             <View style={containerStyle}>
@@ -23,6 +24,11 @@ class GeneralProductDetailsPage extends Component {
                     source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
                     style={styles.slide1}
                 />
+                <View style={semiTransparentViewStyle} />
+                <View style={styles.textContainerStyle}>
+                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}>Owner's Profile</Animatable.Text>
+                    <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={200}>25th December, 2018</Animatable.Text>
+                </View>
             </View >
         );
     }
@@ -151,6 +157,29 @@ const styles = StyleSheet.create({
         backgroundColor: '#2a2a2a',
         borderWidth: 0.5,
         borderColor: '#DAA520'
+    },
+    semiTransparentViewStyle: {
+        height: SLIDER_HEIGHT,// same width and height for the container
+        width: window.width,
+        position: 'absolute',
+        backgroundColor: 'rgba(60, 60, 60, 0.5)'
+    },
+    itemsCountTextStyle: {
+        color: '#FFFFFF',
+        fontSize: 12,
+        fontStyle: 'italic',
+        paddingLeft: 15,
+        bottom: 5,
+        //left: 20
+    },
+    textContainerStyle: {
+        height: SLIDER_HEIGHT,// same width and height for the container
+        width: window.width,
+        position: 'absolute',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        backgroundColor: 'transparent'
     }
 });
 
