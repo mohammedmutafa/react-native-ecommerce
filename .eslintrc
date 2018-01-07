@@ -18,10 +18,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended"
-        /* "plugin:react-native/all" */
     ],
     "rules": {
-        // overrides
         "arrow-parens": 2,
         "react/jsx-no-bind": "error",
         "react/prefer-es6-class": [
