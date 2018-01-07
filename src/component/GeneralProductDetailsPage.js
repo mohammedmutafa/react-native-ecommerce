@@ -53,6 +53,16 @@ class GeneralProductDetailsPage extends Component {
         );
     }
 
+    renderPhotoViewDivider = () => {
+        const { photoViewerDividerStyle, photoViewerDividerContainerStyle, photoViewDividerTextstyle } = styles;
+        return (
+            <View style={photoViewerDividerContainerStyle}>
+                <Text style={photoViewDividerTextstyle}>Photos </Text>
+                <View style={photoViewerDividerStyle} />
+            </View>
+        );
+    }
+
     renderFloatingShareButton = () => {
         const { floatingShareButtonStyle, floatingButtonContainerStyle } = styles;
 
@@ -90,6 +100,7 @@ class GeneralProductDetailsPage extends Component {
                     {this.renderProductTitle()}
                     <Text style={styles.boldSeparator}>______</Text>
                     {this.renderProductDescription()}
+                    {this.renderPhotoViewDivider()}
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
             </View >
@@ -182,6 +193,23 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: 'transparent'
+    },
+    photoViewerDividerContainerStyle: {
+        flexDirection: 'row',
+        margin: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    photoViewerDividerStyle: {
+        height: 1,
+        backgroundColor: '#DAA520',
+        flex: 1,
+        marginTop: 5
+    },
+    photoViewDividerTextstyle: {
+        color: '#DAA520',
+        fontStyle: 'italic',
+        fontSize: 20
     }
 });
 
