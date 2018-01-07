@@ -27,7 +27,7 @@ class GeneralProductDetailsPage extends Component {
                 <View style={semiTransparentViewStyle} />
                 <View style={styles.textContainerStyle}>
                     <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}></Animatable.Text>
-                    <Animatable.Text style={styles.priceTextStyle} animation="fadeInLeft" delay={200}>₹ 20,000</Animatable.Text>
+                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}>This is a demo title for the product descriptions.</Animatable.Text>
                     <Animatable.Text style={styles.dateTextStyle} animation="fadeInLeft" delay={200}>25th December, 2018</Animatable.Text>
                 </View>
             </View >
@@ -36,7 +36,7 @@ class GeneralProductDetailsPage extends Component {
 
     renderProductTitle = () => {
         return (
-            <Text style={styles.titleTextStyle}>This is a demo title for the product descriptions.</Text>
+            <Text style={styles.priceTextStyle}>₹ 20,000</Text>
         );
     }
 
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF'
     },
     titleTextStyle: {
-        // color: '#00',
+        color: '#FFFFFF',
         fontSize: 18,
         fontStyle: 'italic',
         paddingLeft: 25,
@@ -163,7 +163,10 @@ const styles = StyleSheet.create({
         color: '#DAA520',
         fontWeight: 'bold',
         fontSize: 30,
-        padding: 25
+        marginLeft: 25,
+        marginRight: 25,
+        marginTop: 5,
+        marginBottom: 10
     },
     floatingButtonContainerStyle: {
         backgroundColor: '#2a2a2a',
@@ -177,8 +180,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(60, 60, 60, 0.5)'
     },
     priceTextStyle: {
-        color: '#FFFFFF',
-        fontSize: 30
+        color: '#2a2a2a',
+        fontSize: 30,
+        textAlign: 'center',
+        marginTop: 10
     },
     dateTextStyle: {
         color: '#FFFFFF',
