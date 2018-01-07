@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     photoViewDividerTextstyle: {
-        color: '#DAA520',
+        color: '#2a2a2a',
         fontStyle: 'italic',
         fontSize: 20
     }
