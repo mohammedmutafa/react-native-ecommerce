@@ -143,7 +143,6 @@ const styles = StyleSheet.create({
     titleTextStyle: {
         color: '#FFFFFF',
         fontSize: 18,
-        fontStyle: 'italic',
         paddingLeft: 25,
         paddingRight: 25,
         paddingTop: 10,
