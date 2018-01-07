@@ -28,7 +28,7 @@ class GeneralProductDetailsPage extends Component {
                 <View style={styles.textContainerStyle}>
                     <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}></Animatable.Text>
                     <Animatable.Text style={styles.priceTextStyle} animation="fadeInLeft" delay={200}>₹ 20,000</Animatable.Text>
-                    <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={200}>25th December, 2018</Animatable.Text>
+                    <Animatable.Text style={styles.dateTextStyle} animation="fadeInLeft" delay={200}>25th December, 2018</Animatable.Text>
                 </View>
             </View >
         );
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
         borderColor: '#DAA520'
     },
     semiTransparentViewStyle: {
-        height: SLIDER_HEIGHT,// same width and height for the container
+        height: SLIDER_HEIGHT, // same width and height for the container
         width: window.width,
         position: 'absolute',
         backgroundColor: 'rgba(60, 60, 60, 0.5)'
@@ -169,16 +169,13 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 30
     },
-    itemsCountTextStyle: {
+    dateTextStyle: {
         color: '#FFFFFF',
         fontSize: 12,
-        fontStyle: 'italic',
-        paddingLeft: 15,
-        bottom: 5,
-        //left: 20
+        paddingBottom: 10
     },
     textContainerStyle: {
-        height: SLIDER_HEIGHT,// same width and height for the container
+        height: SLIDER_HEIGHT, // same width and height for the container
         width: window.width,
         position: 'absolute',
         flexDirection: 'column',
