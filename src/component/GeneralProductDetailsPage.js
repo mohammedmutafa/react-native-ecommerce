@@ -6,12 +6,17 @@ import {
     Dimensions,
     ScrollView,
     Platform,
-    Modal,
+    FlatList,
+    TouchableOpacity,
     Text
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
+
+import Categories from '../styles/Categories';
+
+const { categoryAList } = Categories;
 
 class GeneralProductDetailsPage extends Component {
 
@@ -57,7 +62,7 @@ class GeneralProductDetailsPage extends Component {
         const { photoViewerDividerStyle, photoViewerDividerContainerStyle, photoViewDividerTextstyle } = styles;
         return (
             <View style={photoViewerDividerContainerStyle}>
-                <Text style={photoViewDividerTextstyle}>Photos </Text>
+                <Text style={photoViewDividerTextstyle}>Photos   </Text>
                 <View style={photoViewerDividerStyle} />
             </View>
         );
@@ -77,6 +82,36 @@ class GeneralProductDetailsPage extends Component {
                     onPress={null}
                 />
             </View>
+        );
+    }
+
+    keyExtractor = (item, index) => index;
+
+    renderPhotoCard = ({ item }) => {
+        const { photoCardStyle, imageRowStyle } = styles;
+
+        return (
+            <TouchableOpacity onPress={null} style={photoCardStyle}>
+                <Image
+                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
+                    style={imageRowStyle}
+                />
+            </TouchableOpacity >
+        );
+    }
+
+    renderPhotoList = () => {
+        return (
+            <View style={styles.imageViewFlatListContainerStyle}>
+                <FlatList
+                    data={categoryAList}
+                    renderItem={this.renderPhotoCard}
+                    removeClippedSubviews={false}
+                    keyExtractor={this.keyExtractor}
+                    horizontal={true}
+                />
+            </View>
+
         );
     }
 
@@ -101,6 +136,7 @@ class GeneralProductDetailsPage extends Component {
                     <Text style={styles.boldSeparator}>______</Text>
                     {this.renderProductDescription()}
                     {this.renderPhotoViewDivider()}
+                    {this.renderPhotoList()}
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
             </View >
@@ -112,6 +148,8 @@ const window = Dimensions.get('window');
 
 const STICKY_HEADER_HEIGHT = (110 / 768) * window.height;
 const SLIDER_HEIGHT = window.width / 1.7;
+const cardWidth = (window.width / 3);
+const cardHeight = cardWidth + 40;
 
 const styles = StyleSheet.create({
     mainConatinerStyle: {
@@ -214,6 +252,25 @@ const styles = StyleSheet.create({
         color: '#2a2a2a',
         fontStyle: 'italic',
         fontSize: 20
+    },
+    photoCardStyle: {
+        width: cardWidth,
+        height: cardHeight,
+        backgroundColor: '#F7F7F7',
+        marginTop: 5,
+        marginBottom: 5,
+        marginRight: 5
+    },
+    imageRowStyle: {
+        height: cardHeight,
+        width: cardWidth,
+        resizeMode: 'cover'
+    },
+    imageViewFlatListContainerStyle: {
+        marginLeft: 25,
+        marginRight: 25,
+        marginTop: 5,
+        marginBottom: 20
     }
 });
 
