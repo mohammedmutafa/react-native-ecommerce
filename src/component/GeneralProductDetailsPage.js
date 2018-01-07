@@ -127,17 +127,17 @@ const styles = StyleSheet.create({
     containerStyle: {
         alignSelf: 'center',
         width: window.width,
-        overflow: 'hidden', // for hide the not important parts from circle
+        overflow: 'hidden',
         height: SLIDER_HEIGHT,
         justifyContent: 'center',
         alignItems: 'center'
     },
     slide1: {
-        height: SLIDER_HEIGHT,// same width and height for the container
+        height: SLIDER_HEIGHT,
         width: window.width,
-        position: 'absolute', // position it in circle
-        bottom: 0, // position it in circle
-        marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
+        position: 'absolute',
+        bottom: 0,
+        marginLeft: window.width / 2,
         backgroundColor: '#FFFFFF'
     },
     titleTextStyle: {
