@@ -2,6 +2,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Home from '../container/Home';
 import GeneralProductDetailsPage from '../container/GeneralProductDetailsPage';
+import CreateAdPage from '../container/CreateAd';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -24,6 +25,20 @@ const StackNavigation = StackNavigator({
             },
             headerTintColor: '#FFFFFF',
             title: "Product Description",
+        })
+    },
+    CreateAd: {
+        screen: CreateAdPage,
+        navigationOptions: (props) => ({
+            headerTitleStyle: {
+                /*  */
+            },
+            headerStyle: {
+                backgroundColor: '#2a2a2a',
+                elevation: 0 //Only for Android
+            },
+            headerTintColor: '#FFFFFF',
+            title: "CREATE YOUR AD",
         })
     },
 });
