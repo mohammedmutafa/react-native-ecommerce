@@ -69,6 +69,15 @@ class CreateAd extends Component {
         );
     }
 
+    renderProductCondition = () => {
+        const { productCategoryContainerstyle } = styles;
+        return (
+            <View style={productCategoryContainerstyle}>
+                {this.renderProductTitleDivider('Condition    ')}
+            </View>
+        );
+    }
+
     renderProductDescription = () => {
         const { productCategoryContainerstyle } = styles;
         return (
@@ -134,6 +143,7 @@ class CreateAd extends Component {
                     {this.renderProductTitle()}
                     {this.renderProductCategory()}
                     {this.renderProductPrice()}
+                    {this.renderProductCondition()}
                     {this.renderProductLocation()}
                     {this.renderProductDescription()}
                 </ParallaxScrollView>
