@@ -11,7 +11,7 @@ import {
     Text,
     TextInput
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon, FormLabel, FormInput } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
@@ -44,8 +44,7 @@ class CreateAd extends Component {
         const { productCategoryContainerstyle } = styles;
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Title     ')}
-                <Text>Electronics - Phone - Samsung</Text>
+                {this.renderProductTitleDivider('Title', 'Title for the product')}
             </View>
         );
     }
@@ -54,8 +53,7 @@ class CreateAd extends Component {
         const { productCategoryContainerstyle } = styles;
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Category     ')}
-                <Text>Electronics - Phone - Samsung</Text>
+                {this.renderProductTitleDivider('Category', 'Choose Category')}
             </View>
         );
     }
@@ -64,7 +62,7 @@ class CreateAd extends Component {
         const { productCategoryContainerstyle } = styles;
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Price (₹)    ')}
+                {this.renderProductTitleDivider('Price (₹)', '')}
             </View>
         );
     }
@@ -73,7 +71,7 @@ class CreateAd extends Component {
         const { productCategoryContainerstyle } = styles;
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Condition    ')}
+                {this.renderProductTitleDivider('Condition', 'Set the condition of the product')}
             </View>
         );
     }
@@ -82,7 +80,7 @@ class CreateAd extends Component {
         const { productCategoryContainerstyle } = styles;
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Description     ')}
+                {this.renderProductTitleDivider('Description', 'Product Details')}
             </View>
         );
     }
@@ -96,12 +94,14 @@ class CreateAd extends Component {
         );
     }
 
-    renderProductTitleDivider = (title) => {
+    renderProductTitleDivider = (title, placeholder) => {
         const { titleDividerStyle, titleDividerContainerStyle, photoViewDividerTextstyle } = styles;
         return (
             <View style={titleDividerContainerStyle}>
-                <Text style={photoViewDividerTextstyle}>{title}</Text>
-                <View style={titleDividerStyle} />
+                <FormLabel>{title}</FormLabel>
+                <FormInput
+                    placeholder={placeholder}
+                    onChangeText={null} />
             </View>
         );
     }
@@ -246,9 +246,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     titleDividerContainerStyle: {
-        flexDirection: 'row',
-        marginTop: 25,
-        alignItems: 'center',
+        flexDirection: 'column',
+        margin: 25,
         justifyContent: 'center',
     },
     titleDividerStyle: {
@@ -282,8 +281,7 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     productCategoryContainerstyle: {
-        flexDirection: 'column',
-        margin: 25
+        flexDirection: 'column'
     }
 });
 
