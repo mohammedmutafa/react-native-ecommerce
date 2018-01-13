@@ -3,7 +3,8 @@ export default {
         {
             id: 0,
             title: 'Mobiles',
-            icon: 'phone-android'
+            icon: 'phone-android',
+            subCategory: [{ id: 0, title: 'Mobile Phones' }, { id: 1, title: 'Tablet' }, { id: 3, title: 'Accessories' }]
         },
         {
             id: 1,

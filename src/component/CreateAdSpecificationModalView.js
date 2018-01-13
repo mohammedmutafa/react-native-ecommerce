@@ -19,10 +19,10 @@ class CreateAdSpecificationModalView extends Component {
         return (
             <View style={styles.backButtonStyle}>
                 <Icon
-                    name="chevron-with-circle-left"
-                    type="entypo"
-                    color="#C7C7CD"
-                    size={30}
+                    raised
+                    name="close"
+                    type="evilIcons"
+                    color="#2a2a2a"
                     onPress={changeStateOfCreateAdSpecificationModalView}
                 />
             </View>
@@ -68,14 +68,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(60, 60, 60, 0.8)'
     },
     scrollViewConatinerStyle: {
-        marginTop: 35,
+        //marginTop: 25,
+        marginBottom: 100,
+        borderRadius: 5,
         backgroundColor: 'transparent'
     },
     backButtonStyle: {
         alignSelf: 'center',
         position: 'absolute',
-        top: 20,
-        left: 20
+        bottom: 35
     }
 });
 

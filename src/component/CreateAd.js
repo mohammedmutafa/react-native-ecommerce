@@ -184,8 +184,7 @@ const styles = StyleSheet.create({
     floatingShareButtonStyle: {
         alignSelf: 'center',
         position: 'absolute',
-        bottom: 35,
-        paddingRight: 15
+        bottom: 35
     },
     containerStyle: {
         alignSelf: 'center',
