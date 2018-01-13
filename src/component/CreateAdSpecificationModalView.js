@@ -94,6 +94,7 @@ class CreateAdSpecificationModalView extends Component {
                         {
                             list.map((item, i) => (
                                 <ListItem
+                                    onPress={() => console.log('Dipak')}
                                     key={i}
                                     title={item.title}
                                     leftIcon={{ name: item.icon }}
