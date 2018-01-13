@@ -60,6 +60,10 @@ const list = [
     {
         title: 'Flight & Bus Tickets',
         icon: 'flight-takeoff'
+    },
+    {
+        title: 'Events',
+        icon: 'insert-invitation'
     }
 ]
 
