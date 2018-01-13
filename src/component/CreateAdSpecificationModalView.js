@@ -7,65 +7,9 @@ import {
 } from 'react-native';
 import { Icon, List, ListItem } from 'react-native-elements';
 
-const list = [
-    {
-        title: 'Mobiles',
-        icon: 'phone-android'
-    },
-    {
-        title: 'Electronics & Appliances',
-        icon: 'devices-other'
-    },
-    {
-        title: 'Properties',
-        icon: 'location-city'
-    },
-    {
-        title: 'Vehicles',
-        icon: 'motorcycle'
-    },
-    {
-        title: 'Adventure & Holiday Packages',
-        icon: 'landscape'
-    },
-    {
-        title: 'Hotels',
-        icon: 'hotel'
-    },
-    {
-        title: 'Furniture',
-        icon: 'weekend'
-    },
-    {
-        title: 'Jobs',
-        icon: 'business-center'
-    },
-    {
-        title: 'Services',
-        icon: 'spa'
-    },
-    {
-        title: 'Pets',
-        icon: 'pets'
-    },
-    {
-        title: 'Books, Sports & Hobbies',
-        icon: 'school'
-    },
-    {
-        title: 'Fashion',
-        icon: 'local-mall'
-    },
-    ,
-    {
-        title: 'Flight & Bus Tickets',
-        icon: 'flight-takeoff'
-    },
-    {
-        title: 'Events',
-        icon: 'insert-invitation'
-    }
-]
+import Categories from '../styles/Categories';
+
+const { categoryList } = Categories;
 
 class CreateAdSpecificationModalView extends Component {
 
@@ -96,7 +40,7 @@ class CreateAdSpecificationModalView extends Component {
                 >
                     <List>
                         {
-                            list.map((item, i) => (
+                            categoryList.map((item, i) => (
                                 <ListItem
                                     onPress={() => console.log('Dipak')}
                                     key={i}

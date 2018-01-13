@@ -1,13 +1,75 @@
 export default {
-    categoryAList: [
-        { id: 0, text: 'PROFILE' },
-        { id: 1, text: 'LOCATION' },
-        { id: 2, text: 'FAVOURITES' },
-        { id: 3, text: 'Blood Bank' },
-        { id: 4, text: 'Profile' },
-        { id: 5, text: 'Location' },
-        { id: 6, text: 'Favourites' },
-        { id: 7, text: 'Blood Bank' }
+    categoryList: [
+        {
+            id: 0,
+            title: 'Mobiles',
+            icon: 'phone-android'
+        },
+        {
+            id: 1,
+            title: 'Electronics & Appliances',
+            icon: 'devices-other'
+        },
+        {
+            id: 2,
+            title: 'Properties',
+            icon: 'location-city'
+        },
+        {
+            id: 3,
+            title: 'Vehicles',
+            icon: 'motorcycle'
+        },
+        {
+            id: 4,
+            title: 'Adventure & Holiday Packages',
+            icon: 'landscape'
+        },
+        {
+            id: 5,
+            title: 'Hotels',
+            icon: 'hotel'
+        },
+        {
+            id: 6,
+            title: 'Furniture',
+            icon: 'weekend'
+        },
+        {
+            id: 7,
+            title: 'Jobs',
+            icon: 'business-center'
+        },
+        {
+            id: 8,
+            title: 'Services',
+            icon: 'spa'
+        },
+        {
+            id: 9,
+            title: 'Pets',
+            icon: 'pets'
+        },
+        {
+            id: 10,
+            title: 'Books, Sports & Hobbies',
+            icon: 'school'
+        },
+        {
+            id: 11,
+            title: 'Fashion',
+            icon: 'local-mall'
+        },
+        {
+            id: 12,
+            title: 'Flight & Bus Tickets',
+            icon: 'flight-takeoff'
+        },
+        {
+            id: 13,
+            title: 'Events',
+            icon: 'insert-invitation'
+        }
     ],
     /* categoryBList: [
          { id: 0, icon: laptop, text: 'Computers' },

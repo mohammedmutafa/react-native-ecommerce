@@ -13,7 +13,7 @@ import {
 import Categories from '../styles/Categories';
 import * as Animatable from 'react-native-animatable';
 
-const { categoryAList } = Categories;
+const { categoryList } = Categories;
 let delayTextAnimationTitle = 0;
 let delayTextAnimationCount = 0;
 
@@ -35,7 +35,7 @@ class CategoriesList extends Component {
                 />
                 <View style={semiTransparentViewStyle} />
                 <View style={textContainerStyle}>
-                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={delayTextAnimationTitle}>{item.text}</Animatable.Text>
+                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={delayTextAnimationTitle}>{item.title}</Animatable.Text>
                     <View>
                         <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}>______  805</Animatable.Text>
                         <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}>           Items</Animatable.Text>
@@ -48,7 +48,7 @@ class CategoriesList extends Component {
     renderCatA = () => {
         return (
             <FlatList
-                data={categoryAList}
+                data={categoryList}
                 renderItem={this.renderCategoryCard}
                 removeClippedSubviews={false}
                 keyExtractor={this.keyExtractor}
