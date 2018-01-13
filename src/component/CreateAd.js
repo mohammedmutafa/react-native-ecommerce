@@ -98,11 +98,15 @@ class CreateAd extends Component {
     renderProductTitleDivider = (title, placeholder) => {
         const { titleDividerStyle, titleDividerContainerStyle, photoViewDividerTextstyle } = styles;
         return (
-            <View style={titleDividerContainerStyle}>
+            <View style={titleDividerContainerStyle} >
                 <FormLabel>{title}</FormLabel>
-                <FormInput
-                    placeholder={placeholder}
-                    onChangeText={null} />
+                <TouchableOpacity onPress={this.props.changeStateOfCreateAdSpecificationModalView}>
+                    <FormInput
+                        pointerEvents="none"
+                        placeholder={placeholder}
+                        onChangeText={null} />
+                </TouchableOpacity>
+
             </View>
         );
     }
@@ -126,6 +130,7 @@ class CreateAd extends Component {
 
     render() {
         const { mainConatinerStyle } = styles;
+        const { isCreateAdSpecificationModalViewVisible, changeStateOfCreateAdSpecificationModalView } = this.props;
 
         return (
             <View style={mainConatinerStyle}>
@@ -150,10 +155,12 @@ class CreateAd extends Component {
                     <Modal
                         animationType="slide"
                         transparent={true}
-                        visible={true}
+                        visible={isCreateAdSpecificationModalViewVisible}
                         onRequestClose={null}
                     >
-                        <CreateAdSpecificationModalViewComponent />
+                        <CreateAdSpecificationModalViewComponent
+                            changeStateOfCreateAdSpecificationModalView={changeStateOfCreateAdSpecificationModalView}
+                        />
                     </Modal >
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}

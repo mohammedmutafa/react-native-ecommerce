@@ -7,7 +7,9 @@ class CreateAd extends Component {
         super(props);
 
         this.state = {
-
+            selectedCategory: undefined,
+            selectedSubCategory: undefined,
+            isCreateAdSpecificationModalViewVisible: false
         };
     }
     componentDidMount() {
@@ -15,10 +17,23 @@ class CreateAd extends Component {
         //Temporary Solution .. need to hide for all app screen.
     }
 
+    changeStateOfCreateAdSpecificationModalView = () => {
+        console.log('HELLO>>>>>>>>>>>>>>>')
+        this.setState({
+            isCreateAdSpecificationModalViewVisible: !this.state.isCreateAdSpecificationModalViewVisible
+        });
+    }
+
     render() {
+        const { selectedCategory, selectedSubCategory, isCreateAdSpecificationModalViewVisible } = this.state;
 
         return (
-            <CreateAdPageComponent />
+            <CreateAdPageComponent
+                selectedCategory={selectedCategory}
+                selectedSubCategory={selectedSubCategory}
+                isCreateAdSpecificationModalViewVisible={isCreateAdSpecificationModalViewVisible}
+                changeStateOfCreateAdSpecificationModalView={this.changeStateOfCreateAdSpecificationModalView}
+            />
         );
     }
 }

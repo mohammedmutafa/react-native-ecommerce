@@ -14,6 +14,8 @@ const { categoryList } = Categories;
 class CreateAdSpecificationModalView extends Component {
 
     renderBackButton = () => {
+        const { changeStateOfCreateAdSpecificationModalView } = this.props;
+
         return (
             <View style={styles.backButtonStyle}>
                 <Icon
@@ -21,7 +23,7 @@ class CreateAdSpecificationModalView extends Component {
                     type="entypo"
                     color="#C7C7CD"
                     size={30}
-                    onPress={null}
+                    onPress={changeStateOfCreateAdSpecificationModalView}
                 />
             </View>
         );
