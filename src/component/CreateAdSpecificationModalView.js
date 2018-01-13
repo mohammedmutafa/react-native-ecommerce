@@ -36,7 +36,7 @@ class CreateAdSpecificationModalView extends Component {
             <View style={mainConatinerStyle}>
                 {this.renderBackButton()}
                 <ScrollView
-                    // bounces={false}
+                     bounces={false}
                     showsVerticalScrollIndicator={false}
                     style={scrollViewConatinerStyle}
                 >
