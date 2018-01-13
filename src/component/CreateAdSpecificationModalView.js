@@ -5,7 +5,7 @@ import {
     Dimensions,
     ScrollView
 } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
+import { Icon, List, ListItem } from 'react-native-elements';
 
 const list = [
     {
@@ -65,13 +65,28 @@ const list = [
 
 class CreateAdSpecificationModalView extends Component {
 
+    renderBackButton = () => {
+        return (
+            <View style={styles.backButtonStyle}>
+                <Icon
+                    name="chevron-with-circle-left"
+                    type="entypo"
+                    color="#C7C7CD"
+                    size={30}
+                    onPress={null}
+                />
+            </View>
+        );
+    }
+
     render() {
         const { mainConatinerStyle, scrollViewConatinerStyle, semiTransparentLayer } = styles;
 
         return (
             <View style={mainConatinerStyle}>
+                {this.renderBackButton()}
                 <ScrollView
-                    bounces={false}
+                    // bounces={false}
                     showsVerticalScrollIndicator={false}
                     style={scrollViewConatinerStyle}
                 >
@@ -102,18 +117,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(60, 60, 60, 0.8)'
     },
     scrollViewConatinerStyle: {
-        flexDirection: 'column',
-        flex: 1,
-        backgroundColor: 'rgba(60, 60, 60, 0.8)'
+        marginTop: 35,
+        backgroundColor: 'transparent'
     },
-    floatingMenuButtonStyle: {
+    backButtonStyle: {
         alignSelf: 'center',
         position: 'absolute',
-        bottom: 35
-    },
-    noteContainerStyle: {
-        backgroundColor: 'transparent',
-        marginBottom: 15
+        top: 20,
+        left: 20
     }
 });
 
