@@ -21,7 +21,7 @@ const list = [
         icon: 'location-city'
     },
     {
-        title: 'Bikes',
+        title: 'Vehicles',
         icon: 'motorcycle'
     },
     {
