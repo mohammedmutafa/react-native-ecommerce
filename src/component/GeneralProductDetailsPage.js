@@ -16,7 +16,7 @@ import * as Animatable from 'react-native-animatable';
 
 import Categories from '../styles/Categories';
 
-const { categoryAList } = Categories;
+const { categoryList } = Categories;
 
 class GeneralProductDetailsPage extends Component {
 
@@ -104,7 +104,7 @@ class GeneralProductDetailsPage extends Component {
         return (
             <View style={styles.imageViewFlatListContainerStyle}>
                 <FlatList
-                    data={categoryAList}
+                    data={categoryList}
                     renderItem={this.renderPhotoCard}
                     removeClippedSubviews={false}
                     keyExtractor={this.keyExtractor}
