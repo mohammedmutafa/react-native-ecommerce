@@ -9,13 +9,14 @@ import {
     FlatList,
     TouchableOpacity,
     Text,
-    TextInput
+    Modal
 } from 'react-native';
 import { Icon, FormLabel, FormInput } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
 import Categories from '../styles/Categories';
+import CreateAdSpecificationModalViewComponent from '../component/CreateAdSpecificationModalView';
 
 const { categoryAList } = Categories;
 
@@ -146,6 +147,14 @@ class CreateAd extends Component {
                     {this.renderProductCondition()}
                     {this.renderProductLocation()}
                     {this.renderProductDescription()}
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={true}
+                        onRequestClose={null}
+                    >
+                        <CreateAdSpecificationModalViewComponent />
+                    </Modal >
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
             </View >
