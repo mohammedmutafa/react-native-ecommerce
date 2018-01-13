@@ -68,9 +68,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(60, 60, 60, 0.8)'
     },
     scrollViewConatinerStyle: {
-        //marginTop: 25,
         marginBottom: 100,
-        borderRadius: 5,
         backgroundColor: 'transparent'
     },
     backButtonStyle: {
