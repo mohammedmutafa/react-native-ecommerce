@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import {
     View,
+    Text,
     StyleSheet,
     Dimensions,
-    ScrollView
+    ScrollView,
+    FlatList,
+    TouchableOpacity
 } from 'react-native';
 import { Icon, List, ListItem } from 'react-native-elements';
 
@@ -13,19 +16,29 @@ const { categoryList } = Categories;
 
 class CreateAdSpecificationModalView extends Component {
 
-    renderBackButton = () => {
-        const { changeStateOfCreateAdSpecificationModalView } = this.props;
+    keyExtractor = (item, index) => index;
 
+    renderMainCategoryRow = ({ item }) => {
         return (
-            <View style={styles.backButtonStyle}>
-                <Icon
-                    raised
-                    name="close"
-                    type="evilIcons"
-                    color="#2a2a2a"
-                    onPress={changeStateOfCreateAdSpecificationModalView}
-                />
-            </View>
+            <ListItem
+                title={item.title}
+                //chevronColor='#DAA520'
+                leftIcon={{ name: item.icon }}
+                onPress={null}
+            />
+        );
+    }
+
+    renderMainCategoryList = () => {
+        return (
+            <FlatList
+                bounces={false}
+                showsVerticalScrollIndicator={false}
+                data={categoryList}
+                renderItem={this.renderMainCategoryRow}
+                removeClippedSubviews={false}
+                keyExtractor={this.keyExtractor}
+            />
         );
     }
 
@@ -34,25 +47,9 @@ class CreateAdSpecificationModalView extends Component {
 
         return (
             <View style={mainConatinerStyle}>
-                {this.renderBackButton()}
-                <ScrollView
-                     bounces={false}
-                    showsVerticalScrollIndicator={false}
-                    style={scrollViewConatinerStyle}
-                >
-                    <List>
-                        {
-                            categoryList.map((item, i) => (
-                                <ListItem
-                                    onPress={() => console.log('Dipak')}
-                                    key={i}
-                                    title={item.title}
-                                    leftIcon={{ name: item.icon }}
-                                />
-                            ))
-                        }
-                    </List>
-                </ScrollView>
+                <View style={scrollViewConatinerStyle}>
+                    {this.renderMainCategoryList()}
+                </View>
             </View>
         );
     }
@@ -68,8 +65,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(60, 60, 60, 0.8)'
     },
     scrollViewConatinerStyle: {
-        marginBottom: 100,
-        backgroundColor: 'transparent'
+        backgroundColor: '#FFFFFF'
     },
     backButtonStyle: {
         alignSelf: 'center',

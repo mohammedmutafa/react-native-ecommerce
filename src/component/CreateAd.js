@@ -18,7 +18,7 @@ import * as Animatable from 'react-native-animatable';
 import Categories from '../styles/Categories';
 import CreateAdSpecificationModalViewComponent from '../component/CreateAdSpecificationModalView';
 
-const { categoryAList } = Categories;
+const { categoryList } = Categories;
 
 class CreateAd extends Component {
 
