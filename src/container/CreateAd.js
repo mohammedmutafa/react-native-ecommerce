@@ -9,7 +9,10 @@ class CreateAd extends Component {
         this.state = {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
-            isCreateAdSpecificationModalViewVisible: false
+            isCreateAdSpecificationModalViewVisible: false,
+
+            parentListDataSource: undefined,
+            
         };
     }
     componentDidMount() {

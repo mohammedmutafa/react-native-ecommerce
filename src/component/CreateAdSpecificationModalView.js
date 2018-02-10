@@ -29,16 +29,48 @@ class CreateAdSpecificationModalView extends Component {
         );
     }
 
-    renderMainCategoryList = () => {
+    renderMainCategoryList = (dataSource) => {
         return (
             <FlatList
                 bounces={false}
                 showsVerticalScrollIndicator={false}
-                data={categoryList}
+                data={dataSource}
                 renderItem={this.renderMainCategoryRow}
                 removeClippedSubviews={false}
                 keyExtractor={this.keyExtractor}
             />
+        );
+    }
+
+    renderMainCategoryLevel2 = (dataSource) => {
+        const { level2TitleHeaderContainerStyle, level2FlatListContainerStyle, cancelTextStyle, dividerStyle } = styles;
+        return (
+            <View>
+                <View style={level2TitleHeaderContainerStyle}>
+                    <Text>Main Categories</Text>
+                    <Icon
+                        name="arrow-up"
+                        type="feather"
+                        color="#DAA520"
+                        onPress={null}
+                    />
+                </View>
+                <View style={dividerStyle} />
+                <View style={level2FlatListContainerStyle}>
+                    <FlatList
+                        bounces={false}
+                        showsVerticalScrollIndicator={false}
+                        data={dataSource}
+                        renderItem={this.renderMainCategoryRow}
+                        removeClippedSubviews={false}
+                        keyExtractor={this.keyExtractor}
+                    />
+                </View>
+                <View style={level2TitleHeaderContainerStyle}>
+                    <Text></Text>
+                    <Text style={cancelTextStyle}>Cancel</Text>
+                </View>
+            </View>
         );
     }
 
@@ -48,7 +80,8 @@ class CreateAdSpecificationModalView extends Component {
         return (
             <View style={mainConatinerStyle}>
                 <View style={scrollViewConatinerStyle}>
-                    {this.renderMainCategoryList()}
+                    {/*this.renderMainCategoryList(categoryList)*/}
+                    {this.renderMainCategoryLevel2(categoryList)}
                 </View>
             </View>
         );
@@ -56,6 +89,7 @@ class CreateAdSpecificationModalView extends Component {
 }
 
 const window = Dimensions.get('window');
+
 
 const styles = StyleSheet.create({
     mainConatinerStyle: {
@@ -71,7 +105,28 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         position: 'absolute',
         bottom: 35
+    },
+    level2TitleHeaderContainerStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 25,
+    },
+    level2FlatListContainerStyle: {
+        flexDirection: 'column',
+        height: window.height - (225)
+    },
+    dividerStyle: {
+        height: 1,
+        backgroundColor: '#DAA520',
+        width: window.width - 50,
+        marginTop: 5
+    },
+    cancelTextStyle: {
+        paddingLeft: 25,
+        fontSize: 20,
+        color: '#DAA520'
     }
+
 });
 
 export default CreateAdSpecificationModalView;
