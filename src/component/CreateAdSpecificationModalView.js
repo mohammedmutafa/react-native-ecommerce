@@ -42,7 +42,7 @@ class CreateAdSpecificationModalView extends Component {
     drillUP() {
         const { drillDataSource, drillIndex } = this.state;
         const newDrillIndex = drillIndex - 1;
-        const newTitle = newDrillIndex === 0 ? 'Main Category' : drillDataSource[newDrillIndex][0].title;
+        const newTitle = newDrillIndex === 0 ? 'Main Category' : drillDataSource[newDrillIndex - 1][0].title;
 
         this.setState({
             currentDataSource: drillDataSource[newDrillIndex],
