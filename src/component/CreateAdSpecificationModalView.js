@@ -20,18 +20,34 @@ class CreateAdSpecificationModalView extends Component {
 
         this.state = {
             parentDataSourceTitle: 'Main Category',
-            dataSource: categoryList
+            drillDataSource: [categoryList],
+            currentDataSource: categoryList,
+            drillIndex: 0
         };
     }
 
-    updateFlatListDataSource(item) {
+    drillDown(item) {
+        const { drillDataSource, drillIndex } = this.state;
+
         if (item.children) {
             this.setState({
-                dataSource: item.children,
-                parentDataSourceTitle: item.title
+                parentDataSourceTitle: item.title,
+                drillDataSource: [...drillDataSource, item.children],
+                currentDataSource: item.children,
+                drillIndex: drillIndex + 1
             });
         }
+    }
 
+    drillUP() {
+        const { drillDataSource, drillIndex } = this.state;
+        const newDrillIndex = drillIndex - 1;
+
+        this.setState({
+            currentDataSource: drillDataSource[newDrillIndex],
+            parentDataSourceTitle: drillDataSource[newDrillIndex][0].title,
+            drillIndex: newDrillIndex
+        });
     }
 
     keyExtractor = (item, index) => index;
@@ -42,7 +58,7 @@ class CreateAdSpecificationModalView extends Component {
                 title={item.title}
                 //chevronColor='#DAA520'
                 leftIcon={{ name: item.icon }}
-                onPress={() => this.updateFlatListDataSource(item)}
+                onPress={() => this.drillDown(item)}
             />
         );
     }
@@ -59,7 +75,7 @@ class CreateAdSpecificationModalView extends Component {
                         name="arrow-up"
                         type="feather"
                         color="#DAA520"
-                        onPress={null}
+                        onPress={() => this.drillUP()}
                     />
                 </View>
                 <View style={dividerStyle} />
@@ -87,7 +103,7 @@ class CreateAdSpecificationModalView extends Component {
         return (
             <View style={mainConatinerStyle}>
                 <View style={scrollViewConatinerStyle}>
-                    {this.renderMainCategoryLevel2(this.state.dataSource)}
+                    {this.renderMainCategoryLevel2(this.state.currentDataSource)}
                 </View>
             </View>
         );
