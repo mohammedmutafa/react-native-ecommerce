@@ -8,13 +8,31 @@ import {
     FlatList,
     TouchableOpacity
 } from 'react-native';
-import { Icon, List, ListItem } from 'react-native-elements';
+import { Icon, ListItem } from 'react-native-elements';
 
 import Categories from '../styles/Categories';
 
 const { categoryList } = Categories;
 
 class CreateAdSpecificationModalView extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            parentDataSourceTitle: 'Main Category',
+            dataSource: categoryList
+        };
+    }
+
+    updateFlatListDataSource(item) {
+        if (item.children) {
+            this.setState({
+                dataSource: item.children,
+                parentDataSourceTitle: item.title
+            });
+        }
+
+    }
 
     keyExtractor = (item, index) => index;
 
@@ -24,30 +42,19 @@ class CreateAdSpecificationModalView extends Component {
                 title={item.title}
                 //chevronColor='#DAA520'
                 leftIcon={{ name: item.icon }}
-                onPress={null}
-            />
-        );
-    }
-
-    renderMainCategoryList = (dataSource) => {
-        return (
-            <FlatList
-                bounces={false}
-                showsVerticalScrollIndicator={false}
-                data={dataSource}
-                renderItem={this.renderMainCategoryRow}
-                removeClippedSubviews={false}
-                keyExtractor={this.keyExtractor}
+                onPress={() => this.updateFlatListDataSource(item)}
             />
         );
     }
 
     renderMainCategoryLevel2 = (dataSource) => {
         const { level2TitleHeaderContainerStyle, level2FlatListContainerStyle, cancelTextStyle, dividerStyle } = styles;
+        const { parentDataSourceTitle } = this.state;
+
         return (
             <View>
                 <View style={level2TitleHeaderContainerStyle}>
-                    <Text>Main Categories</Text>
+                    <Text>{parentDataSourceTitle}</Text>
                     <Icon
                         name="arrow-up"
                         type="feather"
@@ -80,8 +87,7 @@ class CreateAdSpecificationModalView extends Component {
         return (
             <View style={mainConatinerStyle}>
                 <View style={scrollViewConatinerStyle}>
-                    {/*this.renderMainCategoryList(categoryList)*/}
-                    {this.renderMainCategoryLevel2(categoryList)}
+                    {this.renderMainCategoryLevel2(this.state.dataSource)}
                 </View>
             </View>
         );
@@ -89,7 +95,6 @@ class CreateAdSpecificationModalView extends Component {
 }
 
 const window = Dimensions.get('window');
-
 
 const styles = StyleSheet.create({
     mainConatinerStyle: {
