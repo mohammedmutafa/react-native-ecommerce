@@ -4,7 +4,11 @@ export default {
             id: 0,
             title: 'Mobiles',
             icon: 'phone-android',
-            children: [{ id: 0, title: 'Mobile Phones' }, { id: 1, title: 'Tablet' }, { id: 3, title: 'Accessories' }]
+            children: [
+                { id: 0, title: 'Mobile Phones', children: [{ id: 0, title: 'Samsung' }] },
+                { id: 1, title: 'Tablet' },
+                { id: 3, title: 'Accessories' }
+            ]
         },
         {
             id: 1,

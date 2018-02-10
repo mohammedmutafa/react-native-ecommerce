@@ -66,18 +66,18 @@ class CreateAdSpecificationModalView extends Component {
 
     renderMainCategoryLevel2 = (dataSource) => {
         const { level2TitleHeaderContainerStyle, level2FlatListContainerStyle, cancelTextStyle, dividerStyle } = styles;
-        const { parentDataSourceTitle } = this.state;
+        const { parentDataSourceTitle, drillIndex } = this.state;
 
         return (
             <View>
                 <View style={level2TitleHeaderContainerStyle}>
                     <Text>{parentDataSourceTitle}</Text>
-                    <Icon
+                    {drillIndex === 0 ? <View /> : <Icon
                         name="arrow-up"
                         type="feather"
                         color="#DAA520"
                         onPress={() => this.drillUP()}
-                    />
+                    />}
                 </View>
                 <View style={dividerStyle} />
                 <View style={level2FlatListContainerStyle}>
