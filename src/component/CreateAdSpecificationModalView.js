@@ -57,7 +57,8 @@ class CreateAdSpecificationModalView extends Component {
         return (
             <ListItem
                 title={item.title}
-                //chevronColor='#DAA520'
+                // chevronColor='#DAA520'
+                hideChevron={item.children ? false : true}
                 leftIcon={{ name: item.icon }}
                 onPress={() => this.drillDown(item)}
             />
