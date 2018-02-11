@@ -23,7 +23,7 @@ class CreateAdSpecificationModalView extends Component {
             currentDataSource: MainCategory,
             drillIndex: 0
         };
-    }
+    };
 
     drillDown(item) {
         const { drillIndex } = this.state;
@@ -36,22 +36,24 @@ class CreateAdSpecificationModalView extends Component {
                 currentDataSource: CategoryList[childKey],
                 drillIndex: drillIndex + 1
             });
-        }
-    }
+        };
+    };
 
     drillUP(dataSource) {
         const { drillIndex } = this.state;
         const newDrillIndex = drillIndex - 1;
-        const parentKey = dataSource[0].parent;
 
-        const newTitle = newDrillIndex === 0 ? 'Main Category' : dataSource[0].parentTitle;
+        if (dataSource[0]) {
+            const parentKey = dataSource[0].parent;
+            const newTitle = newDrillIndex === 0 ? 'Main Category' : dataSource[0].parentTitle;
 
-        this.setState({
-            currentDataSource: CategoryList[parentKey],
-            parentDataSourceTitle: newTitle,
-            drillIndex: newDrillIndex
-        });
-    }
+            this.setState({
+                currentDataSource: CategoryList[parentKey],
+                parentDataSourceTitle: newTitle,
+                drillIndex: newDrillIndex
+            });
+        };
+    };
 
     keyExtractor = (item, index) => index;
 
@@ -65,7 +67,7 @@ class CreateAdSpecificationModalView extends Component {
                 onPress={() => this.drillDown(item)}
             />
         );
-    }
+    };
 
     renderMainCategoryLevel2 = (dataSource) => {
         const { level2TitleHeaderContainerStyle, level2FlatListContainerStyle, cancelTextStyle, dividerStyle } = styles;
@@ -95,11 +97,13 @@ class CreateAdSpecificationModalView extends Component {
                 </View>
                 <View style={level2TitleHeaderContainerStyle}>
                     <Text></Text>
-                    <Text style={cancelTextStyle}>Cancel</Text>
+                    <TouchableOpacity onPress={this.props.changeStateOfCreateAdSpecificationModalView}>
+                        <Text style={cancelTextStyle}>Cancel</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
-    }
+    };
 
     render() {
         const { mainConatinerStyle, scrollViewConatinerStyle, semiTransparentLayer } = styles;
@@ -111,8 +115,8 @@ class CreateAdSpecificationModalView extends Component {
                 </View>
             </View>
         );
-    }
-}
+    };
+};
 
 const window = Dimensions.get('window');
 
