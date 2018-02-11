@@ -88,6 +88,6 @@ export default CategoryList = {
         { id: 1, title: 'Car', children: 'Car', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 3, title: 'Plugs', parent: 'MainCategory', parentTitle: 'Main Category' }
     ],
-    'Heater': [{ id: 0, title: 'ZEX', parent: 'ElectronicsAppliances', parentTitle: 'ElectronicsAppliances' }],
-    'Car': [{ id: 0, title: 'Max', parent: 'ElectronicsAppliances', parentTitle: 'ElectronicsAppliances' }]
+    'Heater': [{ id: 0, title: 'ZEX', parent: 'ElectronicsAppliances', parentTitle: 'Electronics Appliances' }],
+    'Car': [{ id: 0, title: 'Max', parent: 'ElectronicsAppliances', parentTitle: 'Electronics Appliances' }]
 }
