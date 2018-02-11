@@ -10,10 +10,10 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import Categories from '../styles/Categories';
+import CategoryList from '../styles/Categories';
 import * as Animatable from 'react-native-animatable';
 
-const { categoryList } = Categories;
+const { MainCategory } = CategoryList;
 let delayTextAnimationTitle = 0;
 let delayTextAnimationCount = 0;
 
@@ -48,7 +48,7 @@ class CategoriesList extends Component {
     renderCatA = () => {
         return (
             <FlatList
-                data={categoryList}
+                data={MainCategory}
                 renderItem={this.renderCategoryCard}
                 removeClippedSubviews={false}
                 keyExtractor={this.keyExtractor}

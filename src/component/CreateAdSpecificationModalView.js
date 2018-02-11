@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements';
 
-import Categories from '../styles/Categories';
+import CategoryList from '../styles/Categories';
 
-const { categoryList } = Categories;
+const { MainCategory } = CategoryList;
 
 class CreateAdSpecificationModalView extends Component {
     constructor(props) {
@@ -20,32 +20,34 @@ class CreateAdSpecificationModalView extends Component {
 
         this.state = {
             parentDataSourceTitle: 'Main Category',
-            drillDataSource: [categoryList],
-            currentDataSource: categoryList,
+            currentDataSource: MainCategory,
             drillIndex: 0
         };
     }
 
     drillDown(item) {
-        const { drillDataSource, drillIndex } = this.state;
+        const { drillIndex } = this.state;
 
         if (item.children) {
+            const childKey = item.children;
+
             this.setState({
                 parentDataSourceTitle: item.title,
-                drillDataSource: [...drillDataSource, item.children],
-                currentDataSource: item.children,
+                currentDataSource: CategoryList[childKey],
                 drillIndex: drillIndex + 1
             });
         }
     }
 
-    drillUP() {
-        const { drillDataSource, drillIndex } = this.state;
+    drillUP(dataSource) {
+        const { drillIndex } = this.state;
         const newDrillIndex = drillIndex - 1;
-        const newTitle = newDrillIndex === 0 ? 'Main Category' : drillDataSource[newDrillIndex - 1][0].title;
+        const parentKey = dataSource[0].parent;
+
+        const newTitle = newDrillIndex === 0 ? 'Main Category' : dataSource[0].parentTitle;
 
         this.setState({
-            currentDataSource: drillDataSource[newDrillIndex],
+            currentDataSource: CategoryList[parentKey],
             parentDataSourceTitle: newTitle,
             drillIndex: newDrillIndex
         });
@@ -77,7 +79,7 @@ class CreateAdSpecificationModalView extends Component {
                         name="arrow-up"
                         type="feather"
                         color="#DAA520"
-                        onPress={() => this.drillUP()}
+                        onPress={() => this.drillUP(dataSource)}
                     />}
                 </View>
                 <View style={dividerStyle} />
