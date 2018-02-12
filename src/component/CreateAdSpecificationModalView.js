@@ -28,7 +28,7 @@ class CreateAdSpecificationModalView extends Component {
 
     drillDown(item) {
         const { drillIndex, selectedParentCaterory } = this.state;
-        const { updateProductDetails } = this.props;
+        const { updateProductDetails, changeStateOfCreateAdSpecificationModalView } = this.props;
 
         if (item.children) {
             const childKey = item.children;
@@ -41,6 +41,7 @@ class CreateAdSpecificationModalView extends Component {
             });
         } else {
             updateProductDetails('selectedCategory', [selectedParentCaterory, item.title]);
+            changeStateOfCreateAdSpecificationModalView();
         }
     };
 
