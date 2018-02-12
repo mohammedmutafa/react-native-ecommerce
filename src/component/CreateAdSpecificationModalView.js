@@ -21,12 +21,14 @@ class CreateAdSpecificationModalView extends Component {
         this.state = {
             parentDataSourceTitle: 'Main Category',
             currentDataSource: MainCategory,
-            drillIndex: 0
+            drillIndex: 0,
+            selectedParentCaterory: undefined
         };
     };
 
     drillDown(item) {
-        const { drillIndex } = this.state;
+        const { drillIndex, selectedParentCaterory } = this.state;
+        const { updateProductDetails } = this.props;
 
         if (item.children) {
             const childKey = item.children;
@@ -34,9 +36,12 @@ class CreateAdSpecificationModalView extends Component {
             this.setState({
                 parentDataSourceTitle: item.title,
                 currentDataSource: CategoryList[childKey],
-                drillIndex: drillIndex + 1
+                selectedParentCaterory: drillIndex === 0 ? item.title : selectedParentCaterory,
+                drillIndex: drillIndex + 1,
             });
-        };
+        } else {
+            updateProductDetails('selectedCategory', [selectedParentCaterory, item.title]);
+        }
     };
 
     drillUP(dataSource) {

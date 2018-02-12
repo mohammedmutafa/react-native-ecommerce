@@ -52,9 +52,11 @@ class CreateAd extends Component {
 
     renderProductCategory = () => {
         const { productCategoryContainerstyle } = styles;
+        const { selectedCategory, selectedSubCategory } = this.props;
+
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Category', 'Choose Category')}
+                {this.renderProductTitleDivider('Category', 'Choose Category', `${selectedCategory + '/' + selectedSubCategory}`)}
             </View>
         );
     }
@@ -95,13 +97,14 @@ class CreateAd extends Component {
         );
     }
 
-    renderProductTitleDivider = (title, placeholder) => {
+    renderProductTitleDivider = (title, placeholder, value) => {
         const { titleDividerStyle, titleDividerContainerStyle, photoViewDividerTextstyle } = styles;
         return (
             <View style={titleDividerContainerStyle} >
                 <FormLabel>{title}</FormLabel>
                 <TouchableOpacity onPress={this.props.changeStateOfCreateAdSpecificationModalView}>
                     <FormInput
+                        value={value}
                         pointerEvents="none"
                         placeholder={placeholder}
                         onChangeText={null} />
@@ -130,7 +133,11 @@ class CreateAd extends Component {
 
     render() {
         const { mainConatinerStyle } = styles;
-        const { isCreateAdSpecificationModalViewVisible, changeStateOfCreateAdSpecificationModalView } = this.props;
+        const {
+            isCreateAdSpecificationModalViewVisible,
+            changeStateOfCreateAdSpecificationModalView,
+            updateProductDetails
+        } = this.props;
 
         return (
             <View style={mainConatinerStyle}>
@@ -160,6 +167,7 @@ class CreateAd extends Component {
                     >
                         <CreateAdSpecificationModalViewComponent
                             changeStateOfCreateAdSpecificationModalView={changeStateOfCreateAdSpecificationModalView}
+                            updateProductDetails={updateProductDetails}
                         />
                     </Modal >
                 </ParallaxScrollView>

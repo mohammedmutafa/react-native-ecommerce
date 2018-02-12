@@ -9,22 +9,24 @@ class CreateAd extends Component {
         this.state = {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
-            isCreateAdSpecificationModalViewVisible: false,
-
-            parentListDataSource: undefined,
-            
+            isCreateAdSpecificationModalViewVisible: false
         };
-    }
-    componentDidMount() {
-        // StatusBar.setHidden(true);
-        //Temporary Solution .. need to hide for all app screen.
     }
 
     changeStateOfCreateAdSpecificationModalView = () => {
-        console.log('HELLO>>>>>>>>>>>>>>>')
         this.setState({
             isCreateAdSpecificationModalViewVisible: !this.state.isCreateAdSpecificationModalViewVisible
         });
+    }
+
+    updateProductDetails = (key, value) => {
+        switch (key) {
+            case 'selectedCategory':
+                this.setState({
+                    selectedCategory: value[0],
+                    selectedSubCategory: value[1]
+                });
+        }
     }
 
     render() {
@@ -36,6 +38,7 @@ class CreateAd extends Component {
                 selectedSubCategory={selectedSubCategory}
                 isCreateAdSpecificationModalViewVisible={isCreateAdSpecificationModalViewVisible}
                 changeStateOfCreateAdSpecificationModalView={this.changeStateOfCreateAdSpecificationModalView}
+                updateProductDetails={this.updateProductDetails}
             />
         );
     }
