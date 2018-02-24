@@ -33,7 +33,8 @@ export default CategoryList = {
         {
             id: 5,
             title: 'Hotels',
-            icon: 'hotel'
+            icon: 'hotel',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_hotels.jpg?alt=media&token=a9f71dbe-ae30-41ea-8838-07042ce7a920'
         },
         {
             id: 6,

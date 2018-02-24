@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         height: cardWidth,
         width: cardWidth,
         position: 'absolute',
-        backgroundColor: 'rgba(60, 60, 60, 0.5)'
+        backgroundColor: 'rgba(60, 60, 60, 0.3)'
     },
     textContainerStyle: {
         height: cardWidth,
