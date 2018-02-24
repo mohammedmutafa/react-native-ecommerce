@@ -22,7 +22,8 @@ export default CategoryList = {
         {
             id: 3,
             title: 'Vehicles',
-            icon: 'motorcycle'
+            icon: 'motorcycle',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/category_vehicles.jpg?alt=media&token=057e3653-2f1a-4223-83dd-c4b43344f55a'
         },
         {
             id: 4,
@@ -37,12 +38,14 @@ export default CategoryList = {
         {
             id: 6,
             title: 'Furniture',
-            icon: 'weekend'
+            icon: 'weekend',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/category_furniture.jpg?alt=media&token=0913af63-d24c-4315-b9a2-d888b2e63167'
         },
         {
             id: 7,
             title: 'Jobs',
-            icon: 'business-center'
+            icon: 'business-center',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/category_jobs.jpg?alt=media&token=78aa7265-97b4-4d0d-a10c-a7ea5465655e'
         },
         {
             id: 8,
