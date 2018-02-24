@@ -23,7 +23,7 @@ export default CategoryList = {
             id: 3,
             title: 'Vehicles',
             icon: 'motorcycle',
-            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/category_vehicles.jpg?alt=media&token=057e3653-2f1a-4223-83dd-c4b43344f55a'
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_cars.jpg?alt=media&token=475bad74-d9d4-437e-bf61-992667d5c8d3'
         },
         {
             id: 4,
@@ -61,22 +61,26 @@ export default CategoryList = {
         {
             id: 10,
             title: 'Books, Sports & Hobbies',
-            icon: 'school'
+            icon: 'school',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_sports.jpg?alt=media&token=95e84743-5b63-490c-9154-7df92ca73ac7'
         },
         {
             id: 11,
             title: 'Fashion',
-            icon: 'local-mall'
+            icon: 'local-mall',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_fashion.jpg?alt=media&token=21fd59e7-85bc-4cc1-8ea7-88f5ca87c1e6'
         },
         {
             id: 12,
             title: 'Flight & Bus Tickets',
-            icon: 'flight-takeoff'
+            icon: 'flight-takeoff',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_tickets.jpg?alt=media&token=a7385e1c-af4e-49ac-9bcf-5dc08e3ff123'
         },
         {
             id: 13,
             title: 'Events',
-            icon: 'insert-invitation'
+            icon: 'insert-invitation',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_events.jpg?alt=media&token=b809f37c-37d1-494f-835a-67f7ef267dad'
         }
     ],
     'Mobiles': [
