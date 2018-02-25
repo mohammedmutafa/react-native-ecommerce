@@ -5,19 +5,22 @@ export default CategoryList = {
             title: 'Mobiles',
             icon: 'phone-android',
             parent: undefined,
-            children: 'Mobiles'
+            children: 'Mobiles',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_phones.jpg?alt=media&token=edce8750-9cdf-4ce0-8650-530eba310ed1'
         },
         {
             id: 1,
             title: 'Electronics & Appliances',
             icon: 'devices-other',
             parent: undefined,
-            children: 'ElectronicsAppliances'
+            children: 'ElectronicsAppliances',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_appliances.jpg?alt=media&token=2007b48e-9da0-46ca-b2e3-76373ea1d61d'
         },
         {
             id: 2,
             title: 'Properties',
-            icon: 'location-city'
+            icon: 'location-city',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_realestate.jpg?alt=media&token=bb3545e4-d66d-494d-9525-38770840e79a'
         },
         {
             id: 3,
@@ -28,7 +31,8 @@ export default CategoryList = {
         {
             id: 4,
             title: 'Adventure & Holiday Packages',
-            icon: 'landscape'
+            icon: 'landscape',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_adventure.jpg?alt=media&token=ed714ad7-2c4e-4834-88da-f1b9a28abf84'
         },
         {
             id: 5,
@@ -51,7 +55,8 @@ export default CategoryList = {
         {
             id: 8,
             title: 'Services',
-            icon: 'spa'
+            icon: 'spa',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_services.jpg?alt=media&token=d69708c3-ecc5-4cc5-8497-bfcbf0b682be'
         },
         {
             id: 9,
