@@ -15,6 +15,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
 import Categories from '../styles/Categories';
+import { PhotoViewer } from './PhotoViewer';
 
 const { MainCategory } = Categories;
 
@@ -85,6 +86,10 @@ class GeneralProductDetailsPage extends Component {
         );
     }
 
+    renderPhotoViewer = () => {
+        return <PhotoViewer />
+    }
+
     keyExtractor = (item, index) => index;
 
     renderPhotoCard = ({ item }) => {
@@ -111,7 +116,6 @@ class GeneralProductDetailsPage extends Component {
                     horizontal={true}
                 />
             </View>
-
         );
     }
 
@@ -137,6 +141,7 @@ class GeneralProductDetailsPage extends Component {
                     {this.renderProductDescription()}
                     {this.renderPhotoViewDivider()}
                     {this.renderPhotoList()}
+                    {this.renderPhotoViewer()}
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
             </View >
