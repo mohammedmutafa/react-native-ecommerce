@@ -16,7 +16,7 @@ import * as Animatable from 'react-native-animatable';
 
 import Categories from '../styles/Categories';
 
-const { categoryList } = Categories;
+const { MainCategory } = Categories;
 
 class GeneralProductDetailsPage extends Component {
 
@@ -93,7 +93,7 @@ class GeneralProductDetailsPage extends Component {
         return (
             <TouchableOpacity onPress={null} style={photoCardStyle}>
                 <Image
-                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
+                    source={{ uri: item.thumbnail }}
                     style={imageRowStyle}
                 />
             </TouchableOpacity >
@@ -104,7 +104,7 @@ class GeneralProductDetailsPage extends Component {
         return (
             <View style={styles.imageViewFlatListContainerStyle}>
                 <FlatList
-                    data={categoryList}
+                    data={MainCategory}
                     renderItem={this.renderPhotoCard}
                     removeClippedSubviews={false}
                     keyExtractor={this.keyExtractor}

@@ -61,7 +61,8 @@ export default CategoryList = {
         {
             id: 9,
             title: 'Pets',
-            icon: 'pets'
+            icon: 'pets',
+            thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_pets.jpg?alt=media&token=b3a40604-8503-49ef-9f3d-edda476072ae'
         },
         {
             id: 10,
