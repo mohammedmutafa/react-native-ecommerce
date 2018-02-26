@@ -50,14 +50,14 @@ export class PhotoViewer extends React.PureComponent {
     }
 
     render() {
-        const { isPhotoViewerVisible, dataSource } = this.props;
+        const { isPhotoViewerVisible, dataSource, photoIndex } = this.props;
 
         return (
             <Modal visible={isPhotoViewerVisible}>
                 <Gallery
                     style={{ flex: 1, backgroundColor: 'black' }}
                     onPageSelected={this.onChangeImage}
-                    initialPage={0}
+                    initialPage={photoIndex}
                     images={dataSource}
                 />
                 {this.galleryCount}
@@ -69,5 +69,6 @@ export class PhotoViewer extends React.PureComponent {
 PhotoViewer.propTypes = {
     isPhotoViewerVisible: PropTypes.bool,
     dataSource: PropTypes.array,
-    hidePhotoViewer: PropTypes.func
+    hidePhotoViewer: PropTypes.func,
+    photoIndex: PropTypes.number
 };

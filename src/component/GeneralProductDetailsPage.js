@@ -91,6 +91,7 @@ class GeneralProductDetailsPage extends Component {
         return <PhotoViewer
             isPhotoViewerVisible={isPhotoViewerVisible}
             hidePhotoViewer={hidePhotoViewer}
+            photoIndex={4} //TODO Pass index as per click event on gallery
             dataSource={[
                 //  { source: require('yourApp/image.png'), dimensions: { width: 150, height: 150 } },
                 { source: { uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_phones.jpg?alt=media&token=edce8750-9cdf-4ce0-8650-530eba310ed1' } },
