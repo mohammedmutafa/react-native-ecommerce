@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Image, View, Modal,
+    Image, View, Modal, Text,
     TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -10,30 +10,56 @@ import styles from './styles';
 
 const {
     container,
-    floatingButton,
-    floatingMenuButtonTop,
-    floatingMenuButtonEnd,
-    iconStyle
+    navigationBar
 } = styles;
 
-export const PhotoViewer = ({ visible, dataSource }) => {
-    return (
-        <Modal visible={true}>
-            <Gallery
-                style={{ flex: 1, backgroundColor: 'black' }}
-                images={[
-                    //  { source: require('yourApp/image.png'), dimensions: { width: 150, height: 150 } },
-                    { source: { uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_phones.jpg?alt=media&token=edce8750-9cdf-4ce0-8650-530eba310ed1' } },
-                    { source: { uri: 'http://i.imgur.com/5nltiUd.jpg' } },
-                    { source: { uri: 'http://i.imgur.com/6vOahbP.jpg' } },
-                    { source: { uri: 'http://i.imgur.com/kj5VXtG.jpg' } }
-                ]}
-            />
-        </Modal>
-    );
-};
+export class PhotoViewer extends React.PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: 0,
+            images: props.dataSource
+        }
+    }
+
+    get galleryCount() {
+        const { index, images } = this.state;
+
+        return (
+            <View style={navigationBar}>
+                <Text style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}>Close</Text>
+                <Text
+                    style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}>
+                    {index + 1} / {images.length}
+                </Text>
+            </View>
+        );
+    }
+
+    onChangeImage = (index) => {
+        this.setState({ index });
+    }
+
+    render() {
+        const { isPhotoViewerVisible, dataSource } = this.props;
+
+        return (
+            <Modal visible={isPhotoViewerVisible}>
+                <Gallery
+                    style={{ flex: 1, backgroundColor: 'black' }}
+                    onPageSelected={this.onChangeImage}
+                    initialPage={0}
+                    images={dataSource}
+                />
+                {this.galleryCount}
+            </Modal>
+        );
+    }
+}
 
 PhotoViewer.propTypes = {
-    visible: PropTypes.bool,
-    dataSource: PropTypes.array
+    isPhotoViewerVisible: PropTypes.bool,
+    dataSource: PropTypes.array,
+    hidePhotoViewer: PropTypes.func
 };

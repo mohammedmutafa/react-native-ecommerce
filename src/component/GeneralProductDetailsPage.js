@@ -87,16 +87,28 @@ class GeneralProductDetailsPage extends Component {
     }
 
     renderPhotoViewer = () => {
-        return <PhotoViewer />
+        const { isPhotoViewerVisible, hidePhotoViewer } = this.props;
+        return <PhotoViewer
+            isPhotoViewerVisible={isPhotoViewerVisible}
+            hidePhotoViewer={hidePhotoViewer}
+            dataSource={[
+                //  { source: require('yourApp/image.png'), dimensions: { width: 150, height: 150 } },
+                { source: { uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_phones.jpg?alt=media&token=edce8750-9cdf-4ce0-8650-530eba310ed1' } },
+                { source: { uri: 'http://i.imgur.com/5nltiUd.jpg' } },
+                { source: { uri: 'http://i.imgur.com/6vOahbP.jpg' } },
+                { source: { uri: 'http://i.imgur.com/kj5VXtG.jpg' } }
+            ]}
+        />
     }
 
     keyExtractor = (item, index) => index;
 
     renderPhotoCard = ({ item }) => {
         const { photoCardStyle, imageRowStyle } = styles;
+        const { showPhotoViewer } = this.props;
 
         return (
-            <TouchableOpacity onPress={null} style={photoCardStyle}>
+            <TouchableOpacity onPress={showPhotoViewer} style={photoCardStyle}>
                 <Image
                     source={{ uri: item.thumbnail }}
                     style={imageRowStyle}
