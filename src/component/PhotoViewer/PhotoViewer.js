@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Gallery from 'react-native-image-gallery';
+import { Icon } from 'react-native-elements';
 
 import styles from './styles';
 
@@ -25,10 +26,17 @@ export class PhotoViewer extends React.PureComponent {
 
     get galleryCount() {
         const { index, images } = this.state;
+        const { hidePhotoViewer } = this.props;
 
         return (
             <View style={navigationBar}>
-                <Text style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}>Close</Text>
+                <Icon
+                    name='close'
+                    type='evilIcons'
+                    color='#FFFFFF'
+                    underlayColor='#FFFFFF'
+                    onPress={hidePhotoViewer}
+                />
                 <Text
                     style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}>
                     {index + 1} / {images.length}

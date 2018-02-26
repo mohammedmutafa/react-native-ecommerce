@@ -30,7 +30,7 @@ class GeneralProductDetailsPage extends Component {
             <GeneralProductDetailsPageComponent
                 isPhotoViewerVisible={isPhotoViewerVisible}
                 showPhotoViewer={this.showPhotoViewer}
-                hidePhotoViewer={this.showPhotoViewer}
+                hidePhotoViewer={this.hidePhotoViewer}
             />
         );
     }
