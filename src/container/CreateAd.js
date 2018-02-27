@@ -9,13 +9,21 @@ class CreateAd extends Component {
         this.state = {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
-            isCreateAdSpecificationModalViewVisible: false
+            isCreateAdSpecificationModalViewVisible: false,
+            selectedLocation: [],
+            isSelectLocationModalViewVisible: false
         };
     }
 
     changeStateOfCreateAdSpecificationModalView = () => {
         this.setState({
             isCreateAdSpecificationModalViewVisible: !this.state.isCreateAdSpecificationModalViewVisible
+        });
+    }
+
+    changeStateOfSelectLocationModalView = () => {
+        this.setState({
+            isSelectLocationModalViewVisible: !this.state.isSelectLocationModalViewVisible
         });
     }
 
@@ -30,7 +38,12 @@ class CreateAd extends Component {
     }
 
     render() {
-        const { selectedCategory, selectedSubCategory, isCreateAdSpecificationModalViewVisible } = this.state;
+        const {
+            selectedCategory,
+            selectedSubCategory,
+            isCreateAdSpecificationModalViewVisible,
+            isSelectLocationModalViewVisible
+        } = this.state;
 
         return (
             <CreateAdPageComponent
@@ -39,6 +52,8 @@ class CreateAd extends Component {
                 isCreateAdSpecificationModalViewVisible={isCreateAdSpecificationModalViewVisible}
                 changeStateOfCreateAdSpecificationModalView={this.changeStateOfCreateAdSpecificationModalView}
                 updateProductDetails={this.updateProductDetails}
+                isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
             />
         );
     }

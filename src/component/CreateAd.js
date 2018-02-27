@@ -18,6 +18,8 @@ import * as Animatable from 'react-native-animatable';
 import Categories from '../styles/Categories';
 import CreateAdSpecificationModalViewComponent from '../component/CreateAdSpecificationModalView';
 
+import { LocationSelector } from './LocationSelector'
+
 const { categoryList } = Categories;
 
 class CreateAd extends Component {
@@ -92,17 +94,17 @@ class CreateAd extends Component {
         const { productCategoryContainerstyle } = styles;
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Location     ')}
+                {this.renderProductTitleDivider('Location     ','','',this.props.changeStateOfSelectLocationModalView)}
             </View>
         );
     }
 
-    renderProductTitleDivider = (title, placeholder, value) => {
+    renderProductTitleDivider = (title, placeholder, value, onPress) => {
         const { titleDividerStyle, titleDividerContainerStyle, photoViewDividerTextstyle } = styles;
         return (
             <View style={titleDividerContainerStyle} >
                 <FormLabel>{title}</FormLabel>
-                <TouchableOpacity onPress={this.props.changeStateOfCreateAdSpecificationModalView}>
+                <TouchableOpacity onPress={onPress}>
                     <FormInput
                         value={value}
                         pointerEvents="none"
@@ -135,7 +137,9 @@ class CreateAd extends Component {
         const { mainConatinerStyle } = styles;
         const {
             isCreateAdSpecificationModalViewVisible,
+            isSelectLocationModalViewVisible,
             changeStateOfCreateAdSpecificationModalView,
+            changeStateOfSelectLocationModalView,
             updateProductDetails
         } = this.props;
 
@@ -172,6 +176,10 @@ class CreateAd extends Component {
                     </Modal >
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
+                <LocationSelector
+                    isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                    changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
+                />
             </View >
         );
     }
