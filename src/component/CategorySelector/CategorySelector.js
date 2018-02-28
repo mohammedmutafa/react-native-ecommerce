@@ -10,11 +10,22 @@ import {
 } from 'react-native';
 import { Icon, ListItem } from 'react-native-elements';
 
-import CategoryList from '../styles/Categories';
+import CategoryList from '../../styles/Categories';
+import styles from './styles';
+
+const {
+    mainConatinerStyle,
+    scrollViewConatinerStyle,
+    backButtonStyle,
+    level2TitleHeaderContainerStyle,
+    level2FlatListContainerStyle,
+    dividerStyle,
+    cancelTextStyle
+} = styles;
 
 const { MainCategory } = CategoryList;
 
-class CreateAdSpecificationModalView extends Component {
+export class CategorySelector extends Component {
     constructor(props) {
         super(props);
 
@@ -123,45 +134,3 @@ class CreateAdSpecificationModalView extends Component {
         );
     };
 };
-
-const window = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-    mainConatinerStyle: {
-        flexDirection: 'column',
-        flex: 1,
-        padding: 25,
-        backgroundColor: 'rgba(60, 60, 60, 0.8)'
-    },
-    scrollViewConatinerStyle: {
-        backgroundColor: '#FFFFFF'
-    },
-    backButtonStyle: {
-        alignSelf: 'center',
-        position: 'absolute',
-        bottom: 35
-    },
-    level2TitleHeaderContainerStyle: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 25,
-    },
-    level2FlatListContainerStyle: {
-        flexDirection: 'column',
-        height: window.height - (225)
-    },
-    dividerStyle: {
-        height: 1,
-        backgroundColor: '#DAA520',
-        width: window.width - 50,
-        marginTop: 5
-    },
-    cancelTextStyle: {
-        paddingLeft: 25,
-        fontSize: 20,
-        color: '#DAA520'
-    }
-
-});
-
-export default CreateAdSpecificationModalView;

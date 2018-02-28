@@ -16,9 +16,9 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
 import Categories from '../styles/Categories';
-import CreateAdSpecificationModalViewComponent from '../component/CreateAdSpecificationModalView';
 
-import { LocationSelector } from './LocationSelector'
+import { LocationSelector } from './LocationSelector';
+import { CategorySelector } from './CategorySelector';
 
 const { categoryList } = Categories;
 
@@ -94,7 +94,7 @@ class CreateAd extends Component {
         const { productCategoryContainerstyle } = styles;
         return (
             <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Location     ','','',this.props.changeStateOfSelectLocationModalView)}
+                {this.renderProductTitleDivider('Location     ', '', '', this.props.changeStateOfSelectLocationModalView)}
             </View>
         );
     }
@@ -169,7 +169,7 @@ class CreateAd extends Component {
                         visible={isCreateAdSpecificationModalViewVisible}
                         onRequestClose={null}
                     >
-                        <CreateAdSpecificationModalViewComponent
+                        <CategorySelector
                             changeStateOfCreateAdSpecificationModalView={changeStateOfCreateAdSpecificationModalView}
                             updateProductDetails={updateProductDetails}
                         />
