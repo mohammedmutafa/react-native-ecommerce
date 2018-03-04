@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 
-const styles = StyleSheet.create({
+export default styles = StyleSheet.create({
     mainConatinerStyle: {
         flexDirection: 'column',
         flex: 1,
@@ -38,4 +38,3 @@ const styles = StyleSheet.create({
         color: '#DAA520'
     }
 });
-

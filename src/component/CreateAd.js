@@ -7,11 +7,12 @@ import {
     ScrollView,
     Platform,
     FlatList,
+    TextInput,
     TouchableOpacity,
     Text,
     Modal
 } from 'react-native';
-import { Icon, FormLabel, FormInput } from 'react-native-elements';
+import { Icon, FormLabel, FormInput, CheckBox } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
@@ -19,6 +20,7 @@ import Categories from '../styles/Categories';
 
 import { LocationSelector } from './LocationSelector';
 import { CategorySelector } from './CategorySelector';
+import { ConditionSelector } from './ConditionSelector'
 
 const { categoryList } = Categories;
 
@@ -43,40 +45,76 @@ class CreateAd extends Component {
         );
     }
 
-    renderProductTitle = () => {
-        const { productCategoryContainerstyle } = styles;
-        return (
-            <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Title', 'Title for the product')}
-            </View>
-        );
+    renderHorizontalBorder = () => {
+        return <View style={{ height: 0.5, backgroundColor: '#D3D3D3' }} />
     }
 
-    renderProductCategory = () => {
-        const { productCategoryContainerstyle } = styles;
-        const { selectedCategory, selectedSubCategory } = this.props;
+    renderProductTitleInput = () => {
+        const { textInputContainerStyle } = styles;
 
         return (
-            <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Category', 'Choose Category', `${selectedCategory + '/' + selectedSubCategory}`)}
+            <View style={textInputContainerStyle} >
+                <Text>Title</Text>
+                <TextInput
+                    style={{ height: 70 }}
+                    // onChangeText={(text) => this.setState({ text })}
+                    placeholder="Product Title"
+                // value={this.state.text}
+                />
+                {this.renderHorizontalBorder()}
             </View>
         );
     }
 
     renderProductPrice = () => {
-        const { productCategoryContainerstyle } = styles;
+        const { textInputContainerStyle } = styles;
+
         return (
-            <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Price (₹)', '')}
+            <View style={textInputContainerStyle} >
+                <Text>Price (₹)</Text>
+                <TextInput
+                    style={{ height: 70 }}
+                    keyboardType='numeric'
+                    placeholder='₹'
+                // onChangeText={(text) => this.setState({ text })}
+                // placeholder="Product Title"
+                // value={this.state.text}
+                />
+                {this.renderHorizontalBorder()}
             </View>
         );
     }
 
-    renderProductCondition = () => {
-        const { productCategoryContainerstyle } = styles;
+    renderProductCategory = () => {
+        const { textInputContainerStyle } = styles;
+        const {
+            selectedCategory,
+            selectedSubCategory,
+            changeStateOfCreateAdSpecificationModalView
+        } = this.props;
+
         return (
-            <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Condition', 'Set the condition of the product')}
+            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfCreateAdSpecificationModalView}>
+                <Text>Category</Text>
+                <TextInput
+                    style={{ height: 70 }}
+                    keyboardType='numeric'
+                    placeholder='Choose Category'
+                    pointerEvents='none'
+                    value={`${selectedCategory + '/' + selectedSubCategory}`}
+                />
+                {this.renderHorizontalBorder()}
+            </TouchableOpacity>
+        );
+    }
+
+    renderProductCondition = () => {
+        const { textInputContainerStyle } = styles;
+
+        return (
+            <View style={textInputContainerStyle}>
+                <Text>Product Condition</Text>
+                <ConditionSelector />
             </View>
         );
     }
@@ -91,18 +129,27 @@ class CreateAd extends Component {
     }
 
     renderProductLocation = () => {
-        const { productCategoryContainerstyle } = styles;
+        const { textInputContainerStyle } = styles;
         return (
-            <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Location     ', '', '', this.props.changeStateOfSelectLocationModalView)}
+            <View style={textInputContainerStyle}>
+                <CheckBox
+                    center
+                    title='Select Location'
+                    iconRight
+                    iconType='material'
+                    checkedIcon='clear'
+                    uncheckedIcon='add'
+                    checkedColor='red'
+                    checked={true}
+                />
             </View>
         );
     }
 
     renderProductTitleDivider = (title, placeholder, value, onPress) => {
-        const { titleDividerStyle, titleDividerContainerStyle, photoViewDividerTextstyle } = styles;
+        const { titleDividerStyle, textInputContainerStyle, photoViewDividerTextstyle } = styles;
         return (
-            <View style={titleDividerContainerStyle} >
+            <View style={textInputContainerStyle} >
                 <FormLabel>{title}</FormLabel>
                 <TouchableOpacity onPress={onPress}>
                     <FormInput
@@ -157,11 +204,12 @@ class CreateAd extends Component {
                         </View>
                     )}
                 >
-                    {this.renderProductTitle()}
+                    {this.renderProductTitleInput()}
                     {this.renderProductCategory()}
                     {this.renderProductPrice()}
                     {this.renderProductCondition()}
                     {this.renderProductLocation()}
+
                     {this.renderProductDescription()}
                     <Modal
                         animationType="slide"
@@ -176,6 +224,7 @@ class CreateAd extends Component {
                     </Modal >
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
+
                 <LocationSelector
                     isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                     changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
@@ -276,7 +325,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'transparent'
     },
-    titleDividerContainerStyle: {
+    textInputContainerStyle: {
         flexDirection: 'column',
         margin: 25,
         justifyContent: 'center',

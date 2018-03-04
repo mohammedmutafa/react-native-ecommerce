@@ -123,8 +123,6 @@ export class CategorySelector extends Component {
     };
 
     render() {
-        const { mainConatinerStyle, scrollViewConatinerStyle, semiTransparentLayer } = styles;
-
         return (
             <View style={mainConatinerStyle}>
                 <View style={scrollViewConatinerStyle}>
