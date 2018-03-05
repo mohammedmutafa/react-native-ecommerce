@@ -48,7 +48,7 @@ export class LocationSelector extends Component {
         const containerWidth = container.width;
 
         return (
-            <Modal visible={isSelectLocationModalViewVisible} style={container}>
+            <Modal visible={isSelectLocationModalViewVisible} style={container} animationType="slide">
                 {this.navBar}
                 <View style={{ height: screenHeight / 2, marginTop: 5 }}>
                     <MultiSelect

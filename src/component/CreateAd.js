@@ -125,11 +125,20 @@ class CreateAd extends Component {
     }
 
     renderProductDescription = () => {
-        const { productCategoryContainerstyle } = styles;
+        const { textInputContainerStyle } = styles;
+        const { changeStateOfproductDescriptionModalView } = this.props;
+
         return (
-            <View style={productCategoryContainerstyle}>
-                {this.renderProductTitleDivider('Description', 'Product Details')}
-            </View>
+            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfproductDescriptionModalView}>
+                <Text>Description</Text>
+                <TextInput
+                    style={{ height: 70 }}
+                    placeholder='Product Details'
+                    pointerEvents='none'
+                    value={null}
+                />
+                {this.renderHorizontalBorder()}
+            </TouchableOpacity>
         );
     }
 
@@ -190,7 +199,9 @@ class CreateAd extends Component {
             isSelectLocationModalViewVisible,
             changeStateOfCreateAdSpecificationModalView,
             changeStateOfSelectLocationModalView,
-            updateProductDetails
+            updateProductDetails,
+            isProductDescriptionModalViewVisible,
+            changeStateOfproductDescriptionModalView
         } = this.props;
 
         return (
@@ -231,7 +242,8 @@ class CreateAd extends Component {
                     changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
                 />
                 <ProductDetailsInput
-                    isVisible={true}
+                    isVisible={isProductDescriptionModalViewVisible}
+                    changeStateOfproductDescriptionModalView={changeStateOfproductDescriptionModalView}
                 />
             </View >
         );

@@ -13,7 +13,6 @@ import styles from './styles';
 
 const {
     container,
-    navigationBar,
     textInputStyle,
     titleTextStyle,
     doneButtonStyle
@@ -23,38 +22,24 @@ export class ProductDetailsInput extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
             text: ''
         }
     }
 
     get doneButton() {
+        const { changeStateOfproductDescriptionModalView } = this.props;
         return (
             <Icon
                 raised
                 name='done'
                 type='material-icon'
-                color='#FFFFFF'
+                color="#DAA520"
                 containerStyle={doneButtonStyle}
                 size={25}
-                onPress={null}
+                onPress={changeStateOfproductDescriptionModalView}
             />
-        );
-    }
-
-    get navigationBar() {
-        return (
-            <View style={navigationBar}>
-                <View />
-                <Icon
-                    name='close'
-                    type='evilIcons'
-                    color='#FFFFFF'
-                    underlayColor='#FFFFFF'
-                    onPress={null}
-                />
-            </View>
         );
     }
 
@@ -67,8 +52,7 @@ export class ProductDetailsInput extends React.PureComponent {
         const { text } = this.state;
 
         return (
-            <Modal visible={isVisible}>
-                {this.navigationBar}
+            <Modal visible={isVisible} animationType="slide">
                 <View style={container}>
                     <Text style={titleTextStyle}>Product Description</Text>
                     <TextInput
@@ -88,5 +72,6 @@ export class ProductDetailsInput extends React.PureComponent {
 }
 
 ProductDetailsInput.propTypes = {
-    isVisible: PropTypes.bool
+    isVisible: PropTypes.bool,
+    changeStateOfproductDescriptionModalView: PropTypes.func
 };

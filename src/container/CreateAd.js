@@ -11,13 +11,21 @@ class CreateAd extends Component {
             selectedSubCategory: undefined,
             isCreateAdSpecificationModalViewVisible: false,
             selectedLocation: [],
-            isSelectLocationModalViewVisible: false
+            isSelectLocationModalViewVisible: false,
+            productDescription: undefined, //TODO fix it on text change 
+            isProductDescriptionModalViewVisible: false
         };
     }
 
     changeStateOfCreateAdSpecificationModalView = () => {
         this.setState({
             isCreateAdSpecificationModalViewVisible: !this.state.isCreateAdSpecificationModalViewVisible
+        });
+    }
+
+    changeStateOfproductDescriptionModalView = () => {
+        this.setState({
+            isProductDescriptionModalViewVisible: !this.state.isProductDescriptionModalViewVisible
         });
     }
 
@@ -42,7 +50,8 @@ class CreateAd extends Component {
             selectedCategory,
             selectedSubCategory,
             isCreateAdSpecificationModalViewVisible,
-            isSelectLocationModalViewVisible
+            isSelectLocationModalViewVisible,
+            isProductDescriptionModalViewVisible
         } = this.state;
 
         return (
@@ -54,6 +63,8 @@ class CreateAd extends Component {
                 updateProductDetails={this.updateProductDetails}
                 isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                 changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
+                isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
+                changeStateOfproductDescriptionModalView={this.changeStateOfproductDescriptionModalView}
             />
         );
     }

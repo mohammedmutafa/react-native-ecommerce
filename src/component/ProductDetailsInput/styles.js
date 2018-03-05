@@ -7,15 +7,6 @@ export default StyleSheet.create({
         height: screenHeight - deviceScaledHeight(50),
         margin: 15
     },
-    navigationBar: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 15,
-        width: screenWidth,
-        height: deviceScaledHeight(50),
-        backgroundColor: 'rgba(0, 0, 0, 0.7)'
-    },
     textInputStyle: {
         height: screenHeight / 1.5,
         fontSize: 18,
@@ -25,8 +16,10 @@ export default StyleSheet.create({
         fontSize: 20
     },
     doneButtonStyle: {
-        backgroundColor: '#2a2a2a',
         alignSelf: 'center',
-        margin: 20
+        margin: 20,
+        backgroundColor: '#2a2a2a',
+        borderWidth: 0.5,
+        borderColor: '#DAA520'
     }
 });

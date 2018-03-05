@@ -53,7 +53,7 @@ export class PhotoViewer extends React.PureComponent {
         const { isPhotoViewerVisible, dataSource, photoIndex } = this.props;
 
         return (
-            <Modal visible={isPhotoViewerVisible}>
+            <Modal visible={isPhotoViewerVisible} animationType="slide">
                 <Gallery
                     style={{ flex: 1, backgroundColor: 'black' }}
                     onPageSelected={this.onChangeImage}
