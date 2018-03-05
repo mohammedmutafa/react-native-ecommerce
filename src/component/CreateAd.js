@@ -20,7 +20,8 @@ import Categories from '../styles/Categories';
 
 import { LocationSelector } from './LocationSelector';
 import { CategorySelector } from './CategorySelector';
-import { ConditionSelector } from './ConditionSelector'
+import { ConditionSelector } from './ConditionSelector';
+import { ProductDetailsInput } from './ProductDetailsInput';
 
 const { categoryList } = Categories;
 
@@ -59,6 +60,8 @@ class CreateAd extends Component {
                     style={{ height: 70 }}
                     // onChangeText={(text) => this.setState({ text })}
                     placeholder="Product Title"
+                    clearButtonMode='always'
+                    multiline={false}
                 // value={this.state.text}
                 />
                 {this.renderHorizontalBorder()}
@@ -76,6 +79,8 @@ class CreateAd extends Component {
                     style={{ height: 70 }}
                     keyboardType='numeric'
                     placeholder='₹'
+                    clearButtonMode='always'
+                    multiline={false}
                 // onChangeText={(text) => this.setState({ text })}
                 // placeholder="Product Title"
                 // value={this.state.text}
@@ -224,6 +229,9 @@ class CreateAd extends Component {
                 <LocationSelector
                     isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                     changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
+                />
+                <ProductDetailsInput
+                    isVisible={true}
                 />
             </View >
         );
