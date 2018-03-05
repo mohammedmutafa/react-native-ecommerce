@@ -130,19 +130,18 @@ class CreateAd extends Component {
 
     renderProductLocation = () => {
         const { textInputContainerStyle } = styles;
+        const { changeStateOfSelectLocationModalView } = this.props;
+
         return (
-            <View style={textInputContainerStyle}>
-                <CheckBox
-                    center
-                    title='Select Location'
-                    iconRight
-                    iconType='material'
-                    checkedIcon='clear'
-                    uncheckedIcon='add'
-                    checkedColor='red'
-                    checked={true}
+            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfSelectLocationModalView}>
+                <Text>Location</Text>
+                <TextInput
+                    style={{ height: 70 }}
+                    placeholder='Choose Location'
+                    pointerEvents='none'
                 />
-            </View>
+                {this.renderHorizontalBorder()}
+            </TouchableOpacity>
         );
     }
 
@@ -158,7 +157,6 @@ class CreateAd extends Component {
                         placeholder={placeholder}
                         onChangeText={null} />
                 </TouchableOpacity>
-
             </View>
         );
     }
@@ -209,7 +207,6 @@ class CreateAd extends Component {
                     {this.renderProductPrice()}
                     {this.renderProductCondition()}
                     {this.renderProductLocation()}
-
                     {this.renderProductDescription()}
                     <Modal
                         animationType="slide"
@@ -224,7 +221,6 @@ class CreateAd extends Component {
                     </Modal >
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
-
                 <LocationSelector
                     isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                     changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
