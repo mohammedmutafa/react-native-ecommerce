@@ -5,7 +5,8 @@ import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/S
 export default StyleSheet.create({
     container: {
         height: screenHeight - deviceScaledHeight(50),
-        margin: 15
+        marginTop: 30,
+        marginHorizontal: 15
     },
     textInputStyle: {
         height: screenHeight / 1.5,
