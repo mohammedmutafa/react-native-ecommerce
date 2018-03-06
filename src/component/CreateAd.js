@@ -82,8 +82,7 @@ class CreateAd extends Component {
                     clearButtonMode='always'
                     multiline={false}
                 // onChangeText={(text) => this.setState({ text })}
-                // placeholder="Product Title"
-                // value={this.state.text}
+                // value={this.state.text} number.toLocaleString('en')
                 />
                 {this.renderHorizontalBorder()}
             </View>
@@ -115,11 +114,16 @@ class CreateAd extends Component {
 
     renderProductCondition = () => {
         const { textInputContainerStyle } = styles;
+        const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
 
         return (
             <View style={textInputContainerStyle}>
                 <Text>Product Condition</Text>
-                <ConditionSelector />
+                <ConditionSelector
+                    selectedItem={selectedProductCondition}
+                    setProductConditionUsed={setProductConditionUsed}
+                    setProductConditionNew={setProductConditionNew}
+                />
             </View>
         );
     }

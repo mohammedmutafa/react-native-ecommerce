@@ -7,23 +7,13 @@ import PropTypes from 'prop-types';
 import { CheckBox } from 'react-native-elements';
 
 import styles from './styles';
-import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 
-const {
-    container
-} = styles;
+const { container } = styles;
 
 export class ConditionSelector extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            selectedItems: []
-        }
-    };
-
     render() {
+        const { selectedItem, setProductConditionUsed, setProductConditionNew } = this.props;
 
         return (
             <View style={container}>
@@ -31,13 +21,15 @@ export class ConditionSelector extends Component {
                     title='New'
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
-                // checked={this.state.checked}
+                    checked={selectedItem === 'New' ? true : false}
+                    onPress={setProductConditionNew}
                 />
                 <CheckBox
                     title='Used'
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
-                // checked={this.state.checked}
+                    checked={selectedItem === 'Used' ? true : false}
+                    onPress={setProductConditionUsed}
                 />
             </View>
         );
@@ -45,6 +37,8 @@ export class ConditionSelector extends Component {
 }
 
 ConditionSelector.propTypes = {
-
+    selectedItem: PropTypes.string,
+    setProductConditionUsed: PropTypes.func,
+    setProductConditionNew: PropTypes.func
 };
 

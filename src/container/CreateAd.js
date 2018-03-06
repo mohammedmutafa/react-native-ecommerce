@@ -11,6 +11,7 @@ class CreateAd extends Component {
             selectedSubCategory: undefined,
             isCreateAdSpecificationModalViewVisible: false,
             selectedLocation: [],
+            selectedProductCondition: 'New',
             isSelectLocationModalViewVisible: false,
             productDescription: undefined, //TODO fix it on text change 
             isProductDescriptionModalViewVisible: false
@@ -35,6 +36,18 @@ class CreateAd extends Component {
         });
     }
 
+    setProductConditionNew = () => {
+        this.setState({
+            selectedProductCondition: 'New'
+        });
+    }
+
+    setProductConditionUsed = () => {
+        this.setState({
+            selectedProductCondition: 'Used'
+        });
+    }
+
     updateProductDetails = (key, value) => {
         switch (key) {
             case 'selectedCategory':
@@ -51,7 +64,8 @@ class CreateAd extends Component {
             selectedSubCategory,
             isCreateAdSpecificationModalViewVisible,
             isSelectLocationModalViewVisible,
-            isProductDescriptionModalViewVisible
+            isProductDescriptionModalViewVisible,
+            selectedProductCondition
         } = this.state;
 
         return (
@@ -65,6 +79,9 @@ class CreateAd extends Component {
                 changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
                 isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
                 changeStateOfproductDescriptionModalView={this.changeStateOfproductDescriptionModalView}
+                selectedProductCondition={selectedProductCondition}
+                setProductConditionUsed={this.setProductConditionUsed}
+                setProductConditionNew={this.setProductConditionNew}
             />
         );
     }
