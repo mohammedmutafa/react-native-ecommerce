@@ -41,4 +41,3 @@ ConditionSelector.propTypes = {
     setProductConditionUsed: PropTypes.func,
     setProductConditionNew: PropTypes.func
 };
-
