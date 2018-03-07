@@ -150,10 +150,9 @@ class CreateAd extends Component {
 
     renderProductLocation = () => {
         const { textInputContainerStyle } = styles;
-        const { changeStateOfSelectLocationModalView } = this.props;
 
         return (
-            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfSelectLocationModalView}>
+            <TouchableOpacity style={textInputContainerStyle} onPress={this.props.changeStateOfSelectLocationModalView}>
                 <Text>Location</Text>
                 <TextInput
                     style={{ height: 70 }}
@@ -207,7 +206,9 @@ class CreateAd extends Component {
             changeStateOfSelectLocationModalView,
             updateProductDetails,
             isProductDescriptionModalViewVisible,
-            changeStateOfproductDescriptionModalView
+            changeStateOfproductDescriptionModalView,
+            selectedLocation,
+            updateSelectedLocations
         } = this.props;
 
         return (
@@ -246,6 +247,8 @@ class CreateAd extends Component {
                 <LocationSelector
                     isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                     changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
+                    selectedLocation={selectedLocation}
+                    updateSelectedLocations={updateSelectedLocations}
                 />
                 <ProductDetailsInput
                     isVisible={isProductDescriptionModalViewVisible}

@@ -21,18 +21,6 @@ const {
 
 export class LocationSelector extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            selectedItems: []
-        }
-    };
-
-    onSelectedItemsChange = selectedItems => {
-        this.setState({ selectedItems });
-    };
-
     get navBar() {
         return (
             <TouchableOpacity style={navigationBar} onPress={this.props.changeStateOfSelectLocationModalView}>
@@ -42,8 +30,7 @@ export class LocationSelector extends Component {
     }
 
     render() {
-        const { isSelectLocationModalViewVisible, dataSource } = this.props;
-        const { selectedItems } = this.state;
+        const { isSelectLocationModalViewVisible, updateSelectedLocations, selectedLocation } = this.props;
         const containerHeight = container.height;
         const containerWidth = container.width;
 
@@ -56,8 +43,8 @@ export class LocationSelector extends Component {
                         items={districts}
                         uniqueKey="id"
                         ref={(component) => { this.multiSelect = component }}
-                        onSelectedItemsChange={this.onSelectedItemsChange}
-                        selectedItems={selectedItems}
+                        onSelectedItemsChange={updateSelectedLocations}
+                        selectedItems={selectedLocation}
                         selectText="Pick Location"
                         searchInputPlaceholderText="Search Locations..."
                         onChangeInput={(text) => console.log(text)}
@@ -81,10 +68,10 @@ export class LocationSelector extends Component {
 
 LocationSelector.propTypes = {
     isSelectLocationModalViewVisible: PropTypes.bool,
-    dataSource: PropTypes.array,
-    changeStateOfSelectLocationModalView: PropTypes.func
+    changeStateOfSelectLocationModalView: PropTypes.func,
+    selectedLocation: PropTypes.array,
+    updateSelectedLocations: PropTypes.func
 };
-
 
 const districts = [
     { id: 0, name: 'Nepal (includes all districts)' },
@@ -163,3 +150,4 @@ const districts = [
     { id: 73, name: 'Rukum' },
     { id: 74, name: 'Salyan' }
 ]
+

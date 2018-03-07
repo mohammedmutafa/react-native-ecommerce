@@ -65,6 +65,12 @@ class CreateAd extends Component {
         }
     }
 
+    updateSelectedLocations = selectedLocation => {
+        this.setState({
+            selectedLocation
+        });
+    }
+
     render() {
         const {
             selectedCategory,
@@ -73,7 +79,8 @@ class CreateAd extends Component {
             isSelectLocationModalViewVisible,
             isProductDescriptionModalViewVisible,
             selectedProductCondition,
-            productPrice
+            productPrice,
+            selectedLocation
         } = this.state;
 
         return (
@@ -92,6 +99,8 @@ class CreateAd extends Component {
                 setProductConditionNew={this.setProductConditionNew}
                 productPrice={productPrice}
                 onProductPriceInput={this.onProductPriceInput}
+                selectedLocation={selectedLocation}
+                updateSelectedLocations={this.updateSelectedLocations}
             />
         );
     }
