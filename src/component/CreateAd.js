@@ -71,6 +71,7 @@ class CreateAd extends Component {
 
     renderProductPrice = () => {
         const { textInputContainerStyle } = styles;
+        const { productPrice, onProductPriceInput } = this.props;
 
         return (
             <View style={textInputContainerStyle} >
@@ -81,8 +82,9 @@ class CreateAd extends Component {
                     placeholder='₹'
                     clearButtonMode='always'
                     multiline={false}
-                // onChangeText={(text) => this.setState({ text })}
-                // value={this.state.text} number.toLocaleString('en')
+                    maxLength={9}
+                    onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
+                    value={productPrice ? productPrice.toLocaleString('en') : ''}
                 />
                 {this.renderHorizontalBorder()}
             </View>

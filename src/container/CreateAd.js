@@ -12,6 +12,7 @@ class CreateAd extends Component {
             isCreateAdSpecificationModalViewVisible: false,
             selectedLocation: [],
             selectedProductCondition: 'New',
+            productPrice: 0,
             isSelectLocationModalViewVisible: false,
             productDescription: undefined, //TODO fix it on text change 
             isProductDescriptionModalViewVisible: false
@@ -48,6 +49,12 @@ class CreateAd extends Component {
         });
     }
 
+    onProductPriceInput = (value) => {
+        this.setState({
+            productPrice: parseInt(value, 10)
+        });
+    }
+
     updateProductDetails = (key, value) => {
         switch (key) {
             case 'selectedCategory':
@@ -65,7 +72,8 @@ class CreateAd extends Component {
             isCreateAdSpecificationModalViewVisible,
             isSelectLocationModalViewVisible,
             isProductDescriptionModalViewVisible,
-            selectedProductCondition
+            selectedProductCondition,
+            productPrice
         } = this.state;
 
         return (
@@ -82,6 +90,8 @@ class CreateAd extends Component {
                 selectedProductCondition={selectedProductCondition}
                 setProductConditionUsed={this.setProductConditionUsed}
                 setProductConditionNew={this.setProductConditionNew}
+                productPrice={productPrice}
+                onProductPriceInput={this.onProductPriceInput}
             />
         );
     }
