@@ -18,6 +18,7 @@ import * as Animatable from 'react-native-animatable';
 
 import Categories from '../styles/Categories';
 import districts from '../utilities/districts';
+import Colors from '../styles/Color';
 
 import { LocationSelector } from './LocationSelector';
 import { CategorySelector } from './CategorySelector';
@@ -51,12 +52,14 @@ class CreateAd extends Component {
         return <View style={{ height: 0.5, backgroundColor: '#D3D3D3' }} />
     }
 
+    renderHeaderText = (text) => <Text style={styles.headerTextStyle}>{text}</Text>;
+
     renderProductTitleInput = () => {
-        const { textInputContainerStyle } = styles;
+        const { textInputContainerStyle, headerTextStyle } = styles;
 
         return (
             <View style={textInputContainerStyle} >
-                <Text>Title</Text>
+                {this.renderHeaderText('Title')}
                 <TextInput
                     style={{ height: 70 }}
                     // onChangeText={(text) => this.setState({ text })}
@@ -76,7 +79,7 @@ class CreateAd extends Component {
 
         return (
             <View style={textInputContainerStyle} >
-                <Text>Price (₹)</Text>
+                {this.renderHeaderText('Price (₹)')}
                 <TextInput
                     style={{ height: 70 }}
                     keyboardType='numeric'
@@ -102,7 +105,7 @@ class CreateAd extends Component {
 
         return (
             <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfCreateAdSpecificationModalView}>
-                <Text>Category</Text>
+                {this.renderHeaderText('Category')}
                 <TextInput
                     style={{ height: 70 }}
                     keyboardType='numeric'
@@ -121,7 +124,7 @@ class CreateAd extends Component {
 
         return (
             <View style={textInputContainerStyle}>
-                <Text>Product Condition</Text>
+                {this.renderHeaderText('Product Condition')}
                 <ConditionSelector
                     selectedItem={selectedProductCondition}
                     setProductConditionUsed={setProductConditionUsed}
@@ -137,7 +140,7 @@ class CreateAd extends Component {
 
         return (
             <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfproductDescriptionModalView}>
-                <Text>Description</Text>
+                {this.renderHeaderText('Description')}
                 <TextInput
                     style={{ height: 70 }}
                     placeholder='Product Details'
@@ -171,7 +174,7 @@ class CreateAd extends Component {
 
         return (
             <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfSelectLocationModalView}>
-                <Text>Location</Text>
+                {this.renderHeaderText('Location')}
                 <Text
                     style={{ height: 70 }}
                     placeholder='Choose Location'
@@ -333,7 +336,7 @@ const styles = StyleSheet.create({
         // textAlign: 'justify' //The value 'justify' is only supported on iOS and fallbacks to left on Android.
     },
     boldSeparator: {
-        color: '#DAA520',
+        color: Colors.golden,
         fontWeight: 'bold',
         fontSize: 30,
         marginLeft: 25,
@@ -342,9 +345,9 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     floatingButtonContainerStyle: {
-        backgroundColor: '#2a2a2a',
+        backgroundColor: Colors.dark,
         borderWidth: 0.5,
-        borderColor: '#DAA520'
+        borderColor: Colors.golden
     },
     semiTransparentViewStyle: {
         height: SLIDER_HEIGHT, // same width and height for the container
@@ -353,7 +356,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(60, 60, 60, 0.5)'
     },
     specificationTextStyle: {
-        color: '#2a2a2a',
+        color: Colors.dark,
         fontSize: 30,
         textAlign: 'center',
         marginTop: 10
@@ -379,12 +382,12 @@ const styles = StyleSheet.create({
     },
     titleDividerStyle: {
         height: 1,
-        backgroundColor: '#DAA520',
+        backgroundColor: Colors.golden,
         flex: 1,
         marginTop: 5
     },
     photoViewDividerTextstyle: {
-        color: '#2a2a2a',
+        color: Colors.dark,
         fontStyle: 'italic',
         fontSize: 20
     },
@@ -409,6 +412,10 @@ const styles = StyleSheet.create({
     },
     productCategoryContainerstyle: {
         flexDirection: 'column'
+    },
+    headerTextStyle: {
+        fontSize: 18,
+        color: Colors.dark
     }
 });
 
