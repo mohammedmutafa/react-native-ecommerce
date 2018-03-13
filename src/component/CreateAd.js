@@ -17,6 +17,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
 import Categories from '../styles/Categories';
+import districts from '../utilities/districts';
 
 import { LocationSelector } from './LocationSelector';
 import { CategorySelector } from './CategorySelector';
@@ -148,17 +149,38 @@ class CreateAd extends Component {
         );
     }
 
+    getSelectedLocationString = () => {
+        const { selectedLocation } = this.props;
+        let location = '';
+
+        for (let value of selectedLocation) {
+            let obj = districts.find((item) => { return item.id == value });
+
+            location = location + obj.name + ', ';
+        }
+        return location;
+    }
+
     renderProductLocation = () => {
         const { textInputContainerStyle } = styles;
+        const {
+            changeStateOfSelectLocationModalView,
+            selectedLocation,
+            updateSelectedLocations
+        } = this.props;
 
         return (
-            <TouchableOpacity style={textInputContainerStyle} onPress={this.props.changeStateOfSelectLocationModalView}>
+            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfSelectLocationModalView}>
                 <Text>Location</Text>
-                <TextInput
+                <Text
                     style={{ height: 70 }}
                     placeholder='Choose Location'
                     pointerEvents='none'
-                />
+                    ellipsizeMode='tail'
+                    numberOfLines={1}
+                >
+                    {this.getSelectedLocationString()}
+                </Text>
                 {this.renderHorizontalBorder()}
             </TouchableOpacity>
         );
