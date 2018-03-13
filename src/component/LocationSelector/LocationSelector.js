@@ -14,6 +14,7 @@ import { Icon } from 'react-native-elements';
 import styles from './styles';
 import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 import districts from '../../utilities/districts';
+import Colors from '../../styles/Color';
 
 const {
     container,
@@ -22,7 +23,7 @@ const {
 
 export class LocationSelector extends Component {
 
-    get navBar() {
+    navBar = () => {
         return (
             <TouchableOpacity style={navigationBar} onPress={this.props.changeStateOfSelectLocationModalView}>
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Done</Text>
@@ -37,7 +38,7 @@ export class LocationSelector extends Component {
 
         return (
             <Modal visible={isSelectLocationModalViewVisible} style={container} animationType="slide">
-                {this.navBar}
+                {this.navBar()}
                 <View style={{ height: screenHeight / 2, marginTop: 5 }}>
                     <MultiSelect
                         hideTags={false}
@@ -50,15 +51,15 @@ export class LocationSelector extends Component {
                         searchInputPlaceholderText="Search Locations..."
                         onChangeInput={(text) => console.log(text)}
                         // altFontFamily="ProximaNova-Light"
-                        tagRemoveIconColor="#2a2a2a"
-                        tagBorderColor="#2a2a2a"
-                        tagTextColor="#2a2a2a"
-                        selectedItemTextColor="#2a2a2a"
-                        selectedItemIconColor="#2a2a2a"
-                        itemTextColor="#2a2a2a"
+                        tagRemoveIconColor={Colors.dark}
+                        tagBorderColor={Colors.dark}
+                        tagTextColor={Colors.dark}
+                        selectedItemTextColor={Colors.dark}
+                        selectedItemIconColor={Colors.dark}
+                        itemTextColor={Colors.dark}
                         displayKey="name"
-                        searchInputStyle={{ color: '#2a2a2a', height: 40, padding: 5 }}
-                        submitButtonColor="#2a2a2a"
+                        searchInputStyle={{ color: Colors.dark, height: 40, padding: 5 }}
+                        submitButtonColor={Colors.dark}
                         submitButtonText="Submit"
                     />
                 </View>
