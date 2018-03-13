@@ -24,6 +24,7 @@ import { LocationSelector } from './LocationSelector';
 import { CategorySelector } from './CategorySelector';
 import { ConditionSelector } from './ConditionSelector';
 import { ProductDetailsInput } from './ProductDetailsInput';
+import { CreateAdCoverPhoto } from './CreateAdCoverPhoto';
 
 const { categoryList } = Categories;
 
@@ -55,17 +56,18 @@ class CreateAd extends Component {
     renderHeaderText = (text) => <Text style={styles.headerTextStyle}>{text}</Text>;
 
     renderProductTitleInput = () => {
-        const { textInputContainerStyle, headerTextStyle } = styles;
+        const { textInputContainerStyle, headerTextStyle, textInputStyle } = styles;
 
         return (
             <View style={textInputContainerStyle} >
                 {this.renderHeaderText('Title')}
                 <TextInput
-                    style={{ height: 70 }}
+                    style={textInputStyle}
                     // onChangeText={(text) => this.setState({ text })}
                     placeholder="Product Title"
                     clearButtonMode='always'
                     multiline={false}
+                    maxLength={50}
                 // value={this.state.text}
                 />
                 {this.renderHorizontalBorder()}
@@ -74,14 +76,14 @@ class CreateAd extends Component {
     }
 
     renderProductPrice = () => {
-        const { textInputContainerStyle } = styles;
+        const { textInputContainerStyle, textInputStyle } = styles;
         const { productPrice, onProductPriceInput } = this.props;
 
         return (
             <View style={textInputContainerStyle} >
                 {this.renderHeaderText('Price (₹)')}
                 <TextInput
-                    style={{ height: 70 }}
+                    style={textInputStyle}
                     keyboardType='numeric'
                     placeholder='₹'
                     clearButtonMode='always'
@@ -96,7 +98,7 @@ class CreateAd extends Component {
     }
 
     renderProductCategory = () => {
-        const { textInputContainerStyle } = styles;
+        const { textInputContainerStyle, textInputStyle } = styles;
         const {
             selectedCategory,
             selectedSubCategory,
@@ -107,7 +109,7 @@ class CreateAd extends Component {
             <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfCreateAdSpecificationModalView}>
                 {this.renderHeaderText('Category')}
                 <TextInput
-                    style={{ height: 70 }}
+                    style={textInputStyle}
                     keyboardType='numeric'
                     placeholder='Choose Category'
                     pointerEvents='none'
@@ -135,14 +137,14 @@ class CreateAd extends Component {
     }
 
     renderProductDescription = () => {
-        const { textInputContainerStyle } = styles;
+        const { textInputContainerStyle, textInputStyle } = styles;
         const { changeStateOfproductDescriptionModalView } = this.props;
 
         return (
             <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfproductDescriptionModalView}>
                 {this.renderHeaderText('Description')}
                 <TextInput
-                    style={{ height: 70 }}
+                    style={textInputStyle}
                     placeholder='Product Details'
                     pointerEvents='none'
                     value={null}
@@ -165,7 +167,7 @@ class CreateAd extends Component {
     }
 
     renderProductLocation = () => {
-        const { textInputContainerStyle } = styles;
+        const { textInputContainerStyle, textInputStyle } = styles;
         const {
             changeStateOfSelectLocationModalView,
             selectedLocation,
@@ -176,7 +178,7 @@ class CreateAd extends Component {
             <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfSelectLocationModalView}>
                 {this.renderHeaderText('Location')}
                 <Text
-                    style={{ height: 70 }}
+                    style={textInputStyle}
                     placeholder='Choose Location'
                     pointerEvents='none'
                     ellipsizeMode='tail'
@@ -416,6 +418,10 @@ const styles = StyleSheet.create({
     headerTextStyle: {
         fontSize: 18,
         color: Colors.dark
+    },
+    textInputStyle: {
+        paddingVertical: 15,
+        color: Colors.lightDark
     }
 });
 
