@@ -31,21 +31,10 @@ const { categoryList } = Categories;
 class CreateAd extends Component {
 
     renderImageView = () => {
-        const { containerStyle, semiTransparentViewStyle } = styles;
-
         return (
-            <View style={containerStyle}>
-                <Image
-                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/fashion.jpg?alt=media&token=3426181c-22fa-43f1-aac3-177b20676bb5' }}
-                    style={styles.slide1}
-                />
-                <View style={semiTransparentViewStyle} />
-                <View style={styles.textContainerStyle}>
-                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}></Animatable.Text>
-                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}>Things buyers want to know</Animatable.Text>
-                    <Animatable.Text style={styles.dateTextStyle} animation="fadeInLeft" delay={200}>Cover Photo</Animatable.Text>
-                </View>
-            </View >
+            <CreateAdCoverPhoto
+                imageURL='https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/fashion.jpg?alt=media&token=3426181c-22fa-43f1-aac3-177b20676bb5'
+            />
         );
     }
 

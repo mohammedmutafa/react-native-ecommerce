@@ -12,4 +12,4 @@ export const deviceScaledWidth = (value) => {
 };
 
 export const STICKY_HEADER_HEIGHT = (110 / 768) * window.height;
-export const SLIDER_HEIGHT = window.width / 1.7;
+export const SLIDER_HEIGHT = screenWidth / 1.7;
