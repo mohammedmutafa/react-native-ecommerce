@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
     Animated,
     Easing,
-    Dimensions
+    Dimensions,
+    Modal,
+    View
 } from 'react-native';
 import Animation from 'lottie-react-native';
 
@@ -26,7 +28,7 @@ export class CustomActivityIndicator extends Component {
             // Change from 0 to 1 to run animation
             toValue: 1,
             // Animation duration
-            duration: 2000, // higher the value slower the animation and vice versa
+            duration: 7000, // higher the value slower the animation and vice versa
             // Linear easings
             easing: Easing.linear,
         }).start(() => {
@@ -39,20 +41,27 @@ export class CustomActivityIndicator extends Component {
 
     render() {
         return (
-            <Animation
-                style={{
-                    // Black background
-                    backgroundColor: '#000',
-                    // Screen width
-                    width: width,
-                    // Screen height
-                    height: height,
-                }}
-                // Load animation from json file
-                source={require('/Users/deepakkatuwal/Documents/MyProjects/InnerNepal/ecommerce/assets/lottieFiles/animation_loading.json')}
-                // Animate json file
-                progress={this.state.progress}
-            />
+            <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: 'rgba(0, 0, 0, 0.4);' }}>
+                <View style={{
+                    width: width / 3,
+                    height: width / 3,
+                    alignSelf: 'center',
+                    backgroundColor: '#F7F7F7',
+                    borderRadius: 5,
+                    padding: 10
+                }}>
+                    <Animation
+                        style={{
+                            width: (width / 3) - 40,
+                            height: (width / 3) - 40
+                        }}
+                        // Load animation from json file
+                        source={require('/Users/deepakkatuwal/Documents/MyProjects/InnerNepal/ecommerce/assets/lottieFiles/animation_loading.json')}
+                        // Animate json file
+                        progress={this.state.progress}
+                    />
+                </View>
+            </View>
         );
     }
 }
