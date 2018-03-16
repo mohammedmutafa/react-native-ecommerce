@@ -3,29 +3,31 @@ import { StyleSheet, Platform } from 'react-native';
 import { screenWidth } from '../../utilities/ScreenSize';
 import colors from '../../styles/Color';
 
-const containerHeight = screenWidth * 0.7;
-const imageViewHeight = containerHeight * 0.65;
+const containerWidth = screenWidth - 30;
+const containerHeight = containerWidth * 0.8;
 
 export default StyleSheet.create({
     container: {
-        width: screenWidth,
+        width: containerWidth,
         height: containerHeight,
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: 15,
-        borderRadius: 5,
         backgroundColor: '#F7F7F7',
         ...Platform.select({
             ios: {
                 shadowColor: 'rgba(0,0,0, .2)',
                 shadowOffset: { height: 3, width: 0 },
                 shadowOpacity: 1,
-                shadowRadius: 5,
+                shadowRadius: 5
             },
             android: {
-                elevation: 2,
+                elevation: 2
             }
         })
+    },
+    detailContainerStyle: {
+        padding: 15,
+        flex: 1
     },
     avatarContainer: {
         flexDirection: 'row',
@@ -37,10 +39,9 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     imageViewStyle: {
-        height: imageViewHeight,
-        width: screenWidth - 30,
         backgroundColor: '#D7D7D7',
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        flex: 4
     },
     nameTextStyle: {
         paddingLeft: 10,

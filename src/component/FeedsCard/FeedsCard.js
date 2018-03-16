@@ -19,43 +19,46 @@ const {
     profileConatiner,
     imageViewStyle,
     nameTextStyle,
-    productTitleTextStyle
+    productTitleTextStyle,
+    detailContainerStyle
 } = styles;
 
 export const FeedsCard = ({ name, title, time, imageURL, thumbnailURL }) => (
 
     <View style={container}>
-        <View style={avatarContainer}>
-            <View style={profileConatiner}>
-                <Avatar
-                    small
-                    rounded
-                    source={{ uri: thumbnailURL }}
-                    // onPress={() => console.log("Works!")}
-                    activeOpacity={0.7}
-                />
+        <View style={detailContainerStyle}>
+            <View style={avatarContainer}>
+                <View style={profileConatiner}>
+                    <Avatar
+                        small
+                        rounded
+                        source={{ uri: thumbnailURL }}
+                        // onPress={() => console.log("Works!")}
+                        activeOpacity={0.7}
+                    />
+                    <Text
+                        style={nameTextStyle}
+                        ellipsizeMode='tail'
+                        numberOfLines={1}
+                    >
+                        {name}
+                    </Text>
+                </View>
                 <Text
-                    style={nameTextStyle}
+                    style={{ alignSelf: 'flex-end', color: colors.lightDark }}
                     ellipsizeMode='tail'
                     numberOfLines={1}
-                >
-                    {name}
+                >{time}
                 </Text>
             </View>
             <Text
-                style={{ alignSelf: 'flex-end', color: colors.lightDark }}
+                style={productTitleTextStyle}
                 ellipsizeMode='tail'
                 numberOfLines={1}
-            >{time}
+            >
+                {title}
             </Text>
         </View>
-        <Text
-            style={productTitleTextStyle}
-            ellipsizeMode='tail'
-            numberOfLines={1}
-        >
-            {title}
-        </Text>
         <Image
             source={{ uri: imageURL }}
             style={imageViewStyle}
