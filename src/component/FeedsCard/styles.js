@@ -13,6 +13,7 @@ export default StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         backgroundColor: '#F7F7F7',
+        marginVertical: 15,
         ...Platform.select({
             ios: {
                 shadowColor: 'rgba(0,0,0, .2)',
