@@ -11,8 +11,8 @@ import {
 import { FeedsCard } from '../../component/FeedsCard';
 
 const dataSource = [
-    { id: 1, url: 'https://f-static.motosport.com/motoblog/2014/How-to-Buy-a-Used-Dirt-Bike-small.jpg' },
-    { id: 2, url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOkswQlV67eHn0SceshdrRBD4s5yc8nJ0_c8lmkEFO2X9xtNBNlA' },
+    { id: 1, url: 'https://s-ec.bstatic.com/images/hotel/max1024x768/659/65978296.jpg' },
+    { id: 2, url: 'http://reales.com.np/uploads/a9.JPG' },
     { id: 3, url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1DTcYPln78dN1XHJyJYc6L2ERWCa4bCNZyLrAqcEq5HIXm3g' }, { id: 4 }, { id: 5 }, { id: 6 }
 ]
 
@@ -23,11 +23,12 @@ class SearchListing extends Component {
     renderFeedsCard = ({ item }) => {
         console.log(item.id)
         return <FeedsCard
-            time='24 days ago'
+            time='24 MARCH 2018'
             name='Dipak Katwal'
-            title='iPhone 8 , box Pack'
+            price='2,80,000'
+            title='Having optimized product descriptions can help improve your search engine optimization (SEO). By optimizing your product descriptions to include specific keywords, you can help improve your chances of ranking high on Google. Without product descriptions, you may be able to optimize your images for keywords, but your product page may not appear high in search engines due to a lack of content.'
             imageURL={item.url}
-            thumbnailURL='https://img2.carmax.com/img/vehicles/15213982/1/320.jpg'
+            thumbnailURL='https://www.famousbirthdays.com/headshots/david-beckham-4.jpg'
         />
     }
 
@@ -35,7 +36,6 @@ class SearchListing extends Component {
         return (
             <FlatList
                 data={dataSource}
-                style={{ marginHorizontal: 15 }}
                 renderItem={this.renderFeedsCard}
                 // removeClippedSubviews={false}
                 keyExtractor={this.keyExtractor}
