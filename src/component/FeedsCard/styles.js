@@ -29,8 +29,11 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center'
     },
-    imageViewStyle: {
+    imageViewContainerStyle: {
+        flex: 4,
         backgroundColor: '#D7D7D7',
+    },
+    imageViewStyle: {
         resizeMode: 'cover',
         flex: 4
     },
