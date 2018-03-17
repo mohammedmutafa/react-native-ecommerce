@@ -16,7 +16,8 @@ export default StyleSheet.create({
         marginVertical: 5
     },
     detailContainerStyle: {
-        padding: 15,
+        paddingVertical: 5,
+        paddingHorizontal: 15,
         flex: 0.8
     },
     avatarContainer: {
