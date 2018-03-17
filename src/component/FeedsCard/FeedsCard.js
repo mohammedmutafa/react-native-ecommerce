@@ -37,7 +37,7 @@ export class FeedsCard extends Component {
     }
 
     render() {
-        const { name, title, time, imageURL, thumbnailURL } = this.props;
+        const { name, title, price, time, imageURL, thumbnailURL } = this.props;
         const { bookmarked } = this.state;
 
         return (
@@ -80,6 +80,13 @@ export class FeedsCard extends Component {
                         containerStyle={{ position: 'absolute', alignSelf: 'flex-end', padding: 10 }}
                         onPress={this.onPressBookmarkButton}
                     />
+                    <View style={{ position: 'absolute', alignSelf: 'flex-start', padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.2)' }}>
+                        <Text
+                            style={{ color: colors.lightWhite, fontSize: 18 }}
+                        >
+                            {`₹ ${price}`}
+                        </Text>
+                    </View>
                 </View>
                 <Text
                     style={productTitleTextStyle}
@@ -97,6 +104,7 @@ export class FeedsCard extends Component {
 FeedsCard.propTypes = {
     time: PropTypes.string,
     name: PropTypes.string,
+    price: PropTypes.string,
     title: PropTypes.string,
     imageURL: PropTypes.string,
     thumbnailURL: PropTypes.string
