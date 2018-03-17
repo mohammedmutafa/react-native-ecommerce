@@ -45,24 +45,24 @@ export const FeedsCard = ({ name, title, time, imageURL, thumbnailURL }) => (
                     </Text>
                 </View>
                 <Text
-                    style={{ alignSelf: 'flex-end', color: colors.lightDark }}
+                    style={{ alignSelf: 'flex-end', color: colors.lightDark, fontSize: 10 }}
                     ellipsizeMode='tail'
                     numberOfLines={1}
                 >{time}
                 </Text>
             </View>
-            <Text
-                style={productTitleTextStyle}
-                ellipsizeMode='tail'
-                numberOfLines={1}
-            >
-                {title}
-            </Text>
         </View>
         <Image
             source={{ uri: imageURL }}
             style={imageViewStyle}
         />
+        <Text
+            style={productTitleTextStyle}
+            ellipsizeMode='tail'
+            numberOfLines={2}
+        >
+            {title}
+        </Text>
     </View>
 );
 

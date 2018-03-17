@@ -3,7 +3,7 @@ import { StyleSheet, Platform } from 'react-native';
 import { screenWidth } from '../../utilities/ScreenSize';
 import colors from '../../styles/Color';
 
-const containerWidth = screenWidth - 30;
+const containerWidth = screenWidth;
 const containerHeight = containerWidth * 0.8;
 
 export default StyleSheet.create({
@@ -13,22 +13,11 @@ export default StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         backgroundColor: '#F7F7F7',
-        marginVertical: 15,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .2)',
-                shadowOffset: { height: 3, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 5
-            },
-            android: {
-                elevation: 2
-            }
-        })
+        marginVertical: 5
     },
     detailContainerStyle: {
         padding: 15,
-        flex: 1
+        flex: 0.8
     },
     avatarContainer: {
         flexDirection: 'row',
@@ -46,12 +35,16 @@ export default StyleSheet.create({
     },
     nameTextStyle: {
         paddingLeft: 10,
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold',
-        color: colors.dark
+        color: colors.dark,
+        alignSelf: 'center'
     },
     productTitleTextStyle: {
         color: colors.dark,
-        marginVertical: 10
+        marginVertical: 10,
+        flex: 0.8,
+        fontSize: 14,
+        marginHorizontal: 15
     }
 });
