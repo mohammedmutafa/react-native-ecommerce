@@ -12,6 +12,8 @@ import { Avatar, Icon } from 'react-native-elements';
 import styles from './styles';
 import colors from '../../styles/Color';
 
+import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
+
 class ProfilePublic extends Component {
 
     render() {
@@ -66,14 +68,24 @@ class ProfilePublic extends Component {
                         containerStyle={iconContainerStyle}
                         onPress={() => console.log('hello')} />
                 </View>
+                <View style={dividerStyle} />
             </View>
-
         );
     }
 }
 
-const { triangleDown, circle, circleContainer, conatinerStyle, avatarStyle, nameTextStyle,
-    addressTextStyle, socialButtonsContainer, iconContainerStyle } = styles;
+const {
+    triangleDown,
+    circle,
+    circleContainer,
+    conatinerStyle,
+    avatarStyle,
+    nameTextStyle,
+    addressTextStyle,
+    socialButtonsContainer,
+    iconContainerStyle,
+    dividerStyle
+} = styles;
 
 ProfilePublic.propTypes = {
 

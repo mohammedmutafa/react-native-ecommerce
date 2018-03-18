@@ -96,5 +96,12 @@ export default styles = StyleSheet.create({
     iconContainerStyle: {
         backgroundColor: colors.dark,
         marginHorizontal: 20
+    },
+    dividerStyle:{
+        height: 1.5,
+        alignSelf:'center',
+        width: screenWidth * 0.9, 
+        backgroundColor: colors.lightDark,
+        marginVertical: 5 
     }
 });
