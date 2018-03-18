@@ -4,7 +4,7 @@ import {
     View,
     Text,
     Image,
-    FlatList,
+    FlatList, Platform,
     TouchableOpacity
 } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
@@ -24,7 +24,7 @@ class ProfilePublic extends Component {
                                 rounded
                                 width={100}
                                 height={100}
-                                containerStyle={{ alignSelf: 'center' }}
+                                containerStyle={avatarStyle}
                                 source={{ uri: "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg" }}
                                 onPress={() => console.log("Works!")}
                                 activeOpacity={0.7}
@@ -38,7 +38,7 @@ class ProfilePublic extends Component {
     }
 }
 
-const { triangleDown, circle, circleContainer, conatinerStyle } = styles;
+const { triangleDown, circle, circleContainer, conatinerStyle, avatarStyle } = styles;
 
 ProfilePublic.propTypes = {
 

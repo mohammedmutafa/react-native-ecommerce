@@ -13,7 +13,7 @@ export default styles = StyleSheet.create({
         height: 0,
         ...Platform.select({
             ios: {
-                shadowColor: 'rgba(0,0,0, .2)',
+                shadowColor: 'rgba(0,0,0, .5)',
                 shadowOffset: { height: 3, width: 0 },
                 shadowOpacity: 1,
                 shadowRadius: 5,
@@ -39,7 +39,7 @@ export default styles = StyleSheet.create({
         position: 'absolute',
         ...Platform.select({
             ios: {
-                shadowColor: 'rgba(0,0,0, .2)',
+                shadowColor: 'rgba(0,0,0, .5)',
                 shadowOffset: { height: 3, width: 0 },
                 shadowOpacity: 1,
                 shadowRadius: 5,
@@ -59,5 +59,19 @@ export default styles = StyleSheet.create({
         ],
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    avatarStyle: {
+        alignSelf: 'center',
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0, .2)',
+                shadowOffset: { height: 3, width: 0 },
+                shadowOpacity: 1,
+                shadowRadius: 5,
+            },
+            android: {
+                elevation: 2,
+            }
+        })
     }
 });
