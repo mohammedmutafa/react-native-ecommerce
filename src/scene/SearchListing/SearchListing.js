@@ -51,8 +51,6 @@ class SearchListing extends Component {
     }
 }
 
-const { map } = styles;
-
 SearchListing.propTypes = {
 
 };
