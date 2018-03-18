@@ -10,9 +10,9 @@ import {
 import { Avatar, Icon } from 'react-native-elements';
 
 import styles from './styles';
+import colors from '../../styles/Color';
 
 class ProfilePublic extends Component {
-
 
     render() {
         return (
@@ -32,13 +32,48 @@ class ProfilePublic extends Component {
                         </View>
                     </View>
                 </View>
+
+                <Text style={nameTextStyle}>Dipak Katwal</Text>
+                <Text style={addressTextStyle}>Kathmandu, Nepal</Text>
+
+                <View style={socialButtonsContainer}>
+                    <Icon
+                        raised
+                        name='call'
+                        type='material'
+                        color={colors.lightWhite}
+                        containerStyle={iconContainerStyle}
+                        onPress={() => console.log('hello')} />
+                    <Icon
+                        raised
+                        name='sc-facebook'
+                        type='evilicon'
+                        color={colors.lightWhite}
+                        containerStyle={iconContainerStyle}
+                        onPress={() => console.log('hello')} />
+                    <Icon
+                        raised
+                        name='logo-instagram'
+                        type='ionicon'
+                        color={colors.lightWhite}
+                        containerStyle={iconContainerStyle}
+                        onPress={() => console.log('hello')} />
+                    <Icon
+                        raised
+                        name='email'
+                        type='zocial'
+                        color={colors.lightWhite}
+                        containerStyle={iconContainerStyle}
+                        onPress={() => console.log('hello')} />
+                </View>
             </View>
 
         );
     }
 }
 
-const { triangleDown, circle, circleContainer, conatinerStyle, avatarStyle } = styles;
+const { triangleDown, circle, circleContainer, conatinerStyle, avatarStyle, nameTextStyle,
+    addressTextStyle, socialButtonsContainer, iconContainerStyle } = styles;
 
 ProfilePublic.propTypes = {
 

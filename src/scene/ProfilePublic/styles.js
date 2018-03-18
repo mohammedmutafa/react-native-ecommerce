@@ -6,7 +6,8 @@ import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 
 export default styles = StyleSheet.create({
     conatinerStyle: {
-        backgroundColor: colors.lightWhite
+        backgroundColor: colors.lightWhite,
+        flexDirection: 'column'
     },
     triangleDown: {
         width: 0,
@@ -73,5 +74,27 @@ export default styles = StyleSheet.create({
                 elevation: 2,
             }
         })
+    },
+    nameTextStyle: {
+        fontSize: 16,
+        alignSelf: 'center',
+        marginVertical: 10,
+        fontWeight: 'bold',
+        color: colors.dark
+    },
+    addressTextStyle: {
+        fontSize: 14,
+        alignSelf: 'center',
+        color: colors.lightDark
+    },
+    socialButtonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 10
+    },
+    iconContainerStyle: {
+        backgroundColor: colors.dark,
+        marginHorizontal: 20
     }
 });
