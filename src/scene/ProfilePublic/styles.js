@@ -97,11 +97,20 @@ export default styles = StyleSheet.create({
         backgroundColor: colors.dark,
         marginHorizontal: 20
     },
-    dividerStyle:{
+    dividerStyle: {
         height: 1.5,
-        alignSelf:'center',
-        width: screenWidth * 0.9, 
+        alignSelf: 'center',
+        width: screenWidth * 0.9,
         backgroundColor: colors.lightDark,
-        marginVertical: 5 
-    }
+        marginVertical: 5
+    },
+    gridViewCardStyle: {
+        justifyContent: 'center',
+        //flex: 1,
+        width: screenWidth / 3.2,
+        backgroundColor: '#000000',
+        alignItems: 'center',
+        height: screenWidth / 3.2,
+        margin: 1,
+    },
 });

@@ -4,7 +4,8 @@ import {
     View,
     Text,
     Image,
-    FlatList, Platform,
+    FlatList,
+    Platform,
     TouchableOpacity
 } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
@@ -14,7 +15,39 @@ import colors from '../../styles/Color';
 
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 
+import Categories from '../../styles/Categories';
+
+const { MainCategory } = Categories;
+
 class ProfilePublic extends Component {
+
+    keyExtractor = (item, index) => index;
+
+    renderItemCard = ({ item }) => {
+        return (
+            <TouchableOpacity >
+                <Image
+                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
+                    style={
+                        gridViewCardStyle
+                    }
+                />
+            </TouchableOpacity >
+        );
+    }
+
+    renderPublishedPostList = () => {
+        return (
+            <FlatList
+                style={{ alignSelf: 'center', marginTop: 15 }}
+                data={MainCategory}
+                renderItem={this.renderItemCard}
+                // removeClippedSubviews={false}
+                keyExtractor={this.keyExtractor}
+                numColumns={3}
+            />
+        );
+    }
 
     render() {
         return (
@@ -69,6 +102,8 @@ class ProfilePublic extends Component {
                         onPress={() => console.log('hello')} />
                 </View>
                 <View style={dividerStyle} />
+
+                {this.renderPublishedPostList()}
             </View>
         );
     }
@@ -84,7 +119,8 @@ const {
     addressTextStyle,
     socialButtonsContainer,
     iconContainerStyle,
-    dividerStyle
+    dividerStyle,
+    gridViewCardStyle
 } = styles;
 
 ProfilePublic.propTypes = {
