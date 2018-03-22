@@ -17,6 +17,7 @@ import styles from './styles';
 import colors from '../../styles/Color';
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 import Categories from '../../styles/Categories';
+import { BackButton } from '../../component/BackButton';
 
 const { MainCategory } = Categories;
 
@@ -121,26 +122,19 @@ class ProfilePublic extends Component {
                 bounces={false}
                 showsVerticalScrollIndicator={false}
                 backgroundColor="#FFFFFF"
-                stickyHeaderHeight={STICKY_HEADER_HEIGHT}
                 parallaxHeaderHeight={SLIDER_HEIGHT}
                 renderForeground={() => (
-                    <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <View
+                        style={{
+                            height: SLIDER_HEIGHT,
+                            flex: 1,
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                        <BackButton onPress={() => this.props.navigation.goBack()} />
                         {this.renderProfileHeader()}
                         {this.renderUserBasicInfo()}
                         {this.renderSocialButtons()}
-                        <View style={dividerStyle} />
-                    </View>
-                )}
-                renderStickyHeader={() => (
-                    <View key="sticky-header" style={{
-                        height: STICKY_HEADER_HEIGHT,
-                        width: window.width,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: 10
-                    }}>
-                        {/*Add navigation Back button here later*/}
-                        <View style={dividerStyle} />
                     </View>
                 )}
             >
@@ -160,16 +154,14 @@ const {
     addressTextStyle,
     socialButtonsContainer,
     iconContainerStyle,
-    dividerStyle,
     gridViewCardStyle
 } = styles;
 
 ProfilePublic.propTypes = {
-
+    navigation: PropTypes.object
 };
 
 const window = Dimensions.get('window');
-const STICKY_HEADER_HEIGHT = (50 / 768) * window.height;//TODO: Replace with navigation height later
-const SLIDER_HEIGHT = window.width / 1.1;
+const SLIDER_HEIGHT = window.width / 1.2;
 
 export default ProfilePublic;
