@@ -6,9 +6,12 @@ import {
     Image,
     FlatList,
     Platform,
-    TouchableOpacity
+    Dimensions,
+    TouchableOpacity,
+    ScrollView
 } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
 import styles from './styles';
 import colors from '../../styles/Color';
@@ -36,14 +39,17 @@ class ProfilePublic extends Component {
 
     renderPublishedPostList = () => {
         return (
-            <FlatList
-                style={{ alignSelf: 'center', marginTop: 15 }}
-                data={MainCategory}
-                renderItem={this.renderItemCard}
-                // removeClippedSubviews={false}
-                keyExtractor={this.keyExtractor}
-                numColumns={3}
-            />
+            <ScrollView>
+                <FlatList
+                    style={{ alignSelf: 'center', marginTop: 15 }}
+                    data={MainCategory}
+                    renderItem={this.renderItemCard}
+                    // removeClippedSubviews={false}
+                    keyExtractor={this.keyExtractor}
+                    numColumns={3}
+                />
+            </ScrollView>
+
         );
     }
 
@@ -113,13 +119,35 @@ class ProfilePublic extends Component {
 
     render() {
         return (
-            <View style={conatinerStyle}>
-                {this.renderProfileHeader()}
-                {this.renderUserBasicInfo()}
-                {this.renderSocialButtons()}
-                <View style={dividerStyle} />
+            <ParallaxScrollView
+                bounces={false}
+                showsVerticalScrollIndicator={false}
+                backgroundColor="#FFFFFF"
+                stickyHeaderHeight={STICKY_HEADER_HEIGHT}
+                parallaxHeaderHeight={SLIDER_HEIGHT}
+                renderForeground={() => (
+                    <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                        {this.renderProfileHeader()}
+                        {this.renderUserBasicInfo()}
+                        {this.renderSocialButtons()}
+                        <View style={dividerStyle} />
+                    </View>
+                )}
+                renderStickyHeader={() => (
+                    <View key="sticky-header" style={{
+                        height: STICKY_HEADER_HEIGHT,
+                        width: window.width,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: 10
+                    }}>
+                        {/*Add navigation Back button here later*/}
+                        <View style={dividerStyle} />
+                    </View>
+                )}
+            >
                 {this.renderPublishedPostList()}
-            </View>
+            </ParallaxScrollView>
         );
     }
 }
@@ -141,5 +169,9 @@ const {
 ProfilePublic.propTypes = {
 
 };
+
+const window = Dimensions.get('window');
+const STICKY_HEADER_HEIGHT = (50 / 768) * window.height;//TODO: Replace with navigation height later
+const SLIDER_HEIGHT = window.width / 1.1;
 
 export default ProfilePublic;
