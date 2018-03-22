@@ -106,11 +106,10 @@ export default styles = StyleSheet.create({
     },
     gridViewCardStyle: {
         justifyContent: 'center',
-        //flex: 1,
         width: screenWidth / 3.2,
-        backgroundColor: '#000000',
+        backgroundColor: colors.lightDark,
         alignItems: 'center',
         height: screenWidth / 3.2,
-        margin: 1,
+        margin: 1.5,
     },
 });
