@@ -28,10 +28,8 @@ class ProfilePublic extends Component {
         return (
             <TouchableOpacity >
                 <Image
-                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
-                    style={
-                        gridViewCardStyle
-                    }
+                    source={{ uri: item.thumbnail }}
+                    style={gridViewCardStyle}
                 />
             </TouchableOpacity >
         );
