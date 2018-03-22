@@ -21,7 +21,8 @@ class SearchListing extends Component {
     keyExtractor = (item, index) => index;
 
     renderFeedsCard = ({ item }) => {
-        console.log(item.id)
+        const { navigation } = this.props;
+
         return <FeedsCard
             time='24 MARCH 2018'
             name='Dipak Katwal'
@@ -29,6 +30,7 @@ class SearchListing extends Component {
             title='Having optimized product descriptions can help improve your search engine optimization (SEO). By optimizing your product descriptions to include specific keywords, you can help improve your chances of ranking high on Google. Without product descriptions, you may be able to optimize your images for keywords, but your product page may not appear high in search engines due to a lack of content.'
             imageURL={item.url}
             thumbnailURL='https://www.famousbirthdays.com/headshots/david-beckham-4.jpg'
+            navigation={navigation}
         />
     }
 

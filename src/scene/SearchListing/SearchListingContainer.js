@@ -10,8 +10,9 @@ class SearchListingContainer extends Component {
     }
 
     render() {
-
-        return <SearchListing />
+        return <SearchListing
+            navigation={this.props.navigation}
+        />
     }
 }
 

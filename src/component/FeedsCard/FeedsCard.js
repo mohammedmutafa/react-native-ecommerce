@@ -37,7 +37,7 @@ export class FeedsCard extends Component {
     }
 
     render() {
-        const { name, title, price, time, imageURL, thumbnailURL } = this.props;
+        const { name, title, price, time, imageURL, thumbnailURL, navigation } = this.props;
         const { bookmarked } = this.state;
 
         return (
@@ -49,7 +49,7 @@ export class FeedsCard extends Component {
                                 small
                                 rounded
                                 source={{ uri: thumbnailURL }}
-                                // onPress={() => console.log("Works!")}
+                                onPress={() => navigation.navigate('ProfilePublic')}
                                 activeOpacity={0.7}
                             />
                             <Text

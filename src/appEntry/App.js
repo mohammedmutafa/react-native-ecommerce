@@ -4,6 +4,7 @@ import Home from '../container/Home';
 import GeneralProductDetailsPage from '../container/GeneralProductDetailsPage';
 import CreateAdPage from '../container/CreateAd';
 import SearchListing from '../scene/SearchListing';
+import ProfilePublic from '../scene/ProfilePublic';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -54,6 +55,12 @@ const StackNavigation = StackNavigator({
             },
             headerTintColor: '#FFFFFF',
             title: "Product List",
+        })
+    },
+    ProfilePublic: {
+        screen: ProfilePublic,
+        navigationOptions: (props) => ({
+            header: null
         })
     }
 });
