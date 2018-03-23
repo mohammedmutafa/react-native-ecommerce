@@ -6,7 +6,8 @@ import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 
 export default styles = StyleSheet.create({
     conatinerStyle: {
-        backgroundColor: colors.lightWhite,
-        flexDirection: 'column'
+        backgroundColor: colors.dark,
+        flexDirection: 'column',
+        flex: 1
     }
 });

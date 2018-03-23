@@ -144,7 +144,8 @@ export default class Home extends Component {
                     renderForeground={() => (
                         <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                             <BackButton
-                                icon='menu'
+                                style={{ left: 20 }}
+                                iconName='menu'
                                 iconColor={Color.dark}
                                 onPress={() => this.props.navigation.navigate('DrawerToggle')} />
                             {this.renderSwiper()}

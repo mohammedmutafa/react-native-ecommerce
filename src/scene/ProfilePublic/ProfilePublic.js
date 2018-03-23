@@ -131,7 +131,9 @@ class ProfilePublic extends Component {
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
-                        <BackButton onPress={() => this.props.navigation.goBack()} />
+                        <BackButton
+                            style={{ left: 20 }}
+                            onPress={() => this.props.navigation.goBack()} />
                         {this.renderProfileHeader()}
                         {this.renderUserBasicInfo()}
                         {this.renderSocialButtons()}
