@@ -16,6 +16,8 @@ import { SearchBar, Icon } from 'react-native-elements';
 import LoginWithPhoneComponent from '../component/LoginWithPhone';
 import MenuComponent from '../component/Menu';
 import CategoriesListComponent from '../component/CategoriesList';
+import { BackButton } from '../component/BackButton';
+import Color from '../styles/Color';
 
 export default class Home extends Component {
     renderSwiper = () => {
@@ -137,19 +139,19 @@ export default class Home extends Component {
                     bounces={false}
                     showsVerticalScrollIndicator={false}
                     backgroundColor="#FFFFFF"
-                    stickyHeaderHeight={STICKY_HEADER_HEIGHT}
+                    // stickyHeaderHeight={STICKY_HEADER_HEIGHT}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
                     renderForeground={() => (
                         <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                            <BackButton
+                                icon='menu'
+                                iconColor={Color.dark}
+                                onPress={() => this.props.navigation.navigate('DrawerToggle')} />
                             {this.renderSwiper()}
                         </View>
                     )}
-                    renderStickyHeader={() => (
-                        <View key="sticky-header" style={stickySection}>
-                            {this.renderSearchBar()}
-                        </View>
-                    )}
-                >{this.renderAllCategoriesButton()}
+                >
+                    {this.renderAllCategoriesButton()}
                     {this.renserLoginWithPhoneModalView()}
                     <CategoriesListComponent navigation={this.props.navigation} />
                 </ParallaxScrollView>

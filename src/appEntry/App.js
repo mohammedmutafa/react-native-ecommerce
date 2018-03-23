@@ -1,10 +1,13 @@
-import { StackNavigator } from 'react-navigation';
+import React from 'react';
+import { View } from 'react-native';
+import { StackNavigator, DrawerNavigator, } from 'react-navigation';
 
 import Home from '../container/Home';
 import GeneralProductDetailsPage from '../container/GeneralProductDetailsPage';
 import CreateAdPage from '../container/CreateAd';
 import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
+import Drawer from '../scene/Drawer';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -65,4 +68,15 @@ const StackNavigation = StackNavigator({
     }
 });
 
-export default StackNavigation;
+
+const NavigationDrawer = DrawerNavigator(
+    {
+        Main: { screen: StackNavigation }
+    },
+    {
+        contentComponent: props => <Drawer{...props} />
+        // drawerWidth: 200
+    }
+);
+
+export default NavigationDrawer;

@@ -8,11 +8,11 @@ import colors from '../../styles/Color';
 
 const { container } = styles;
 
-export const BackButton = ({ onPress, style, iconColor = colors.lightWhite }) => (
+export const BackButton = ({ onPress, style, icon = 'chevron-with-circle-left', iconColor = colors.lightWhite }) => (
     <View style={[container, style]}>
         <Icon
             underlayColor='transparent'
-            name="chevron-with-circle-left"
+            name={icon}
             type="entypo"
             color={iconColor}
             size={30}
