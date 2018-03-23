@@ -84,7 +84,7 @@ export class FeedsCard extends Component {
                         containerStyle={{ position: 'absolute', alignSelf: 'flex-end', padding: 10 }}
                         onPress={this.onPressBookmarkButton}
                     />
-                    <View style={{ position: 'absolute', alignSelf: 'flex-start', padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.2)' }}>
+                    <View style={{ position: 'absolute', alignSelf: 'flex-start', padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.4)' }}>
                         <Text
                             style={{ color: colors.lightWhite, fontSize: 18 }}
                         >
