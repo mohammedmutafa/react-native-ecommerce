@@ -31,10 +31,10 @@ export class PhotoViewer extends React.PureComponent {
         return (
             <View style={navigationBar}>
                 <Icon
+                    underlayColor='transparent'
                     name='close'
                     type='evilIcons'
                     color='#FFFFFF'
-                    underlayColor='#FFFFFF'
                     onPress={hidePhotoViewer}
                 />
                 <Text
