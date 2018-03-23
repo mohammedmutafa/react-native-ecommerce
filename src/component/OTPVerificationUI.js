@@ -31,6 +31,7 @@ class OTPVerificationUI extends Component {
         return (
             <View style={styles.backButtonStyle}>
                 <Icon
+                    underlayColor='transparent'
                     name="chevron-with-circle-left"
                     type="entypo"
                     color="#C7C7CD"

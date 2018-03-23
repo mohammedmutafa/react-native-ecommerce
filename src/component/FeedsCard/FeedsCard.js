@@ -74,6 +74,7 @@ export class FeedsCard extends Component {
                         style={imageViewStyle}
                     />
                     <Icon
+                        underlayColor='transparent'
                         name={bookmarked ? 'heart' : 'heart-outlined'}
                         type="entypo"
                         color={bookmarked ? colors.lightWhite : colors.lightDark}
