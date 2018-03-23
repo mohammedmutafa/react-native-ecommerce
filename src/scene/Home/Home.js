@@ -13,16 +13,16 @@ import Swiper from 'react-native-swiper';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { SearchBar, Icon } from 'react-native-elements';
 
-import LoginWithPhoneComponent from '../component/LoginWithPhone';
-import MenuComponent from '../component/Menu';
-import CategoriesListComponent from '../component/CategoriesList';
-import { BackButton } from '../component/BackButton';
-import Color from '../styles/Color';
+import LoginWithPhoneComponent from '../../component/LoginWithPhone';
+import MenuComponent from '../../component/Menu';
+import CategoriesListComponent from '../../component/CategoriesList';
+import { BackButton } from '../../component/BackButton';
+import Color from '../../styles/Color';
+
+import styles from './styles';
 
 export default class Home extends Component {
     renderSwiper = () => {
-        const { sliderContainerStyle, containerStyle } = styles;
-
         return (
             <View style={containerStyle}>
                 <View style={sliderContainerStyle}>
@@ -121,8 +121,6 @@ export default class Home extends Component {
     }
 
     render() {
-        const { mainConatinerStyle, stickySection } = styles;
-
         return (
             <View style={mainConatinerStyle}>
                 <ParallaxScrollView
@@ -156,75 +154,13 @@ const window = Dimensions.get('window');
 const STICKY_HEADER_HEIGHT = (110 / 768) * window.height;
 const SLIDER_HEIGHT = window.width / 1.7;
 
-const styles = StyleSheet.create({
-    mainConatinerStyle: {
-        flexDirection: 'column',
-        flex: 1
-    },
-    containerStyle: {
-        alignSelf: 'center',
-        width: window.width,
-        overflow: 'hidden', // for hide the not important parts from circle
-        height: SLIDER_HEIGHT,
-        justifyContent: 'center',
-        alignItems: 'center'
-
-    },
-    sliderContainerStyle: {
-        borderRadius: window.width, // border borderRadius same as width and height
-        width: window.width * 2,
-        height: window.width * 2,
-        marginLeft: -(window.width / 2),// reposition the circle inside parent view
-        position: 'absolute',
-        bottom: 0, // show the bottom part of circle
-        overflow: 'hidden' // hide not important part of image
-
-    },
-    wrapper: {
-    },
-    slide1: {
-        height: SLIDER_HEIGHT,// same width and height for the container
-        width: window.width,
-        position: 'absolute', // position it in circle
-        bottom: 0, // position it in circle
-        marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
-        backgroundColor: '#FFFFFF'
-    },
-    searchbarContainerStyle: {
-        width: window.width - 65,
-        height: (60 / 768) * window.height,
-        borderRadius: 25,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .2)',
-                shadowOffset: { height: 3, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 5,
-            },
-            android: {
-                elevation: 2,
-            }
-        })
-    },
-    searchBarStyle: {
-        backgroundColor: 'transparent',
-        width: window.width - 75
-    },
-    floatingMenuButtonStyle: {
-        alignSelf: 'flex-end',
-        position: 'absolute',
-        bottom: 35,
-        paddingRight: 15
-    },
-    stickySection: {
-        height: STICKY_HEADER_HEIGHT,
-        width: window.width,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 10
-    }
-});
+const {
+    mainConatinerStyle,
+    containerStyle,
+    sliderContainerStyle,
+    slide1,
+    searchbarContainerStyle,
+    searchBarStyle,
+    floatingMenuButtonStyle,
+    stickySection
+} = styles

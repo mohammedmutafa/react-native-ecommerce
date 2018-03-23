@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 
-import HomeComponent from '../component/Home';
+import Home from './Home';
 
-export default class Home extends Component {
+export default class HomeContainer extends Component {
     constructor(props) {
         super(props);
 
@@ -48,7 +48,7 @@ export default class Home extends Component {
         const { isLoginWithPhoneModalVisible, phoneNumberInput, phoneNumberInputUIVisible, otpVerificationUIVisible } = this.state;
 
         return (
-            <HomeComponent
+            <Home
                 isLoginWithPhoneModalVisible={isLoginWithPhoneModalVisible}
                 changeLoginWithPhoneModalViewState={this.changeLoginWithPhoneModalViewState}
                 phoneNumberInput={phoneNumberInput}

@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { StackNavigator, DrawerNavigator, } from 'react-navigation';
 
-import Home from '../container/Home';
+import Home from '../scene/Home';
 import GeneralProductDetailsPage from '../container/GeneralProductDetailsPage';
 import CreateAdPage from '../container/CreateAd';
 import SearchListing from '../scene/SearchListing';
