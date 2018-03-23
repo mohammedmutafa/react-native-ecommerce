@@ -68,7 +68,10 @@ export class FeedsCard extends Component {
                         </Text>
                     </View>
                 </View>
-                <View style={imageViewContainerStyle}>
+                <TouchableOpacity
+                    style={imageViewContainerStyle}
+                    onPress={() => navigation.navigate('GeneralProductDetails')}
+                >
                     <Image
                         source={{ uri: imageURL }}
                         style={imageViewStyle}
@@ -88,7 +91,7 @@ export class FeedsCard extends Component {
                             {`₹ ${price}`}
                         </Text>
                     </View>
-                </View>
+                </TouchableOpacity>
                 <Text
                     style={productTitleTextStyle}
                     ellipsizeMode='tail'
@@ -108,5 +111,6 @@ FeedsCard.propTypes = {
     price: PropTypes.string,
     title: PropTypes.string,
     imageURL: PropTypes.string,
-    thumbnailURL: PropTypes.string
+    thumbnailURL: PropTypes.string,
+    navigation: PropTypes.object
 };

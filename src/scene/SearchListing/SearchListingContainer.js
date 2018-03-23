@@ -17,7 +17,7 @@ class SearchListingContainer extends Component {
 }
 
 SearchListingContainer.propTypes = {
-
+    navigation: PropTypes.object
 };
 
 export default SearchListingContainer;

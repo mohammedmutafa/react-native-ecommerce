@@ -54,7 +54,7 @@ class SearchListing extends Component {
 }
 
 SearchListing.propTypes = {
-
+    navigation: PropTypes.object
 };
 
 export default SearchListing;
