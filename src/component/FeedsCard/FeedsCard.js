@@ -80,7 +80,7 @@ export class FeedsCard extends Component {
                         underlayColor='transparent'
                         name={bookmarked ? 'heart' : 'heart-outlined'}
                         type="entypo"
-                        color={bookmarked ? colors.lightWhite : colors.lightDark}
+                        color={bookmarked ? colors.red : colors.lightDark}
                         containerStyle={{ position: 'absolute', alignSelf: 'flex-end', padding: 10 }}
                         onPress={this.onPressBookmarkButton}
                     />
