@@ -12,6 +12,7 @@ import { Icon, ListItem } from 'react-native-elements';
 
 import CategoryList from '../../styles/Categories';
 import styles from './styles';
+import color from '../../styles/Color';
 
 const {
     mainConatinerStyle,
@@ -78,7 +79,9 @@ export class CategorySelector extends Component {
         return (
             <ListItem
                 title={item.title}
-                // chevronColor='#DAA520'
+                underlayColor='transparent'
+                titleStyle={{ color: color.lightWhite }}
+                chevronColor={color.golden}
                 hideChevron={item.children ? false : true}
                 leftIcon={{ name: item.icon }}
                 onPress={() => this.drillDown(item)}
@@ -93,11 +96,11 @@ export class CategorySelector extends Component {
         return (
             <View>
                 <View style={level2TitleHeaderContainerStyle}>
-                    <Text>{parentDataSourceTitle}</Text>
+                    <Text style={{ color: color.lightWhite }}>{parentDataSourceTitle}</Text>
                     {drillIndex === 0 ? <View /> : <Icon
                         name="arrow-up"
                         type="feather"
-                        color="#DAA520"
+                        color={color.golden}
                         onPress={() => this.drillUP(dataSource)}
                     />}
                 </View>

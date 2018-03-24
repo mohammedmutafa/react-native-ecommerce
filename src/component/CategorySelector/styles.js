@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
+import color from '../../styles/Color';
 
 export default styles = StyleSheet.create({
     mainConatinerStyle: {
@@ -10,7 +11,7 @@ export default styles = StyleSheet.create({
         backgroundColor: 'rgba(60, 60, 60, 0.8)'
     },
     scrollViewConatinerStyle: {
-        backgroundColor: '#FFFFFF'
+        backgroundColor: color.dark
     },
     backButtonStyle: {
         alignSelf: 'center',
@@ -28,13 +29,13 @@ export default styles = StyleSheet.create({
     },
     dividerStyle: {
         height: 1,
-        backgroundColor: '#DAA520',
+        backgroundColor: color.golden,
         width: screenWidth - 50,
         marginTop: 5
     },
     cancelTextStyle: {
         paddingLeft: 25,
         fontSize: 20,
-        color: '#DAA520'
+        color: color.golden
     }
 });
