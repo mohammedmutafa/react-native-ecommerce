@@ -96,7 +96,7 @@ export class CategorySelector extends Component {
         return (
             <View>
                 <View style={level2TitleHeaderContainerStyle}>
-                    <Text style={{ color: color.lightWhite }}>{parentDataSourceTitle}</Text>
+                    <Text style={{ color: color.golden }}>{parentDataSourceTitle}</Text>
                     {drillIndex === 0 ? <View /> : <Icon
                         name="arrow-up"
                         type="feather"
