@@ -149,12 +149,14 @@ class GeneralProductDetails extends Component {
                         </View>
                     )}
                 >
-                    {this.renderProductTitle()}
-                    <Text style={styles.boldSeparator}>______</Text>
-                    {this.renderProductDescription()}
-                    {this.renderPhotoViewDivider()}
-                    {this.renderPhotoList()}
-                    {this.renderPhotoViewer()}
+                    <Animatable.View animation="slideInUp" delay={200}>
+                        {this.renderProductTitle()}
+                        <Text style={styles.boldSeparator}>______</Text>
+                        {this.renderProductDescription()}
+                        {this.renderPhotoViewDivider()}
+                        {this.renderPhotoList()}
+                        {this.renderPhotoViewer()}
+                    </Animatable.View>
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
             </View >
