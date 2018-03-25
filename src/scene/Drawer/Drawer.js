@@ -50,7 +50,7 @@ class Drawer extends Component {
                     style={{ right: 20 }}
                     iconName='ios-close-circle-outline'
                     iconType='ionicon'
-                    iconColor={Color.golden}
+                    iconColor={Color.lightWhite}
                     onPress={() => this.props.navigation.navigate('DrawerToggle')} />
                 <View style={{ marginTop: 100 }}>
                     {this.renderRow('Profile')}
