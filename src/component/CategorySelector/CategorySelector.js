@@ -80,8 +80,8 @@ export class CategorySelector extends Component {
             <ListItem
                 title={item.title}
                 underlayColor='transparent'
-                titleStyle={{ color: color.lightWhite }}
-                chevronColor={color.golden}
+                titleStyle={{ color: color.dark }}
+                chevronColor={color.dark}
                 hideChevron={item.children ? false : true}
                 leftIcon={{ name: item.icon }}
                 onPress={() => this.drillDown(item)}
@@ -100,6 +100,7 @@ export class CategorySelector extends Component {
                     {drillIndex === 0 ? <View /> : <Icon
                         name="arrow-up"
                         type="feather"
+                        underlayColor='transparent'
                         color={color.golden}
                         onPress={() => this.drillUP(dataSource)}
                     />}
