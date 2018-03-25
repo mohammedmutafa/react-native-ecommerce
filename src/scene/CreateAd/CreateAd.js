@@ -16,15 +16,15 @@ import { Icon, FormLabel, FormInput, CheckBox } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
-import Categories from '../styles/Categories';
-import districts from '../utilities/districts';
-import Colors from '../styles/Color';
+import Categories from '../../styles/Categories';
+import districts from '../../utilities/Functions';
+import Colors from '../../styles/Color';
 
-import { LocationSelector } from './LocationSelector';
-import { CategorySelector } from './CategorySelector';
-import { ConditionSelector } from './ConditionSelector';
-import { ProductDetailsInput } from './ProductDetailsInput';
-import { CreateAdCoverPhoto } from './CreateAdCoverPhoto';
+import { LocationSelector } from '../../component/LocationSelector';
+import { CategorySelector } from '../../component/CategorySelector';
+import { ConditionSelector } from '../../component/ConditionSelector';
+import { ProductDetailsInput } from '../../component/ProductDetailsInput';
+import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 
 const { categoryList } = Categories;
 

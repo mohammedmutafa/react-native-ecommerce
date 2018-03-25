@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import CreateAdPageComponent from '../component/CreateAd';
+import CreateAd from './CreateAd';
 
-class CreateAd extends Component {
+class CreateAdContainer extends Component {
     constructor(props) {
         super(props);
 
@@ -84,7 +84,7 @@ class CreateAd extends Component {
         } = this.state;
 
         return (
-            <CreateAdPageComponent
+            <CreateAd
                 selectedCategory={selectedCategory}
                 selectedSubCategory={selectedSubCategory}
                 isCreateAdSpecificationModalViewVisible={isCreateAdSpecificationModalViewVisible}
@@ -106,4 +106,4 @@ class CreateAd extends Component {
     }
 }
 
-export default CreateAd;
+export default CreateAdContainer;

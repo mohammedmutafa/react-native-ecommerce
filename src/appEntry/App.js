@@ -4,7 +4,7 @@ import { StackNavigator, DrawerNavigator, } from 'react-navigation';
 
 import Home from '../scene/Home';
 import GeneralProductDetails from '../scene/GeneralProductDetails';
-import CreateAdPage from '../container/CreateAd';
+import CreateAd from '../scene/CreateAd';
 import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
 import Drawer from '../scene/Drawer';
@@ -33,7 +33,7 @@ const StackNavigation = StackNavigator({
         })
     },
     CreateAd: {
-        screen: CreateAdPage,
+        screen: CreateAd,
         navigationOptions: (props) => ({
             headerTitleStyle: {
                 /*  */
