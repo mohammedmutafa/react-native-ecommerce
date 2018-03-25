@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { CheckBox } from 'react-native-elements';
 
 import styles from './styles';
+import Color from '../../styles/Color';
 
 const { container } = styles;
 
@@ -18,14 +19,18 @@ export class ConditionSelector extends Component {
         return (
             <View style={container}>
                 <CheckBox
+                    containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                     title='New'
+                    checkedColor={Color.dark}
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
                     checked={selectedItem === 'New' ? true : false}
                     onPress={setProductConditionNew}
                 />
                 <CheckBox
+                    containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                     title='Used'
+                    checkedColor={Color.dark}
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
                     checked={selectedItem === 'Used' ? true : false}

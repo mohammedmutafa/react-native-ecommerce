@@ -2,9 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'flex-start',
-        alignItems: 'center',
         marginTop: 5
     }
 });
