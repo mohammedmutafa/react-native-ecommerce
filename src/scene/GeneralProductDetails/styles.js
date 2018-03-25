@@ -3,8 +3,8 @@ import { StyleSheet, Platform, Dimensions } from 'react-native';
 import colors from '../../styles/Color';
 import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 
-const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
-const SLIDER_HEIGHT = screenWidth / 1.7;
+export const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
+export const SLIDER_HEIGHT = screenWidth / 1.7;
 const cardWidth = screenWidth / 3;
 const cardHeight = cardWidth + 40;
 

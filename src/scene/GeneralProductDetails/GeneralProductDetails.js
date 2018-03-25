@@ -3,7 +3,6 @@ import {
     View,
     Image,
     StyleSheet,
-    Dimensions,
     ScrollView,
     Platform,
     FlatList,
@@ -16,7 +15,7 @@ import * as Animatable from 'react-native-animatable';
 
 import Categories from '../../styles/Categories';
 import { PhotoViewer } from '../../component/PhotoViewer';
-import styles from './styles';
+import styles, { STICKY_HEADER_HEIGHT, SLIDER_HEIGHT } from './styles';
 
 const { MainCategory } = Categories;
 
@@ -162,14 +161,6 @@ class GeneralProductDetails extends Component {
         );
     }
 }
-
-const window = Dimensions.get('window');
-
-const STICKY_HEADER_HEIGHT = (110 / 768) * window.height;
-const SLIDER_HEIGHT = window.width / 1.7;
-const cardWidth = (window.width / 3);
-const cardHeight = cardWidth + 40;
-
 
 const {
     mainConatinerStyle,
