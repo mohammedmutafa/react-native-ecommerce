@@ -79,10 +79,15 @@ export default class Home extends Component {
             <View style={styles.floatingMenuButtonStyle}>
                 <Icon
                     raised
-                    name="buysellads"
+                    name="camera"
                     type="font-awesome"
-                    color="#2a2a2a"
+                    color={Color.lightWhite}
                     onPress={onCreateAdButtonPress}
+                    containerStyle={{
+                        backgroundColor: Color.dark,
+                        borderWidth: 0.5,
+                        borderColor: Color.golden
+                    }}
                 />
             </View>
         );
