@@ -69,7 +69,7 @@ export default class Home extends Component {
     }
 
     renderFloatingMenu = () => {
-        const { changeLoginWithPhoneModalViewState, isLoginWithPhoneModalVisible } = this.props;
+        const { changeLoginWithPhoneModalViewState, isLoginWithPhoneModalVisible, onCreateAdButtonPress } = this.props;
 
         if (isLoginWithPhoneModalVisible) {
             return <View />
@@ -79,10 +79,10 @@ export default class Home extends Component {
             <View style={styles.floatingMenuButtonStyle}>
                 <Icon
                     raised
-                    name="align-center"
-                    type="feather"
+                    name="buysellads"
+                    type="font-awesome"
                     color="#2a2a2a"
-                    onPress={changeLoginWithPhoneModalViewState}
+                    onPress={onCreateAdButtonPress}
                 />
             </View>
         );

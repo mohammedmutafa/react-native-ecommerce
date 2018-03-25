@@ -31,6 +31,10 @@ export default class HomeContainer extends Component {
         this.setState({ otpVerificationUIVisible: !this.state.otpVerificationUIVisible });
     }
 
+    onCreateAdButtonPress = () => {
+        this.props.navigation.navigate('CreateAd');
+    }
+
     onPhoneNumberInputChange = (text) => {
         let newText = '';
         let numbers = '0123456789';
@@ -58,6 +62,7 @@ export default class HomeContainer extends Component {
                 otpVerificationUIVisible={otpVerificationUIVisible}
                 changeOTPVerificationUIState={this.changeOTPVerificationUIState}
                 navigation={this.props.navigation}
+                onCreateAdButtonPress={this.onCreateAdButtonPress}
             />
         );
     }
