@@ -16,6 +16,7 @@ import * as Animatable from 'react-native-animatable';
 import Categories from '../../styles/Categories';
 import { PhotoViewer } from '../../component/PhotoViewer';
 import styles, { STICKY_HEADER_HEIGHT, SLIDER_HEIGHT } from './styles';
+import { numberWithCommas } from '../../utilities/Functions';
 
 const { MainCategory } = Categories;
 
@@ -23,39 +24,36 @@ class GeneralProductDetails extends Component {
 
     renderImageView = () => {
         const { containerStyle, semiTransparentViewStyle } = styles;
+        const { thumbnailURL, time } = this.props;
 
         return (
             <View style={containerStyle}>
                 <Image
-                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/fashion.jpg?alt=media&token=3426181c-22fa-43f1-aac3-177b20676bb5' }}
+                    source={{ uri: thumbnailURL }}
                     style={styles.slide1}
                 />
                 <View style={semiTransparentViewStyle} />
                 <View style={styles.textContainerStyle}>
                     <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}></Animatable.Text>
                     <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={200}>This is a demo title for the product descriptions.</Animatable.Text>
-                    <Animatable.Text style={styles.dateTextStyle} animation="fadeInLeft" delay={200}>25th December, 2018</Animatable.Text>
+                    <Animatable.Text style={styles.dateTextStyle} animation="fadeInLeft" delay={200}>{time}</Animatable.Text>
                 </View>
             </View >
         );
     }
 
     renderProductTitle = () => {
+        const { price } = this.props;
         return (
-            <Text style={styles.priceTextStyle}>₹ 20,000</Text>
+            <Text style={styles.priceTextStyle}>{`₹ ${numberWithCommas(price)}`}</Text>
         );
     }
 
     renderProductDescription = () => {
+        const { details } = this.props;
+
         return (
-            <Text style={styles.decsriptionTextStyle}>When numberOfLines is set, this prop defines how text will be truncated. numberOfLines must be set in conjunction with this prop.
-
-            This can be one of the following values:
-
-            head - The line is displayed so that the end fits in the container and the missing text at the beginning of the line is indicated by an ellipsis glyph. e.g., "...wxyz"
-            middle - The line is displayed so that the beginning and end fit in the container and the missing text in the middle is indicated by an ellipsis glyph. "ab...yz"
-            tail - The line is displayed so that the beginning fits in the container and the missing text at the end of the line is indicated by an ellipsis glyph. e.g., "abcd..."
-            clip - Lines are not drawn past the edge of the text container.</Text>
+            <Text style={styles.decsriptionTextStyle}>{details}</Text>
         );
     }
 

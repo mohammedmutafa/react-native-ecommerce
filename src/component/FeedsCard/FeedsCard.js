@@ -71,7 +71,14 @@ export class FeedsCard extends Component {
                 </View>
                 <TouchableOpacity
                     style={imageViewContainerStyle}
-                    onPress={() => navigation.navigate('GeneralProductDetails')}
+                    onPress={() => navigation.navigate('GeneralProductDetails',
+                        {
+                            time: this.props.time,
+                            name: this.props.name,
+                            price: this.props.price,
+                            title: this.props.title,
+                            thumbnailURL: this.props.thumbnailURL
+                        })}
                 >
                     <Image
                         source={{ uri: imageURL }}
