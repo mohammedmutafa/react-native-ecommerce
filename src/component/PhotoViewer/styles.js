@@ -14,7 +14,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         padding: 15,
         width: screenWidth,
-        height: deviceScaledHeight(50),
+        height: deviceScaledHeight(55),
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
         position: 'absolute'
     }

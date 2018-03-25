@@ -8,6 +8,7 @@ import Gallery from 'react-native-image-gallery';
 import { Icon } from 'react-native-elements';
 
 import styles from './styles';
+import Color from '../../styles/Color';
 
 const {
     container,
@@ -31,6 +32,7 @@ export class PhotoViewer extends React.PureComponent {
         return (
             <View style={navigationBar}>
                 <Icon
+                    containerStyle={{ padding: 5 }}
                     underlayColor='transparent'
                     name='close'
                     type='evilIcons'
@@ -55,7 +57,7 @@ export class PhotoViewer extends React.PureComponent {
         return (
             <Modal visible={isPhotoViewerVisible} animationType="slide">
                 <Gallery
-                    style={{ flex: 1, backgroundColor: 'black' }}
+                    style={{ flex: 1, backgroundColor: Color.dark }}
                     onPageSelected={this.onChangeImage}
                     initialPage={photoIndex}
                     images={dataSource}
