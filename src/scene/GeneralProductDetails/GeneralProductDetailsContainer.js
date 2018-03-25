@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import GeneralProductDetailsPageComponent from '../component/GeneralProductDetailsPage';
+import GeneralProductDetails from './GeneralProductDetails';
 
-class GeneralProductDetailsPage extends Component {
+class GeneralProductDetailsContainer extends Component {
     constructor(props) {
         super(props);
 
@@ -27,7 +27,7 @@ class GeneralProductDetailsPage extends Component {
         const { isPhotoViewerVisible } = this.state;
 
         return (
-            <GeneralProductDetailsPageComponent
+            <GeneralProductDetails
                 isPhotoViewerVisible={isPhotoViewerVisible}
                 showPhotoViewer={this.showPhotoViewer}
                 hidePhotoViewer={this.hidePhotoViewer}
@@ -36,4 +36,4 @@ class GeneralProductDetailsPage extends Component {
     }
 }
 
-export default GeneralProductDetailsPage;
+export default GeneralProductDetailsContainer;

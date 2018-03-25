@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { StackNavigator, DrawerNavigator, } from 'react-navigation';
 
 import Home from '../scene/Home';
-import GeneralProductDetailsPage from '../container/GeneralProductDetailsPage';
+import GeneralProductDetails from '../scene/GeneralProductDetails';
 import CreateAdPage from '../container/CreateAd';
 import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
@@ -19,7 +19,7 @@ const StackNavigation = StackNavigator({
         })
     },
     GeneralProductDetails: {
-        screen: GeneralProductDetailsPage,
+        screen: GeneralProductDetails,
         navigationOptions: (props) => ({
             headerTitleStyle: {
                 /*  */
