@@ -102,7 +102,7 @@ export class CreateAdsCard extends Component {
     render() {
         return (
             <View style={conatinerStyle}>
-                <Text style={{ color: colors.dark, alignSelf: 'center', fontSize: 35, fontWeight: 'bold', marginVertical: 15 }}>
+                <Text style={{ color: colors.dark, alignSelf: 'center', fontSize: 35, fontWeight: 'bold', marginVertical: 10 }}>
                     {`₹ ${numberWithCommas(80000)}`}
                 </Text>
                 <Text style={boldSeparator}>______</Text>
