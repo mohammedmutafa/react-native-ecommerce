@@ -36,20 +36,40 @@ export class CreateAdsCard extends Component {
     renderSwiper = () => {
         return (
             <View style={swiperStyle} >
-                <Swiper autoplay={true} activeDotColor={Color.lightWhite}>
+                <Swiper  activeDotColor={Color.lightWhite}>
                     {this.renderSwipeCardsTitle()}
-                    {this.renderSwipeCardsTitle()}
-                    {this.renderSwipeCardsTitle()}
+                    {this.renderSwiperCardCategory()}
+                    {this.renderSwiperCardCondition()}
+                    {this.renderSwiperCardLocation()}
                 </Swiper>
             </View>
         );
     }
 
-    renderSwiperCardOtherInfo = () => {
+    renderSwiperCardLocation = () => {
         return (
-            <View>
+            <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: colors.lightWhite }}>Location</Text>
+                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: colors.lightWhite }}>Kathmandu</Text>
+            </Animatable.View>
+        );
+    }
 
-            </View>
+    renderSwiperCardCondition = () => {
+        return (
+            <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: colors.lightWhite }}>Product Condition</Text>
+                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: colors.lightWhite }}>New</Text>
+            </Animatable.View>
+        );
+    }
+
+    renderSwiperCardCategory = () => {
+        return (
+            <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: colors.lightWhite }}>Category</Text>
+                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: colors.lightWhite }}>Phone/Samsung</Text>
+            </Animatable.View>
         );
     }
 
