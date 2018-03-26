@@ -13,7 +13,7 @@ export default styles = StyleSheet.create({
     },
     swipeCardStyle: {
         width: screenWidth - 30,
-        height: (screenWidth - 30) * 0.6,
+        height: (screenWidth - 35) * 0.6,
         marginVertical: 20,
         borderRadius: 5,
         padding: 15,
@@ -36,7 +36,7 @@ export default styles = StyleSheet.create({
     },
     swiperStyle: {
         width: screenWidth,
-        height: (screenWidth) * 0.6,
+        height: screenWidth * 0.6,
         justifyContent: 'center',
         alignItems: 'center',
     },
