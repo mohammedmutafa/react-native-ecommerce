@@ -10,14 +10,17 @@ import {
 import PropTypes from 'prop-types';
 import { Avatar, Icon } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
+import Swiper from 'react-native-swiper';
 
 import styles from './styles';
 import colors from '../../styles/Color';
 import { numberWithCommas } from '../../utilities/Functions';
+import Color from '../../styles/Color';
 
 const {
     conatinerStyle,
     swipeCardStyle,
+    swiperStyle,
     descriptionCardStyle
 } = styles;
 
@@ -27,6 +30,18 @@ export class CreateAdsCard extends Component {
         this.state = {
 
         }
+    }
+
+    renderSwiper = () => {
+        return (
+            <View style={swiperStyle} >
+                <Swiper autoplay={true} activeDotColor={Color.lightWhite}>
+                    {this.renderSwipeCardsTitle()}
+                    {this.renderSwipeCardsTitle()}
+                    {this.renderSwipeCardsTitle()}
+                </Swiper>
+            </View>
+        );
     }
 
     renderSwipeCardsDescription = () => {
@@ -61,7 +76,7 @@ export class CreateAdsCard extends Component {
                 <Text style={{ color: colors.dark, alignSelf: 'center', fontSize: 35, fontWeight: 'bold', marginVertical: 15 }}>
                     {`₹ ${numberWithCommas(80000)}`}
                 </Text>
-                {this.renderSwipeCardsTitle()}
+                {this.renderSwiper()}
                 {this.renderSwipeCardsDescription()}
             </View>
 

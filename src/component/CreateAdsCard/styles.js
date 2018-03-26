@@ -19,6 +19,7 @@ export default styles = StyleSheet.create({
         padding: 15,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
         // backgroundColor: '#F6F8FC',
         backgroundColor: Color.dark,
         ...Platform.select({
@@ -32,6 +33,12 @@ export default styles = StyleSheet.create({
                 elevation: 2,
             }
         })
+    },
+    swiperStyle: {
+        width: screenWidth,
+        height: (screenWidth) * 0.6,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     descriptionCardStyle: {
         marginVertical: 20,
