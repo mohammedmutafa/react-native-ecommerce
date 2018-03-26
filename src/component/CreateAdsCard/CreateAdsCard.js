@@ -21,6 +21,7 @@ const {
     conatinerStyle,
     swipeCardStyle,
     swiperStyle,
+    boldSeparator,
     descriptionCardStyle
 } = styles;
 
@@ -40,6 +41,14 @@ export class CreateAdsCard extends Component {
                     {this.renderSwipeCardsTitle()}
                     {this.renderSwipeCardsTitle()}
                 </Swiper>
+            </View>
+        );
+    }
+
+    renderSwiperCardOtherInfo = () => {
+        return (
+            <View>
+
             </View>
         );
     }
@@ -76,6 +85,7 @@ export class CreateAdsCard extends Component {
                 <Text style={{ color: colors.dark, alignSelf: 'center', fontSize: 35, fontWeight: 'bold', marginVertical: 15 }}>
                     {`₹ ${numberWithCommas(80000)}`}
                 </Text>
+                <Text style={boldSeparator}>______</Text>
                 {this.renderSwiper()}
                 {this.renderSwipeCardsDescription()}
             </View>

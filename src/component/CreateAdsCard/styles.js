@@ -59,5 +59,11 @@ export default styles = StyleSheet.create({
                 elevation: 2,
             }
         })
+    },
+    boldSeparator: {
+        color: Color.golden,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        fontSize: 30
     }
 });
