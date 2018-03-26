@@ -68,7 +68,7 @@ const dataSource = [
         owner: 'Suraj Singh',
         time: '2nd Jan 2018',
         price: '95000',
-        url: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_iphonex.jpeg?alt=media&token=9b984421-3730-4e40-b17f-01d12fd5cfa5',
+        url: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_iphonex.jpg?alt=media&token=5339b75b-8199-4bcc-82e1-0d19f377e058',
         title: 'With iPhone X, the device is the display. An all‑new 5.8‑inch Super Retina screen fills the hand and dazzles the eyes. A tiny space houses some of the most sophisticated technology we’ve ever developed, including the cameras and sensors that enable Face ID. The most durable glass ever in a smartphone, front and back. Surgical‑grade stainless steel. Wireless charging. Water and dust resistance.'
     },
     {
