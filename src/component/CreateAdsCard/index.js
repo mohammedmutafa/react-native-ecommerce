@@ -1,0 +1,1 @@
+export { CreateAdsCard } from './CreateAdsCard';
