@@ -51,7 +51,7 @@ class Drawer extends Component {
                     iconName='ios-close-circle-outline'
                     iconType='ionicon'
                     iconColor={Color.lightWhite}
-                    onPress={() => this.props.navigation.navigate('DrawerToggle')} />
+                    onPress={() => this.props.navigation.navigate('DrawerClose')} />
                 <View style={{ marginTop: 100 }}>
                     {this.renderRow('Profile')}
                     {this.renderRow('Bookmarked Items')}
