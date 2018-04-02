@@ -54,7 +54,7 @@ export class CreateAdSteps extends Component {
             <TextInput
                 style={textInputPriceStyle}
                 keyboardType='numeric'
-                placeholder='₹'
+                placeholder='₹ (Price)'
                 placeholderTextColor={Color.lightWhite}
                 autoFocus={true}
                 multiline={false}
