@@ -21,20 +21,24 @@ export class ConditionSelector extends Component {
                 <CheckBox
                     containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                     title='New'
-                    checkedColor={Color.dark}
+                    checkedColor={Color.lightWhite}
                     checkedIcon='dot-circle-o'
+                    textStyle={{ color: Color.lightWhite }}
                     uncheckedIcon='circle-o'
                     checked={selectedItem === 'New' ? true : false}
                     onPress={setProductConditionNew}
+                    size={35}
                 />
                 <CheckBox
                     containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                     title='Used'
-                    checkedColor={Color.dark}
+                    checkedColor={Color.lightWhite}
+                    textStyle={{ color: Color.lightWhite }}
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
                     checked={selectedItem === 'Used' ? true : false}
                     onPress={setProductConditionUsed}
+                    size={35}
                 />
             </View>
         );

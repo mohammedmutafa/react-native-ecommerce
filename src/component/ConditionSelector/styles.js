@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
-
+import { screenWidth, screenHeight } from '../../utilities/ScreenSize';
 export default StyleSheet.create({
     container: {
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        marginTop: 5
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: screenWidth - 15,
+        paddingHorizontal: 15,
+        position: 'absolute'
     }
 });

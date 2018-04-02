@@ -10,9 +10,10 @@ import {
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import colors from '../../styles/Color';
 import { numberWithCommas } from '../../utilities/Functions';
 import Color from '../../styles/Color';
+
+import { ConditionSelector } from '../../component/ConditionSelector';
 
 const {
     container,
@@ -33,6 +34,7 @@ export class CreateAdSteps extends Component {
 
     renderNextButton = () => {
         const { step } = this.state;
+
         return (
             <View style={backButtonsContainer}>
                 <Text style={{ color: '#ffffff', padding: 25, backgroundColor: 'transparent', fontSize: 18 }}
@@ -50,6 +52,8 @@ export class CreateAdSteps extends Component {
     }
 
     renderPriceTextInput = () => {
+        const { productPrice, onProductPriceInput } = this.props;
+
         return (
             <TextInput
                 style={textInputPriceStyle}
@@ -59,9 +63,8 @@ export class CreateAdSteps extends Component {
                 autoFocus={true}
                 multiline={false}
                 maxLength={10}
-            // onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
-            // value={productPrice ? productPrice.toLocaleString('en') : ''}
-            // value={'20000'}
+                onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
+                value={productPrice}
             />
         );
     }
@@ -99,6 +102,18 @@ export class CreateAdSteps extends Component {
         );
     }
 
+    renderProductCondition = () => {
+        const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
+
+        return (
+            <ConditionSelector
+                selectedItem={selectedProductCondition}
+                setProductConditionUsed={setProductConditionUsed}
+                setProductConditionNew={setProductConditionNew}
+            />
+        );
+    }
+
     renderDynamicView = () => {
         switch (this.state.step) {
             case 1:
@@ -107,6 +122,8 @@ export class CreateAdSteps extends Component {
                 return this.renderTitleTextInput();
             case 3:
                 return this.renderDescriptionTextInput();
+            case 4:
+                return this.renderProductCondition();
         }
     }
 
@@ -129,5 +146,9 @@ export class CreateAdSteps extends Component {
 }
 
 CreateAdSteps.propTypes = {
-
+    productPrice: PropTypes.string,
+    onProductPriceInput: PropTypes.func,
+    selectedProductCondition: PropTypes.string,
+    setProductConditionUsed: PropTypes.func,
+    setProductConditionNew: PropTypes.func
 };
