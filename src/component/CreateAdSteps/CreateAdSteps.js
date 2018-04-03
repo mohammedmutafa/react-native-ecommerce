@@ -108,10 +108,12 @@ export class CreateAdSteps extends Component {
     }
 
     renderDescriptionTextInput = () => {
+        const { productDescription, setProductDescription } = this.props;
+
         return (
             <TextInput
                 style={textInputTitleStyle}
-                // onChangeText={(text) => this.setState({ text })}
+                onChangeText={setProductDescription}
                 placeholder="Product Description"
                 clearButtonMode='always'
                 placeholderTextColor='#FFFFFF'
@@ -119,7 +121,7 @@ export class CreateAdSteps extends Component {
                 maxLength={500}
                 numberOfLines={4}
                 autoFocus={true}
-            // value={this.state.text}
+                value={productDescription}
             />
         );
     }
@@ -195,9 +197,10 @@ CreateAdSteps.propTypes = {
     selectedProductCondition: PropTypes.string,
     setProductConditionUsed: PropTypes.func,
     setProductConditionNew: PropTypes.func,
-
     isSelectLocationModalViewVisible: PropTypes.bool,
     changeStateOfSelectLocationModalView: PropTypes.func,
+    productDescription: PropTypes.string,
+    setProductDescription: PropTypes.func
     //  selectedLocation:
     //updateSelectedLocations={updateSelectedLocations}
 };
