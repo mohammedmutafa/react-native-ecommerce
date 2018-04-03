@@ -20,10 +20,6 @@ import Categories from '../../styles/Categories';
 import districts from '../../utilities/Functions';
 import Colors from '../../styles/Color';
 
-import { LocationSelector } from '../../component/LocationSelector';
-import { CategorySelector } from '../../component/CategorySelector';
-import { ConditionSelector } from '../../component/ConditionSelector';
-import { ProductDetailsInput } from '../../component/ProductDetailsInput';
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 import { CreateAdSteps } from '../../component/CreateAdSteps';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
@@ -39,54 +35,6 @@ class CreateAd extends Component {
             />
         );
     }
-
-    renderHorizontalBorder = () => {
-        return <View style={{ height: 0.5, backgroundColor: '#D3D3D3' }} />
-    }
-
-    renderHeaderText = (text) => <Text style={styles.headerTextStyle}>{text}</Text>;
-
-    renderProductTitleInput = () => {
-        const { textInputContainerStyle, headerTextStyle, textInputStyle } = styles;
-
-        return (
-            <View style={textInputContainerStyle} >
-                {this.renderHeaderText('Title')}
-                <TextInput
-                    style={textInputStyle}
-                    // onChangeText={(text) => this.setState({ text })}
-                    placeholder="Product Title"
-                    clearButtonMode='always'
-                    multiline={false}
-                    maxLength={50}
-                // value={this.state.text}
-                />
-                {this.renderHorizontalBorder()}
-            </View>
-        );
-    }
-
-    /*renderProductPrice = () => {
-        const { textInputContainerStyle, textInputStyle } = styles;
-        const { productPrice, onProductPriceInput } = this.props;
-
-        return (
-            <View style={textInputContainerStyle} >
-                {this.renderHeaderText('Price (₹)')}
-                <TextInput
-                    style={textInputStyle}
-                    keyboardType='numeric'
-                    placeholder='₹'
-                    clearButtonMode='always'
-                    multiline={false}
-                    maxLength={9}
-                    onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
-                    value={productPrice ? productPrice.toLocaleString('en') : ''}
-                />
-                {this.renderHorizontalBorder()}
-            </View>
-        );
-    }*/
 
     renderProductCategory = () => {
         const { textInputContainerStyle, textInputStyle } = styles;
@@ -111,40 +59,6 @@ class CreateAd extends Component {
         );
     }
 
-    /*renderProductCondition = () => {
-        const { textInputContainerStyle } = styles;
-        const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
-
-        return (
-            <View style={textInputContainerStyle}>
-                {this.renderHeaderText('Product Condition')}
-                <ConditionSelector
-                    selectedItem={selectedProductCondition}
-                    setProductConditionUsed={setProductConditionUsed}
-                    setProductConditionNew={setProductConditionNew}
-                />
-            </View>
-        );
-    }*/
-
-    /*renderProductDescription = () => {
-        const { textInputContainerStyle, textInputStyle } = styles;
-        const { changeStateOfproductDescriptionModalView } = this.props;
-
-        return (
-            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfproductDescriptionModalView}>
-                {this.renderHeaderText('Description')}
-                <TextInput
-                    style={textInputStyle}
-                    placeholder='Product Details'
-                    pointerEvents='none'
-                    value={null}
-                />
-                {this.renderHorizontalBorder()}
-            </TouchableOpacity>
-        );
-    }*/
-
     /*getSelectedLocationString = () => {
         const { selectedLocation } = this.props;
         let location = '';
@@ -156,47 +70,6 @@ class CreateAd extends Component {
         }
         return location;
     }*/
-
-    /*renderProductLocation = () => {
-        const { textInputContainerStyle, textInputStyle } = styles;
-        const {
-            changeStateOfSelectLocationModalView,
-            selectedLocation,
-            updateSelectedLocations
-        } = this.props;
-
-        return (
-            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfSelectLocationModalView}>
-                {this.renderHeaderText('Location')}
-                <Text
-                    style={textInputStyle}
-                    placeholder='Choose Location'
-                    pointerEvents='none'
-                    ellipsizeMode='tail'
-                    numberOfLines={1}
-                >
-                    {this.getSelectedLocationString()}
-                </Text>
-                {this.renderHorizontalBorder()}
-            </TouchableOpacity>
-        );
-    }*/
-
-    renderProductTitleDivider = (title, placeholder, value, onPress) => {
-        const { titleDividerStyle, textInputContainerStyle, photoViewDividerTextstyle } = styles;
-        return (
-            <View style={textInputContainerStyle} >
-                <FormLabel>{title}</FormLabel>
-                <TouchableOpacity onPress={onPress}>
-                    <FormInput
-                        value={value}
-                        pointerEvents="none"
-                        placeholder={placeholder}
-                        onChangeText={null} />
-                </TouchableOpacity>
-            </View>
-        );
-    }
 
     renderFloatingShareButton = () => {
         const { floatingShareButtonStyle, floatingButtonContainerStyle } = styles;
