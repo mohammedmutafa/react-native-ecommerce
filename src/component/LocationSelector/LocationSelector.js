@@ -23,9 +23,14 @@ const {
 
 export class LocationSelector extends Component {
 
+    onPressDone = () => {
+        this.props.changeStateOfSelectLocationModalView();
+        this.props.createAdStatusDone();
+    }
+
     navBar = () => {
         return (
-            <TouchableOpacity style={navigationBar} onPress={this.props.changeStateOfSelectLocationModalView}>
+            <TouchableOpacity style={navigationBar} onPress={this.onPressDone}>
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Done</Text>
             </TouchableOpacity>
         );

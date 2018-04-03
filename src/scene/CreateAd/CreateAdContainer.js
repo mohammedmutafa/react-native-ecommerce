@@ -15,7 +15,8 @@ class CreateAdContainer extends Component {
             productPrice: 0,
             isSelectLocationModalViewVisible: false,
             productDescription: undefined, //TODO fix it on text change 
-            isProductDescriptionModalViewVisible: false
+            isProductDescriptionModalViewVisible: false,
+            createAdStatus: true
         };
     }
 
@@ -34,6 +35,12 @@ class CreateAdContainer extends Component {
     changeStateOfSelectLocationModalView = () => {
         this.setState({
             isSelectLocationModalViewVisible: !this.state.isSelectLocationModalViewVisible
+        });
+    }
+
+    createAdStatusDone = () => {
+        this.setState({
+            createAdStatus: false
         });
     }
 
@@ -80,7 +87,8 @@ class CreateAdContainer extends Component {
             isProductDescriptionModalViewVisible,
             selectedProductCondition,
             productPrice,
-            selectedLocation
+            selectedLocation,
+            createAdStatus
         } = this.state;
 
         return (
@@ -101,6 +109,8 @@ class CreateAdContainer extends Component {
                 onProductPriceInput={this.onProductPriceInput}
                 selectedLocation={selectedLocation}
                 updateSelectedLocations={this.updateSelectedLocations}
+                createAdStatusDone={this.createAdStatusDone}
+                createAdStatus={createAdStatus}
             />
         );
     }

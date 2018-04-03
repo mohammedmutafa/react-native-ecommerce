@@ -25,6 +25,8 @@ import { CategorySelector } from '../../component/CategorySelector';
 import { ConditionSelector } from '../../component/ConditionSelector';
 import { ProductDetailsInput } from '../../component/ProductDetailsInput';
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
+import { CreateAdSteps } from '../../component/CreateAdSteps';
+import { CreateAdsCard } from '../../component/CreateAdsCard';
 
 const { categoryList } = Categories;
 
@@ -64,7 +66,7 @@ class CreateAd extends Component {
         );
     }
 
-    renderProductPrice = () => {
+    /*renderProductPrice = () => {
         const { textInputContainerStyle, textInputStyle } = styles;
         const { productPrice, onProductPriceInput } = this.props;
 
@@ -84,7 +86,7 @@ class CreateAd extends Component {
                 {this.renderHorizontalBorder()}
             </View>
         );
-    }
+    }*/
 
     renderProductCategory = () => {
         const { textInputContainerStyle, textInputStyle } = styles;
@@ -109,7 +111,7 @@ class CreateAd extends Component {
         );
     }
 
-    renderProductCondition = () => {
+    /*renderProductCondition = () => {
         const { textInputContainerStyle } = styles;
         const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
 
@@ -123,9 +125,9 @@ class CreateAd extends Component {
                 />
             </View>
         );
-    }
+    }*/
 
-    renderProductDescription = () => {
+    /*renderProductDescription = () => {
         const { textInputContainerStyle, textInputStyle } = styles;
         const { changeStateOfproductDescriptionModalView } = this.props;
 
@@ -141,9 +143,9 @@ class CreateAd extends Component {
                 {this.renderHorizontalBorder()}
             </TouchableOpacity>
         );
-    }
+    }*/
 
-    getSelectedLocationString = () => {
+    /*getSelectedLocationString = () => {
         const { selectedLocation } = this.props;
         let location = '';
 
@@ -153,9 +155,9 @@ class CreateAd extends Component {
             location = location + obj.name + ', ';
         }
         return location;
-    }
+    }*/
 
-    renderProductLocation = () => {
+    /*renderProductLocation = () => {
         const { textInputContainerStyle, textInputStyle } = styles;
         const {
             changeStateOfSelectLocationModalView,
@@ -178,7 +180,7 @@ class CreateAd extends Component {
                 {this.renderHorizontalBorder()}
             </TouchableOpacity>
         );
-    }
+    }*/
 
     renderProductTitleDivider = (title, placeholder, value, onPress) => {
         const { titleDividerStyle, textInputContainerStyle, photoViewDividerTextstyle } = styles;
@@ -224,8 +226,32 @@ class CreateAd extends Component {
             isProductDescriptionModalViewVisible,
             changeStateOfproductDescriptionModalView,
             selectedLocation,
-            updateSelectedLocations
+            updateSelectedLocations,
+            productPrice,
+            onProductPriceInput,
+            createAdStatusDone,
+            createAdStatus
         } = this.props;
+
+        const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
+
+
+        if (createAdStatus) {
+            return (
+                <CreateAdSteps
+                    onProductPriceInput={onProductPriceInput}
+                    productPrice={productPrice ? productPrice.toLocaleString('en') : ''}
+                    selectedProductCondition={selectedProductCondition}
+                    setProductConditionUsed={setProductConditionUsed}
+                    setProductConditionNew={setProductConditionNew}
+                    isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                    changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
+                    selectedLocation={selectedLocation}
+                    updateSelectedLocations={updateSelectedLocations}
+                    createAdStatusDone={createAdStatusDone}
+                />
+            );
+        }
 
         return (
             <View style={mainConatinerStyle}>
@@ -241,35 +267,9 @@ class CreateAd extends Component {
                         </View>
                     )}
                 >
-                    {this.renderProductTitleInput()}
-                    {this.renderProductCategory()}
-                    {this.renderProductPrice()}
-                    {this.renderProductCondition()}
-                    {this.renderProductLocation()}
-                    {this.renderProductDescription()}
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={isCreateAdSpecificationModalViewVisible}
-                        onRequestClose={null}
-                    >
-                        <CategorySelector
-                            changeStateOfCreateAdSpecificationModalView={changeStateOfCreateAdSpecificationModalView}
-                            updateProductDetails={updateProductDetails}
-                        />
-                    </Modal >
+                    <CreateAdsCard />
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
-                <LocationSelector
-                    isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
-                    changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
-                    selectedLocation={selectedLocation}
-                    updateSelectedLocations={updateSelectedLocations}
-                />
-                <ProductDetailsInput
-                    isVisible={isProductDescriptionModalViewVisible}
-                    changeStateOfproductDescriptionModalView={changeStateOfproductDescriptionModalView}
-                />
             </View >
         );
     }

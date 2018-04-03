@@ -14,6 +14,7 @@ import { numberWithCommas } from '../../utilities/Functions';
 import Color from '../../styles/Color';
 
 import { ConditionSelector } from '../../component/ConditionSelector';
+import { LocationSelector } from '../../component/LocationSelector';
 
 const {
     container,
@@ -32,20 +33,40 @@ export class CreateAdSteps extends Component {
         }
     }
 
+    onPressBackButton = () => {
+        const { step } = this.state;
+
+        this.setState({
+            step: (step - 1)
+        });
+    }
+
+    onPressNextButton = () => {
+        const { step } = this.state;
+
+        this.setState({
+            step: step + 1
+        });
+
+        if ((step + 1) === 5) {
+            this.props.changeStateOfSelectLocationModalView();
+        }
+    }
+
     renderNextButton = () => {
         const { step } = this.state;
 
         return (
             <View style={backButtonsContainer}>
                 <Text style={{ color: '#ffffff', padding: 25, backgroundColor: 'transparent', fontSize: 18 }}
-                    onPress={() => this.setState({ step: step === 1 ? null : (step - 1) })}
+                    onPress={this.onPressBackButton}
                 >
                     {step === 1 ? '' : 'Back'}
                 </Text>
                 <Text style={{ color: '#ffffff', padding: 25, backgroundColor: 'transparent', fontSize: 18 }}
-                    onPress={() => this.setState({ step: this.state.step + 1 })}
+                    onPress={this.onPressNextButton}
                 >
-                    {step === 4 ? 'Done' : 'Next'}
+                    {step === 5 ? 'Done' : 'Next'}
                 </Text>
             </View>
         );
@@ -114,6 +135,26 @@ export class CreateAdSteps extends Component {
         );
     }
 
+    renderProductLocation = () => {
+        const {
+            changeStateOfSelectLocationModalView,
+            isSelectLocationModalViewVisible,
+            selectedLocation,
+            updateSelectedLocations,
+            createAdStatusDone
+        } = this.props;
+
+        return (
+            <LocationSelector
+                isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
+                selectedLocation={selectedLocation}
+                updateSelectedLocations={updateSelectedLocations}
+                createAdStatusDone={createAdStatusDone}
+            />
+        );
+    }
+
     renderDynamicView = () => {
         switch (this.state.step) {
             case 1:
@@ -124,6 +165,8 @@ export class CreateAdSteps extends Component {
                 return this.renderDescriptionTextInput();
             case 4:
                 return this.renderProductCondition();
+            case 5:
+                return this.renderProductLocation();
         }
     }
 
@@ -150,5 +193,10 @@ CreateAdSteps.propTypes = {
     onProductPriceInput: PropTypes.func,
     selectedProductCondition: PropTypes.string,
     setProductConditionUsed: PropTypes.func,
-    setProductConditionNew: PropTypes.func
+    setProductConditionNew: PropTypes.func,
+
+    isSelectLocationModalViewVisible: PropTypes.bool,
+    changeStateOfSelectLocationModalView: PropTypes.func,
+    //  selectedLocation:
+    //updateSelectedLocations={updateSelectedLocations}
 };
