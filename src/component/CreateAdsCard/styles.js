@@ -42,6 +42,7 @@ export default styles = StyleSheet.create({
     },
     descriptionCardStyle: {
         marginVertical: 20,
+        width: screenWidth - 30,
         marginHorizontal: 15,
         borderRadius: 5,
         padding: 25,
