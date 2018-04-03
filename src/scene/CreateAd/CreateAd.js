@@ -140,7 +140,11 @@ class CreateAd extends Component {
                         </View>
                     )}
                 >
-                    <CreateAdsCard />
+                    <CreateAdsCard
+                        selectedLocation={selectedLocation}
+                        productPrice={productPrice}
+                        selectedProductCondition={selectedProductCondition}
+                    />
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
             </View >
