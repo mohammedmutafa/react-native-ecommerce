@@ -105,7 +105,7 @@ class CreateAd extends Component {
             return (
                 <CreateAdSteps
                     onProductPriceInput={onProductPriceInput}
-                    productPrice={productPrice ? productPrice.toLocaleString('en') : ''}
+                    productPrice={productPrice}
                     selectedProductCondition={selectedProductCondition}
                     setProductConditionUsed={setProductConditionUsed}
                     setProductConditionNew={setProductConditionNew}
