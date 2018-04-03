@@ -102,12 +102,12 @@ export class CreateAdsCard extends Component {
     }
 
     renderSwipeCardsTitle = () => {
+        const { productTitle } = this.props;
+
         return (
             <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
                 <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Title</Text>
-                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>
-                    HIGH-QUALITY DRONE GREAT FOR BEGINNERS: Equipped with REAL-TIME WI-FI transmission and HD camera. Wonderful choice for starting their journey with drone flying. It’s made of premium materials and comes at a fantastic value.'
-                </Text>
+                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{productTitle}</Text>
             </Animatable.View>
         );
     }
@@ -128,5 +128,5 @@ export class CreateAdsCard extends Component {
 }
 
 CreateAdsCard.propTypes = {
-
+    productTitle: PropTypes.string
 };

@@ -91,17 +91,18 @@ export class CreateAdSteps extends Component {
     }
 
     renderTitleTextInput = () => {
+        const { productTitle, setProductTitle } = this.props;
         return (
             <TextInput
                 style={textInputTitleStyle}
-                // onChangeText={(text) => this.setState({ text })}
+                onChangeText={setProductTitle}
                 placeholder="Product Title"
                 clearButtonMode='always'
                 placeholderTextColor={Color.lightWhite}
                 multiline={false}
                 maxLength={50}
                 autoFocus={true}
-            // value={this.state.text}
+                value={productTitle}
             />
         );
     }

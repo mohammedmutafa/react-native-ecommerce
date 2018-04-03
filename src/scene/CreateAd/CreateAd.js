@@ -59,18 +59,6 @@ class CreateAd extends Component {
         );
     }
 
-    /*getSelectedLocationString = () => {
-        const { selectedLocation } = this.props;
-        let location = '';
-
-        for (let value of selectedLocation) {
-            let obj = districts.find((item) => { return item.id == value });
-
-            location = location + obj.name + ', ';
-        }
-        return location;
-    }*/
-
     renderFloatingShareButton = () => {
         const { floatingShareButtonStyle, floatingButtonContainerStyle } = styles;
 
@@ -103,7 +91,9 @@ class CreateAd extends Component {
             productPrice,
             onProductPriceInput,
             createAdStatusDone,
-            createAdStatus
+            createAdStatus,
+            productTitle,
+            setProductTitle
         } = this.props;
 
         const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
@@ -122,6 +112,8 @@ class CreateAd extends Component {
                     selectedLocation={selectedLocation}
                     updateSelectedLocations={updateSelectedLocations}
                     createAdStatusDone={createAdStatusDone}
+                    productTitle={productTitle}
+                    setProductTitle={setProductTitle}
                 />
             );
         }
@@ -144,6 +136,7 @@ class CreateAd extends Component {
                         selectedLocation={selectedLocation}
                         productPrice={productPrice}
                         selectedProductCondition={selectedProductCondition}
+                        productTitle={productTitle}
                     />
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}

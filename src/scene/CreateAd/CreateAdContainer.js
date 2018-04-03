@@ -9,10 +9,11 @@ class CreateAdContainer extends Component {
         this.state = {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
-            isCreateAdSpecificationModalViewVisible: false,
             selectedLocation: [],
             selectedProductCondition: 'New',
             productPrice: 0,
+            productTitle: undefined,
+            isCreateAdSpecificationModalViewVisible: false,
             isSelectLocationModalViewVisible: false,
             productDescription: undefined, //TODO fix it on text change 
             isProductDescriptionModalViewVisible: false,
@@ -62,6 +63,12 @@ class CreateAdContainer extends Component {
         });
     }
 
+    setProductTitle = (text) => {
+        this.setState({
+            productTitle: text
+        })
+    }
+
     updateProductDetails = (key, value) => {
         switch (key) {
             case 'selectedCategory':
@@ -88,7 +95,8 @@ class CreateAdContainer extends Component {
             selectedProductCondition,
             productPrice,
             selectedLocation,
-            createAdStatus
+            createAdStatus,
+            productTitle
         } = this.state;
 
         return (
@@ -111,6 +119,8 @@ class CreateAdContainer extends Component {
                 updateSelectedLocations={this.updateSelectedLocations}
                 createAdStatusDone={this.createAdStatusDone}
                 createAdStatus={createAdStatus}
+                productTitle={productTitle}
+                setProductTitle={this.setProductTitle}
             />
         );
     }
