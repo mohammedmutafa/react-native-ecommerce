@@ -192,7 +192,7 @@ export class CreateAdSteps extends Component {
 }
 
 CreateAdSteps.propTypes = {
-    productPrice: PropTypes.string,
+    productPrice: PropTypes.number,
     onProductPriceInput: PropTypes.func,
     selectedProductCondition: PropTypes.string,
     setProductConditionUsed: PropTypes.func,
