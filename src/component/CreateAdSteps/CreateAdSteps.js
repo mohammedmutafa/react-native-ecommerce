@@ -85,7 +85,7 @@ export class CreateAdSteps extends Component {
                 multiline={false}
                 maxLength={10}
                 onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
-                value={productPrice}
+                value={`₹ ${numberWithCommas(productPrice)}`}
             />
         );
     }
