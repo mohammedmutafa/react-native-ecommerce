@@ -128,7 +128,7 @@ class CreateAd extends Component {
                     bounces={false}
                     showsVerticalScrollIndicator={false}
                     backgroundColor="#FFFFFF"
-                    stickyHeaderHeight={STICKY_HEADER_HEIGHT}
+                    // stickyHeaderHeight={STICKY_HEADER_HEIGHT}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
                     renderForeground={() => (
                         <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
