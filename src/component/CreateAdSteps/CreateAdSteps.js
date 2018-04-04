@@ -154,6 +154,7 @@ export class CreateAdSteps extends Component {
                 selectedLocation={selectedLocation}
                 updateSelectedLocations={updateSelectedLocations}
                 createAdStatusDone={createAdStatusDone}
+                onPressBackButton={this.onPressBackButton}
             />
         );
     }
@@ -170,6 +171,7 @@ export class CreateAdSteps extends Component {
                 return this.renderProductCondition();
             case 5:
                 return this.renderProductLocation();
+
         }
     }
 

@@ -28,11 +28,17 @@ export class LocationSelector extends Component {
         this.props.createAdStatusDone();
     }
 
+    onPressBackButton = () => {
+        this.props.changeStateOfSelectLocationModalView();
+        this.props.onPressBackButton();
+    }
+
     navBar = () => {
         return (
-            <TouchableOpacity style={navigationBar} onPress={this.onPressDone}>
-                <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Done</Text>
-            </TouchableOpacity>
+            <View style={navigationBar}>
+                <Text style={{ color: '#FFFFFF', fontSize: 20 }} onPress={this.onPressBackButton}>Back</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 20 }} onPress={this.onPressDone}>Next</Text>
+            </View >
         );
     }
 
@@ -77,5 +83,6 @@ LocationSelector.propTypes = {
     isSelectLocationModalViewVisible: PropTypes.bool,
     changeStateOfSelectLocationModalView: PropTypes.func,
     selectedLocation: PropTypes.array,
-    updateSelectedLocations: PropTypes.func
+    updateSelectedLocations: PropTypes.func,
+    onPressBackButton: PropTypes.func
 };
