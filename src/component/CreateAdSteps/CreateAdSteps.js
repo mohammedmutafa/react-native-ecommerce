@@ -4,17 +4,19 @@ import {
     Image,
     View,
     TextInput,
-    Text, Button,
+    Text,
+    Button, Modal,
     TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import { numberWithCommas } from '../../utilities/Functions';
 import Color from '../../styles/Color';
+import { numberWithCommas } from '../../utilities/Functions';
 
 import { ConditionSelector } from '../../component/ConditionSelector';
 import { LocationSelector } from '../../component/LocationSelector';
+import { CategorySelector } from '../../component/CategorySelector';
 
 const {
     container,
@@ -143,8 +145,7 @@ export class CreateAdSteps extends Component {
             changeStateOfSelectLocationModalView,
             isSelectLocationModalViewVisible,
             selectedLocation,
-            updateSelectedLocations,
-            createAdStatusDone
+            updateSelectedLocations
         } = this.props;
 
         return (
@@ -153,9 +154,25 @@ export class CreateAdSteps extends Component {
                 changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
                 selectedLocation={selectedLocation}
                 updateSelectedLocations={updateSelectedLocations}
-                createAdStatusDone={createAdStatusDone}
                 onPressBackButton={this.onPressBackButton}
+                onPressNextButton={this.onPressNextButton}
             />
+        );
+    }
+
+    renderProductCategory = () => {
+        const {
+            updateProductDetails,
+            createAdStatusDone
+        } = this.props;
+
+        return (
+            <Modal visible={true}>
+                <CategorySelector
+                    updateProductDetails={updateProductDetails}
+                    createAdStatusDone={createAdStatusDone}
+                />
+            </Modal>
         );
     }
 
@@ -171,7 +188,8 @@ export class CreateAdSteps extends Component {
                 return this.renderProductCondition();
             case 5:
                 return this.renderProductLocation();
-
+            case 6:
+                return this.renderProductCategory();
         }
     }
 
@@ -202,7 +220,9 @@ CreateAdSteps.propTypes = {
     isSelectLocationModalViewVisible: PropTypes.bool,
     changeStateOfSelectLocationModalView: PropTypes.func,
     productDescription: PropTypes.string,
-    setProductDescription: PropTypes.func
+    setProductDescription: PropTypes.func,
+    updateProductDetails: PropTypes.func,
+    changeStateOfCreateAdSpecificationModalView: PropTypes.func
     //  selectedLocation:
     //updateSelectedLocations={updateSelectedLocations}
 };

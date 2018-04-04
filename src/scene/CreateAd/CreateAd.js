@@ -36,29 +36,6 @@ class CreateAd extends Component {
         );
     }
 
-    renderProductCategory = () => {
-        const { textInputContainerStyle, textInputStyle } = styles;
-        const {
-            selectedCategory,
-            selectedSubCategory,
-            changeStateOfCreateAdSpecificationModalView
-        } = this.props;
-
-        return (
-            <TouchableOpacity style={textInputContainerStyle} onPress={changeStateOfCreateAdSpecificationModalView}>
-                {this.renderHeaderText('Category')}
-                <TextInput
-                    style={textInputStyle}
-                    keyboardType='numeric'
-                    placeholder='Choose Category'
-                    pointerEvents='none'
-                    value={`${selectedCategory + '/' + selectedSubCategory}`}
-                />
-                {this.renderHorizontalBorder()}
-            </TouchableOpacity>
-        );
-    }
-
     renderFloatingShareButton = () => {
         const { floatingShareButtonStyle, floatingButtonContainerStyle } = styles;
 
@@ -81,7 +58,6 @@ class CreateAd extends Component {
         const {
             isCreateAdSpecificationModalViewVisible,
             isSelectLocationModalViewVisible,
-            changeStateOfCreateAdSpecificationModalView,
             changeStateOfSelectLocationModalView,
             updateProductDetails,
             isProductDescriptionModalViewVisible,
@@ -118,6 +94,7 @@ class CreateAd extends Component {
                     setProductTitle={setProductTitle}
                     productDescription={productDescription}
                     setProductDescription={setProductDescription}
+                    updateProductDetails={updateProductDetails}
                 />
             );
         }

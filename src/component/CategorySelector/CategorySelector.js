@@ -40,7 +40,7 @@ export class CategorySelector extends Component {
 
     drillDown(item) {
         const { drillIndex, selectedParentCaterory } = this.state;
-        const { updateProductDetails, changeStateOfCreateAdSpecificationModalView } = this.props;
+        const { updateProductDetails, createAdStatusDone } = this.props;
 
         if (item.children) {
             const childKey = item.children;
@@ -53,7 +53,6 @@ export class CategorySelector extends Component {
             });
         } else {
             updateProductDetails('selectedCategory', [selectedParentCaterory, item.title]);
-            changeStateOfCreateAdSpecificationModalView();
         }
     };
 
@@ -118,8 +117,8 @@ export class CategorySelector extends Component {
                 </View>
                 <View style={level2TitleHeaderContainerStyle}>
                     <Text></Text>
-                    <TouchableOpacity onPress={this.props.changeStateOfCreateAdSpecificationModalView}>
-                        <Text style={cancelTextStyle}>Cancel</Text>
+                    <TouchableOpacity onPress={this.props.createAdStatusDone}>
+                        <Text style={cancelTextStyle}>Done</Text>
                     </TouchableOpacity>
                 </View>
             </View>

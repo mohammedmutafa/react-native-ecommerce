@@ -8,7 +8,9 @@ export default styles = StyleSheet.create({
         flexDirection: 'column',
         flex: 1,
         padding: 25,
-        backgroundColor: 'rgba(60, 60, 60, 0.8)'
+        backgroundColor: 'rgba(60, 60, 60, 0.8)',
+        height: screenHeight,
+        width: screenWidth
     },
     scrollViewConatinerStyle: {
         backgroundColor: color.lightWhite

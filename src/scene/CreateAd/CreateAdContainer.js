@@ -14,17 +14,10 @@ class CreateAdContainer extends Component {
             productPrice: 0,
             productTitle: undefined,
             productDescription: undefined,
-            isCreateAdSpecificationModalViewVisible: false,
             isSelectLocationModalViewVisible: false,
             isProductDescriptionModalViewVisible: false,
             createAdStatus: true
         };
-    }
-
-    changeStateOfCreateAdSpecificationModalView = () => {
-        this.setState({
-            isCreateAdSpecificationModalViewVisible: !this.state.isCreateAdSpecificationModalViewVisible
-        });
     }
 
     changeStateOfproductDescriptionModalView = () => {
@@ -110,8 +103,6 @@ class CreateAdContainer extends Component {
             <CreateAd
                 selectedCategory={selectedCategory}
                 selectedSubCategory={selectedSubCategory}
-                isCreateAdSpecificationModalViewVisible={isCreateAdSpecificationModalViewVisible}
-                changeStateOfCreateAdSpecificationModalView={this.changeStateOfCreateAdSpecificationModalView}
                 updateProductDetails={this.updateProductDetails}
                 isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                 changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}

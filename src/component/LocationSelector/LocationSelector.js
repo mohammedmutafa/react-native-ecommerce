@@ -24,8 +24,8 @@ const {
 export class LocationSelector extends Component {
 
     onPressDone = () => {
+        this.props.onPressNextButton();
         this.props.changeStateOfSelectLocationModalView();
-        this.props.createAdStatusDone();
     }
 
     onPressBackButton = () => {
