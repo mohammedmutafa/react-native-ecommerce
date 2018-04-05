@@ -119,7 +119,7 @@ export class CategorySelector extends Component {
                 </View>
                 <View style={level2TitleHeaderContainerStyle}>
                     <Text style={selectedCategoryTextStyle}>{selectedCategory ? (selectedCategory + '/' + '\n' + selectedSubCategory) : ''}</Text>
-                    <TouchableOpacity onPress={this.props.createAdStatusDone}>
+                    <TouchableOpacity onPress={selectedCategory ? this.props.createAdStatusDone : null}>
                         <Text style={cancelTextStyle}>Done</Text>
                     </TouchableOpacity>
                 </View>
