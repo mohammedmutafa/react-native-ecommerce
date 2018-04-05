@@ -175,7 +175,7 @@ export class CreateAdSteps extends Component {
         } = this.props;
 
         return (
-            <Modal visible={true}>
+            <Modal visible={true} animationType="slide">
                 <CategorySelector
                     updateProductDetails={updateProductDetails}
                     createAdStatusDone={createAdStatusDone}
