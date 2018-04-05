@@ -103,6 +103,7 @@ export class CreateAdSteps extends Component {
                 placeholderTextColor={Color.lightWhite}
                 multiline={false}
                 maxLength={50}
+                keyboardType='default'
                 autoFocus={true}
                 value={productTitle}
             />
@@ -122,6 +123,7 @@ export class CreateAdSteps extends Component {
                 multiline={true}
                 maxLength={500}
                 numberOfLines={4}
+                keyboardType='default'
                 autoFocus={true}
                 value={productDescription}
             />
