@@ -72,6 +72,8 @@ class CreateAd extends Component {
             setProductTitle,
             productDescription,
             setProductDescription,
+            selectedCategory,
+            selectedSubCategory
         } = this.props;
 
         const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
@@ -95,6 +97,8 @@ class CreateAd extends Component {
                     productDescription={productDescription}
                     setProductDescription={setProductDescription}
                     updateProductDetails={updateProductDetails}
+                    selectedCategory={selectedCategory}
+                    selectedSubCategory={selectedSubCategory}
                 />
             );
         }

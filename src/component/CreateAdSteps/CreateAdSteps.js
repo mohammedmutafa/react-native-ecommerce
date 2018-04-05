@@ -163,7 +163,9 @@ export class CreateAdSteps extends Component {
     renderProductCategory = () => {
         const {
             updateProductDetails,
-            createAdStatusDone
+            createAdStatusDone,
+            selectedCategory,
+            selectedSubCategory
         } = this.props;
 
         return (
@@ -171,6 +173,8 @@ export class CreateAdSteps extends Component {
                 <CategorySelector
                     updateProductDetails={updateProductDetails}
                     createAdStatusDone={createAdStatusDone}
+                    selectedCategory={selectedCategory}
+                    selectedSubCategory={selectedSubCategory}
                 />
             </Modal>
         );
@@ -222,7 +226,9 @@ CreateAdSteps.propTypes = {
     productDescription: PropTypes.string,
     setProductDescription: PropTypes.func,
     updateProductDetails: PropTypes.func,
-    changeStateOfCreateAdSpecificationModalView: PropTypes.func
+    changeStateOfCreateAdSpecificationModalView: PropTypes.func,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string
     //  selectedLocation:
     //updateSelectedLocations={updateSelectedLocations}
 };

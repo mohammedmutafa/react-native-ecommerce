@@ -23,7 +23,7 @@ export default styles = StyleSheet.create({
     level2TitleHeaderContainerStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 25,
+        padding: 25
     },
     level2FlatListContainerStyle: {
         flexDirection: 'column',
@@ -39,5 +39,10 @@ export default styles = StyleSheet.create({
         paddingLeft: 25,
         fontSize: 20,
         color: color.golden
+    },
+    selectedCategoryTextStyle: {
+        paddingLeft: 5,
+        fontSize: 14,
+        color: color.dark
     }
 });

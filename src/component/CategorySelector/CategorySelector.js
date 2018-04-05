@@ -21,7 +21,8 @@ const {
     level2TitleHeaderContainerStyle,
     level2FlatListContainerStyle,
     dividerStyle,
-    cancelTextStyle
+    cancelTextStyle,
+    selectedCategoryTextStyle
 } = styles;
 
 const { MainCategory } = CategoryList;
@@ -91,6 +92,7 @@ export class CategorySelector extends Component {
     renderMainCategoryLevel2 = (dataSource) => {
         const { level2TitleHeaderContainerStyle, level2FlatListContainerStyle, cancelTextStyle, dividerStyle } = styles;
         const { parentDataSourceTitle, drillIndex } = this.state;
+        const { selectedCategory, selectedSubCategory } = this.props;
 
         return (
             <View>
@@ -116,7 +118,7 @@ export class CategorySelector extends Component {
                     />
                 </View>
                 <View style={level2TitleHeaderContainerStyle}>
-                    <Text></Text>
+                    <Text style={selectedCategoryTextStyle}>{selectedCategory ? (selectedCategory + '/' + '\n' + selectedSubCategory) : ''}</Text>
                     <TouchableOpacity onPress={this.props.createAdStatusDone}>
                         <Text style={cancelTextStyle}>Done</Text>
                     </TouchableOpacity>
