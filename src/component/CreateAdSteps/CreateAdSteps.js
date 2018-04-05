@@ -24,8 +24,10 @@ const {
     semiTransparentViewStyle,
     textInputPriceStyle,
     textInputTitleStyle,
+    textInputDescriptionStyle,
     backButtonsContainer
 } = styles;
+import { descriptionTextInputHeight } from './styles';
 
 export class CreateAdSteps extends Component {
     constructor(props) {
@@ -115,16 +117,18 @@ export class CreateAdSteps extends Component {
 
         return (
             <TextInput
-                style={textInputTitleStyle}
+                style={textInputDescriptionStyle}
                 onChangeText={setProductDescription}
                 placeholder="Product Description"
                 clearButtonMode='always'
                 placeholderTextColor='#FFFFFF'
-                multiline={true}
                 maxLength={500}
                 numberOfLines={4}
                 keyboardType='default'
                 autoFocus={true}
+                maxHeight={descriptionTextInputHeight}
+                autoGrow={true}
+                multiline={true}
                 value={productDescription}
             />
         );

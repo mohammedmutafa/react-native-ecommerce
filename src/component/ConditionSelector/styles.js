@@ -6,6 +6,7 @@ export default StyleSheet.create({
         justifyContent: 'space-around',
         width: screenWidth - 15,
         paddingHorizontal: 15,
-        position: 'absolute'
+        position: 'absolute',
+        marginTop: screenHeight / 2.5
     }
 });
