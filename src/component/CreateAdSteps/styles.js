@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 
-import { screenWidth, screenHeight } from '../../utilities/ScreenSize';
+import { screenWidth, screenHeight, deviceScaledHeight } from '../../utilities/ScreenSize';
 import Colors from '../../styles/Color';
 
 const containerWidth = screenWidth;
@@ -58,5 +58,15 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    navigationBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 15,
+        width: screenWidth,
+        height: deviceScaledHeight(55),
+        backgroundColor: Colors.dark,
+        position: 'absolute'
     }
 });

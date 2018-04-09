@@ -35,15 +35,7 @@ const StackNavigation = StackNavigator({
     CreateAd: {
         screen: CreateAd,
         navigationOptions: (props) => ({
-            headerTitleStyle: {
-                /*  */
-            },
-            headerStyle: {
-                backgroundColor: '#2a2a2a',
-                elevation: 0 //Only for Android
-            },
-            headerTintColor: '#FFFFFF',
-            title: "CREATE YOUR AD",
+            header: null
         })
     },
     SearchListing: {

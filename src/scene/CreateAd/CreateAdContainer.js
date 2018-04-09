@@ -99,6 +99,8 @@ class CreateAdContainer extends Component {
             productDescription
         } = this.state;
 
+        const { navigation } = this.props;
+
         return (
             <CreateAd
                 selectedCategory={selectedCategory}
@@ -121,6 +123,7 @@ class CreateAdContainer extends Component {
                 setProductTitle={this.setProductTitle}
                 productDescription={productDescription}
                 setProductDescription={this.setProductDescription}
+                navigation={navigation}
             />
         );
     }

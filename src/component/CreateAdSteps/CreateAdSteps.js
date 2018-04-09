@@ -25,7 +25,8 @@ const {
     textInputPriceStyle,
     textInputTitleStyle,
     textInputDescriptionStyle,
-    backButtonsContainer
+    backButtonsContainer,
+    navigationBar
 } = styles;
 import { descriptionTextInputHeight } from './styles';
 
@@ -57,21 +58,23 @@ export class CreateAdSteps extends Component {
         }
     }
 
+    closeCreateAdScene = () => {
+        this.props.navigation.goBack();
+    }
+
     renderNextButton = () => {
         const { step } = this.state;
 
         return (
-            <View style={backButtonsContainer}>
+            <View style={navigationBar}>
                 <Text style={{ color: '#ffffff', padding: 25, backgroundColor: 'transparent', fontSize: 18 }}
-                    onPress={this.onPressBackButton}
+                    onPress={step === 1 ? this.closeCreateAdScene : this.onPressBackButton}
                 >
-                    {step === 1 ? '' : 'Back'}
+                    {step === 1 ? 'Close' : 'Back'}
                 </Text>
                 <Text style={{ color: '#ffffff', padding: 25, backgroundColor: 'transparent', fontSize: 18 }}
                     onPress={this.onPressNextButton}
-                >
-                    {step === 5 ? 'Done' : 'Next'}
-                </Text>
+                >Next</Text>
             </View>
         );
     }
@@ -234,7 +237,8 @@ CreateAdSteps.propTypes = {
     updateProductDetails: PropTypes.func,
     changeStateOfCreateAdSpecificationModalView: PropTypes.func,
     selectedCategory: PropTypes.string,
-    selectedSubCategory: PropTypes.string
+    selectedSubCategory: PropTypes.string,
+    navigation: PropTypes.object
     //  selectedLocation:
     //updateSelectedLocations={updateSelectedLocations}
 };

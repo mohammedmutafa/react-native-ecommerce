@@ -73,7 +73,8 @@ class CreateAd extends Component {
             productDescription,
             setProductDescription,
             selectedCategory,
-            selectedSubCategory
+            selectedSubCategory,
+            navigation
         } = this.props;
 
         const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
@@ -99,6 +100,7 @@ class CreateAd extends Component {
                     updateProductDetails={updateProductDetails}
                     selectedCategory={selectedCategory}
                     selectedSubCategory={selectedSubCategory}
+                    navigation={navigation}
                 />
             );
         }
@@ -123,6 +125,7 @@ class CreateAd extends Component {
                         selectedProductCondition={selectedProductCondition}
                         productTitle={productTitle}
                         productDescription={productDescription}
+                        navigation={navigation}
                     />
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
