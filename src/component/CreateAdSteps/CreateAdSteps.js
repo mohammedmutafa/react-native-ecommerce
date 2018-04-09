@@ -239,6 +239,4 @@ CreateAdSteps.propTypes = {
     selectedCategory: PropTypes.string,
     selectedSubCategory: PropTypes.string,
     navigation: PropTypes.object
-    //  selectedLocation:
-    //updateSelectedLocations={updateSelectedLocations}
 };
