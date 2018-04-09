@@ -63,7 +63,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 15,
+       // padding: 15,
         width: screenWidth,
         height: deviceScaledHeight(55),
         backgroundColor: Colors.dark,
