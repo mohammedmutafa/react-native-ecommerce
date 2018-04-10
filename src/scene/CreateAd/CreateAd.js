@@ -23,6 +23,7 @@ import Colors from '../../styles/Color';
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 import { CreateAdSteps } from '../../component/CreateAdSteps';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
+import { BackButton } from '../../component/BackButton';
 
 const { categoryList } = Categories;
 
@@ -50,6 +51,14 @@ class CreateAd extends Component {
                     onPress={null}
                 />
             </View>
+        );
+    }
+
+    renderBackButton = () => {
+        return (
+            <BackButton
+                style={{ left: 20 }}
+                onPress={() => this.props.navigation.goBack()} />
         );
     }
 
@@ -129,6 +138,7 @@ class CreateAd extends Component {
                     />
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
+                {this.renderBackButton()}
             </View >
         );
     }
