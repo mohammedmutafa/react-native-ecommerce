@@ -50,8 +50,9 @@ export class LocationSelector extends Component {
         return (
             <Modal visible={isSelectLocationModalViewVisible} style={container} animationType="none">
                 {this.navBar()}
-                <View style={{ height: screenHeight / 2, marginTop: 5 }}>
+                <View style={{ height: screenHeight, marginTop: 5 }}>
                     <MultiSelect
+                        single={true}
                         hideTags={false}
                         items={districts}
                         uniqueKey="id"
