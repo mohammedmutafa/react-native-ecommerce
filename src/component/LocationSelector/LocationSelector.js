@@ -36,8 +36,8 @@ export class LocationSelector extends Component {
     navBar = () => {
         return (
             <View style={navigationBar}>
-                <Text style={{ color: '#FFFFFF', fontSize: 20 }} onPress={this.onPressBackButton}>Back</Text>
-                <Text style={{ color: '#FFFFFF', fontSize: 20 }} onPress={this.onPressDone}>Next</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 18 }} onPress={this.onPressBackButton}>Back</Text>
+                <Text style={{ color: '#FFFFFF', fontSize: 18 }} onPress={this.onPressDone}>Next</Text>
             </View >
         );
     }
@@ -48,7 +48,7 @@ export class LocationSelector extends Component {
         const containerWidth = container.width;
 
         return (
-            <Modal visible={isSelectLocationModalViewVisible} style={container} animationType="slide">
+            <Modal visible={isSelectLocationModalViewVisible} style={container} animationType="none">
                 {this.navBar()}
                 <View style={{ height: screenHeight / 2, marginTop: 5 }}>
                     <MultiSelect
