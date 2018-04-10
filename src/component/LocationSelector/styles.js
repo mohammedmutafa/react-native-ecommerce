@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
+import Color from '../../styles/Color';
 
 export default StyleSheet.create({
     container: {
@@ -15,7 +16,7 @@ export default StyleSheet.create({
         padding: 15,
         width: screenWidth,
         height: deviceScaledHeight(60),
-        backgroundColor: '#2a2a2a',
+        backgroundColor: Color.dark
         // position: 'absolute'
     }
 });
