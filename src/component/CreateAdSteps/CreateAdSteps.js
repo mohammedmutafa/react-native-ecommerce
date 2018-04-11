@@ -62,6 +62,35 @@ export class CreateAdSteps extends Component {
         this.props.navigation.goBack();
     }
 
+    validateNextButtonData = () => {
+        const { productPrice, productTitle, productDescription, selectedLocation } = this.props;
+
+        switch (this.state.step) {
+            case 1:
+                if (productPrice !== 0) {
+                    return true;
+                }
+                return false;
+            case 2:
+                if (productTitle) {
+                    return true;
+                }
+                return false;
+            case 3:
+                if (productDescription) {
+                    return true;
+                }
+                return false;
+            case 4:
+                return true;
+            case 5:
+                if (selectedLocation.length > 0) { //TODO: fix this case 
+                    return true;
+                }
+                return false;
+        }
+    }
+
     renderNextButton = () => {
         const { step } = this.state;
 
@@ -72,9 +101,11 @@ export class CreateAdSteps extends Component {
                 >
                     {step === 1 ? 'Close' : 'Back'}
                 </Text>
-                <Text style={{ color: '#ffffff', padding: 25, backgroundColor: 'transparent', fontSize: 18 }}
+
+                {this.validateNextButtonData() ? <Text style={{ color: '#ffffff', padding: 25, backgroundColor: 'transparent', fontSize: 18 }}
                     onPress={this.onPressNextButton}
-                >Next</Text>
+                >Next</Text> : <View />}
+
             </View>
         );
     }
