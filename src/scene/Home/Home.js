@@ -11,7 +11,8 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { SearchBar, Icon } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
+import { SearchBar } from '../../component/SearchBar';
 
 import LoginWithPhoneComponent from '../../component/LoginWithPhone';
 import MenuComponent from '../../component/Menu';
@@ -53,18 +54,7 @@ export default class Home extends Component {
 
     renderSearchBar = () => {
         return (
-            <SearchBar
-                containerStyle={styles.searchbarContainerStyle}
-                inputStyle={styles.searchBarStyle}
-                lightTheme={true}
-                round={true}
-                noIcon={true}
-                onChangeText={null}
-                onClearText={null}
-                placeholderTextColor="#C7C7CD"
-                clearIcon
-                placeholder="Search for the Product..."
-            />
+            <SearchBar />
         );
     }
 
