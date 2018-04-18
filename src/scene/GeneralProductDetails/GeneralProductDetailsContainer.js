@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import GeneralProductDetails from './GeneralProductDetails';
+import Categories from '../../styles/Categories';
+
+const { MainCategory } = Categories;
 
 class GeneralProductDetailsContainer extends Component {
     constructor(props) {
@@ -25,6 +28,17 @@ class GeneralProductDetailsContainer extends Component {
         });
     }
 
+    photoViewerDataSource = () => {
+        let modifiedDS = [];
+
+        for (let obj of MainCategory) {
+            let modifiedObj = { source: { uri: obj.thumbnail } }
+            modifiedDS.push(modifiedObj)
+        }
+
+        return modifiedDS;
+    }
+
     render() {
         const { isPhotoViewerVisible, clickedPhotoIndex } = this.state;
         const { thumbnailURL, time, details, price } = this.props;
@@ -39,6 +53,7 @@ class GeneralProductDetailsContainer extends Component {
                 price={price}
                 details={details}
                 clickedPhotoIndex={clickedPhotoIndex}
+                photoViewerDataSource={this.photoViewerDataSource()}
             />
         );
     }
