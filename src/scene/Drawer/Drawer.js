@@ -47,7 +47,7 @@ class Drawer extends Component {
         return (
             <View style={conatinerStyle}>
                 <BackButton
-                    style={{ right: 20 }}
+                    style={{ right: 20, marginTop: 20 }}
                     iconName='ios-close-circle-outline'
                     iconType='ionicon'
                     iconColor={Color.lightWhite}
