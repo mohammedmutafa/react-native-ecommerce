@@ -91,7 +91,8 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 10
+        paddingVertical: 10,
+        backgroundColor: colors.lightBlueWhite
     },
     iconContainerStyle: {
         backgroundColor: colors.dark,

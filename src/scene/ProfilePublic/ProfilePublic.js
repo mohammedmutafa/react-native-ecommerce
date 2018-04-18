@@ -39,7 +39,7 @@ class ProfilePublic extends Component {
         return (
             <ScrollView>
                 <FlatList
-                    style={{ alignSelf: 'center', marginTop: 15 }}
+                    style={{ alignSelf: 'center', paddingTop: 15, backgroundColor: colors.lightBlueWhite }}
                     data={MainCategory}
                     renderItem={this.renderItemCard}
                     // removeClippedSubviews={false}
@@ -73,7 +73,7 @@ class ProfilePublic extends Component {
 
     renderUserBasicInfo = () => {
         return (
-            <View style={{ flexDirection: 'column' }}>
+            <View style={{ flexDirection: 'column', backgroundColor: colors.lightBlueWhite }}>
                 <Text style={nameTextStyle}>Dipak Katwal</Text>
                 <Text style={addressTextStyle}>Kathmandu, Nepal</Text>
             </View>
@@ -120,7 +120,7 @@ class ProfilePublic extends Component {
             <ParallaxScrollView
                 bounces={false}
                 showsVerticalScrollIndicator={false}
-                backgroundColor="#FFFFFF"
+                backgroundColor={colors.lightBlueWhite}
                 parallaxHeaderHeight={SLIDER_HEIGHT}
                 renderForeground={() => (
                     <View
