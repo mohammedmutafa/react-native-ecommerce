@@ -96,7 +96,9 @@ export default styles = StyleSheet.create({
     },
     iconContainerStyle: {
         backgroundColor: colors.dark,
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        borderWidth: 1,
+        borderColor: colors.golden
     },
     gridViewCardStyle: {
         justifyContent: 'center',
