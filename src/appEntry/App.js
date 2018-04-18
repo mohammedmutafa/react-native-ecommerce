@@ -55,7 +55,12 @@ const StackNavigation = StackNavigator({
     ProfilePublic: {
         screen: ProfilePublic,
         navigationOptions: (props) => ({
-            header: null
+            headerStyle: {
+                backgroundColor: '#2a2a2a',
+                elevation: 0 //Only for Android
+            },
+            headerTintColor: '#FFFFFF',
+            title: "Profile"
         })
     }
 });

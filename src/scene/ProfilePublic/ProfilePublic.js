@@ -17,7 +17,6 @@ import styles from './styles';
 import colors from '../../styles/Color';
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 import Categories from '../../styles/Categories';
-import { BackButton } from '../../component/BackButton';
 
 const { MainCategory } = Categories;
 
@@ -131,15 +130,12 @@ class ProfilePublic extends Component {
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
-                        <BackButton
-                            style={{ left: 20 }}
-                            onPress={() => this.props.navigation.goBack()} />
                         {this.renderProfileHeader()}
-                        {this.renderUserBasicInfo()}
-                        {this.renderSocialButtons()}
                     </View>
                 )}
             >
+                {this.renderUserBasicInfo()}
+                {this.renderSocialButtons()}
                 {this.renderPublishedPostList()}
             </ParallaxScrollView>
         );
@@ -164,6 +160,6 @@ ProfilePublic.propTypes = {
 };
 
 const window = Dimensions.get('window');
-const SLIDER_HEIGHT = window.width / 1.2;
+const SLIDER_HEIGHT = window.width / 1.8;
 
 export default ProfilePublic;
