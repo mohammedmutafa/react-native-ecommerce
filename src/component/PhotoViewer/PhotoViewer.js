@@ -25,7 +25,7 @@ export class PhotoViewer extends React.PureComponent {
         }
     }
 
-    get galleryCount() {
+    galleryCount = () => {
         const { index, images } = this.state;
         const { hidePhotoViewer } = this.props;
 
@@ -62,7 +62,7 @@ export class PhotoViewer extends React.PureComponent {
                     initialPage={photoIndex}
                     images={dataSource}
                 />
-                {this.galleryCount}
+                {this.galleryCount()}
             </Modal>
         );
     }
