@@ -27,7 +27,7 @@ export default class Home extends Component {
         return (
             <View style={containerStyle}>
                 <View style={sliderContainerStyle}>
-                    <Swiper style={styles.wrapper} autoplay={true}>
+                    <Swiper style={styles.wrapper} autoplay={true} activeDotColor={Color.golden}>
                         <Image
                             source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/travelBanner.png?alt=media&token=9cb6ab5e-229e-4308-b7a0-5835936e1635' }}
                             style={styles.slide1}
