@@ -154,8 +154,6 @@ const {
     containerStyle,
     sliderContainerStyle,
     slide1,
-    searchbarContainerStyle,
-    searchBarStyle,
     floatingMenuButtonStyle,
     stickySection
 } = styles

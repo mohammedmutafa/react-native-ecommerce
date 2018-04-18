@@ -26,7 +26,7 @@ export class SearchBar extends Component {
             <View style={searchbarContainerStyle}>
                 <TextInput
                     style={textInputStyle}
-                    placeholder='Search for the product'
+                    placeholder='Search for the product....'
                     placeholderTextColor={Color.lightDark}
                     returnKeyType={'search'}
                     onSubmitEditing={() => console.log(' search button pressed.....')}

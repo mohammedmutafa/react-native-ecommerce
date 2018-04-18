@@ -43,30 +43,6 @@ export default styles = StyleSheet.create({
         marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
         backgroundColor: '#FFFFFF'
     },
-    searchbarContainerStyle: {
-        width: window.width - 65,
-        height: (60 / 768) * window.height,
-        borderRadius: 25,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .2)',
-                shadowOffset: { height: 3, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 5,
-            },
-            android: {
-                elevation: 2,
-            }
-        })
-    },
-    searchBarStyle: {
-        backgroundColor: 'transparent',
-        width: window.width - 75
-    },
     floatingMenuButtonStyle: {
         alignSelf: 'flex-end',
         position: 'absolute',
