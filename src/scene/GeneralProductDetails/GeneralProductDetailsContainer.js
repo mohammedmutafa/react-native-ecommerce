@@ -7,24 +7,26 @@ class GeneralProductDetailsContainer extends Component {
         super(props);
 
         this.state = {
-            isPhotoViewerVisible: false
+            isPhotoViewerVisible: false,
+            clickedPhotoIndex: 0
         };
     }
-    componentDidMount() {
-        // StatusBar.setHidden(true);
-        //Temporary Solution .. need to hide for all app screen.
-    }
 
-    showPhotoViewer = () => {
-        this.setState({ isPhotoViewerVisible: true });
+    showPhotoViewer = (index) => {
+        this.setState({
+            isPhotoViewerVisible: true,
+            clickedPhotoIndex: index
+        });
     }
 
     hidePhotoViewer = () => {
-        this.setState({ isPhotoViewerVisible: false });
+        this.setState({
+            isPhotoViewerVisible: false
+        });
     }
 
     render() {
-        const { isPhotoViewerVisible } = this.state;
+        const { isPhotoViewerVisible, clickedPhotoIndex } = this.state;
         const { thumbnailURL, time, details, price } = this.props;
 
         return (
@@ -36,6 +38,7 @@ class GeneralProductDetailsContainer extends Component {
                 time={time}
                 price={price}
                 details={details}
+                clickedPhotoIndex={clickedPhotoIndex}
             />
         );
     }
