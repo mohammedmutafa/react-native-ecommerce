@@ -74,8 +74,8 @@ class ProfilePublic extends Component {
     renderUserBasicInfo = () => {
         return (
             <View style={{ flexDirection: 'column', backgroundColor: colors.lightBlueWhite }}>
-                <Text style={nameTextStyle}>Dipak Katwal</Text>
-                <Text style={addressTextStyle}>Kathmandu, Nepal</Text>
+                <Text style={nameTextStyle}>Jessica Smith</Text>
+                <Text style={addressTextStyle}>Westlake Village, CA</Text>
             </View>
         );
     }
