@@ -9,7 +9,5 @@ React Native E-Commerce Showcase Application.
 
 <img src="https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/Github%2FSimulator%20Screen%20Shot%20-%20iPhone%20X%20-%202018-04-19%20at%2011.47.01_iphonexspacegrey_portrait.png?alt=media&token=ca1ebc4c-0857-4711-bbe8-3ec93ec5b686" alt=""  width="800" height="800">
 
-<img src="https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/Github%2Freact-native-ecommerce.gif?alt=media&token=24f987d5-91ab-48b6-bb2a-4063aed5047b" alt=""  raw=true  width="400" height="800">
-
 </body>
 </html>
