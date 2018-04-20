@@ -5,7 +5,8 @@ import {
     View,
     Modal,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Avatar, Icon } from 'react-native-elements';
@@ -45,17 +46,27 @@ export class CreateAdsCard extends Component {
         return location;
     }
 
-    renderSwiper = () => {
+    renderSwiperView = () => {
         return (
-            <View style={swiperStyle} >
-                <Swiper activeDotColor={Color.lightWhite}>
-                    {this.renderSwipeCardsTitle()}
-                    {this.renderSwiperCardCategory()}
-                    {this.renderSwiperCardCondition()}
-                    {this.renderSwiperCardLocation()}
-                </Swiper>
-            </View>
+            <Swiper style={Platform.OS === 'ios' ? null : swiperStyle} autoplay={true} activeDotColor={Color.lightWhite}>
+                {this.renderSwipeCardsTitle()}
+                {this.renderSwiperCardCategory()}
+                {this.renderSwiperCardCondition()}
+                {this.renderSwiperCardLocation()}
+            </Swiper>
         );
+    }
+
+    renderSwiper = () => {
+        if (Platform.OS === 'ios') {
+            return (
+                <View style={swiperStyle} >
+                    {this.renderSwiperView()}
+                </View>
+            );
+        }
+
+        return this.renderSwiperView();
     }
 
     renderSwiperCardLocation = () => {
