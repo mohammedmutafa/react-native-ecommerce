@@ -209,7 +209,7 @@ export class CreateAdSteps extends Component {
         } = this.props;
 
         return (
-            <Modal visible={true} animationType="none">
+            <Modal visible={true} animationType="none" onRequestClose={() => null}>
                 <CategorySelector
                     updateProductDetails={updateProductDetails}
                     createAdStatusDone={createAdStatusDone}
