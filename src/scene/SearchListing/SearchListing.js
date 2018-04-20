@@ -65,7 +65,7 @@ const dataSource = [
     },
     {
         id: 2,
-        owner: 'Suraj Singh',
+        owner: 'David B Smith',
         time: '2nd Jan 2018',
         price: '95000',
         url: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_iphonex.jpg?alt=media&token=5339b75b-8199-4bcc-82e1-0d19f377e058',
@@ -73,7 +73,7 @@ const dataSource = [
     },
     {
         id: 3,
-        owner: 'Mohan Shrestha',
+        owner: 'Jessica Smith',
         time: '15th Dec 2017',
         price: '40000',
         url: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_oculus.jpg?alt=media&token=5964e66e-5da8-41ee-b95f-3ed820d02a2b',
@@ -83,7 +83,7 @@ const dataSource = [
 
     {
         id: 4,
-        owner: 'Natasha Limbu',
+        owner: 'Pamela L Smith',
         time: 'March 28th 2018',
         price: '120000',
         url: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_drone.jpg?alt=media&token=6c58b973-3bff-488f-bad4-e5b9f0673e2f',
@@ -91,7 +91,7 @@ const dataSource = [
     },
     {
         id: 5,
-        owner: 'James Smith',
+        owner: 'Becky Smith',
         time: 'Jan 22nd 2018',
         price: '60000',
         url: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_apartment.jpg?alt=media&token=223e8553-f147-42c5-a593-15469270ae95',

@@ -43,12 +43,16 @@ export class LocationSelector extends Component {
     }
 
     render() {
-        const { isSelectLocationModalViewVisible, updateSelectedLocations, selectedLocation } = this.props;
+        const { isSelectLocationModalViewVisible, changeStateOfSelectLocationModalView, updateSelectedLocations, selectedLocation } = this.props;
         const containerHeight = container.height;
         const containerWidth = container.width;
 
         return (
-            <Modal visible={isSelectLocationModalViewVisible} style={container} animationType="none">
+            <Modal
+                visible={isSelectLocationModalViewVisible}
+                style={container} animationType="none"
+                onRequestClose={changeStateOfSelectLocationModalView}
+            >
                 {this.navBar()}
                 <View style={{ height: screenHeight, marginTop: 5 }}>
                     <MultiSelect

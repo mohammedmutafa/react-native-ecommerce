@@ -52,7 +52,7 @@ export class ProductDetailsInput extends React.PureComponent {
         const { text } = this.state;
 
         return (
-            <Modal visible={isVisible} animationType="slide">
+            <Modal visible={isVisible} animationType="slide" onRequestClose={() => null}>
                 <View style={container}>
                     <Text style={titleTextStyle}>Product Description</Text>
                     <TextInput

@@ -31,6 +31,7 @@ export class SearchBar extends Component {
                     returnKeyType={'search'}
                     onSubmitEditing={() => console.log(' search button pressed.....')}
                     multiline={false}
+                    underlineColorAndroid='transparent'
                     maxLength={10}
                     clearButtonMode='always'
                 // onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
