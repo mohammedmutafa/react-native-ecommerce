@@ -6,5 +6,6 @@ export default colors = {
     lightWhite: '#F7F7F7',
     lightBlueWhite: '#F6F8FC',
     semiDarkWhite: '#D7D7D7',
-    semiTransparentDarkOverlay: 'rgba(60, 60, 60, 0.5)'
+    semiTransparentDarkOverlay: 'rgba(60, 60, 60, 0.5)',
+    placeholderWhite: '#C7C7CD'
 }
