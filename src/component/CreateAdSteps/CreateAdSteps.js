@@ -2,10 +2,12 @@
 import React, { Component } from 'react';
 import {
     Image,
+    ImageBackground,
     View,
     TextInput,
     Text,
-    Button, Modal,
+    Button,
+    Modal,
     TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -242,15 +244,14 @@ export class CreateAdSteps extends Component {
         const { step } = this.state;
 
         return (
-            <View style={container}>
-                <Image
-                    source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_macbook_air.jpeg?alt=media&token=98f2f5dd-0d02-4365-b92d-f91a06bedb64' }}
-                    style={imageViewStyle}
-                />
+            <ImageBackground
+                source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/showcaseImages%2Fshowcase_macbook_air.jpeg?alt=media&token=98f2f5dd-0d02-4365-b92d-f91a06bedb64' }}
+                style={container}
+            >
                 <View style={semiTransparentViewStyle} />
                 {this.renderNextButton()}
                 {this.renderDynamicView()}
-            </View >
+            </ImageBackground >
         );
     }
 }
