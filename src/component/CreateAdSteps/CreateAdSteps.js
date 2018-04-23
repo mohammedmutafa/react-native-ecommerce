@@ -123,7 +123,7 @@ export class CreateAdSteps extends Component {
                 placeholderTextColor={Color.lightWhite}
                 autoFocus={true}
                 multiline={false}
-                maxLength={10}
+                maxLength={13}
                 onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
                 value={`₹ ${numberWithCommas(productPrice)}`}
             />
@@ -144,6 +144,7 @@ export class CreateAdSteps extends Component {
                 keyboardType='default'
                 autoFocus={true}
                 value={productTitle}
+                placeholderTextColor={Color.placeholderWhite}
             />
         );
     }

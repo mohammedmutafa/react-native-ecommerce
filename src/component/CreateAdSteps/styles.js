@@ -25,22 +25,29 @@ export default StyleSheet.create({
         resizeMode: 'cover'
     },
     textInputPriceStyle: {
-        width: screenWidth / 2,
+        backgroundColor: 'rgba(39,34,35,0.8)',
+        borderWidth: 1,
+        borderColor: Colors.golden,
+        width: screenWidth - 15,
+        padding: 15,
         textAlign: 'center',
         position: 'absolute',
-        color: '#ffffff',
-        fontSize: 24,
+        color: Colors.lightWhite,
+        fontSize: 18,
         flex: 1,
-        marginTop: screenHeight / 2.5
+        marginTop: 100
     },
     textInputTitleStyle: {
+        backgroundColor: 'rgba(39,34,35,0.8)',
+        borderWidth: 1,
+        borderColor: Colors.golden,
         width: screenWidth - 15,
-        paddingHorizontal: 15,
+        padding: 15,
         textAlign: 'center',
         position: 'absolute',
-        color: '#ffffff',
-        fontSize: 24,
-        marginTop: screenHeight / 2.5
+        color: Colors.lightWhite,
+        fontSize: 18,
+        marginTop: 100
     },
     textInputDescriptionStyle: {
         width: screenWidth - 15,
@@ -63,7 +70,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-       // padding: 15,
+        // padding: 15,
         width: screenWidth,
         height: deviceScaledHeight(55),
         backgroundColor: Colors.dark,
