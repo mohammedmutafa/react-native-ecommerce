@@ -126,6 +126,7 @@ export class CreateAdSteps extends Component {
                 maxLength={13}
                 onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
                 value={`₹ ${numberWithCommas(productPrice)}`}
+                underlineColorAndroid="transparent"
             />
         );
     }
@@ -136,15 +137,16 @@ export class CreateAdSteps extends Component {
             <TextInput
                 style={textInputTitleStyle}
                 onChangeText={setProductTitle}
-                placeholder="Product Title"
-                clearButtonMode='always'
+                placeholder="Product Title (max 50)"
                 placeholderTextColor={Color.lightWhite}
+                clearButtonMode='always'
                 multiline={false}
                 maxLength={50}
                 keyboardType='default'
                 autoFocus={true}
                 value={productTitle}
                 placeholderTextColor={Color.placeholderWhite}
+                underlineColorAndroid="transparent"
             />
         );
     }
@@ -156,17 +158,18 @@ export class CreateAdSteps extends Component {
             <TextInput
                 style={textInputDescriptionStyle}
                 onChangeText={setProductDescription}
-                placeholder="Product Description"
+                placeholder="Product Description (max 500)"
                 clearButtonMode='always'
-                placeholderTextColor='#FFFFFF'
+                placeholderTextColor={Color.placeholderWhite}
                 maxLength={500}
-                numberOfLines={4}
                 keyboardType='default'
                 autoFocus={true}
                 maxHeight={descriptionTextInputHeight}
                 autoGrow={true}
                 multiline={true}
                 value={productDescription}
+                underlineColorAndroid="transparent"
+                textAlignVertical='bottom'
             />
         );
     }

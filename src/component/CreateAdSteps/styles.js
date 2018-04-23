@@ -43,19 +43,21 @@ export default StyleSheet.create({
         borderColor: Colors.golden,
         width: screenWidth - 15,
         padding: 15,
-        textAlign: 'center',
         position: 'absolute',
         color: Colors.lightWhite,
         fontSize: 18,
         marginTop: 100
     },
     textInputDescriptionStyle: {
+        backgroundColor: 'rgba(39,34,35,0.8)',
+        borderWidth: 1,
+        borderColor: Colors.golden,
         width: screenWidth - 15,
         paddingHorizontal: 15,
-        textAlign: 'center',
+        paddingVertical: 25,
         position: 'absolute',
-        color: '#ffffff',
-        fontSize: 24,
+        color: Colors.lightWhite,
+        fontSize: 18,
         marginTop: 100
     },
     backButtonsContainer: {
