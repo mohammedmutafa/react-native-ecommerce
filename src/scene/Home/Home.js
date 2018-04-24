@@ -68,7 +68,7 @@ export default class Home extends Component {
                     name="camera"
                     type="font-awesome"
                     color={Color.lightWhite}
-                    onPress={onCreateAdButtonPress}
+                    onPress={changeLoginWithPhoneModalViewState}
                     containerStyle={{
                         backgroundColor: Color.dark,
                         borderWidth: 0.5,
