@@ -1,9 +1,6 @@
 # react-native-ecommerce
 React Native E-Commerce Showcase Application.
 
-Clone this branch for showcase app code:
-https://github.com/katwal-dipak/react-native-ecommerce/tree/e-commerce-showcase
-
 <!DOCTYPE html>
 <html>
 <body>
