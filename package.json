@@ -12,6 +12,7 @@
 		"react-native": "^0.55.3",
 		"react-native-animatable": "1.2.4",
 		"react-native-elements": "0.18.4",
+		"react-native-firebase": "^4.0.5",
 		"react-native-image-gallery": "^2.1.5",
 		"react-native-interactable": "^0.1.7",
 		"react-native-multiple-select": "^0.4.1",
