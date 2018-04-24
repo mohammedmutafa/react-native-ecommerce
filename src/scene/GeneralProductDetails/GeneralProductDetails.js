@@ -94,7 +94,7 @@ class GeneralProductDetails extends Component {
         />
     }
 
-    keyExtractor = (item, index) => index;
+    keyExtractor = (item, index) => index.toString();
 
     renderPhotoCard = ({ item, index }) => {
         const { photoCardStyle, imageRowStyle } = styles;
