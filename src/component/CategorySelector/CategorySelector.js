@@ -73,7 +73,7 @@ export class CategorySelector extends Component {
         };
     };
 
-    keyExtractor = (item, index) => index;
+    keyExtractor = (item, index) => index.toString();
 
     renderMainCategoryRow = ({ item }) => {
         return (

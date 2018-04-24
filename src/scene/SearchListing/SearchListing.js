@@ -12,7 +12,7 @@ import { FeedsCard } from '../../component/FeedsCard';
 
 class SearchListing extends Component {
 
-    keyExtractor = (item, index) => index;
+    keyExtractor = (item, index) => index.toString();
 
     renderFeedsCard = ({ item }) => {
         const { navigation } = this.props;
