@@ -22,7 +22,7 @@ const { MainCategory } = Categories;
 
 class ProfilePublic extends Component {
 
-    keyExtractor = (item, index) => index;
+    keyExtractor = (item, index) => index.toString();
 
     renderItemCard = ({ item }) => {
         return (
