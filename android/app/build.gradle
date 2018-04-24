@@ -150,6 +150,9 @@ android {
 }
 
 dependencies {
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
     compile project(':lottie-react-native')
     compile project(':react-native-interactable')
     compile project(':react-native-vector-icons')
