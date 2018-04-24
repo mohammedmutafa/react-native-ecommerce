@@ -34,26 +34,5 @@ export default styles = StyleSheet.create({
 
     },
     wrapper: {
-    },
-    slide1: {
-        height: SLIDER_HEIGHT,// same width and height for the container
-        width: window.width,
-        position: 'absolute', // position it in circle
-        bottom: 0, // position it in circle
-        marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
-        backgroundColor: '#FFFFFF'
-    },
-    floatingMenuButtonStyle: {
-        alignSelf: 'flex-end',
-        position: 'absolute',
-        bottom: 35,
-        paddingRight: 15
-    },
-    stickySection: {
-        height: STICKY_HEADER_HEIGHT,
-        width: window.width,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 10
     }
 });

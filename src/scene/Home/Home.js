@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import {
     View,
     Image,
-    StyleSheet,
     Dimensions,
-    ScrollView,
-    Platform,
-    Modal,
-    Text
+    Modal
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
@@ -15,7 +11,6 @@ import { Icon } from 'react-native-elements';
 import { SearchBar } from '../../component/SearchBar';
 
 import LoginWithPhoneComponent from '../../component/LoginWithPhone';
-import MenuComponent from '../../component/Menu';
 import CategoriesListComponent from '../../component/CategoriesList';
 import { BackButton } from '../../component/BackButton';
 import Color from '../../styles/Color';
@@ -145,15 +140,10 @@ export default class Home extends Component {
 }
 
 const window = Dimensions.get('window');
-
-const STICKY_HEADER_HEIGHT = (110 / 768) * window.height;
 const SLIDER_HEIGHT = window.width / 1.7;
 
 const {
     mainConatinerStyle,
     containerStyle,
-    sliderContainerStyle,
-    slide1,
-    floatingMenuButtonStyle,
-    stickySection
+    sliderContainerStyle
 } = styles

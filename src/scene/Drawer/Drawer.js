@@ -27,14 +27,15 @@ class Drawer extends Component {
                 alignItems: 'center',
                 paddingHorizontal: 15,
                 marginTop: 20
-            }}>
+            }}
+            >
                 <TouchableOpacity>
                     <Text style={{ fontSize: 18, color: Color.lightWhite }}>{title}</Text>
                 </TouchableOpacity>
                 <Icon
-                    underlayColor='transparent'
-                    name='chevron-right'
-                    type='evilicon'
+                    underlayColor="transparent"
+                    name="chevron-right"
+                    type="evilicon"
                     color={Color.golden}
                     size={40}
                     onPress={() => console.log('Dipak')}
@@ -48,8 +49,8 @@ class Drawer extends Component {
             <View style={conatinerStyle}>
                 <BackButton
                     style={{ right: 20, marginTop: 20 }}
-                    iconName='ios-close-circle-outline'
-                    iconType='ionicon'
+                    iconName="ios-close-circle-outline"
+                    iconType="ionicon"
                     iconColor={Color.lightWhite}
                     onPress={() => this.props.navigation.navigate('DrawerClose')} />
                 <View style={{ marginTop: 100 }}>
@@ -57,7 +58,7 @@ class Drawer extends Component {
                     {this.renderRow('Bookmarked Items')}
                     {this.renderRow('Settings')}
                     {this.renderRow('About')}
-                    {this.renderRow('Logout')}
+                    {this.renderRow('Login')}
                 </View>
             </View>
         );
