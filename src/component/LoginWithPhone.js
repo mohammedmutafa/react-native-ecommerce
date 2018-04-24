@@ -9,10 +9,24 @@ import {
 import PropTypes from 'prop-types';
 import { Icon, Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
+import firebase from 'react-native-firebase';
 
 import OTPVerificationUIComponent from '../component/OTPVerificationUI';
 
 class LoginWithPhone extends Component {
+
+    /*Phone Auth Functions*/
+
+    firePhoneAuthentication = (phoneNumber) => {
+        firebase.auth().signInWithPhoneNumber(phoneNumber)
+            .then((confirmResult) => console.log(confirmResult))// save confirm result to use with the manual verification code)
+            .catch((error) => console.log(error));
+    }
+
+    componentDidMount() {
+        this.firePhoneAuthentication('+917829366565')
+    }
+
     renderFloatingMenu = () => {
         const { changeLoginWithPhoneModalViewState } = this.props;
 

@@ -38,7 +38,7 @@ export default class HomeContainer extends Component {
 
     onPhoneNumberInputChange = (text) => {
         let newText = '';
-        let numbers = '0123456789';
+        let numbers = '1234567';
 
         for (var i = 0; i < text.length; i++) {
             if (numbers.indexOf(text[i]) > -1) {
