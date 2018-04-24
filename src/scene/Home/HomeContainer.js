@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Home from './Home';
 
@@ -67,3 +68,7 @@ export default class HomeContainer extends Component {
         );
     }
 }
+
+HomeContainer.propTypes = {
+    navigation: PropTypes.object
+};

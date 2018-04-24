@@ -5,6 +5,7 @@ import {
     Dimensions,
     Modal
 } from 'react-native';
+import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Icon } from 'react-native-elements';
@@ -61,7 +62,7 @@ export default class Home extends Component {
         }
 
         return (
-            <View style={styles.floatingMenuButtonStyle}>
+            <View style={floatingMenuButtonStyle}>
                 <Icon
                     raised
                     name="camera"
@@ -111,27 +112,30 @@ export default class Home extends Component {
     }
 
     render() {
+        const { navigation } = this.props;
+
         return (
             <View style={mainConatinerStyle}>
                 <ParallaxScrollView
                     bounces={false}
                     showsVerticalScrollIndicator={false}
-                    backgroundColor="#FFFFFF"
-                    // stickyHeaderHeight={STICKY_HEADER_HEIGHT}
+                    backgroundColor={Color.lightWhite}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
                     renderForeground={() => (
                         <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                             <BackButton
                                 style={{ left: 20 }}
-                                iconName='menu'
+                                iconName="menu"
                                 iconColor={Color.dark}
-                                onPress={() => this.props.navigation.navigate('DrawerToggle')} />
+                                onPress={() => navigation.navigate('DrawerToggle')} />
                             {this.renderSwiper()}
                         </View>
                     )}
                 >
                     {this.renserLoginWithPhoneModalView()}
-                    <CategoriesListComponent navigation={this.props.navigation} />
+                    <CategoriesListComponent
+                        navigation={navigation}
+                    />
                 </ParallaxScrollView>
                 {this.renderFloatingMenu()}
             </View >
@@ -145,5 +149,19 @@ const SLIDER_HEIGHT = window.width / 1.7;
 const {
     mainConatinerStyle,
     containerStyle,
+    floatingMenuButtonStyle,
     sliderContainerStyle
 } = styles
+
+Home.propTypes = {
+    navigation: PropTypes.object,
+    changeLoginWithPhoneModalViewState: PropTypes.func,
+    isLoginWithPhoneModalVisible: PropTypes.bool,
+    onCreateAdButtonPress: PropTypes.func,
+    phoneNumberInput: PropTypes.string,
+    onPhoneNumberInputChange: PropTypes.func,
+    phoneNumberInputUIVisible: PropTypes.bool,
+    changePhoneNumberInputUIState: PropTypes.func,
+    otpVerificationUIVisible: PropTypes.bool,
+    changeOTPVerificationUIState: PropTypes.func
+};

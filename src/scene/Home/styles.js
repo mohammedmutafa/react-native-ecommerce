@@ -34,5 +34,11 @@ export default styles = StyleSheet.create({
 
     },
     wrapper: {
+    },
+    floatingMenuButtonStyle: {
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        bottom: 35,
+        paddingRight: 15
     }
 });
