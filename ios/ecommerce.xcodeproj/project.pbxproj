@@ -53,6 +53,7 @@
 		F887011D4055412D8F3AE8C6 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F28A61A0BFD74CCA93F06E1E /* EvilIcons.ttf */; };
 		FB3BD8D5205BE48000D05C56 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3BD891205BE3F900D05C56 /* Lottie.framework */; };
 		FB3BD8D6205BE48000D05C56 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB3BD891205BE3F900D05C56 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FBF4523C208F25220022DB96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF45208208F25220022DB96 /* GoogleService-Info.plist */; };
 		FC484B62D5764BD88D758A7B /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A88A55C8C67B4498ABB3C060 /* libLottieReactNative.a */; };
 /* End PBXBuildFile section */
 
@@ -358,6 +359,34 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		FBF45233208F25220022DB96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BDC1FC498900052F4D5;
+			remoteInfo = jsinspector;
+		};
+		FBF45235208F25220022DB96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
+			remoteInfo = "jsinspector-tvOS";
+		};
+		FBF45237208F25220022DB96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F3131F5F2E4B0010BF04;
+			remoteInfo = privatedata;
+		};
+		FBF45239208F25220022DB96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
+			remoteInfo = "privatedata-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -419,6 +448,7 @@
 		EC1DD01DF6BD4A458F9796B3 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		F28A61A0BFD74CCA93F06E1E /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		F64653D06CF0424880C90B21 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		FBF45208208F25220022DB96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -567,6 +597,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				FBF45208208F25220022DB96 /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -584,10 +615,14 @@
 				3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */,
 				3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */,
+				FBF45234208F25220022DB96 /* libjsinspector.a */,
+				FBF45236208F25220022DB96 /* libjsinspector-tvOS.a */,
 				FB57659320274059003638A5 /* libthird-party.a */,
 				FB57659520274059003638A5 /* libthird-party.a */,
 				FB57659720274059003638A5 /* libdouble-conversion.a */,
 				FB57659920274059003638A5 /* libdouble-conversion.a */,
+				FBF45238208F25220022DB96 /* libprivatedata.a */,
+				FBF4523A208F25220022DB96 /* libprivatedata-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1222,6 +1257,34 @@
 			remoteRef = FBD00D721FD166E6003444C3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		FBF45234208F25220022DB96 /* libjsinspector.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsinspector.a;
+			remoteRef = FBF45233208F25220022DB96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FBF45236208F25220022DB96 /* libjsinspector-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsinspector-tvOS.a";
+			remoteRef = FBF45235208F25220022DB96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FBF45238208F25220022DB96 /* libprivatedata.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libprivatedata.a;
+			remoteRef = FBF45237208F25220022DB96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FBF4523A208F25220022DB96 /* libprivatedata-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libprivatedata-tvOS.a";
+			remoteRef = FBF45239208F25220022DB96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1249,6 +1312,7 @@
 				4EFF801B05D14E3BBE3516F0 /* Octicons.ttf in Resources */,
 				536B8F7244F643B6A4277C39 /* SimpleLineIcons.ttf in Resources */,
 				F4D735F531394BCE9A1997BE /* Zocial.ttf in Resources */,
+				FBF4523C208F25220022DB96 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1456,7 +1520,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = combrickstudios.ecommerce;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brickstudios.ecommerce;
 				PRODUCT_NAME = ecommerce;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1482,7 +1546,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = combrickstudios.ecommerce;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brickstudios.ecommerce;
 				PRODUCT_NAME = ecommerce;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
