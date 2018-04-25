@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import firebase from 'react-native-firebase';
 
 import Home from './Home';
+import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
 export default class HomeContainer extends Component {
     constructor(props) {
@@ -14,17 +15,13 @@ export default class HomeContainer extends Component {
             phoneNumberInputUIVisible: false,
             otpVerificationUIVisible: false,
             phoneNumberInput: undefined,
-
+            confirmResult: undefined,
+            isOTPVerified: false
         };
     }
     componentDidMount() {
         StatusBar.setHidden(true);
         //Temporary Solution .. need to hide for all app screen.
-    }
-
-    /*Phone Auth Functions*/
-    firePhoneAuthentication = (phoneNumber) => {
-
     }
 
     verifyUserLogin = () => {
@@ -36,23 +33,41 @@ export default class HomeContainer extends Component {
         });
     }
 
-    changeLoginWithPhoneModalViewState = () => {
-        this.setState({ isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible });
-    }
-
-    changePhoneNumberInputUIState = () => {
-        this.setState({ phoneNumberInputUIVisible: !this.state.phoneNumberInputUIVisible });
-    }
-
     changeOTPVerificationUIState = () => {
         const { phoneNumberInput } = this.state;
         //TODO: check phone no is undefined or equal or 10.
         //TODO: show Activity Indicator and prevent user from double click.
         firebase.auth().signInWithPhoneNumber(phoneNumberInput)
             .then((confirmResult) => this.setState({
-                otpVerificationUIVisible: !this.state.otpVerificationUIVisible
+                otpVerificationUIVisible: !this.state.otpVerificationUIVisible,
+                confirmResult: confirmResult
             }))
             .catch((error) => console.log('Error is Phone number Authentication'));
+    }
+
+    verifyOTP = (codeInput) => {
+        const { confirmResult } = this.state;
+
+        if (confirmResult && codeInput.length === 6) {
+            confirmResult.confirm(codeInput)
+                .then((user) => {
+                    this.setState({
+                        isOTPVerified: true
+                    });
+                })
+                .catch((error) =>
+                    this.setState({
+                        isOTPVerified: false
+                    }));
+        }
+    }
+
+    changeLoginWithPhoneModalViewState = () => {
+        this.setState({ isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible });
+    }
+
+    changePhoneNumberInputUIState = () => {
+        this.setState({ phoneNumberInputUIVisible: !this.state.phoneNumberInputUIVisible });
     }
 
     onCreateAdButtonPress = () => {
@@ -72,7 +87,13 @@ export default class HomeContainer extends Component {
     }
 
     render() {
-        const { isLoginWithPhoneModalVisible, phoneNumberInput, phoneNumberInputUIVisible, otpVerificationUIVisible } = this.state;
+        const {
+            isLoginWithPhoneModalVisible,
+            phoneNumberInput,
+            phoneNumberInputUIVisible,
+            otpVerificationUIVisible,
+            isOTPVerified
+        } = this.state;
 
         return (
             <Home
@@ -87,6 +108,8 @@ export default class HomeContainer extends Component {
                 navigation={this.props.navigation}
                 onCreateAdButtonPress={this.onCreateAdButtonPress}
                 isUserLoggedIn={this.verifyUserLogin()}
+                verifyOTP={this.verifyOTP}
+                isOTPVerified={isOTPVerified}
             />
         );
     }

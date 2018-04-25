@@ -93,7 +93,9 @@ export default class Home extends Component {
             phoneNumberInputUIVisible,
             changePhoneNumberInputUIState,
             otpVerificationUIVisible,
-            changeOTPVerificationUIState
+            changeOTPVerificationUIState,
+            verifyOTP,
+            isOTPVerified
         } = this.props;
 
         return (
@@ -111,6 +113,8 @@ export default class Home extends Component {
                     changePhoneNumberInputUIState={changePhoneNumberInputUIState}
                     otpVerificationUIVisible={otpVerificationUIVisible}
                     changeOTPVerificationUIState={changeOTPVerificationUIState}
+                    verifyOTP={verifyOTP}
+                    isOTPVerified={isOTPVerified}
                 />
             </Modal >
         );
@@ -169,5 +173,7 @@ Home.propTypes = {
     changePhoneNumberInputUIState: PropTypes.func,
     otpVerificationUIVisible: PropTypes.bool,
     isUserLoggedIn: PropTypes.bool,
-    changeOTPVerificationUIState: PropTypes.func
+    changeOTPVerificationUIState: PropTypes.func,
+    verifyOTP: PropTypes.func,
+    isOTPVerified: PropTypes.bool
 };

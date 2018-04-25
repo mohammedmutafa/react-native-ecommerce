@@ -6,7 +6,7 @@ import {
     StyleSheet,
     Dimensions
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon, Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 
 class OTPVerificationUI extends Component {
@@ -16,13 +16,45 @@ class OTPVerificationUI extends Component {
 
         this.focusNextField = this.focusNextField.bind(this);
         this.inputs = {};
+        this.state = {
+            OTP1: undefined,
+            OTP2: undefined,
+            OTP3: undefined,
+            OTP4: undefined,
+            OTP5: undefined,
+            OTP6: undefined
+        }
     }
 
-    focusNextField(id, text) {
+    focusNextField(id, text, inputIndex) {
         if (!text) {
             return;
         }
-        this.inputs[id].focus();
+
+        if (inputIndex < 6) {
+            this.inputs[id].focus();
+        }
+
+        switch (inputIndex) {
+            case 1:
+                this.setState({ OTP1: text });
+                break;
+            case 2:
+                this.setState({ OTP2: text });
+                break;
+            case 3:
+                this.setState({ OTP3: text });
+                break;
+            case 4:
+                this.setState({ OTP4: text });
+                break;
+            case 5:
+                this.setState({ OTP5: text });
+                break;
+            case 6:
+                this.setState({ OTP6: text });
+                break;
+        }
     }
 
     renderSeparator = () => <View style={styles.separator} />
@@ -31,7 +63,7 @@ class OTPVerificationUI extends Component {
         return (
             <View style={styles.backButtonStyle}>
                 <Icon
-                    underlayColor='transparent'
+                    underlayColor="transparent"
                     name="chevron-with-circle-left"
                     type="entypo"
                     color="#C7C7CD"
@@ -46,8 +78,6 @@ class OTPVerificationUI extends Component {
         return (
             <TextInput
                 style={styles.verificationCodeInputStyle}
-                // onChangeText={onPhoneNumberInputChange}
-                // value={phoneNumberInput}
                 placeholderTextColor="#C7C7CD"
                 keyboardType="phone-pad"
                 maxLength={1}
@@ -55,15 +85,14 @@ class OTPVerificationUI extends Component {
                 borderWidth={1}
                 borderColor="#DAA520"
                 blurOnSubmit={false}
-                ref={input => { this.inputs[String(inputIndex)] = input; }}
-                onChangeText={inputIndex < 6 ? (text) => this.focusNextField(String(inputIndex + 1), text) : null}
+                ref={(input) => { this.inputs[String(inputIndex)] = input; }}
+                onChangeText={(text) => this.focusNextField(String(inputIndex + 1), text, inputIndex)}
             />
         );
     }
 
     renderVerificationUI = () => {
         const { phoneNumberInputContainer } = styles;
-        const { phoneNumberInput, onPhoneNumberInputChange } = this.props;
 
         return (
             <Animatable.View style={phoneNumberInputContainer} animation="fadeInLeft">
@@ -78,12 +107,30 @@ class OTPVerificationUI extends Component {
                     {this.renderCodeInput(5)}
                     {this.renderCodeInput(6)}
                 </View>
+                {this.renderVerifyOTPButton()}
             </Animatable.View>
         );
     }
 
+    renderVerifyOTPButton = () => {
+        const { OTP1, OTP2, OTP3, OTP4, OTP5, OTP6 } = this.state;
+
+        return (
+            <Button
+                buttonStyle={styles.verifyOTPButtonStyle}
+                icon={{ name: 'lock', type: 'simple-line-icon' }}
+                title="Submit OTP"
+                onPress={() => this.props.verifyOTP(`${OTP1}${OTP2}${OTP3}${OTP4}${OTP5}${OTP6}`)}
+            />
+        );
+    }
+
     render() {
-        const { phoneNumberInputUIVisible } = this.props;
+        const { isOTPVerified } = this.props;
+
+        if (isOTPVerified) {
+            //TODO: Render Sucussfully login UI
+        }
 
         return (
             <View style={styles.mainConatinerStyle} >
@@ -139,7 +186,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         textAlign: 'center',
         color: '#FFFFFF'
-    }
+    },
+    verifyOTPButtonStyle: {
+        backgroundColor: 'transparent',
+        borderRadius: 25,
+        marginTop: 15,
+        borderWidth: 1,
+        borderColor: '#DAA520'
+    },
 });
 
 export default OTPVerificationUI;

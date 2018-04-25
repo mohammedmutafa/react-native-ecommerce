@@ -123,10 +123,22 @@ class LoginWithPhone extends Component {
     }
 
     render() {
-        const { phoneNumberInputUIVisible, otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
+        const {
+            phoneNumberInputUIVisible,
+            otpVerificationUIVisible,
+            changeOTPVerificationUIState,
+            verifyOTP,
+            isOTPVerified
+        } = this.props;
 
         if (otpVerificationUIVisible) {
-            return <OTPVerificationUIComponent changeOTPVerificationUIState={changeOTPVerificationUIState} />
+            return (
+                <OTPVerificationUIComponent
+                    changeOTPVerificationUIState={changeOTPVerificationUIState}
+                    verifyOTP={verifyOTP}
+                    isOTPVerified={isOTPVerified}
+                />
+            );
         }
 
         return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
@@ -187,5 +199,7 @@ LoginWithPhone.propTypes = {
     phoneNumberInputUIVisible: PropTypes.bool,
     changePhoneNumberInputUIState: PropTypes.func,
     otpVerificationUIVisible: PropTypes.bool,
-    changeOTPVerificationUIState: PropTypes.func
+    changeOTPVerificationUIState: PropTypes.func,
+    verifyOTP: PropTypes.func,
+    isOTPVerified: PropTypes.bool
 }
