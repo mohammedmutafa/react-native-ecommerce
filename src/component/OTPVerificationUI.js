@@ -4,10 +4,13 @@ import {
     Text,
     TextInput,
     StyleSheet,
+    Modal,
     Dimensions
 } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
+
+import { CustomActivityIndicator } from '../component/CustomActivityIndicator';
 
 class OTPVerificationUI extends Component {
 
@@ -22,7 +25,15 @@ class OTPVerificationUI extends Component {
             OTP3: undefined,
             OTP4: undefined,
             OTP5: undefined,
-            OTP6: undefined
+            OTP6: undefined,
+            onOTPVerificationProgress: false
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isOTPVerified) {
+            this.setState({
+                onOTPVerificationProgress: false
+            });
         }
     }
 
@@ -112,6 +123,16 @@ class OTPVerificationUI extends Component {
         );
     }
 
+    onPressVerifyButton = () => {
+        const { OTP1, OTP2, OTP3, OTP4, OTP5, OTP6 } = this.state;
+
+        this.setState({
+            onOTPVerificationProgress: true
+        });
+
+        this.props.verifyOTP(`${OTP1}${OTP2}${OTP3}${OTP4}${OTP5}${OTP6}`)
+    }
+
     renderVerifyOTPButton = () => {
         const { OTP1, OTP2, OTP3, OTP4, OTP5, OTP6 } = this.state;
 
@@ -120,13 +141,14 @@ class OTPVerificationUI extends Component {
                 buttonStyle={styles.verifyOTPButtonStyle}
                 icon={{ name: 'lock', type: 'simple-line-icon' }}
                 title="Submit OTP"
-                onPress={() => this.props.verifyOTP(`${OTP1}${OTP2}${OTP3}${OTP4}${OTP5}${OTP6}`)}
+                onPress={() => this.onPressVerifyButton()}
             />
         );
     }
 
     render() {
         const { isOTPVerified } = this.props;
+        const { onOTPVerificationProgress } = this.state;
 
         if (isOTPVerified) {
             //TODO: Render Sucussfully login UI
@@ -136,6 +158,14 @@ class OTPVerificationUI extends Component {
             <View style={styles.mainConatinerStyle} >
                 {this.renderBackButton()}
                 {this.renderVerificationUI()}
+                <Modal
+                    visible={onOTPVerificationProgress}
+                    transparent={true}
+                    animationType="none"
+                    onRequestClose={() => null}
+                >
+                    <CustomActivityIndicator />
+                </Modal>
             </View>
         );
     }

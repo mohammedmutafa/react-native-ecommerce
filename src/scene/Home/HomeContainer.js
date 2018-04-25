@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import firebase from 'react-native-firebase';
 
 import Home from './Home';
-import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
 export default class HomeContainer extends Component {
     constructor(props) {
@@ -37,6 +36,10 @@ export default class HomeContainer extends Component {
         const { phoneNumberInput } = this.state;
         //TODO: check phone no is undefined or equal or 10.
         //TODO: show Activity Indicator and prevent user from double click.
+
+        //TODO: it will only use captcha on iOS if you haven't set up the silent notifications as detailed here:
+        // https://firebase.google.com/docs/auth/ios/phone-auth#start-receiving-silent-notifications
+
         firebase.auth().signInWithPhoneNumber(phoneNumberInput)
             .then((confirmResult) => this.setState({
                 otpVerificationUIVisible: !this.state.otpVerificationUIVisible,
