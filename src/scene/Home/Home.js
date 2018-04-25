@@ -55,7 +55,12 @@ export default class Home extends Component {
     }
 
     renderFloatingMenu = () => {
-        const { changeLoginWithPhoneModalViewState, isLoginWithPhoneModalVisible, onCreateAdButtonPress } = this.props;
+        const {
+            changeLoginWithPhoneModalViewState,
+            isLoginWithPhoneModalVisible,
+            onCreateAdButtonPress,
+            isUserLoggedIn
+        } = this.props;
 
         if (isLoginWithPhoneModalVisible) {
             return <View />
@@ -68,7 +73,7 @@ export default class Home extends Component {
                     name="camera"
                     type="font-awesome"
                     color={Color.lightWhite}
-                    onPress={changeLoginWithPhoneModalViewState}
+                    onPress={isUserLoggedIn ? onCreateAdButtonPress : changeLoginWithPhoneModalViewState}
                     containerStyle={{
                         backgroundColor: Color.dark,
                         borderWidth: 0.5,
@@ -163,5 +168,6 @@ Home.propTypes = {
     phoneNumberInputUIVisible: PropTypes.bool,
     changePhoneNumberInputUIState: PropTypes.func,
     otpVerificationUIVisible: PropTypes.bool,
+    isUserLoggedIn: PropTypes.bool,
     changeOTPVerificationUIState: PropTypes.func
 };

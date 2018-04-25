@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
+import firebase from 'react-native-firebase';
 
 import Home from './Home';
 
@@ -10,14 +11,29 @@ export default class HomeContainer extends Component {
 
         this.state = {
             isLoginWithPhoneModalVisible: false,
-            phoneNumberInput: undefined,
             phoneNumberInputUIVisible: false,
-            otpVerificationUIVisible: false
+            otpVerificationUIVisible: false,
+            phoneNumberInput: undefined,
+
         };
     }
     componentDidMount() {
         StatusBar.setHidden(true);
         //Temporary Solution .. need to hide for all app screen.
+    }
+
+    /*Phone Auth Functions*/
+    firePhoneAuthentication = (phoneNumber) => {
+
+    }
+
+    verifyUserLogin = () => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                return true;
+            }
+            return false;
+        });
     }
 
     changeLoginWithPhoneModalViewState = () => {
@@ -29,7 +45,14 @@ export default class HomeContainer extends Component {
     }
 
     changeOTPVerificationUIState = () => {
-        this.setState({ otpVerificationUIVisible: !this.state.otpVerificationUIVisible });
+        const { phoneNumberInput } = this.state;
+        //TODO: check phone no is undefined or equal or 10.
+        //TODO: show Activity Indicator and prevent user from double click.
+        firebase.auth().signInWithPhoneNumber(phoneNumberInput)
+            .then((confirmResult) => this.setState({
+                otpVerificationUIVisible: !this.state.otpVerificationUIVisible
+            }))
+            .catch((error) => console.log('Error is Phone number Authentication'));
     }
 
     onCreateAdButtonPress = () => {
@@ -38,15 +61,14 @@ export default class HomeContainer extends Component {
 
     onPhoneNumberInputChange = (text) => {
         let newText = '';
-        let numbers = '1234567';
 
         for (var i = 0; i < text.length; i++) {
-            if (numbers.indexOf(text[i]) > -1) {
+            if (text.indexOf(text[i]) > -1) {
                 newText = newText + text[i];
             }
         }
 
-        this.setState({ phoneNumberInput: newText })
+        this.setState({ phoneNumberInput: '+917829366565' })
     }
 
     render() {
@@ -64,6 +86,7 @@ export default class HomeContainer extends Component {
                 changeOTPVerificationUIState={this.changeOTPVerificationUIState}
                 navigation={this.props.navigation}
                 onCreateAdButtonPress={this.onCreateAdButtonPress}
+                isUserLoggedIn={this.verifyUserLogin()}
             />
         );
     }

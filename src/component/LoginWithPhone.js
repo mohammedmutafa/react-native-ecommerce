@@ -9,23 +9,10 @@ import {
 import PropTypes from 'prop-types';
 import { Icon, Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
-import firebase from 'react-native-firebase';
 
 import OTPVerificationUIComponent from '../component/OTPVerificationUI';
 
 class LoginWithPhone extends Component {
-
-    /*Phone Auth Functions*/
-
-    firePhoneAuthentication = (phoneNumber) => {
-        firebase.auth().signInWithPhoneNumber(phoneNumber)
-            .then((confirmResult) => console.log(confirmResult))// save confirm result to use with the manual verification code)
-            .catch((error) => console.log(error));
-    }
-
-    componentDidMount() {
-        this.firePhoneAuthentication('+917829366565')
-    }
 
     renderFloatingMenu = () => {
         const { changeLoginWithPhoneModalViewState } = this.props;
@@ -44,7 +31,7 @@ class LoginWithPhone extends Component {
     }
 
     renderFloatingVerifyPhoneNumberButton = () => {
-        const { changeLoginWithPhoneModalViewState, otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
+        const { otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
 
         return (
             <View style={styles.floatingMenuButtonStyle}>
@@ -61,20 +48,24 @@ class LoginWithPhone extends Component {
 
     renderSignInWithPhoneButton = () => {
         const { changePhoneNumberInputUIState } = this.props;
-        return <Button
-            buttonStyle={styles.loginButtonStyle}
-            icon={{ name: 'phone', type: 'feather' }}
-            title="Sign In With Phone Number"
-            onPress={changePhoneNumberInputUIState}
-        />
+        return (
+            <Button
+                buttonStyle={styles.loginButtonStyle}
+                icon={{ name: 'phone', type: 'feather' }}
+                title="Sign In With Phone Number"
+                onPress={changePhoneNumberInputUIState}
+            />
+        );
     }
 
     renderNoteText = () => {
-        return <Button
-            buttonStyle={styles.noteContainerStyle}
-            icon={{ name: 'ios-warning-outline', type: 'ionicon', color: '#DAA520' }}
-            title="Number will be visible to public users."
-        />
+        return (
+            <Button
+                buttonStyle={styles.noteContainerStyle}
+                icon={{ name: 'ios-warning-outline', type: 'ionicon', color: '#DAA520' }}
+                title="Number will be visible to public users."
+            />
+        );
     }
 
     renderSeparator = () => <View style={styles.separator} />
@@ -88,7 +79,7 @@ class LoginWithPhone extends Component {
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Nepal (+977)</Text>
                 {this.renderSeparator()}
                 <TextInput
-                    style={{ height: 40, color: '#FFFFFF', width: window.width / 1.5 }}
+                    style={{ height: 40, color: '#FFFFFF', fontSize: 18, width: window.width / 1.5 }}
                     onChangeText={onPhoneNumberInputChange}
                     value={phoneNumberInput}
                     placeholderTextColor="#C7C7CD"
