@@ -17,11 +17,11 @@ export default StyleSheet.create({
         height: screenHeight,
         width: screenWidth,
         position: 'absolute',
-        backgroundColor: Colors.semiTransparentDarkOverlay
+        backgroundColor: 'rgba(39,34,35,0.8)'
+        //backgroundColor: Colors.semiTransparentDarkOverlay
     },
     textInputPriceStyle: {
-        backgroundColor: 'rgba(39,34,35,0.8)',
-        borderWidth: 1,
+        borderBottomWidth: 2,
         borderColor: Colors.golden,
         width: screenWidth - 15,
         padding: 15,
@@ -33,8 +33,7 @@ export default StyleSheet.create({
         marginTop: 100
     },
     textInputTitleStyle: {
-        backgroundColor: 'rgba(39,34,35,0.8)',
-        borderWidth: 1,
+        borderBottomWidth: 2,
         borderColor: Colors.golden,
         width: screenWidth - 15,
         padding: 15,
@@ -44,8 +43,7 @@ export default StyleSheet.create({
         marginTop: 100
     },
     textInputDescriptionStyle: {
-        backgroundColor: 'rgba(39,34,35,0.8)',
-        borderWidth: 1,
+        borderBottomWidth: 2,
         borderColor: Colors.golden,
         width: screenWidth - 15,
         paddingHorizontal: 15,
