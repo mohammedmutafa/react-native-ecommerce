@@ -38,7 +38,7 @@ class Drawer extends Component {
                 marginTop: 20
             }}
             >
-                <Text style={{ fontSize: 18, color: Color.lightWhite }}>{title}</Text>
+                <Text style={{ fontSize: 18, color: Color.lightWhite, fontStyle: 'italic' }}>{title}</Text>
                 <Icon
                     underlayColor="transparent"
                     name="chevron-right"
