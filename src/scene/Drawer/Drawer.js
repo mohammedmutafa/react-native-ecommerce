@@ -21,10 +21,15 @@ class Drawer extends Component {
     }
 
     onPressRow = (key) => {
+        const { navigation } = this.props;
+
         switch (key) {
             case 'Logout':
                 firebase.auth().signOut().then((result) => console.log(result))
                     .catch((error) => console.log(error));//TODO: Use redux to trigger signout in Home Container
+                break;
+            case 'Profile':
+                navigation.navigate('ProfilePublic');//TODO: Replace with Private Profile component
                 break;
         }
     }
