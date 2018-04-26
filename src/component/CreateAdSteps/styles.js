@@ -19,11 +19,6 @@ export default StyleSheet.create({
         position: 'absolute',
         backgroundColor: Colors.semiTransparentDarkOverlay
     },
-    imageViewStyle: {
-        height: screenHeight,
-        width: screenWidth,
-        resizeMode: 'cover'
-    },
     textInputPriceStyle: {
         backgroundColor: 'rgba(39,34,35,0.8)',
         borderWidth: 1,
@@ -59,14 +54,6 @@ export default StyleSheet.create({
         color: Colors.lightWhite,
         fontSize: 18,
         marginTop: 100
-    },
-    backButtonsContainer: {
-        width: screenWidth,
-        position: 'absolute',
-        top: 15,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
     },
     navigationBar: {
         flexDirection: 'row',

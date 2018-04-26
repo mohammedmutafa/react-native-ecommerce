@@ -1,14 +1,11 @@
 
 import React, { Component } from 'react';
 import {
-    Image,
     ImageBackground,
     View,
     TextInput,
     Text,
-    Button,
-    Modal,
-    TouchableOpacity
+    Modal
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -22,12 +19,10 @@ import { CategorySelector } from '../../component/CategorySelector';
 
 const {
     container,
-    imageViewStyle,
     semiTransparentViewStyle,
     textInputPriceStyle,
     textInputTitleStyle,
     textInputDescriptionStyle,
-    backButtonsContainer,
     navigationBar
 } = styles;
 import { descriptionTextInputHeight } from './styles';
@@ -118,8 +113,8 @@ export class CreateAdSteps extends Component {
         return (
             <TextInput
                 style={textInputPriceStyle}
-                keyboardType='numeric'
-                placeholder='₹ (Price)'
+                keyboardType="numeric"
+                placeholder="₹ (Price)"
                 placeholderTextColor={Color.lightWhite}
                 autoFocus={true}
                 multiline={false}
@@ -138,11 +133,10 @@ export class CreateAdSteps extends Component {
                 style={textInputTitleStyle}
                 onChangeText={setProductTitle}
                 placeholder="Product Title (max 50)"
-                placeholderTextColor={Color.lightWhite}
-                clearButtonMode='always'
+                clearButtonMode="always"
                 multiline={false}
                 maxLength={50}
-                keyboardType='default'
+                keyboardType="default"
                 autoFocus={true}
                 value={productTitle}
                 placeholderTextColor={Color.placeholderWhite}
@@ -159,17 +153,17 @@ export class CreateAdSteps extends Component {
                 style={textInputDescriptionStyle}
                 onChangeText={setProductDescription}
                 placeholder="Product Description (max 500)"
-                clearButtonMode='always'
+                clearButtonMode="always"
                 placeholderTextColor={Color.placeholderWhite}
                 maxLength={500}
-                keyboardType='default'
+                keyboardType="default"
                 autoFocus={true}
                 maxHeight={descriptionTextInputHeight}
                 autoGrow={true}
                 multiline={true}
                 value={productDescription}
                 underlineColorAndroid="transparent"
-                textAlignVertical='bottom'
+                textAlignVertical="bottom"
             />
         );
     }
@@ -245,7 +239,6 @@ export class CreateAdSteps extends Component {
 
     render() {
         const { imageURL } = this.props;
-        const { step } = this.state;
 
         return (
             <ImageBackground
@@ -274,5 +267,7 @@ CreateAdSteps.propTypes = {
     changeStateOfCreateAdSpecificationModalView: PropTypes.func,
     selectedCategory: PropTypes.string,
     selectedSubCategory: PropTypes.string,
+    productTitle: PropTypes.string,
+    imageURL: PropTypes.string,
     navigation: PropTypes.object
 };
