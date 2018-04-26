@@ -49,7 +49,8 @@ export class CustomActivityIndicator extends Component {
                     backgroundColor: '#F7F7F7',
                     borderRadius: 5,
                     padding: 10
-                }}>
+                }}
+                >
                     <Animation
                         style={{
                             width: (width / 3) - 40,
