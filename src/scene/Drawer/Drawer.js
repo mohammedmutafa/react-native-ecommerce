@@ -23,20 +23,23 @@ class Drawer extends Component {
     onPressRow = (key) => {
         switch (key) {
             case 'Logout':
-                firebase.auth().signOut();//TODO: Use redux to trigger signout in Home Container
+                firebase.auth().signOut().then((result) => console.log(result))
+                    .catch((error) => console.log(error));//TODO: Use redux to trigger signout in Home Container
                 break;
         }
     }
 
     renderRow = (title) => {
         return (
-            <TouchableOpacity style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                paddingHorizontal: 15,
-                marginTop: 20
-            }}
+            <TouchableOpacity
+                style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    paddingHorizontal: 15,
+                    marginTop: 20
+                }}
+                onPress={() => this.onPressRow(title)}
             >
                 <Text style={{ fontSize: 18, color: Color.lightWhite, fontStyle: 'italic' }}>{title}</Text>
                 <Icon
@@ -45,7 +48,7 @@ class Drawer extends Component {
                     type="evilicon"
                     color={Color.golden}
                     size={40}
-                    onPress={() => this.renderRow(title)}
+                //onPress={this.onPressRow(title)}
                 />
             </TouchableOpacity>
         );

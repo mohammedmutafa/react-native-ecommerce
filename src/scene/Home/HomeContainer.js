@@ -40,6 +40,10 @@ export default class HomeContainer extends Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        //TODO Refresh Home page after Logout pressed on Drawer with Redux.
+    }
+
     componentWillUnmount() {
         if (this.unsubscribe) this.unsubscribe();
     }
@@ -82,7 +86,8 @@ export default class HomeContainer extends Component {
             isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible,
             phoneNumberInputUIVisible: false,
             otpVerificationUIVisible: false,
-            phoneNumberInput: undefined
+            phoneNumberInput: undefined,
+            isOTPVerified: undefined,
         });
     }
 
