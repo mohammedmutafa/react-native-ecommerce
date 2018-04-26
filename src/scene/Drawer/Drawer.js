@@ -6,6 +6,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { Icon } from 'react-native-elements';
+import firebase from 'react-native-firebase';
 
 import { BackButton } from '../../component/BackButton';
 import styles from './styles';
@@ -19,9 +20,17 @@ class Drawer extends Component {
         super(props);
     }
 
+    onPressRow = (key) => {
+        switch (key) {
+            case 'Logout':
+                firebase.auth().signOut();
+                break;
+        }
+    }
+
     renderRow = (title) => {
         return (
-            <View style={{
+            <TouchableOpacity style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -29,19 +38,21 @@ class Drawer extends Component {
                 marginTop: 20
             }}
             >
-                <TouchableOpacity>
-                    <Text style={{ fontSize: 18, color: Color.lightWhite }}>{title}</Text>
-                </TouchableOpacity>
+                <Text style={{ fontSize: 18, color: Color.lightWhite }}>{title}</Text>
                 <Icon
                     underlayColor="transparent"
                     name="chevron-right"
                     type="evilicon"
                     color={Color.golden}
                     size={40}
-                    onPress={() => console.log('Dipak')}
+                    onPress={() => this.renderRow(title)}
                 />
-            </View>
+            </TouchableOpacity>
         );
+    }
+
+    toggleDrawer = () => {
+        this.props.navigation.navigate('DrawerClose');
     }
 
     render() {
@@ -52,13 +63,14 @@ class Drawer extends Component {
                     iconName="ios-close-circle-outline"
                     iconType="ionicon"
                     iconColor={Color.lightWhite}
-                    onPress={() => this.props.navigation.navigate('DrawerClose')} />
+                    onPress={this.toggleDrawer}
+                />
                 <View style={{ marginTop: 100 }}>
                     {this.renderRow('Profile')}
                     {this.renderRow('Bookmarked Items')}
                     {this.renderRow('Settings')}
                     {this.renderRow('About')}
-                    {this.renderRow('Login')}
+                    {this.renderRow('Logout')}
                 </View>
             </View>
         );
