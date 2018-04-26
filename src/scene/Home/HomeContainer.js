@@ -25,11 +25,13 @@ export default class HomeContainer extends Component {
 
     verifyUserLogin = () => {
         const users = firebase.auth().currentUser;
-        if (users !== undefined) {
-            return true;
+        console.log('DIPAK');
+        console.log(users);
+        if (users === undefined || users === null) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     changeOTPVerificationUIState = () => {
@@ -66,7 +68,12 @@ export default class HomeContainer extends Component {
     }
 
     changeLoginWithPhoneModalViewState = () => {
-        this.setState({ isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible });
+        this.setState({
+            isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible,
+            phoneNumberInputUIVisible: false,
+            otpVerificationUIVisible: false,
+            phoneNumberInput: undefined
+        });
     }
 
     changePhoneNumberInputUIState = () => {
