@@ -7,6 +7,7 @@ import {
     Modal,
     Dimensions
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { Icon, Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 
@@ -30,7 +31,7 @@ class OTPVerificationUI extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isOTPVerified) {
+        if (nextProps.isOTPVerified !== undefined) {
             this.setState({
                 onOTPVerificationProgress: false
             });
@@ -134,15 +135,37 @@ class OTPVerificationUI extends Component {
     }
 
     renderVerifyOTPButton = () => {
-        const { OTP1, OTP2, OTP3, OTP4, OTP5, OTP6 } = this.state;
+        const { isOTPVerified } = this.props;
 
         return (
-            <Button
-                buttonStyle={styles.verifyOTPButtonStyle}
-                icon={{ name: 'lock', type: 'simple-line-icon' }}
-                title="Submit OTP"
-                onPress={() => this.onPressVerifyButton()}
-            />
+            <View>
+                <Button
+                    buttonStyle={styles.verifyOTPButtonStyle}
+                    icon={{ name: 'lock', type: 'simple-line-icon' }}
+                    title="Submit OTP"
+                    onPress={this.onPressVerifyButton}
+                />
+                <Text style={{ color: 'red', padding: 10 }}>{isOTPVerified === false ? 'Verification Unsuccessfull' : ''}</Text>
+            </View>
+        );
+    }
+
+    renderVerfiedSuccessfullyUI = () => {
+        const { changeLoginWithPhoneModalViewState } = this.props;
+
+        return (
+            <View style={styles.mainConatinerStyle} >
+                <Animatable.View style={styles.phoneNumberInputContainer} animation="fadeInLeft">
+                    <Text style={{ color: '#FFFFFF', fontSize: 28 }}>Verified Successfully</Text>
+                    {this.renderSeparator()}
+                    <Button
+                        buttonStyle={styles.verifyOTPButtonStyle}
+                        icon={{ name: 'lock-open', type: 'simple-line-icon' }}
+                        title="  Done    "
+                        onPress={changeLoginWithPhoneModalViewState}
+                    />
+                </Animatable.View>
+            </View>
         );
     }
 
@@ -151,7 +174,7 @@ class OTPVerificationUI extends Component {
         const { onOTPVerificationProgress } = this.state;
 
         if (isOTPVerified) {
-            //TODO: Render Sucussfully login UI
+            return this.renderVerfiedSuccessfullyUI();
         }
 
         return (
@@ -227,3 +250,10 @@ const styles = StyleSheet.create({
 });
 
 export default OTPVerificationUI;
+
+OTPVerificationUI.propTypes = {
+    isOTPVerified: PropTypes.bool,
+    verifyOTP: PropTypes.func,
+    changeOTPVerificationUIState: PropTypes.func,
+    changeLoginWithPhoneModalViewState: PropTypes.func
+}

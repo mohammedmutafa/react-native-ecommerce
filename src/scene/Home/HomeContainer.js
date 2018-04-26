@@ -15,7 +15,7 @@ export default class HomeContainer extends Component {
             otpVerificationUIVisible: false,
             phoneNumberInput: undefined,
             confirmResult: undefined,
-            isOTPVerified: false
+            isOTPVerified: undefined
         };
     }
     componentDidMount() {

@@ -124,6 +124,7 @@ class LoginWithPhone extends Component {
 
     render() {
         const {
+            changeLoginWithPhoneModalViewState,
             phoneNumberInputUIVisible,
             otpVerificationUIVisible,
             changeOTPVerificationUIState,
@@ -134,6 +135,7 @@ class LoginWithPhone extends Component {
         if (otpVerificationUIVisible) {
             return (
                 <OTPVerificationUIComponent
+                    changeLoginWithPhoneModalViewState={changeLoginWithPhoneModalViewState}
                     changeOTPVerificationUIState={changeOTPVerificationUIState}
                     verifyOTP={verifyOTP}
                     isOTPVerified={isOTPVerified}
