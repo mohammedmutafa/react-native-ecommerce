@@ -25,8 +25,7 @@ export default class HomeContainer extends Component {
 
     verifyUserLogin = () => {
         const users = firebase.auth().currentUser;
-        console.log('DIPAK');
-        console.log(users);
+
         if (users === undefined || users === null) {
             return false;
         }

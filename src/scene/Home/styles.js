@@ -1,7 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
-import colors from '../../styles/Color';
-
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 
 const window = Dimensions.get('window');
@@ -40,5 +38,12 @@ export default styles = StyleSheet.create({
         position: 'absolute',
         bottom: 35,
         paddingRight: 15
+    },
+    slide1: {
+        height: SLIDER_HEIGHT,
+        width: window.width,
+        position: 'absolute',
+        bottom: 0,
+        marginLeft: window.width / 2
     }
 });

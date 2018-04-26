@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
     View,
-    Text,
     Image,
     FlatList,
     StyleSheet,
@@ -12,6 +11,7 @@ import {
 
 import CategoryList from '../styles/Categories';
 import * as Animatable from 'react-native-animatable';
+import Color from '../styles/Color';
 
 const { MainCategory } = CategoryList;
 let delayTextAnimationTitle = 0;
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     evenCategoryCardStyle: {
         width: cardWidth,
         height: cardWidth,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: Color.lightWhite,
         marginTop: 5,
         marginBottom: 5,
         marginRight: 5
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     oddCategoryCardStyle: {
         width: cardWidth,
         height: cardWidth,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: Color.lightWhite,
         marginTop: 5,
         marginBottom: 5,
         marginLeft: 5
