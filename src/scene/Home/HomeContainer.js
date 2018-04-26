@@ -24,12 +24,12 @@ export default class HomeContainer extends Component {
     }
 
     verifyUserLogin = () => {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                return true;
-            }
-            return false;
-        });
+        const users = firebase.auth().currentUser;
+        if (users !== undefined) {
+            return true;
+        }
+
+        return false;
     }
 
     changeOTPVerificationUIState = () => {
