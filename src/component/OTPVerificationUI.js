@@ -80,7 +80,7 @@ class OTPVerificationUI extends Component {
                     type="entypo"
                     color="#C7C7CD"
                     size={30}
-                    onPress={this.props.changeOTPVerificationUIState}
+                    onPress={this.props.changeLoginWithPhoneModalViewState}
                 />
             </View>
         );
@@ -145,7 +145,7 @@ class OTPVerificationUI extends Component {
                     title="Submit OTP"
                     onPress={this.onPressVerifyButton}
                 />
-                <Text style={{ color: 'red', padding: 10 }}>{isOTPVerified === false ? 'Verification Unsuccessfull' : ''}</Text>
+                <Text style={{ color: 'red', padding: 10 }}>{isOTPVerified === false ? 'Verification Unsuccessful' : ''}</Text>
             </View>
         );
     }
