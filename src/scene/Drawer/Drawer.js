@@ -23,7 +23,7 @@ class Drawer extends Component {
     onPressRow = (key) => {
         switch (key) {
             case 'Logout':
-                firebase.auth().signOut();
+                firebase.auth().signOut();//TODO: Use redux to trigger signout in Home Container
                 break;
         }
     }

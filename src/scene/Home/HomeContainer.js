@@ -8,29 +8,40 @@ import Home from './Home';
 export default class HomeContainer extends Component {
     constructor(props) {
         super(props);
-
+        this.unsubscribe = null;
         this.state = {
             isLoginWithPhoneModalVisible: false,
             phoneNumberInputUIVisible: false,
             otpVerificationUIVisible: false,
             phoneNumberInput: undefined,
             confirmResult: undefined,
-            isOTPVerified: undefined
+            isOTPVerified: undefined,
+            user: undefined
         };
     }
+
     componentDidMount() {
         StatusBar.setHidden(true);
         //Temporary Solution .. need to hide for all app screen.
+
+        //More Details: https://firebase.google.com/docs/auth/web/manage-users
+        this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ user: user.toJSON() });
+            } else {
+                // User has been signed out, reset the state
+                this.setState({
+                    isLoginWithPhoneModalVisible: false,
+                    phoneNumberInputUIVisible: false,
+                    otpVerificationUIVisible: false,
+                    phoneNumberInput: undefined
+                });
+            }
+        });
     }
 
-    verifyUserLogin = () => {
-        const users = firebase.auth().currentUser;
-
-        if (users === undefined || users === null) {
-            return false;
-        }
-
-        return true;
+    componentWillUnmount() {
+        if (this.unsubscribe) this.unsubscribe();
     }
 
     changeOTPVerificationUIState = () => {
@@ -101,7 +112,8 @@ export default class HomeContainer extends Component {
             phoneNumberInput,
             phoneNumberInputUIVisible,
             otpVerificationUIVisible,
-            isOTPVerified
+            isOTPVerified,
+            user
         } = this.state;
 
         return (
@@ -116,7 +128,7 @@ export default class HomeContainer extends Component {
                 changeOTPVerificationUIState={this.changeOTPVerificationUIState}
                 navigation={this.props.navigation}
                 onCreateAdButtonPress={this.onCreateAdButtonPress}
-                isUserLoggedIn={this.verifyUserLogin()}
+                isUserLoggedIn={user ? true : false}
                 verifyOTP={this.verifyOTP}
                 isOTPVerified={isOTPVerified}
             />
