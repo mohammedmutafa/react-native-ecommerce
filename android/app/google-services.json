@@ -1,0 +1,144 @@
+{
+  "project_info": {
+    "project_number": "1078644230560",
+    "firebase_url": "https://innernepal-dca5b.firebaseio.com",
+    "project_id": "innernepal-dca5b",
+    "storage_bucket": "innernepal-dca5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078644230560:android:86a9c8762017d4e3",
+        "android_client_info": {
+          "package_name": "com.brickstudios.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078644230560-atfcmgf3pjmj2ljskne1r08v769av6gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATldwXf3uXfokeeB-GHn67DBJxFgESkT4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078644230560:android:3885ad9451d047f0",
+        "android_client_info": {
+          "package_name": "com.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078644230560-h850fjh9nldd0o2bcjk4lguhppi9e83m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecommerce",
+            "certificate_hash": "f2451e8cbb7199e841d4318e2610c09c483044bd"
+          }
+        },
+        {
+          "client_id": "1078644230560-atfcmgf3pjmj2ljskne1r08v769av6gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATldwXf3uXfokeeB-GHn67DBJxFgESkT4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078644230560-atfcmgf3pjmj2ljskne1r08v769av6gb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078644230560-khk6qlpoufti60gdevgvavcrac12km7c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.brickstudios.ecommerce"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078644230560:android:206d38738f7a00bc",
+        "android_client_info": {
+          "package_name": "com.nepalexpats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078644230560-173nnf3ehc14e5d1qqifhjr4hsn1bk5v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nepalexpats",
+            "certificate_hash": "b064061315cd261fb20db0e112f394c73dbdc61d"
+          }
+        },
+        {
+          "client_id": "1078644230560-atfcmgf3pjmj2ljskne1r08v769av6gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATldwXf3uXfokeeB-GHn67DBJxFgESkT4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078644230560-atfcmgf3pjmj2ljskne1r08v769av6gb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078644230560-khk6qlpoufti60gdevgvavcrac12km7c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.brickstudios.ecommerce"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

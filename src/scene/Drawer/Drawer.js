@@ -22,7 +22,7 @@ class Drawer extends Component {
 
     onPressRow = (key) => {
         const { navigation } = this.props;
-
+       
         switch (key) {
             case 'Logout':
                 firebase.auth().signOut().then((result) => console.log(result))

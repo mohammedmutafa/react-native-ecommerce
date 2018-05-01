@@ -1,4 +1,4 @@
-package com.ecommerce;
+package com.brickstudios.ecommerce;
 
 import com.facebook.react.ReactActivity;
 

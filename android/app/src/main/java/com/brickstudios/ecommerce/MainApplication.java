@@ -1,9 +1,11 @@
-package com.ecommerce;
+package com.brickstudios.ecommerce;
 
 import android.app.Application;
 
+import com.brickstudios.ecommerce.BuildConfig;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.wix.interactable.Interactable;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,7 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNFirebasePackage(),
+              new RNFirebasePackage(),
+              new RNFirebaseAuthPackage(),
             new LottiePackage(),
             new Interactable(),
             new VectorIconsPackage()
