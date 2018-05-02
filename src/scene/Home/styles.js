@@ -1,7 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
-import colors from '../../styles/Color';
-
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 
 const window = Dimensions.get('window');
@@ -35,25 +33,17 @@ export default styles = StyleSheet.create({
     },
     wrapper: {
     },
-    slide1: {
-        height: SLIDER_HEIGHT,// same width and height for the container
-        width: window.width,
-        position: 'absolute', // position it in circle
-        bottom: 0, // position it in circle
-        marginLeft: window.width / 2, // center it in main view same value as marginLeft for circle but positive
-        backgroundColor: '#FFFFFF'
-    },
     floatingMenuButtonStyle: {
         alignSelf: 'flex-end',
         position: 'absolute',
         bottom: 35,
         paddingRight: 15
     },
-    stickySection: {
-        height: STICKY_HEADER_HEIGHT,
+    slide1: {
+        height: SLIDER_HEIGHT,
         width: window.width,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 10
+        position: 'absolute',
+        bottom: 0,
+        marginLeft: window.width / 2
     }
 });

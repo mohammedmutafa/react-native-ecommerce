@@ -3,13 +3,13 @@ import {
     Animated,
     Easing,
     Dimensions,
-    Modal,
     View
 } from 'react-native';
 import Animation from 'lottie-react-native';
 
 // Get screen dimensions
 const { width, height } = Dimensions.get('window');
+const lottiefile = require('../../../assets/lottieFiles/animation_loading.json');
 
 export class CustomActivityIndicator extends Component {
 
@@ -49,14 +49,15 @@ export class CustomActivityIndicator extends Component {
                     backgroundColor: '#F7F7F7',
                     borderRadius: 5,
                     padding: 10
-                }}>
+                }}
+                >
                     <Animation
                         style={{
                             width: (width / 3) - 40,
                             height: (width / 3) - 40
                         }}
                         // Load animation from json file
-                        source={require('/Users/deepakkatuwal/Documents/MyProjects/InnerNepal/ecommerce/assets/lottieFiles/animation_loading.json')}
+                        source={lottiefile}
                         // Animate json file
                         progress={this.state.progress}
                     />

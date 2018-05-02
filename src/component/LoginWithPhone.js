@@ -6,12 +6,14 @@ import {
     StyleSheet,
     Dimensions
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { Icon, Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 
 import OTPVerificationUIComponent from '../component/OTPVerificationUI';
 
 class LoginWithPhone extends Component {
+
     renderFloatingMenu = () => {
         const { changeLoginWithPhoneModalViewState } = this.props;
 
@@ -19,9 +21,9 @@ class LoginWithPhone extends Component {
             <View style={styles.floatingMenuButtonStyle}>
                 <Icon
                     raised
-                    name='close'
-                    type='evilIcons'
-                    color='#2a2a2a'
+                    name="close"
+                    type="evilIcons"
+                    color="#2a2a2a"
                     onPress={changeLoginWithPhoneModalViewState}
                 />
             </View>
@@ -29,15 +31,15 @@ class LoginWithPhone extends Component {
     }
 
     renderFloatingVerifyPhoneNumberButton = () => {
-        const { changeLoginWithPhoneModalViewState, otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
+        const { otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
 
         return (
             <View style={styles.floatingMenuButtonStyle}>
                 <Icon
                     raised
-                    name='chevron-thin-right'
-                    type='entypo'
-                    color='#2a2a2a'
+                    name="chevron-thin-right"
+                    type="entypo"
+                    color="#2a2a2a"
                     onPress={!otpVerificationUIVisible ? changeOTPVerificationUIState : null}
                 />
             </View>
@@ -46,20 +48,24 @@ class LoginWithPhone extends Component {
 
     renderSignInWithPhoneButton = () => {
         const { changePhoneNumberInputUIState } = this.props;
-        return <Button
-            buttonStyle={styles.loginButtonStyle}
-            icon={{ name: 'phone', type: 'feather' }}
-            title='Sign In With Phone Number'
-            onPress={changePhoneNumberInputUIState}
-        />
+        return (
+            <Button
+                buttonStyle={styles.loginButtonStyle}
+                icon={{ name: 'phone', type: 'feather' }}
+                title="Sign In With Phone Number"
+                onPress={changePhoneNumberInputUIState}
+            />
+        );
     }
 
     renderNoteText = () => {
-        return <Button
-            buttonStyle={styles.noteContainerStyle}
-            icon={{ name: 'ios-warning-outline', type: 'ionicon', color: '#DAA520' }}
-            title='Number will be visible to public users.'
-        />
+        return (
+            <Button
+                buttonStyle={styles.noteContainerStyle}
+                icon={{ name: 'ios-warning-outline', type: 'ionicon', color: '#DAA520' }}
+                title="Number will be visible to public users."
+            />
+        );
     }
 
     renderSeparator = () => <View style={styles.separator} />
@@ -69,15 +75,15 @@ class LoginWithPhone extends Component {
         const { phoneNumberInput, onPhoneNumberInputChange } = this.props;
 
         return (
-            <Animatable.View style={phoneNumberInputContainer} animation='fadeInLeft'>
+            <Animatable.View style={phoneNumberInputContainer} animation="fadeInLeft">
                 <Text style={{ color: '#FFFFFF', fontSize: 20 }}>Nepal (+977)</Text>
                 {this.renderSeparator()}
                 <TextInput
-                    style={{ height: 40, color: '#FFFFFF', width: window.width / 1.5 }}
+                    style={{ height: 40, color: '#FFFFFF', fontSize: 18, width: window.width / 1.5 }}
                     onChangeText={onPhoneNumberInputChange}
                     value={phoneNumberInput}
-                    placeholderTextColor='#C7C7CD'
-                    keyboardType='phone-pad'
+                    placeholderTextColor="#C7C7CD"
+                    keyboardType="phone-pad"
                     maxLength={10}
                     placeholder="Your Phone Number"
                 />
@@ -102,10 +108,10 @@ class LoginWithPhone extends Component {
             <View style={styles.mainConatinerStyle} >
                 <View style={styles.backButtonStyle}>
                     <Icon
-                        underlayColor='transparent'
-                        name='chevron-with-circle-left'
-                        type='entypo'
-                        color='#C7C7CD'
+                        underlayColor="transparent"
+                        name="chevron-with-circle-left"
+                        type="entypo"
+                        color="#C7C7CD"
                         size={30}
                         onPress={this.props.changePhoneNumberInputUIState}
                     />
@@ -117,10 +123,24 @@ class LoginWithPhone extends Component {
     }
 
     render() {
-        const { phoneNumberInputUIVisible, otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
+        const {
+            changeLoginWithPhoneModalViewState,
+            phoneNumberInputUIVisible,
+            otpVerificationUIVisible,
+            changeOTPVerificationUIState,
+            verifyOTP,
+            isOTPVerified
+        } = this.props;
 
         if (otpVerificationUIVisible) {
-            return <OTPVerificationUIComponent changeOTPVerificationUIState={changeOTPVerificationUIState} />
+            return (
+                <OTPVerificationUIComponent
+                    changeLoginWithPhoneModalViewState={changeLoginWithPhoneModalViewState}
+                    changeOTPVerificationUIState={changeOTPVerificationUIState}
+                    verifyOTP={verifyOTP}
+                    isOTPVerified={isOTPVerified}
+                />
+            );
         }
 
         return phoneNumberInputUIVisible ? this.renderPhoneNumberInputUI() : this.renderSignInWithPhoneUI();
@@ -173,3 +193,15 @@ const styles = StyleSheet.create({
 });
 
 export default LoginWithPhone;
+
+LoginWithPhone.propTypes = {
+    changeLoginWithPhoneModalViewState: PropTypes.func,
+    phoneNumberInput: PropTypes.string,
+    onPhoneNumberInputChange: PropTypes.func,
+    phoneNumberInputUIVisible: PropTypes.bool,
+    changePhoneNumberInputUIState: PropTypes.func,
+    otpVerificationUIVisible: PropTypes.bool,
+    changeOTPVerificationUIState: PropTypes.func,
+    verifyOTP: PropTypes.func,
+    isOTPVerified: PropTypes.bool
+}

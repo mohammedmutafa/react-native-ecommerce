@@ -6,6 +6,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { Icon } from 'react-native-elements';
+import firebase from 'react-native-firebase';
 
 import { BackButton } from '../../component/BackButton';
 import styles from './styles';
@@ -19,28 +20,47 @@ class Drawer extends Component {
         super(props);
     }
 
+    onPressRow = (key) => {
+        const { navigation } = this.props;
+       
+        switch (key) {
+            case 'Logout':
+                firebase.auth().signOut().then((result) => console.log(result))
+                    .catch((error) => console.log(error));//TODO: Use redux to trigger signout in Home Container
+                break;
+            case 'Profile':
+                navigation.navigate('ProfilePublic');//TODO: Replace with Private Profile component
+                break;
+        }
+    }
+
     renderRow = (title) => {
         return (
-            <View style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                paddingHorizontal: 15,
-                marginTop: 20
-            }}>
-                <TouchableOpacity>
-                    <Text style={{ fontSize: 18, color: Color.lightWhite }}>{title}</Text>
-                </TouchableOpacity>
+            <TouchableOpacity
+                style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    paddingHorizontal: 15,
+                    marginTop: 20
+                }}
+                onPress={() => this.onPressRow(title)}
+            >
+                <Text style={{ fontSize: 18, color: Color.lightWhite, fontStyle: 'italic' }}>{title}</Text>
                 <Icon
-                    underlayColor='transparent'
-                    name='chevron-right'
-                    type='evilicon'
+                    underlayColor="transparent"
+                    name="chevron-right"
+                    type="evilicon"
                     color={Color.golden}
                     size={40}
-                    onPress={() => console.log('Dipak')}
+                //onPress={this.onPressRow(title)}
                 />
-            </View>
+            </TouchableOpacity>
         );
+    }
+
+    toggleDrawer = () => {
+        this.props.navigation.navigate('DrawerClose');
     }
 
     render() {
@@ -48,10 +68,11 @@ class Drawer extends Component {
             <View style={conatinerStyle}>
                 <BackButton
                     style={{ right: 20, marginTop: 20 }}
-                    iconName='ios-close-circle-outline'
-                    iconType='ionicon'
+                    iconName="ios-close-circle-outline"
+                    iconType="ionicon"
                     iconColor={Color.lightWhite}
-                    onPress={() => this.props.navigation.navigate('DrawerClose')} />
+                    onPress={this.toggleDrawer}
+                />
                 <View style={{ marginTop: 100 }}>
                     {this.renderRow('Profile')}
                     {this.renderRow('Bookmarked Items')}

@@ -1,0 +1,6 @@
+framework module Pods_ecommerce_tvOSTests {
+  umbrella header "Pods-ecommerce-tvOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
