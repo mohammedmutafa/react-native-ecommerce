@@ -58,7 +58,7 @@
 		F974852A0A47B98AC594A348 /* Pods_ecommerce_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8027254729D0849F16A4E6 /* Pods_ecommerce_tvOSTests.framework */; };
 		FB3BD8D5205BE48000D05C56 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3BD891205BE3F900D05C56 /* Lottie.framework */; };
 		FB3BD8D6205BE48000D05C56 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB3BD891205BE3F900D05C56 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FBA729A120B00B3F005F4ACF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA729A020B00B3F005F4ACF /* GoogleService-Info.plist */; };
+		FBA729F120B00D20005F4ACF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA729F020B00D20005F4ACF /* GoogleService-Info.plist */; };
 		FC484B62D5764BD88D758A7B /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A88A55C8C67B4498ABB3C060 /* libLottieReactNative.a */; };
 /* End PBXBuildFile section */
 
@@ -474,7 +474,7 @@
 		EC1DD01DF6BD4A458F9796B3 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		F28A61A0BFD74CCA93F06E1E /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		F64653D06CF0424880C90B21 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		FBA729A020B00B3F005F4ACF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FBA729F020B00D20005F4ACF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -623,7 +623,7 @@
 		13B07FAE1A68108700A75B9A /* ecommerce */ = {
 			isa = PBXGroup;
 			children = (
-				FBA729A020B00B3F005F4ACF /* GoogleService-Info.plist */,
+				FBA729F020B00D20005F4ACF /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1389,7 +1389,7 @@
 				4EFF801B05D14E3BBE3516F0 /* Octicons.ttf in Resources */,
 				536B8F7244F643B6A4277C39 /* SimpleLineIcons.ttf in Resources */,
 				F4D735F531394BCE9A1997BE /* Zocial.ttf in Resources */,
-				FBA729A120B00B3F005F4ACF /* GoogleService-Info.plist in Resources */,
+				FBA729F120B00D20005F4ACF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
