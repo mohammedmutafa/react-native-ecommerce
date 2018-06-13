@@ -1,15 +1,11 @@
 
 import React, { Component } from 'react';
 import {
-    Image,
     View,
-    Modal,
     Text,
-    TouchableOpacity,
     Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { Avatar, Icon } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import Swiper from 'react-native-swiper';
 
@@ -136,5 +132,6 @@ export class CreateAdsCard extends Component {
 
 CreateAdsCard.propTypes = {
     productTitle: PropTypes.string,
+    productPrice: PropTypes.string,
     productDescription: PropTypes.string
 };
