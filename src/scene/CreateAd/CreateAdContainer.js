@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import CreateAd from './CreateAd';
 
 class CreateAdContainer extends Component {
@@ -78,7 +78,7 @@ class CreateAdContainer extends Component {
         }
     }
 
-    updateSelectedLocations = selectedLocation => {
+    updateSelectedLocations = (selectedLocation) => {
         this.setState({
             selectedLocation
         });
@@ -127,6 +127,10 @@ class CreateAdContainer extends Component {
             />
         );
     }
+}
+
+CreateAdContainer.propTypes = {
+    navigation: PropTypes.object
 }
 
 export default CreateAdContainer;
