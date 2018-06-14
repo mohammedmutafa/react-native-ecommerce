@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.brickstudios.ecommerce.BuildConfig;
 import com.facebook.react.ReactApplication;
+import com.imagepicker.ImagePickerPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ImagePickerPackage(),
               new RNFirebasePackage(),
               new RNFirebaseAuthPackage(),
             new LottiePackage(),
