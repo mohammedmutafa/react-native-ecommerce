@@ -78,7 +78,7 @@ export class NewAdForm extends Component {
                     style={textInputTextStyle}
                     placeholderTextColor={Color.placeholderWhite}
                     // onChangeText={setProductTitle}
-                    placeholder="Product Title (max 50)"
+                    placeholder="Enter Title"
                     clearButtonMode="always"
                     multiline={false}
                     maxLength={50}
@@ -101,7 +101,7 @@ export class NewAdForm extends Component {
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
                     onPress={() => null}
                 >
-                    <Text style={textInputPlaceHolderStyle}>New or Old</Text>
+                    <Text style={textInputPlaceHolderStyle}>Select Condition</Text>
                     <Icon
                         name="chevron-thin-right"
                         size={20}
@@ -122,7 +122,7 @@ export class NewAdForm extends Component {
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
                     onPress={() => null}
                 >
-                    <Text style={textInputPlaceHolderStyle}>Product Description</Text>
+                    <Text style={textInputPlaceHolderStyle}>Enter Details</Text>
                     <Icon
                         name="chevron-thin-right"
                         size={20}
@@ -143,7 +143,7 @@ export class NewAdForm extends Component {
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
                     onPress={() => null}
                 >
-                    <Text style={textInputPlaceHolderStyle}>e.g. Samsumg/Mobiles</Text>
+                    <Text style={textInputPlaceHolderStyle}>Select Category</Text>
                     <Icon
                         name="chevron-thin-right"
                         size={20}

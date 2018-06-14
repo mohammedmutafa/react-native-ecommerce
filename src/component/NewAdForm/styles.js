@@ -9,7 +9,7 @@ export default StyleSheet.create({
         backgroundColor: Color.lightWhite
     },
     textInputTextStyle: {
-        fontSize: 18,
+        fontSize: 16,
         color: Color.dark
     },
     textInputPlaceHolderStyle: {
