@@ -109,7 +109,6 @@ export class CategorySelector extends Component {
                 <View style={dividerStyle} />
                 <View style={level2FlatListContainerStyle}>
                     <FlatList
-                        bounces={false}
                         showsVerticalScrollIndicator={false}
                         data={dataSource}
                         renderItem={this.renderMainCategoryRow}
