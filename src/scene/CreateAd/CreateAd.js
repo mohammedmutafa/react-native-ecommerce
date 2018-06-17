@@ -26,6 +26,8 @@ import { CreateAdSteps } from '../../component/CreateAdSteps';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
 import { BackButton } from '../../component/BackButton';
 
+import { NewAdForm } from '../../component/NewAdForm';
+
 const { categoryList } = Categories;
 
 class CreateAd extends Component {
@@ -63,9 +65,12 @@ class CreateAd extends Component {
 
     render() {
         const {
+            changeStateOfProductConditionModalView,
+            isProductConditionModalViewVisible,
             isCreateAdSpecificationModalViewVisible,
             isSelectLocationModalViewVisible,
             changeStateOfSelectLocationModalView,
+
             updateProductDetails,
             isProductDescriptionModalViewVisible,
             changeStateOfproductDescriptionModalView,
@@ -89,14 +94,19 @@ class CreateAd extends Component {
 
         if (createAdStatus) {
             return (
-                <CreateAdSteps
+                <NewAdForm
                     onProductPriceInput={onProductPriceInput}
                     productPrice={productPrice}
+
                     selectedProductCondition={selectedProductCondition}
                     setProductConditionUsed={setProductConditionUsed}
                     setProductConditionNew={setProductConditionNew}
+                    isProductConditionModalViewVisible={isProductConditionModalViewVisible}
+                    changeStateOfProductConditionModalView={changeStateOfProductConditionModalView}
+
                     isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                     changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
+
                     selectedLocation={selectedLocation}
                     updateSelectedLocations={updateSelectedLocations}
                     createAdStatusDone={createAdStatusDone}

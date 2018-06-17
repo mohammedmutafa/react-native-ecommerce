@@ -17,6 +17,7 @@ import { numberWithCommas } from '../../utilities/Functions';
 
 import { CreateAdCoverPhoto } from '../CreateAdCoverPhoto';
 import { CategorySelector } from '../CategorySelector';
+import { ConditionSelector } from '../ConditionSelector';
 
 const {
     container,
@@ -99,7 +100,7 @@ export class NewAdForm extends Component {
                 <Text style={textInputTitleStyle}>Condition</Text>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
-                    onPress={() => null}
+                    onPress={this.props.changeStateOfProductConditionModalView}
                 >
                     <Text style={textInputPlaceHolderStyle}>Select Condition</Text>
                     <Icon
@@ -156,6 +157,24 @@ export class NewAdForm extends Component {
         );
     }
 
+    renderProductConditionModalSelection = () => {
+        const {
+            isProductConditionModalViewVisible,
+            selectedProductCondition,
+            setProductConditionUsed,
+            setProductConditionNew
+        } = this.props;
+
+        return (
+            <ConditionSelector
+                isProductConditionModalViewVisible={isProductConditionModalViewVisible}
+                selectedProductCondition={selectedProductCondition}
+                setProductConditionUsed={setProductConditionUsed}
+                setProductConditionNew={setProductConditionNew}
+            />
+        );
+    }
+
     render() {
         return (
             <ScrollView style={container}>
@@ -171,6 +190,7 @@ export class NewAdForm extends Component {
                     {this.renderSeparator()}
                     {this.renderProductCategory()}
                     {this.renderSeparator()}
+                    {this.renderProductConditionModalSelection()}
                 </View>
             </ScrollView>
         );

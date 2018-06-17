@@ -14,10 +14,19 @@ class CreateAdContainer extends Component {
             productPrice: 0,
             productTitle: undefined,
             productDescription: undefined,
+            isProductConditionModalViewVisible: false,
             isSelectLocationModalViewVisible: false,
             isProductDescriptionModalViewVisible: false,
             createAdStatus: true
         };
+    }
+
+    changeStateOfProductConditionModalView = () => {
+
+        console.log('dipak');
+        this.setState({
+            isProductConditionModalViewVisible: !this.state.isProductConditionModalViewVisible
+        });
     }
 
     changeStateOfproductDescriptionModalView = () => {
@@ -40,13 +49,15 @@ class CreateAdContainer extends Component {
 
     setProductConditionNew = () => {
         this.setState({
-            selectedProductCondition: 'New'
+            selectedProductCondition: 'New',
+            isProductConditionModalViewVisible: false
         });
     }
 
     setProductConditionUsed = () => {
         this.setState({
-            selectedProductCondition: 'Used'
+            selectedProductCondition: 'Used',
+            isProductConditionModalViewVisible: false
         });
     }
 
@@ -89,6 +100,7 @@ class CreateAdContainer extends Component {
             selectedCategory,
             selectedSubCategory,
             isCreateAdSpecificationModalViewVisible,
+            isProductConditionModalViewVisible,
             isSelectLocationModalViewVisible,
             isProductDescriptionModalViewVisible,
             selectedProductCondition,
@@ -106,10 +118,14 @@ class CreateAdContainer extends Component {
                 selectedCategory={selectedCategory}
                 selectedSubCategory={selectedSubCategory}
                 updateProductDetails={this.updateProductDetails}
+
+                isProductConditionModalViewVisible={isProductConditionModalViewVisible}
+                changeStateOfProductConditionModalView={this.changeStateOfProductConditionModalView}
                 isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
                 changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
                 isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
                 changeStateOfproductDescriptionModalView={this.changeStateOfproductDescriptionModalView}
+
                 selectedProductCondition={selectedProductCondition}
                 setProductConditionUsed={this.setProductConditionUsed}
                 setProductConditionNew={this.setProductConditionNew}
