@@ -19,7 +19,8 @@ export default styles = StyleSheet.create({
     scrollViewConatinerStyle: {
         marginHorizontal: 25,
         marginVertical: 35,
-        backgroundColor: color.lightWhite
+        backgroundColor: color.lightBlueWhite,
+        borderRadius: 5
     },
     backButtonStyle: {
         alignSelf: 'center',

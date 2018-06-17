@@ -10,7 +10,7 @@ class CreateAdContainer extends Component {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
             selectedLocation: [],
-            selectedProductCondition: 'New',
+            selectedProductCondition: '',
             productPrice: 0,
             productTitle: undefined,
             productDescription: undefined,

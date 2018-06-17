@@ -136,7 +136,7 @@ export class NewAdForm extends Component {
     }
 
     renderProductCategory = () => {
-        const { changeStateOfProductCategoryModalView } = this.props;
+        const { changeStateOfProductCategoryModalView, selectedCategory, selectedSubCategory } = this.props;
 
         return (
             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
@@ -145,7 +145,7 @@ export class NewAdForm extends Component {
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
                     onPress={changeStateOfProductCategoryModalView}
                 >
-                    <Text style={textInputPlaceHolderStyle}>Select Category</Text>
+                    <Text style={selectedCategory ? textInputTextStyle : textInputPlaceHolderStyle}>{selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : 'Select Category'}</Text>
                     <Icon
                         name="chevron-thin-right"
                         size={20}
@@ -179,7 +179,7 @@ export class NewAdForm extends Component {
     renderProductCategoryModalSelection = () => {
         const {
             updateProductDetails,
-            createAdStatusDone,
+            changeStateOfProductCategoryModalView,
             selectedCategory,
             selectedSubCategory,
             isProductCategoryModalViewVisible
@@ -189,7 +189,7 @@ export class NewAdForm extends Component {
             <CategorySelector
                 isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
                 updateProductDetails={updateProductDetails}
-                createAdStatusDone={createAdStatusDone}
+                createAdStatusDone={changeStateOfProductCategoryModalView}//Hide Modal view for now instead of finishing the form UI.
                 selectedCategory={selectedCategory}
                 selectedSubCategory={selectedSubCategory}
             />

@@ -45,7 +45,7 @@ class CreateAd extends Component {
             <View style={floatingShareButtonStyle}>
                 <Icon
                     raised
-                    name='chevron-thin-right'
+                    name="chevron-thin-right"
                     type="entypo"
                     color="#DAA520"
                     containerStyle={floatingButtonContainerStyle}
