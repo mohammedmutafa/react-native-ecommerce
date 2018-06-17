@@ -8,13 +8,13 @@ export default styles = StyleSheet.create({
     mainConatinerStyle: {
         flexDirection: 'column',
         flex: 1,
-        padding: 25,
-        backgroundColor: 'rgba(60, 60, 60, 0.8)',
         height: screenHeight,
         width: screenWidth
     },
     semiTransparentContainer: {
-        backgroundColor: Color.semiTransparentDarkOverlay
+        backgroundColor: Color.semiTransparentDarkOverlay,
+        height: screenHeight,
+        width: screenWidth
     },
     scrollViewConatinerStyle: {
         marginHorizontal: 25,
