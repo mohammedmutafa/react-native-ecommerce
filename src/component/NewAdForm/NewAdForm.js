@@ -54,7 +54,7 @@ export class NewAdForm extends Component {
             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
                 <Text style={textInputTitleStyle}>Price</Text>
                 <TextInput
-                    style={value ? textInputTextStyle : Color.placeholderWhite}
+                    style={value ? textInputTextStyle : textInputPlaceHolderStyle}
                     placeholderTextColor={Color.placeholderWhite}
                     keyboardType="numeric"
                     placeholder="₹ (Price)"
@@ -245,6 +245,6 @@ NewAdForm.propTypes = {
     setProductTitle: PropTypes.func,
 
     //Propduct Price
-    productPrice: PropTypes.string,
+    productPrice: PropTypes.number,
     onProductPriceInput: PropTypes.func
 }
