@@ -93,16 +93,16 @@ export class NewAdForm extends Component {
     }
 
     renderProductCondition = () => {
-        //const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
+        const { selectedProductCondition, changeStateOfProductConditionModalView } = this.props;
 
         return (
             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
                 <Text style={textInputTitleStyle}>Condition</Text>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
-                    onPress={this.props.changeStateOfProductConditionModalView}
+                    onPress={changeStateOfProductConditionModalView}
                 >
-                    <Text style={textInputPlaceHolderStyle}>Select Condition</Text>
+                    <Text style={selectedProductCondition ? textInputTextStyle : textInputPlaceHolderStyle}>{selectedProductCondition ? selectedProductCondition : 'Select Condition'}</Text>
                     <Icon
                         name="chevron-thin-right"
                         size={20}
@@ -198,5 +198,9 @@ export class NewAdForm extends Component {
 }
 
 NewAdForm.propTypes = {
-
+    //Product Condition
+    isProductConditionModalViewVisible: PropTypes.bool,
+    selectedProductCondition: PropTypes.string,
+    setProductConditionUsed: PropTypes.func,
+    setProductConditionNew: PropTypes.func,
 }

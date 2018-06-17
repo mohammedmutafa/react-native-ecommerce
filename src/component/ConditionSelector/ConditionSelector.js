@@ -18,7 +18,7 @@ export const ConditionSelector = ({ selectedProductCondition, setProductConditio
     <Modal
         style={{ flexDirection: 'column' }}
         visible={isProductConditionModalViewVisible}
-        animationType="fade"
+        animationType="slide"
         transparent={true}
     >
         <View style={{ flex: 1.5, backgroundColor: Color.semiTransparentDarkOverlay }} />
