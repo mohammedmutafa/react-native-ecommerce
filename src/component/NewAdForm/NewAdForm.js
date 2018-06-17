@@ -177,7 +177,10 @@ export class NewAdForm extends Component {
 
     render() {
         return (
-            <ScrollView style={container}>
+            <ScrollView
+                bounces={false}
+                style={container}
+            >
                 {this.renderImageView()}
                 <View style={{ padding: 20 }}>
                     {this.renderPriceTextInput()}
