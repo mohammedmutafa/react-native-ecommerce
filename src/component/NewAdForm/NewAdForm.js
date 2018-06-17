@@ -47,13 +47,14 @@ export class NewAdForm extends Component {
     }
 
     renderPriceTextInput = () => {
-        // const { productPrice, onProductPriceInput } = this.props;
+        const { productPrice, onProductPriceInput } = this.props;
+        const value = productPrice ? numberWithCommas(productPrice) : undefined;
 
         return (
             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
                 <Text style={textInputTitleStyle}>Price</Text>
                 <TextInput
-                    style={textInputTextStyle}
+                    style={value ? textInputTextStyle : Color.placeholderWhite}
                     placeholderTextColor={Color.placeholderWhite}
                     keyboardType="numeric"
                     placeholder="₹ (Price)"
@@ -61,8 +62,8 @@ export class NewAdForm extends Component {
                     clearButtonMode="always"
                     multiline={false}
                     maxLength={13}
-                    //  onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
-                    // value={`₹ ${numberWithCommas(2000)}`}
+                    onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
+                    value={value ? `₹ ${value}` : null}
                     underlineColorAndroid="transparent"
                 />
             </View>
@@ -70,21 +71,22 @@ export class NewAdForm extends Component {
     }
 
     renderTitleTextInput = () => {
-        //const { productTitle, setProductTitle } = this.props;
+        const { productTitle, setProductTitle } = this.props;
+
         return (
             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
                 <Text style={textInputTitleStyle}>Title</Text>
                 <TextInput
                     style={textInputTextStyle}
                     placeholderTextColor={Color.placeholderWhite}
-                    // onChangeText={setProductTitle}
+                    onChangeText={setProductTitle}
                     placeholder="Enter Title"
                     clearButtonMode="always"
                     multiline={false}
                     maxLength={50}
                     keyboardType="default"
                     autoFocus={false}
-                    value={null}
+                    value={productTitle}
                     underlineColorAndroid="transparent"
                 />
             </View>
@@ -236,5 +238,13 @@ NewAdForm.propTypes = {
     changeStateOfProductCategoryModalView: PropTypes.func,
     createAdStatusDone: PropTypes.func,
     selectedCategory: PropTypes.string,
-    selectedSubCategory: PropTypes.string
+    selectedSubCategory: PropTypes.string,
+
+    //Product Title:
+    productTitle: PropTypes.string,
+    setProductTitle: PropTypes.func,
+
+    //Propduct Price
+    productPrice: PropTypes.string,
+    onProductPriceInput: PropTypes.func
 }
