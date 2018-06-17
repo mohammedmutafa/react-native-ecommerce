@@ -4,7 +4,6 @@ import {
     View,
     Text,
     TextInput,
-    Modal,
     ScrollView,
     TouchableOpacity
 } from 'react-native';
@@ -137,12 +136,14 @@ export class NewAdForm extends Component {
     }
 
     renderProductCategory = () => {
+        const { changeStateOfProductCategoryModalView } = this.props;
+
         return (
             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
                 <Text style={textInputTitleStyle}>Category</Text>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
-                    onPress={() => null}
+                    onPress={changeStateOfProductCategoryModalView}
                 >
                     <Text style={textInputPlaceHolderStyle}>Select Category</Text>
                     <Icon
@@ -175,6 +176,26 @@ export class NewAdForm extends Component {
         );
     }
 
+    renderProductCategoryModalSelection = () => {
+        const {
+            updateProductDetails,
+            createAdStatusDone,
+            selectedCategory,
+            selectedSubCategory,
+            isProductCategoryModalViewVisible
+        } = this.props;
+
+        return (
+            <CategorySelector
+                isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
+                updateProductDetails={updateProductDetails}
+                createAdStatusDone={createAdStatusDone}
+                selectedCategory={selectedCategory}
+                selectedSubCategory={selectedSubCategory}
+            />
+        );
+    }
+
     render() {
         return (
             <ScrollView
@@ -194,6 +215,7 @@ export class NewAdForm extends Component {
                     {this.renderProductCategory()}
                     {this.renderSeparator()}
                     {this.renderProductConditionModalSelection()}
+                    {this.renderProductCategoryModalSelection()}
                 </View>
             </ScrollView>
         );
@@ -207,4 +229,12 @@ NewAdForm.propTypes = {
     changeStateOfProductConditionModalView: PropTypes.func,
     setProductConditionUsed: PropTypes.func,
     setProductConditionNew: PropTypes.func,
+
+    //Product Category
+    updateProductDetails: PropTypes.func,
+    isProductCategoryModalViewVisible: PropTypes.bool,
+    changeStateOfProductCategoryModalView: PropTypes.func,
+    createAdStatusDone: PropTypes.func,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string
 }

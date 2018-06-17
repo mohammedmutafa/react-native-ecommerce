@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 import color from '../../styles/Color';
+import Color from '../../styles/Color';
 
 export default styles = StyleSheet.create({
     mainConatinerStyle: {
@@ -12,7 +13,12 @@ export default styles = StyleSheet.create({
         height: screenHeight,
         width: screenWidth
     },
+    semiTransparentContainer: {
+        backgroundColor: Color.semiTransparentDarkOverlay
+    },
     scrollViewConatinerStyle: {
+        marginHorizontal: 25,
+        marginVertical: 35,
         backgroundColor: color.lightWhite
     },
     backButtonStyle: {

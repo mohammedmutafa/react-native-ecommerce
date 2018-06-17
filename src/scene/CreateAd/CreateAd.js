@@ -84,6 +84,9 @@ class CreateAd extends Component {
             setProductTitle,
             productDescription,
             setProductDescription,
+
+            changeStateOfProductCategoryModalView,
+            isProductCategoryModalViewVisible,
             selectedCategory,
             selectedSubCategory,
             navigation
@@ -109,14 +112,19 @@ class CreateAd extends Component {
 
                     selectedLocation={selectedLocation}
                     updateSelectedLocations={updateSelectedLocations}
-                    createAdStatusDone={createAdStatusDone}
+
                     productTitle={productTitle}
                     setProductTitle={setProductTitle}
                     productDescription={productDescription}
                     setProductDescription={setProductDescription}
+
                     updateProductDetails={updateProductDetails}
                     selectedCategory={selectedCategory}
                     selectedSubCategory={selectedSubCategory}
+                    createAdStatusDone={createAdStatusDone}
+                    isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
+                    changeStateOfProductCategoryModalView={changeStateOfProductCategoryModalView}
+
                     navigation={navigation}
                 />
             );

@@ -14,16 +14,17 @@ class CreateAdContainer extends Component {
             productPrice: 0,
             productTitle: undefined,
             productDescription: undefined,
+
             isProductConditionModalViewVisible: false,
             isSelectLocationModalViewVisible: false,
             isProductDescriptionModalViewVisible: false,
+            isProductCategoryModalViewVisible: false,
+
             createAdStatus: true
         };
     }
 
     changeStateOfProductConditionModalView = () => {
-
-        console.log('dipak');
         this.setState({
             isProductConditionModalViewVisible: !this.state.isProductConditionModalViewVisible
         });
@@ -38,6 +39,12 @@ class CreateAdContainer extends Component {
     changeStateOfSelectLocationModalView = () => {
         this.setState({
             isSelectLocationModalViewVisible: !this.state.isSelectLocationModalViewVisible
+        });
+    }
+
+    changeStateOfProductCategoryModalView = () => {
+        this.setState({
+            isProductCategoryModalViewVisible: !this.state.isProductCategoryModalViewVisible
         });
     }
 
@@ -103,6 +110,8 @@ class CreateAdContainer extends Component {
             isProductConditionModalViewVisible,
             isSelectLocationModalViewVisible,
             isProductDescriptionModalViewVisible,
+            isProductCategoryModalViewVisible,
+
             selectedProductCondition,
             productPrice,
             selectedLocation,
@@ -118,6 +127,8 @@ class CreateAdContainer extends Component {
                 selectedCategory={selectedCategory}
                 selectedSubCategory={selectedSubCategory}
                 updateProductDetails={this.updateProductDetails}
+                isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
+                changeStateOfProductCategoryModalView={this.changeStateOfProductCategoryModalView}
 
                 isProductConditionModalViewVisible={isProductConditionModalViewVisible}
                 changeStateOfProductConditionModalView={this.changeStateOfProductConditionModalView}

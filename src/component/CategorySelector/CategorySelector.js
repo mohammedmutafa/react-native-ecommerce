@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    StyleSheet,
-    Dimensions,
-    ScrollView,
+    Modal,
     FlatList,
     TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { Icon, ListItem } from 'react-native-elements';
 
 import CategoryList from '../../styles/Categories';
@@ -16,8 +15,8 @@ import color from '../../styles/Color';
 
 const {
     mainConatinerStyle,
+    semiTransparentContainer,
     scrollViewConatinerStyle,
-    backButtonStyle,
     level2TitleHeaderContainerStyle,
     level2FlatListContainerStyle,
     dividerStyle,
@@ -37,11 +36,11 @@ export class CategorySelector extends Component {
             drillIndex: 0,
             selectedParentCaterory: undefined
         };
-    };
+    }
 
     drillDown(item) {
         const { drillIndex, selectedParentCaterory } = this.state;
-        const { updateProductDetails, createAdStatusDone } = this.props;
+        const { updateProductDetails } = this.props;
 
         if (item.children) {
             const childKey = item.children;
@@ -70,8 +69,8 @@ export class CategorySelector extends Component {
                 parentDataSourceTitle: newTitle,
                 drillIndex: newDrillIndex
             });
-        };
-    };
+        }
+    }
 
     keyExtractor = (item, index) => index.toString();
 
@@ -79,7 +78,7 @@ export class CategorySelector extends Component {
         return (
             <ListItem
                 title={item.title}
-                underlayColor='transparent'
+                underlayColor="transparent"
                 titleStyle={{ color: color.dark }}
                 chevronColor={color.dark}
                 hideChevron={item.children ? false : true}
@@ -90,9 +89,8 @@ export class CategorySelector extends Component {
     };
 
     renderMainCategoryLevel2 = (dataSource) => {
-        const { level2TitleHeaderContainerStyle, level2FlatListContainerStyle, cancelTextStyle, dividerStyle } = styles;
         const { parentDataSourceTitle, drillIndex } = this.state;
-        const { selectedCategory, selectedSubCategory } = this.props;
+        const { selectedCategory, selectedSubCategory, createAdStatusDone } = this.props;
 
         return (
             <View>
@@ -101,7 +99,7 @@ export class CategorySelector extends Component {
                     {drillIndex === 0 ? <View /> : <Icon
                         name="arrow-up"
                         type="feather"
-                        underlayColor='transparent'
+                        underlayColor="transparent"
                         color={color.golden}
                         onPress={() => this.drillUP(dataSource)}
                     />}
@@ -118,7 +116,7 @@ export class CategorySelector extends Component {
                 </View>
                 <View style={level2TitleHeaderContainerStyle}>
                     <Text style={selectedCategoryTextStyle}>{selectedCategory ? (selectedCategory + '/' + '\n' + selectedSubCategory) : ''}</Text>
-                    <TouchableOpacity onPress={selectedCategory ? this.props.createAdStatusDone : null}>
+                    <TouchableOpacity onPress={selectedCategory ? createAdStatusDone : null}>
                         <Text style={cancelTextStyle}>Done</Text>
                     </TouchableOpacity>
                 </View>
@@ -128,11 +126,26 @@ export class CategorySelector extends Component {
 
     render() {
         return (
-            <View style={mainConatinerStyle}>
-                <View style={scrollViewConatinerStyle}>
-                    {this.renderMainCategoryLevel2(this.state.currentDataSource)}
+            <Modal
+                style={mainConatinerStyle}
+                transparent={true}
+                animationType="slide"
+                visible={this.props.isProductCategoryModalViewVisible}
+            >
+                <View style={semiTransparentContainer}>
+                    <View style={scrollViewConatinerStyle}>
+                        {this.renderMainCategoryLevel2(this.state.currentDataSource)}
+                    </View>
                 </View>
-            </View>
+            </Modal>
         );
-    };
-};
+    }
+}
+
+CategorySelector.propTypes = {
+    isProductCategoryModalViewVisible: PropTypes.bool,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string,
+    updateProductDetails: PropTypes.func,
+    createAdStatusDone: PropTypes.func
+}
