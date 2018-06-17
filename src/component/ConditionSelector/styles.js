@@ -1,12 +1,15 @@
 import { StyleSheet } from 'react-native';
-import { screenWidth, screenHeight } from '../../utilities/ScreenSize';
+import Color from '../../styles/Color';
 export default StyleSheet.create({
     container: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-around',
-        width: screenWidth - 15,
-        paddingHorizontal: 15,
-        position: 'absolute',
-        marginTop: screenHeight / 2.5
+        alignItems: 'center',
+        flex: 0.5,
+        paddingHorizontal: 25,
+        paddingVertical: 25,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: Color.placeholderWhite,
+        backgroundColor: Color.lightBlueWhite
     }
 });
