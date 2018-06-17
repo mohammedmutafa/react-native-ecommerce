@@ -201,6 +201,7 @@ NewAdForm.propTypes = {
     //Product Condition
     isProductConditionModalViewVisible: PropTypes.bool,
     selectedProductCondition: PropTypes.string,
+    changeStateOfProductConditionModalView: PropTypes.func,
     setProductConditionUsed: PropTypes.func,
     setProductConditionNew: PropTypes.func,
 }
