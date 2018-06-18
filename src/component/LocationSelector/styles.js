@@ -5,9 +5,10 @@ import Color from '../../styles/Color';
 
 export default StyleSheet.create({
     container: {
-        height: screenHeight,
-        width: screenWidth,
-        paddingHorizontal: 30
+        flex: 1,
+        paddingHorizontal: 30,
+        paddingVertical: 30,
+        backgroundColor: Color.semiTransparentDarkOverlay
     },
     navigationBar: {
         flexDirection: 'row',

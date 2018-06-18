@@ -17,6 +17,7 @@ import { numberWithCommas } from '../../utilities/Functions';
 import { CreateAdCoverPhoto } from '../CreateAdCoverPhoto';
 import { CategorySelector } from '../CategorySelector';
 import { ConditionSelector } from '../ConditionSelector';
+import { LocationSelector } from '../LocationSelector/LocationSelector';
 
 const {
     container,
@@ -198,6 +199,12 @@ export class NewAdForm extends Component {
         );
     }
 
+    renderLocationModalSelection = () => {
+        return (
+            <LocationSelector />
+        );
+    }
+
     render() {
         return (
             <ScrollView
@@ -218,6 +225,7 @@ export class NewAdForm extends Component {
                     {this.renderSeparator()}
                     {this.renderProductConditionModalSelection()}
                     {this.renderProductCategoryModalSelection()}
+                    {this.renderLocationModalSelection()}
                 </View>
             </ScrollView>
         );
