@@ -24,7 +24,16 @@ const {
 
 export class LocationSelector extends Component {
 
-    _keyExtractor = (item, index) => item.id;
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            fullListData: districts,
+            filteredList: districts
+        }
+    }
+
+    _keyExtractor = (item, index) => String(item.id);
 
     _renderItem = ({ item }) => (
         <TouchableOpacity style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
@@ -62,12 +71,37 @@ export class LocationSelector extends Component {
             <SearchBar
                 lightTheme={true}
                 containerStyle={{ backgroundColor: Color.lightBlueWhite }}
-                clearIcon={{ color: Color.placeholderWhite }}
+                clearIcon={{ color: Color.dark }}
                 searchIcon={true} // You could have passed `null` too
-                onChangeText={() => null}
+                onChangeText={this.searchText}
                 onClear={() => null}
-                placeholder='Search...' />
+                placeholder="Search..."
+            />
         );
+    }
+
+    searchText = (e) => {
+        let text = e.toLowerCase()
+        let fullList = this.state.fullListData;
+        let filteredList = fullList.filter((item) => { // search from a full list, and not from a previous search results list
+            if (item.name.toLowerCase().match(text))
+                return item;
+        })
+        if (!text || text === '') {
+            this.setState({
+                filteredList: fullList
+            })
+        } else if (!filteredList.length) {
+            // set no data flag to true so as to render flatlist conditionally
+            this.setState({
+                filteredList: []
+            })
+        }
+        else if (Array.isArray(filteredList)) {
+            this.setState({
+                filteredList
+            })
+        }
     }
 
     /*onPressDone = () => {
@@ -94,7 +128,8 @@ export class LocationSelector extends Component {
             isSelectLocationModalViewVisible,
             changeStateOfSelectLocationModalView,
             updateSelectedLocations,
-            selectedLocation } = this.props;
+            selectedLocation
+        } = this.props;
 
         return (
             <Modal
@@ -108,10 +143,11 @@ export class LocationSelector extends Component {
                     {this.renderHeader()}
                     <FlatList
                         contentContainerStyle={{ backgroundColor: Color.lightBlueWhite }}
-                        data={districts}
+                        data={this.state.filteredList}
                         keyExtractor={this._keyExtractor}
                         renderItem={this._renderItem}
                         ItemSeparatorComponent={this.renderSeparator}
+                        enableEmptySections={true}
                     />
                 </View>
             </Modal>
