@@ -108,11 +108,8 @@ export class LocationSelector extends Component {
     render() {
         const {
             isSelectLocationModalViewVisible,
-            changeStateOfSelectLocationModalView,
-            selectedLocation
+            changeStateOfSelectLocationModalView
         } = this.props;
-
-        console.log(selectedLocation);
 
         return (
             <Modal
