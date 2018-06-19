@@ -31,25 +31,28 @@ export class LocationSelector extends Component {
 
     _keyExtractor = (item, index) => String(item.id);
 
-    _renderItem = ({ item }) => (
-        <TouchableOpacity
-            onPress={() => this.props.updateSelectedLocations(item.name)}
-            style={{ flexDirection: 'column', justifyContent: 'space-around' }}
-        >
-            <CheckBox
-                containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
-                title={item.name}
-                checkedColor={Color.dark}
-                iconType="ionicon"
-                checkedIcon="ios-checkmark-circle"
-                textStyle={{ color: Color.dark }}
-                uncheckedIcon="ios-checkmark-circle-outline"
-                checked={this.props.selectedLocation === item.name ? true : false}
-                onPress={() => null}
-                size={35}
-            />
-        </TouchableOpacity>
-    );
+    _renderItem = ({ item }) => {
+
+        return (
+            <TouchableOpacity
+                onPress={() => this.props.updateSelectedLocations(item.name)}
+                style={{ flexDirection: 'column', justifyContent: 'space-around' }}
+            >
+                <CheckBox
+                    containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
+                    title={item.name}
+                    checkedColor={Color.dark}
+                    iconType="ionicon"
+                    checkedIcon="ios-checkmark-circle"
+                    textStyle={{ color: Color.dark }}
+                    uncheckedIcon="ios-checkmark-circle-outline"
+                    checked={this.props.selectedLocation === item.name ? true : false}
+                    onPress={() => this.props.updateSelectedLocations(item.name)}
+                    size={35}
+                />
+            </TouchableOpacity>
+        );
+    }
 
     renderSeparator = () => {
         return (
@@ -106,7 +109,6 @@ export class LocationSelector extends Component {
         const {
             isSelectLocationModalViewVisible,
             changeStateOfSelectLocationModalView,
-            updateSelectedLocations,
             selectedLocation
         } = this.props;
 
@@ -114,7 +116,7 @@ export class LocationSelector extends Component {
 
         return (
             <Modal
-                visible={true}
+                visible={isSelectLocationModalViewVisible}
                 transparent={true}
                 style={container}
                 animationType="slide"
@@ -139,7 +141,7 @@ export class LocationSelector extends Component {
 LocationSelector.propTypes = {
     isSelectLocationModalViewVisible: PropTypes.bool,
     changeStateOfSelectLocationModalView: PropTypes.func,
-    selectedLocation: PropTypes.array,
+    selectedLocation: PropTypes.string,
     updateSelectedLocations: PropTypes.func,
     onPressBackButton: PropTypes.func
 };

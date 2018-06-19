@@ -161,6 +161,32 @@ export class NewAdForm extends Component {
         );
     }
 
+    renderLocationSelector = () => {
+        const {
+            changeStateOfSelectLocationModalView,
+            selectedLocation
+        } = this.props;
+
+        return (
+            <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
+                <Text style={textInputTitleStyle}>Location</Text>
+                <TouchableOpacity
+                    style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
+                    onPress={changeStateOfSelectLocationModalView}
+                >
+                    <Text style={selectedLocation ? textInputTextStyle : textInputPlaceHolderStyle}>{selectedLocation ? selectedLocation : 'Select Location'}</Text>
+                    <Icon
+                        name="chevron-thin-right"
+                        size={20}
+                        type="entypo"
+                        color={Color.placeholderWhite}
+                    //onPress={}
+                    />
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     renderProductConditionModalSelection = () => {
         const {
             isProductConditionModalViewVisible,
@@ -200,8 +226,18 @@ export class NewAdForm extends Component {
     }
 
     renderLocationModalSelection = () => {
+        const {
+            isSelectLocationModalViewVisible,
+            updateSelectedLocations,
+            selectedLocation
+        } = this.props;
+
         return (
-            <LocationSelector />
+            <LocationSelector
+                isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                updateSelectedLocations={updateSelectedLocations}
+                selectedLocation={selectedLocation}
+            />
         );
     }
 
@@ -222,6 +258,8 @@ export class NewAdForm extends Component {
                     {this.renderProductDescription()}
                     {this.renderSeparator()}
                     {this.renderProductCategory()}
+                    {this.renderSeparator()}
+                    {this.renderLocationSelector()}
                     {this.renderSeparator()}
                     {this.renderProductConditionModalSelection()}
                     {this.renderProductCategoryModalSelection()}
@@ -254,5 +292,11 @@ NewAdForm.propTypes = {
 
     //Propduct Price
     productPrice: PropTypes.number,
-    onProductPriceInput: PropTypes.func
+    onProductPriceInput: PropTypes.func,
+
+    //Location
+    isSelectLocationModalViewVisible: PropTypes.bool,
+    updateSelectedLocations: PropTypes.func,
+    changeStateOfSelectLocationModalView: PropTypes.func,
+    selectedLocation: PropTypes.string
 }

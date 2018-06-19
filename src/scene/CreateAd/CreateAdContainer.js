@@ -97,9 +97,9 @@ class CreateAdContainer extends Component {
     }
 
     updateSelectedLocations = (selectedLocation) => {
-        console.log(selectedLocation);
         this.setState({
-            selectedLocation
+            selectedLocation: selectedLocation,
+            isSelectLocationModalViewVisible: false
         });
     }
 
