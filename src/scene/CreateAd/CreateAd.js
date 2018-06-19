@@ -125,6 +125,9 @@ class CreateAd extends Component {
                     isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
                     changeStateOfProductCategoryModalView={changeStateOfProductCategoryModalView}
 
+                    changeStateOfproductDescriptionModalView={changeStateOfproductDescriptionModalView}
+                    isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
+
                     navigation={navigation}
                 />
             );

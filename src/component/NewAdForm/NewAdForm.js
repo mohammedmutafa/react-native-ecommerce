@@ -18,6 +18,7 @@ import { CreateAdCoverPhoto } from '../CreateAdCoverPhoto';
 import { CategorySelector } from '../CategorySelector';
 import { ConditionSelector } from '../ConditionSelector';
 import { LocationSelector } from '../LocationSelector/LocationSelector';
+import { ProductDetailsInput } from '../ProductDetailsInput';
 
 const {
     container,
@@ -118,14 +119,19 @@ export class NewAdForm extends Component {
     }
 
     renderProductDescription = () => {
+        const {
+            changeStateOfproductDescriptionModalView,
+            productDescription
+        } = this.props;
+
         return (
             <View style={{ flexDirection: 'column', justifyContent: 'center' }}>
                 <Text style={textInputTitleStyle}>Details</Text>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
-                    onPress={() => null}
+                    onPress={changeStateOfproductDescriptionModalView}
                 >
-                    <Text style={textInputPlaceHolderStyle}>Enter Details</Text>
+                    <Text style={productDescription ? textInputTextStyle : textInputPlaceHolderStyle}>{productDescription ? productDescription : 'Enter Details'}</Text>
                     <Icon
                         name="chevron-thin-right"
                         size={20}
@@ -241,6 +247,21 @@ export class NewAdForm extends Component {
         );
     }
 
+    renderProductDetailsModalSelection = () => {
+        const {
+            isProductDescriptionModalViewVisible,
+            setProductDescription
+        } = this.props;
+
+        return (
+            <ProductDetailsInput
+                isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
+                setProductDescription={setProductDescription}
+            />
+        );
+
+    }
+
     render() {
         return (
             <ScrollView
@@ -264,6 +285,7 @@ export class NewAdForm extends Component {
                     {this.renderProductConditionModalSelection()}
                     {this.renderProductCategoryModalSelection()}
                     {this.renderLocationModalSelection()}
+                    {this.renderProductDetailsModalSelection()}
                 </View>
             </ScrollView>
         );
@@ -298,5 +320,10 @@ NewAdForm.propTypes = {
     isSelectLocationModalViewVisible: PropTypes.bool,
     updateSelectedLocations: PropTypes.func,
     changeStateOfSelectLocationModalView: PropTypes.func,
-    selectedLocation: PropTypes.string
+    selectedLocation: PropTypes.string,
+
+    //Details
+    changeStateOfproductDescriptionModalView: PropTypes.func,
+    setProductDescription: PropTypes.func,
+    isProductDescriptionModalViewVisible: PropTypes.bool
 }

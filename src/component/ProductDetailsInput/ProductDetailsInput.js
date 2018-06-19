@@ -10,12 +10,15 @@ import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
 
 import styles from './styles';
+import Color from '../../styles/Color';
 
 const {
     container,
     textInputStyle,
     titleTextStyle,
-    doneButtonStyle
+    hintTextStyle,
+    doneButtonStyle,
+    separatorStyle
 } = styles;
 
 export class ProductDetailsInput extends React.PureComponent {
@@ -28,19 +31,8 @@ export class ProductDetailsInput extends React.PureComponent {
         }
     }
 
-    get doneButton() {
-        const { changeStateOfproductDescriptionModalView } = this.props;
-        return (
-            <Icon
-                raised
-                name='done'
-                type='material-icon'
-                color="#DAA520"
-                containerStyle={doneButtonStyle}
-                size={25}
-                onPress={changeStateOfproductDescriptionModalView}
-            />
-        );
+    renderSeparator = () => {
+        return <View style={separatorStyle} />
     }
 
     get renderHorizontalBorder() {
@@ -48,23 +40,35 @@ export class ProductDetailsInput extends React.PureComponent {
     }
 
     render() {
-        const { isVisible } = this.props;
+        const { isProductDescriptionModalViewVisible, setProductDescription } = this.props;
         const { text } = this.state;
 
         return (
-            <Modal visible={isVisible} animationType="slide" onRequestClose={() => null}>
+            <Modal
+                visible={isProductDescriptionModalViewVisible}
+                animationType="slide"
+                onRequestClose={() => null}
+            >
                 <View style={container}>
+                    <Text
+                        style={doneButtonStyle}
+                        onPress={() => setProductDescription(text)}
+                    >
+                        Done
+                    </Text>
                     <Text style={titleTextStyle}>Product Description</Text>
+                    {this.renderSeparator()}
+                    <Text style={hintTextStyle}>User would like to know more about the product. Please provide the detail description.</Text>
                     <TextInput
                         style={textInputStyle}
-                        placeholder='Product Description'
+                        placeholder="Product Description"
+                        placeholderTextColor={Color.placeholderWhite}
                         multiline={true}
                         maxLength={200}
                         onChangeText={(text) => this.setState({ text })}
                         value={text}
                     />
                     {this.renderHorizontalBorder}
-                    {this.doneButton}
                 </View>
             </Modal>
         );
@@ -72,6 +76,6 @@ export class ProductDetailsInput extends React.PureComponent {
 }
 
 ProductDetailsInput.propTypes = {
-    isVisible: PropTypes.bool,
-    changeStateOfproductDescriptionModalView: PropTypes.func
+    isProductDescriptionModalViewVisible: PropTypes.bool,
+    setProductDescription: PropTypes.func
 };

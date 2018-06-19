@@ -82,7 +82,8 @@ class CreateAdContainer extends Component {
 
     setProductDescription = (text) => {
         this.setState({
-            productDescription: text
+            productDescription: text,
+            isProductDescriptionModalViewVisible: false
         });
     }
 
@@ -149,8 +150,10 @@ class CreateAdContainer extends Component {
                 createAdStatus={createAdStatus}
                 productTitle={productTitle}
                 setProductTitle={this.setProductTitle}
+
                 productDescription={productDescription}
                 setProductDescription={this.setProductDescription}
+                
                 navigation={navigation}
             />
         );
