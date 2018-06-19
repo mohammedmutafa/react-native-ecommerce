@@ -9,7 +9,7 @@ class CreateAdContainer extends Component {
         this.state = {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
-            selectedLocation: [],
+            selectedLocation: '',
             selectedProductCondition: '',
             productPrice: 0,
             productTitle: undefined,
@@ -97,6 +97,7 @@ class CreateAdContainer extends Component {
     }
 
     updateSelectedLocations = (selectedLocation) => {
+        console.log(selectedLocation);
         this.setState({
             selectedLocation
         });

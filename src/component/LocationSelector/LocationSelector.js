@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
-    Image,
     View,
     Modal,
-    Text,
     StyleSheet,
     FlatList,
     TouchableOpacity
 } from 'react-native';
-import PropTypes from 'prop-types';
-import MultiSelect from 'react-native-multiple-select';
 import { CheckBox, SearchBar } from 'react-native-elements';
 
 import styles from './styles';
-import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
-import districts from '../../utilities/districts';
 import Color from '../../styles/Color';
+import { screenHeight } from '../../utilities/ScreenSize';
+import districts from '../../utilities/districts';
 
 const {
-    container,
-    navigationBar,
+    container
 } = styles;
 
 export class LocationSelector extends Component {
@@ -36,7 +32,10 @@ export class LocationSelector extends Component {
     _keyExtractor = (item, index) => String(item.id);
 
     _renderItem = ({ item }) => (
-        <TouchableOpacity style={{ flexDirection: 'column', justifyContent: 'space-around' }}>
+        <TouchableOpacity
+            onPress={() => this.props.updateSelectedLocations(item.name)}
+            style={{ flexDirection: 'column', justifyContent: 'space-around' }}
+        >
             <CheckBox
                 containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                 title={item.name}
@@ -83,7 +82,7 @@ export class LocationSelector extends Component {
     searchText = (e) => {
         let text = e.toLowerCase()
         let fullList = this.state.fullListData;
-        let filteredList = fullList.filter((item) => { // search from a full list, and not from a previous search results list
+        let filteredList = fullList.filter((item) => {
             if (item.name.toLowerCase().match(text))
                 return item;
         })
@@ -92,7 +91,6 @@ export class LocationSelector extends Component {
                 filteredList: fullList
             })
         } else if (!filteredList.length) {
-            // set no data flag to true so as to render flatlist conditionally
             this.setState({
                 filteredList: []
             })
@@ -104,25 +102,6 @@ export class LocationSelector extends Component {
         }
     }
 
-    /*onPressDone = () => {
-        this.props.onPressNextButton();
-        this.props.changeStateOfSelectLocationModalView();
-    }
-
-    onPressBackButton = () => {
-        this.props.changeStateOfSelectLocationModalView();
-        this.props.onPressBackButton();
-    }
-
-    navBar = () => {
-        return (
-            <View style={navigationBar}>
-                <Text style={{ color: '#FFFFFF', fontSize: 18 }} onPress={this.onPressBackButton}>Back</Text>
-                <Text style={{ color: '#FFFFFF', fontSize: 18 }} onPress={this.onPressDone}>Next</Text>
-            </View >
-        );
-    }*/
-
     render() {
         const {
             isSelectLocationModalViewVisible,
@@ -130,6 +109,8 @@ export class LocationSelector extends Component {
             updateSelectedLocations,
             selectedLocation
         } = this.props;
+
+        console.log(selectedLocation);
 
         return (
             <Modal
