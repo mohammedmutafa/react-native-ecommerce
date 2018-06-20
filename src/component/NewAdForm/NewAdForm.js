@@ -177,7 +177,13 @@ export class NewAdForm extends Component {
                     style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
                     onPress={changeStateOfproductDescriptionModalView}
                 >
-                    <Text style={productDescription ? textInputTextStyle : textInputPlaceHolderStyle}>{productDescription ? productDescription : 'Enter Details'}</Text>
+                    <Text
+                        style={productDescription ? textInputTextStyle : textInputPlaceHolderStyle}
+                        ellipsizeMode="tail"
+                        numberOfLines={1}
+                    >
+                        {productDescription ? productDescription : 'Enter Details'}
+                    </Text>
                     {this.renderChevronIcon()}
                 </TouchableOpacity>
             </View>
