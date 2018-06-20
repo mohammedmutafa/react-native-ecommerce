@@ -19,6 +19,7 @@ import { CategorySelector } from '../CategorySelector';
 import { ConditionSelector } from '../ConditionSelector';
 import { LocationSelector } from '../LocationSelector/LocationSelector';
 import { ProductDetailsInput } from '../ProductDetailsInput';
+import { BackButton } from '../BackButton';
 
 const {
     container,
@@ -241,9 +242,16 @@ export class NewAdForm extends Component {
         );
     }
 
-    renderNextButton = () => {
-
+    goBack = () => {
+        this.props.navigation.goBack();
     }
+
+    renderBackButton = () => (
+        <BackButton
+            style={{ left: 20 }}
+            onPress={this.goBack}
+        />
+    );
 
     render() {
         return (
@@ -269,9 +277,9 @@ export class NewAdForm extends Component {
                     {this.renderProductCategoryModalSelection()}
                     {this.renderLocationModalSelection()}
                     {this.renderProductDetailsModalSelection()}
-                    {this.renderNextButton()}
                     <View style={{ height: 50 }} />
                 </View>
+                {this.renderBackButton()}
             </ScrollView>
         );
     }
@@ -311,5 +319,8 @@ NewAdForm.propTypes = {
     changeStateOfproductDescriptionModalView: PropTypes.func,
     setProductDescription: PropTypes.func,
     isProductDescriptionModalViewVisible: PropTypes.bool,
-    productDescription: PropTypes.string
+    productDescription: PropTypes.string,
+
+    //Navigation
+    navigation: PropTypes.object
 }
