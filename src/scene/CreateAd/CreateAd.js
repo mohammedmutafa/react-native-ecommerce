@@ -39,11 +39,16 @@ class CreateAd extends Component {
         );
     }
 
+    goBack = () => {
+        this.props.navigation.goBack();
+    }
+
     renderBackButton = () => {
         return (
             <BackButton
                 style={{ left: 20 }}
-                onPress={() => this.props.navigation.goBack()} />
+                onPress={this.goBack}
+            />
         );
     }
 
