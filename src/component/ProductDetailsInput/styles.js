@@ -27,10 +27,12 @@ export default StyleSheet.create({
         marginVertical: 10
     },
     doneButtonStyle: {
-        alignSelf: 'flex-end',
+        alignSelf: 'flex-end'
+    },
+    doneTextStyle: {
         fontSize: 20,
         paddingVertical: 20,
-        color: '#DAA520'
+        color: Color.golden
     },
     separatorStyle: {
         flexDirection: 'column',

@@ -79,7 +79,7 @@ export class CategorySelector extends Component {
             <ListItem
                 title={item.title}
                 underlayColor="transparent"
-                titleStyle={{ color: color.dark }}
+                titleStyle={{ color: color.dark, fontSize: 16 }}
                 chevronColor={color.dark}
                 hideChevron={item.children ? false : true}
                 leftIcon={{ name: item.icon }}

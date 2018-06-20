@@ -3,11 +3,10 @@ import {
     View,
     Modal,
     Text,
-    TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    TextInput
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { Icon } from 'react-native-elements';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -18,6 +17,7 @@ const {
     titleTextStyle,
     hintTextStyle,
     doneButtonStyle,
+    doneTextStyle,
     separatorStyle
 } = styles;
 
@@ -35,8 +35,10 @@ export class ProductDetailsInput extends React.PureComponent {
         return <View style={separatorStyle} />
     }
 
-    get renderHorizontalBorder() {
-        return <View style={{ height: 0.5, backgroundColor: '#D3D3D3' }} />
+    onTextChange = (text) => {
+        this.setState({
+            text
+        });
     }
 
     render() {
@@ -50,12 +52,12 @@ export class ProductDetailsInput extends React.PureComponent {
                 onRequestClose={() => null}
             >
                 <View style={container}>
-                    <Text
-                        style={doneButtonStyle}
+                    <TouchableOpacity
                         onPress={() => setProductDescription(text)}
+                        style={doneButtonStyle}
                     >
-                        Done
-                    </Text>
+                        <Text style={doneTextStyle}>Done</Text>
+                    </TouchableOpacity>
                     <Text style={titleTextStyle}>Product Description</Text>
                     {this.renderSeparator()}
                     <Text style={hintTextStyle}>User would like to know more about the product. Please provide the detail description.</Text>
@@ -65,10 +67,10 @@ export class ProductDetailsInput extends React.PureComponent {
                         placeholderTextColor={Color.placeholderWhite}
                         multiline={true}
                         maxLength={200}
-                        onChangeText={(text) => this.setState({ text })}
+                        autoFocus={true}
+                        onChangeText={this.onTextChange}
                         value={text}
                     />
-                    {this.renderHorizontalBorder}
                 </View>
             </Modal>
         );
