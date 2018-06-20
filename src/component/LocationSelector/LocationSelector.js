@@ -5,9 +5,10 @@ import {
     Modal,
     StyleSheet,
     FlatList,
+    TextInput,
     TouchableOpacity
 } from 'react-native';
-import { CheckBox, SearchBar } from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -15,7 +16,8 @@ import { screenHeight } from '../../utilities/ScreenSize';
 import districts from '../../utilities/districts';
 
 const {
-    container
+    container,
+    searchTextInputStyle
 } = styles;
 
 export class LocationSelector extends Component {
@@ -70,15 +72,21 @@ export class LocationSelector extends Component {
 
     renderHeader = () => {
         return (
-            <SearchBar
-                lightTheme={true}
-                containerStyle={{ backgroundColor: Color.lightBlueWhite }}
-                clearIcon={{ color: Color.dark }}
-                searchIcon={true} // You could have passed `null` too
-                onChangeText={this.searchText}
-                onClear={() => null}
-                placeholder="Search..."
-            />
+            <View style={{ backgroundColor: Color.placeholderWhite, padding: 5, borderWidth: 1, borderColor: Color.placeholderWhite }}>
+                <TextInput
+                    style={searchTextInputStyle}
+                    placeholder="Search...."
+                    placeholderTextColor={Color.placeholderWhite}
+                    returnKeyType={'search'}
+                    //onSubmitEditing={() => console.log(' search button pressed.....')}
+                    multiline={false}
+                    underlineColorAndroid="transparent"
+                    maxLength={20}
+                    clearButtonMode="always"
+                    onChangeText={this.searchText}
+                //value={`₹ ${numberWithCommas(productPrice)}`}
+                />
+            </View>
         );
     }
 

@@ -8,5 +8,9 @@ export default StyleSheet.create({
         paddingHorizontal: 30,
         paddingVertical: 30,
         backgroundColor: Color.semiTransparentDarkOverlay
+    },
+    searchTextInputStyle: {
+        padding: 15,
+        backgroundColor: Color.lightBlueWhite
     }
 });
