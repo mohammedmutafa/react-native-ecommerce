@@ -28,25 +28,29 @@ const {
     separatorStyle
 } = styles;
 
-//Title, category, condition, location, price, description
-
 export class NewAdForm extends Component {
 
     renderImageView = () => {
         return (
-            <TouchableOpacity
-                onPress={() => null}
+            <View
             >
                 <CreateAdCoverPhoto
                     imageURL='https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/fashion.jpg?alt=media&token=3426181c-22fa-43f1-aac3-177b20676bb5'
                 />
-            </TouchableOpacity>
+            </View>
         );
     }
 
-    renderSeparator = () => {
-        return <View style={separatorStyle} />
-    }
+    renderSeparator = () => <View style={separatorStyle} />;
+
+    renderChevronIcon = () => (
+        <Icon
+            name="chevron-thin-right"
+            size={20}
+            type="entypo"
+            color={Color.placeholderWhite}
+        />
+    );
 
     renderPriceTextInput = () => {
         const { productPrice, onProductPriceInput } = this.props;
@@ -106,13 +110,7 @@ export class NewAdForm extends Component {
                     onPress={changeStateOfProductConditionModalView}
                 >
                     <Text style={selectedProductCondition ? textInputTextStyle : textInputPlaceHolderStyle}>{selectedProductCondition ? selectedProductCondition : 'Select Condition'}</Text>
-                    <Icon
-                        name="chevron-thin-right"
-                        size={20}
-                        type="entypo"
-                        color={Color.placeholderWhite}
-                    //onPress={}
-                    />
+                    {this.renderChevronIcon()}
                 </TouchableOpacity>
             </View>
         );
@@ -132,13 +130,7 @@ export class NewAdForm extends Component {
                     onPress={changeStateOfproductDescriptionModalView}
                 >
                     <Text style={productDescription ? textInputTextStyle : textInputPlaceHolderStyle}>{productDescription ? productDescription : 'Enter Details'}</Text>
-                    <Icon
-                        name="chevron-thin-right"
-                        size={20}
-                        type="entypo"
-                        color={Color.placeholderWhite}
-                    //onPress={}
-                    />
+                    {this.renderChevronIcon()}
                 </TouchableOpacity>
             </View>
         );
@@ -155,13 +147,7 @@ export class NewAdForm extends Component {
                     onPress={changeStateOfProductCategoryModalView}
                 >
                     <Text style={selectedCategory ? textInputTextStyle : textInputPlaceHolderStyle}>{selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : 'Select Category'}</Text>
-                    <Icon
-                        name="chevron-thin-right"
-                        size={20}
-                        type="entypo"
-                        color={Color.placeholderWhite}
-                    //onPress={}
-                    />
+                    {this.renderChevronIcon()}
                 </TouchableOpacity>
             </View>
         );
@@ -181,13 +167,7 @@ export class NewAdForm extends Component {
                     onPress={changeStateOfSelectLocationModalView}
                 >
                     <Text style={selectedLocation ? textInputTextStyle : textInputPlaceHolderStyle}>{selectedLocation ? selectedLocation : 'Select Location'}</Text>
-                    <Icon
-                        name="chevron-thin-right"
-                        size={20}
-                        type="entypo"
-                        color={Color.placeholderWhite}
-                    //onPress={}
-                    />
+                    {this.renderChevronIcon()}
                 </TouchableOpacity>
             </View>
         );
@@ -259,6 +239,9 @@ export class NewAdForm extends Component {
                 setProductDescription={setProductDescription}
             />
         );
+    }
+
+    renderNextButton = () => {
 
     }
 
@@ -286,6 +269,8 @@ export class NewAdForm extends Component {
                     {this.renderProductCategoryModalSelection()}
                     {this.renderLocationModalSelection()}
                     {this.renderProductDetailsModalSelection()}
+                    {this.renderNextButton()}
+                    <View style={{ height: 50 }} />
                 </View>
             </ScrollView>
         );
@@ -325,5 +310,6 @@ NewAdForm.propTypes = {
     //Details
     changeStateOfproductDescriptionModalView: PropTypes.func,
     setProductDescription: PropTypes.func,
-    isProductDescriptionModalViewVisible: PropTypes.bool
+    isProductDescriptionModalViewVisible: PropTypes.bool,
+    productDescription: PropTypes.string
 }
