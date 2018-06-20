@@ -111,8 +111,8 @@ class CreateAdContainer extends Component {
     selectPhotoTapped = () => {
         const options = {
             quality: 1.0,
-            maxWidth: 500,
-            maxHeight: 500,
+            maxWidth: 1000,
+            maxHeight: 1000,
             storageOptions: {
                 skipBackup: true
             }
