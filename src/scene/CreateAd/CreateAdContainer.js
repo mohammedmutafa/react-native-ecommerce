@@ -108,7 +108,6 @@ class CreateAdContainer extends Component {
         const {
             selectedCategory,
             selectedSubCategory,
-            isCreateAdSpecificationModalViewVisible,
             isProductConditionModalViewVisible,
             isSelectLocationModalViewVisible,
             isProductDescriptionModalViewVisible,
@@ -132,19 +131,18 @@ class CreateAdContainer extends Component {
                 isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
                 changeStateOfProductCategoryModalView={this.changeStateOfProductCategoryModalView}
 
+                selectedProductCondition={selectedProductCondition}
                 isProductConditionModalViewVisible={isProductConditionModalViewVisible}
                 changeStateOfProductConditionModalView={this.changeStateOfProductConditionModalView}
-                isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
-                changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
-                isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
-                changeStateOfproductDescriptionModalView={this.changeStateOfproductDescriptionModalView}
-
-                selectedProductCondition={selectedProductCondition}
                 setProductConditionUsed={this.setProductConditionUsed}
                 setProductConditionNew={this.setProductConditionNew}
+
                 productPrice={productPrice}
                 onProductPriceInput={this.onProductPriceInput}
+
                 selectedLocation={selectedLocation}
+                isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
                 updateSelectedLocations={this.updateSelectedLocations}
 
                 createAdStatus={createAdStatus}
@@ -152,6 +150,8 @@ class CreateAdContainer extends Component {
                 setProductTitle={this.setProductTitle}
 
                 productDescription={productDescription}
+                changeStateOfproductDescriptionModalView={this.changeStateOfproductDescriptionModalView}
+                isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
                 setProductDescription={this.setProductDescription}
 
                 createAdStatusDone={this.createAdStatusDone}
