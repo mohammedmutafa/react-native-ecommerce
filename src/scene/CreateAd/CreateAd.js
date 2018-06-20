@@ -17,9 +17,11 @@ import { NewAdForm } from '../../component/NewAdForm';
 class CreateAd extends Component {
 
     renderImageView = () => {
+        const { selectedImageSource } = this.props;
+
         return (
             <CreateAdCoverPhoto
-                imageURL='https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/fashion.jpg?alt=media&token=3426181c-22fa-43f1-aac3-177b20676bb5'
+                localImageSource={selectedImageSource ? selectedImageSource : null}
             />
         );
     }
@@ -78,12 +80,17 @@ class CreateAd extends Component {
             selectedProductCondition,
             setProductConditionUsed,
             setProductConditionNew,
+            selectedImageSource,
+            selectPhotoTapped,
             navigation
         } = this.props;
 
         if (createAdStatus) {
             return (
                 <NewAdForm
+                    selectedImageSource={selectedImageSource}
+                    selectPhotoTapped={selectPhotoTapped}
+
                     selectedCategory={selectedCategory}
                     selectedSubCategory={selectedSubCategory}
                     updateProductDetails={updateProductDetails}
@@ -199,7 +206,11 @@ CreateAd.propTypes = {
     //Navigation
     navigation: PropTypes.object,
     createAdStatusDone: PropTypes.func,
-    createAdStatus: PropTypes.bool
+    createAdStatus: PropTypes.bool,
+
+    //Image
+    selectedImageSource: PropTypes.object,
+    selectPhotoTapped: PropTypes.func
 }
 
 export default CreateAd;

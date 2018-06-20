@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     View,
     Image
@@ -17,11 +17,12 @@ const {
     dateTextStyle
 } = styles;
 
-export const CreateAdCoverPhoto = ({ imageURL }) => (
+export const CreateAdCoverPhoto = ({ imageURL, localImageSource }) => (
     <View style={containerStyle}>
         <Image
-            source={{ uri: imageURL }}
+            source={localImageSource ? localImageSource : { uri: imageURL }}
             style={imageViewStyle}
+            resizeMode="cover"
         />
         <View style={semiTransparentViewStyle} />
         <View style={textContainerStyle}>
@@ -33,5 +34,6 @@ export const CreateAdCoverPhoto = ({ imageURL }) => (
 );
 
 CreateAdCoverPhoto.propTypes = {
-    imageURL: PropTypes.string
+    imageURL: PropTypes.string,
+    localImageSource: PropTypes.object
 };

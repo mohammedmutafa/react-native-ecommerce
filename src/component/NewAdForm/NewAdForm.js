@@ -34,10 +34,15 @@ const {
 export class NewAdForm extends Component {
 
     renderImageView = () => {
+        const {
+            selectedImageSource,
+            selectPhotoTapped
+        } = this.props;
+
         return (
             <View>
                 <CreateAdCoverPhoto
-                    imageURL='https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/fashion.jpg?alt=media&token=3426181c-22fa-43f1-aac3-177b20676bb5'
+                    localImageSource={selectedImageSource ? selectedImageSource : null}
                 />
                 <TouchableOpacity
                     style={cameraButtonStyle}
@@ -47,7 +52,7 @@ export class NewAdForm extends Component {
                         type="ionicon"
                         size={40}
                         color={Color.lightWhite}
-                    // onPress={isUserLoggedIn ? onCreateAdButtonPress : changeLoginWithPhoneModalViewState}
+                        onPress={selectPhotoTapped}
                     />
                 </TouchableOpacity>
             </View>
@@ -370,5 +375,9 @@ NewAdForm.propTypes = {
 
     //Navigation
     navigation: PropTypes.object,
-    createAdStatusDone: PropTypes.func
+    createAdStatusDone: PropTypes.func,
+
+    //Image
+    selectedImageSource: PropTypes.object,
+    selectPhotoTapped: PropTypes.func
 }
