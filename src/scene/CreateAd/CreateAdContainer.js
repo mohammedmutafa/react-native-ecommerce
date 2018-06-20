@@ -9,15 +9,25 @@ class CreateAdContainer extends Component {
         this.state = {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
-            selectedLocation: [],
-            selectedProductCondition: 'New',
+            selectedLocation: '',
+            selectedProductCondition: '',
             productPrice: 0,
             productTitle: undefined,
             productDescription: undefined,
+
+            isProductConditionModalViewVisible: false,
             isSelectLocationModalViewVisible: false,
             isProductDescriptionModalViewVisible: false,
+            isProductCategoryModalViewVisible: false,
+
             createAdStatus: true
         };
+    }
+
+    changeStateOfProductConditionModalView = () => {
+        this.setState({
+            isProductConditionModalViewVisible: !this.state.isProductConditionModalViewVisible
+        });
     }
 
     changeStateOfproductDescriptionModalView = () => {
@@ -32,6 +42,12 @@ class CreateAdContainer extends Component {
         });
     }
 
+    changeStateOfProductCategoryModalView = () => {
+        this.setState({
+            isProductCategoryModalViewVisible: !this.state.isProductCategoryModalViewVisible
+        });
+    }
+
     createAdStatusDone = () => {
         this.setState({
             createAdStatus: false
@@ -40,13 +56,15 @@ class CreateAdContainer extends Component {
 
     setProductConditionNew = () => {
         this.setState({
-            selectedProductCondition: 'New'
+            selectedProductCondition: 'New',
+            isProductConditionModalViewVisible: false
         });
     }
 
     setProductConditionUsed = () => {
         this.setState({
-            selectedProductCondition: 'Used'
+            selectedProductCondition: 'Used',
+            isProductConditionModalViewVisible: false
         });
     }
 
@@ -64,7 +82,8 @@ class CreateAdContainer extends Component {
 
     setProductDescription = (text) => {
         this.setState({
-            productDescription: text
+            productDescription: text,
+            isProductDescriptionModalViewVisible: false
         });
     }
 
@@ -80,7 +99,8 @@ class CreateAdContainer extends Component {
 
     updateSelectedLocations = (selectedLocation) => {
         this.setState({
-            selectedLocation
+            selectedLocation: selectedLocation,
+            isSelectLocationModalViewVisible: false
         });
     }
 
@@ -88,9 +108,11 @@ class CreateAdContainer extends Component {
         const {
             selectedCategory,
             selectedSubCategory,
-            isCreateAdSpecificationModalViewVisible,
+            isProductConditionModalViewVisible,
             isSelectLocationModalViewVisible,
             isProductDescriptionModalViewVisible,
+            isProductCategoryModalViewVisible,
+
             selectedProductCondition,
             productPrice,
             selectedLocation,
@@ -106,23 +128,34 @@ class CreateAdContainer extends Component {
                 selectedCategory={selectedCategory}
                 selectedSubCategory={selectedSubCategory}
                 updateProductDetails={this.updateProductDetails}
-                isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
-                changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
-                isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
-                changeStateOfproductDescriptionModalView={this.changeStateOfproductDescriptionModalView}
+                isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
+                changeStateOfProductCategoryModalView={this.changeStateOfProductCategoryModalView}
+
                 selectedProductCondition={selectedProductCondition}
+                isProductConditionModalViewVisible={isProductConditionModalViewVisible}
+                changeStateOfProductConditionModalView={this.changeStateOfProductConditionModalView}
                 setProductConditionUsed={this.setProductConditionUsed}
                 setProductConditionNew={this.setProductConditionNew}
+
                 productPrice={productPrice}
                 onProductPriceInput={this.onProductPriceInput}
+
                 selectedLocation={selectedLocation}
+                isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                changeStateOfSelectLocationModalView={this.changeStateOfSelectLocationModalView}
                 updateSelectedLocations={this.updateSelectedLocations}
-                createAdStatusDone={this.createAdStatusDone}
+
                 createAdStatus={createAdStatus}
                 productTitle={productTitle}
                 setProductTitle={this.setProductTitle}
+
                 productDescription={productDescription}
+                changeStateOfproductDescriptionModalView={this.changeStateOfproductDescriptionModalView}
+                isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
                 setProductDescription={this.setProductDescription}
+
+                createAdStatusDone={this.createAdStatusDone}
+
                 navigation={navigation}
             />
         );

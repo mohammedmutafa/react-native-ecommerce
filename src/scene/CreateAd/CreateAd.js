@@ -1,32 +1,18 @@
 import React, { Component } from 'react';
 import {
     View,
-    Image,
-    StyleSheet,
-    Dimensions,
-    ScrollView,
-    Platform,
-    FlatList,
-    TextInput,
-    TouchableOpacity,
-    Text,
-    Modal
+    Dimensions
 } from 'react-native';
-import { Icon, FormLabel, FormInput, CheckBox } from 'react-native-elements';
+import PropTypes from 'prop-types';
+import { Icon } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import * as Animatable from 'react-native-animatable';
 
-import Categories from '../../styles/Categories';
-import districts from '../../utilities/Functions';
-import Colors from '../../styles/Color';
 import styles from './styles';
 
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
-import { CreateAdSteps } from '../../component/CreateAdSteps';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
 import { BackButton } from '../../component/BackButton';
-
-const { categoryList } = Categories;
+import { NewAdForm } from '../../component/NewAdForm';
 
 class CreateAd extends Component {
 
@@ -43,7 +29,7 @@ class CreateAd extends Component {
             <View style={floatingShareButtonStyle}>
                 <Icon
                     raised
-                    name='chevron-thin-right'
+                    name="chevron-thin-right"
                     type="entypo"
                     color="#DAA520"
                     containerStyle={floatingButtonContainerStyle}
@@ -53,17 +39,23 @@ class CreateAd extends Component {
         );
     }
 
+    goBack = () => {
+        this.props.navigation.goBack();
+    }
+
     renderBackButton = () => {
         return (
             <BackButton
                 style={{ left: 20 }}
-                onPress={() => this.props.navigation.goBack()} />
+                onPress={this.goBack}
+            />
         );
     }
 
     render() {
         const {
-            isCreateAdSpecificationModalViewVisible,
+            changeStateOfProductConditionModalView,
+            isProductConditionModalViewVisible,
             isSelectLocationModalViewVisible,
             changeStateOfSelectLocationModalView,
             updateProductDetails,
@@ -79,34 +71,50 @@ class CreateAd extends Component {
             setProductTitle,
             productDescription,
             setProductDescription,
+            changeStateOfProductCategoryModalView,
+            isProductCategoryModalViewVisible,
             selectedCategory,
             selectedSubCategory,
+            selectedProductCondition,
+            setProductConditionUsed,
+            setProductConditionNew,
             navigation
         } = this.props;
 
-        const { selectedProductCondition, setProductConditionUsed, setProductConditionNew } = this.props;
-
-
         if (createAdStatus) {
             return (
-                <CreateAdSteps
-                    onProductPriceInput={onProductPriceInput}
-                    productPrice={productPrice}
-                    selectedProductCondition={selectedProductCondition}
-                    setProductConditionUsed={setProductConditionUsed}
-                    setProductConditionNew={setProductConditionNew}
-                    isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
-                    changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
-                    selectedLocation={selectedLocation}
-                    updateSelectedLocations={updateSelectedLocations}
-                    createAdStatusDone={createAdStatusDone}
-                    productTitle={productTitle}
-                    setProductTitle={setProductTitle}
-                    productDescription={productDescription}
-                    setProductDescription={setProductDescription}
-                    updateProductDetails={updateProductDetails}
+                <NewAdForm
                     selectedCategory={selectedCategory}
                     selectedSubCategory={selectedSubCategory}
+                    updateProductDetails={updateProductDetails}
+                    isProductCategoryModalViewVisible={isProductCategoryModalViewVisible}
+                    changeStateOfProductCategoryModalView={changeStateOfProductCategoryModalView}
+
+                    selectedProductCondition={selectedProductCondition}
+                    isProductConditionModalViewVisible={isProductConditionModalViewVisible}
+                    changeStateOfProductConditionModalView={changeStateOfProductConditionModalView}
+                    setProductConditionUsed={setProductConditionUsed}
+                    setProductConditionNew={setProductConditionNew}
+
+                    productPrice={productPrice}
+                    onProductPriceInput={onProductPriceInput}
+
+                    selectedLocation={selectedLocation}
+                    isSelectLocationModalViewVisible={isSelectLocationModalViewVisible}
+                    changeStateOfSelectLocationModalView={changeStateOfSelectLocationModalView}
+                    updateSelectedLocations={updateSelectedLocations}
+
+                    createAdStatus={createAdStatus}
+                    productTitle={productTitle}
+                    setProductTitle={setProductTitle}
+
+                    productDescription={productDescription}
+                    changeStateOfproductDescriptionModalView={changeStateOfproductDescriptionModalView}
+                    isProductDescriptionModalViewVisible={isProductDescriptionModalViewVisible}
+                    setProductDescription={setProductDescription}
+
+                    createAdStatusDone={createAdStatusDone}
+
                     navigation={navigation}
                 />
             );
@@ -132,6 +140,8 @@ class CreateAd extends Component {
                         selectedProductCondition={selectedProductCondition}
                         productTitle={productTitle}
                         productDescription={productDescription}
+                        selectedCategory={selectedCategory}
+                        selectedSubCategory={selectedSubCategory}
                         navigation={navigation}
                     />
                 </ParallaxScrollView>
@@ -143,34 +153,53 @@ class CreateAd extends Component {
 }
 
 const window = Dimensions.get('window');
-
-const STICKY_HEADER_HEIGHT = (110 / 768) * window.height;
 const SLIDER_HEIGHT = window.width / 1.7;
-const cardWidth = (window.width / 3);
-const cardHeight = cardWidth + 40;
 
 const {
     mainConatinerStyle,
     floatingShareButtonStyle,
-    containerStyle,
-    slide1,
-    titleTextStyle,
-    decsriptionTextStyle,
-    boldSeparator,
-    floatingButtonContainerStyle,
-    semiTransparentViewStyle,
-    specificationTextStyle,
-    dateTextStyle,
-    textContainerStyle,
-    textInputContainerStyle,
-    titleDividerStyle,
-    photoViewDividerTextstyle,
-    photoCardStyle,
-    imageRowStyle,
-    imageViewFlatListContainerStyle,
-    productCategoryContainerstyle,
-    headerTextStyle,
-    textInputStyle
+    floatingButtonContainerStyle
 } = styles;
+
+CreateAd.propTypes = {
+    //Product Condition
+    isProductConditionModalViewVisible: PropTypes.bool,
+    selectedProductCondition: PropTypes.string,
+    changeStateOfProductConditionModalView: PropTypes.func,
+    setProductConditionUsed: PropTypes.func,
+    setProductConditionNew: PropTypes.func,
+
+    //Product Category
+    updateProductDetails: PropTypes.func,
+    isProductCategoryModalViewVisible: PropTypes.bool,
+    changeStateOfProductCategoryModalView: PropTypes.func,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string,
+
+    //Product Title:
+    productTitle: PropTypes.string,
+    setProductTitle: PropTypes.func,
+
+    //Propduct Price
+    productPrice: PropTypes.number,
+    onProductPriceInput: PropTypes.func,
+
+    //Location
+    isSelectLocationModalViewVisible: PropTypes.bool,
+    updateSelectedLocations: PropTypes.func,
+    changeStateOfSelectLocationModalView: PropTypes.func,
+    selectedLocation: PropTypes.string,
+
+    //Details
+    changeStateOfproductDescriptionModalView: PropTypes.func,
+    setProductDescription: PropTypes.func,
+    isProductDescriptionModalViewVisible: PropTypes.bool,
+    productDescription: PropTypes.string,
+
+    //Navigation
+    navigation: PropTypes.object,
+    createAdStatusDone: PropTypes.func,
+    createAdStatus: PropTypes.bool
+}
 
 export default CreateAd;

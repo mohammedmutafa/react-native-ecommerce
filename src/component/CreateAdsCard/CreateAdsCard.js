@@ -12,7 +12,6 @@ import Swiper from 'react-native-swiper';
 import styles from './styles';
 import { numberWithCommas } from '../../utilities/Functions';
 import Color from '../../styles/Color';
-import districts from '../../utilities/districts';
 
 const {
     conatinerStyle,
@@ -28,18 +27,6 @@ export class CreateAdsCard extends Component {
         this.state = {
 
         }
-    }
-
-    getSelectedLocationString = () => {
-        const { selectedLocation } = this.props;
-        let location = '';
-
-        for (let value of selectedLocation) {
-            let obj = districts.find((item) => { return item.id == value });
-
-            location = location + obj.name + ', ';
-        }
-        return location;
     }
 
     renderSwiperView = () => {
@@ -67,10 +54,11 @@ export class CreateAdsCard extends Component {
 
     renderSwiperCardLocation = () => {
         const { selectedLocation } = this.props;
+
         return (
             <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
                 <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Location</Text>
-                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{this.getSelectedLocationString()}</Text>
+                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{selectedLocation}</Text>
             </Animatable.View>
         );
     }
@@ -85,10 +73,15 @@ export class CreateAdsCard extends Component {
     }
 
     renderSwiperCardCategory = () => {
+        const {
+            selectedCategory,
+            selectedSubCategory
+        } = this.props;
+
         return (
             <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
                 <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Category</Text>
-                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>Phone/Samsung</Text>
+                <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : ''}</Text>
             </Animatable.View>
         );
     }
@@ -131,7 +124,11 @@ export class CreateAdsCard extends Component {
 }
 
 CreateAdsCard.propTypes = {
+    selectedLocation: PropTypes.string,
     productTitle: PropTypes.string,
-    productPrice: PropTypes.string,
-    productDescription: PropTypes.string
+    productPrice: PropTypes.number,
+    productDescription: PropTypes.string,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string,
+    selectedProductCondition: PropTypes.string
 };

@@ -2,18 +2,25 @@ import { StyleSheet } from 'react-native';
 
 import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 import color from '../../styles/Color';
+import Color from '../../styles/Color';
 
 export default styles = StyleSheet.create({
     mainConatinerStyle: {
         flexDirection: 'column',
         flex: 1,
-        padding: 25,
-        backgroundColor: 'rgba(60, 60, 60, 0.8)',
+        height: screenHeight,
+        width: screenWidth
+    },
+    semiTransparentContainer: {
+        backgroundColor: Color.semiTransparentDarkOverlay,
         height: screenHeight,
         width: screenWidth
     },
     scrollViewConatinerStyle: {
-        backgroundColor: color.lightWhite
+        marginHorizontal: 25,
+        marginVertical: 35,
+        backgroundColor: color.lightBlueWhite,
+        borderRadius: 5
     },
     backButtonStyle: {
         alignSelf: 'center',

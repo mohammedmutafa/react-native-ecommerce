@@ -1,22 +1,16 @@
 import { StyleSheet } from 'react-native';
 
-import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 import Color from '../../styles/Color';
 
 export default StyleSheet.create({
     container: {
-        height: screenHeight,
-        width: screenWidth,
-        paddingHorizontal: 30
+        flex: 1,
+        paddingHorizontal: 30,
+        paddingVertical: 30,
+        backgroundColor: Color.semiTransparentDarkOverlay
     },
-    navigationBar: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+    searchTextInputStyle: {
         padding: 15,
-        width: screenWidth,
-        height: deviceScaledHeight(60),
-        backgroundColor: Color.dark
-        // position: 'absolute'
+        backgroundColor: Color.lightBlueWhite
     }
 });
