@@ -135,6 +135,8 @@ class CreateAd extends Component {
                         selectedProductCondition={selectedProductCondition}
                         productTitle={productTitle}
                         productDescription={productDescription}
+                        selectedCategory={selectedCategory}
+                        selectedSubCategory={selectedSubCategory}
                         navigation={navigation}
                     />
                 </ParallaxScrollView>
