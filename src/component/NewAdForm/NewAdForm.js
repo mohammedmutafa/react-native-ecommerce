@@ -27,6 +27,7 @@ const {
     textInputPlaceHolderStyle,
     textInputTitleStyle,
     floatingNextButtonStyle,
+    cameraButtonStyle,
     separatorStyle
 } = styles;
 
@@ -34,11 +35,21 @@ export class NewAdForm extends Component {
 
     renderImageView = () => {
         return (
-            <View
-            >
+            <View>
                 <CreateAdCoverPhoto
                     imageURL='https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/fashion.jpg?alt=media&token=3426181c-22fa-43f1-aac3-177b20676bb5'
                 />
+                <TouchableOpacity
+                    style={cameraButtonStyle}
+                >
+                    <Icon
+                        name="ios-camera-outline"
+                        type="ionicon"
+                        size={40}
+                        color={Color.lightWhite}
+                    // onPress={isUserLoggedIn ? onCreateAdButtonPress : changeLoginWithPhoneModalViewState}
+                    />
+                </TouchableOpacity>
             </View>
         );
     }
@@ -280,6 +291,7 @@ export class NewAdForm extends Component {
             >
                 <ScrollView
                     bounces={false}
+                    showsVerticalScrollIndicator={false}
                     style={container}
                 >
                     {this.renderImageView()}

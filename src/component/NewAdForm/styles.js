@@ -36,5 +36,15 @@ export default StyleSheet.create({
         position: 'absolute',
         bottom: 35,
         paddingRight: 15
+    },
+    cameraButtonStyle: {
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 0,
+        paddingHorizontal: 10,
+        borderWidth: 1,
+        borderColor: Color.lightBlueWhite
     }
 });
