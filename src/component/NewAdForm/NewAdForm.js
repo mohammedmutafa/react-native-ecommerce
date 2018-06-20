@@ -77,8 +77,13 @@ export class NewAdForm extends Component {
     );
 
     renderNextButton = () => {
+        const { createAdStatusDone } = this.props;
+
         return (
-            <View style={floatingNextButtonStyle}>
+            <TouchableOpacity
+                onPress={createAdStatusDone}
+                style={floatingNextButtonStyle}
+            >
                 <Icon
                     raised
                     name="arrow-right"
@@ -91,7 +96,7 @@ export class NewAdForm extends Component {
                         borderColor: Color.golden
                     }}
                 />
-            </View>
+            </TouchableOpacity>
         );
     }
 
@@ -334,7 +339,6 @@ NewAdForm.propTypes = {
     updateProductDetails: PropTypes.func,
     isProductCategoryModalViewVisible: PropTypes.bool,
     changeStateOfProductCategoryModalView: PropTypes.func,
-    createAdStatusDone: PropTypes.func,
     selectedCategory: PropTypes.string,
     selectedSubCategory: PropTypes.string,
 
@@ -359,5 +363,6 @@ NewAdForm.propTypes = {
     productDescription: PropTypes.string,
 
     //Navigation
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+    createAdStatusDone: PropTypes.func
 }

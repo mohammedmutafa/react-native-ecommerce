@@ -146,14 +146,16 @@ class CreateAdContainer extends Component {
                 onProductPriceInput={this.onProductPriceInput}
                 selectedLocation={selectedLocation}
                 updateSelectedLocations={this.updateSelectedLocations}
-                createAdStatusDone={this.createAdStatusDone}
+
                 createAdStatus={createAdStatus}
                 productTitle={productTitle}
                 setProductTitle={this.setProductTitle}
 
                 productDescription={productDescription}
                 setProductDescription={this.setProductDescription}
-                
+
+                createAdStatusDone={this.createAdStatusDone}
+
                 navigation={navigation}
             />
         );
