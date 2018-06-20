@@ -4,14 +4,15 @@ import {
     Text,
     Modal,
     FlatList,
+    StyleSheet,
     TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { Icon, ListItem } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 
 import CategoryList from '../../styles/Categories';
 import styles from './styles';
-import color from '../../styles/Color';
+import Color from '../../styles/Color';
 
 const {
     mainConatinerStyle,
@@ -54,7 +55,7 @@ export class CategorySelector extends Component {
         } else {
             updateProductDetails('selectedCategory', [selectedParentCaterory, item.title]);
         }
-    };
+    }
 
     drillUP(dataSource) {
         const { drillIndex } = this.state;
@@ -74,17 +75,47 @@ export class CategorySelector extends Component {
 
     keyExtractor = (item, index) => index.toString();
 
+    renderSeparator = () => {
+        return (
+            <View style={{
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'stretch',
+                height: StyleSheet.hairlineWidth,
+                backgroundColor: Color.placeholderWhite,
+                marginVertical: 5
+            }}
+            />
+        );
+    }
+
     renderMainCategoryRow = ({ item }) => {
         return (
-            <ListItem
-                title={item.title}
-                underlayColor="transparent"
-                titleStyle={{ color: color.dark, fontSize: 16 }}
-                chevronColor={color.dark}
-                hideChevron={item.children ? false : true}
-                leftIcon={{ name: item.icon }}
+            <TouchableOpacity
+                style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 20 }}
                 onPress={() => this.drillDown(item)}
-            />
+            >
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                    <Icon
+                        name={item.icon}
+                        // type="ionicon"
+                        underlayColor="transparent"
+                        color={Color.lightDark}
+                        size={30}
+                    />
+
+                    <Text style={{ paddingLeft: 10, fontSize: 16, color: Color.dark }}>{item.title}</Text>
+                </View>
+                {
+                    item.children ?
+                        <Icon
+                            name="ios-arrow-forward-outline"
+                            type="ionicon"
+                            underlayColor="transparent"
+                            color={Color.lightDark}
+                        /> : <View />
+                }
+            </TouchableOpacity>
         );
     };
 
@@ -95,12 +126,12 @@ export class CategorySelector extends Component {
         return (
             <View>
                 <View style={level2TitleHeaderContainerStyle}>
-                    <Text style={{ color: color.golden }}>{parentDataSourceTitle}</Text>
+                    <Text style={{ color: Color.dark, fontSize: 18 }}>{parentDataSourceTitle}</Text>
                     {drillIndex === 0 ? <View /> : <Icon
                         name="arrow-up"
                         type="feather"
                         underlayColor="transparent"
-                        color={color.golden}
+                        color={Color.golden}
                         onPress={() => this.drillUP(dataSource)}
                     />}
                 </View>
@@ -112,6 +143,7 @@ export class CategorySelector extends Component {
                         renderItem={this.renderMainCategoryRow}
                         removeClippedSubviews={false}
                         keyExtractor={this.keyExtractor}
+                        ItemSeparatorComponent={this.renderSeparator}
                     />
                 </View>
                 <View style={level2TitleHeaderContainerStyle}>

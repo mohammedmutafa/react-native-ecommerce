@@ -19,8 +19,7 @@ export default styles = StyleSheet.create({
     scrollViewConatinerStyle: {
         marginHorizontal: 25,
         marginVertical: 35,
-        backgroundColor: color.lightBlueWhite,
-        borderRadius: 5
+        backgroundColor: color.lightBlueWhite
     },
     backButtonStyle: {
         alignSelf: 'center',
@@ -37,7 +36,7 @@ export default styles = StyleSheet.create({
         height: screenHeight - (225)
     },
     dividerStyle: {
-        height: 1,
+        height: StyleSheet.hairlineWidth,
         backgroundColor: color.golden,
         width: screenWidth - 50,
         marginTop: 5

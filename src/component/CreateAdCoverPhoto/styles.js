@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { SLIDER_HEIGHT, screenWidth, screenHeight } from '../../utilities/ScreenSize';
+import { SLIDER_HEIGHT, screenWidth } from '../../utilities/ScreenSize';
 import Colors from '../../styles/Color';
 
 export default StyleSheet.create({
@@ -17,7 +17,7 @@ export default StyleSheet.create({
         height: SLIDER_HEIGHT, // same width and height for the container
         width: screenWidth,
         position: 'absolute',
-        backgroundColor: Colors.semiTransparentDarkOverlay
+        backgroundColor: 'rgba(60, 60, 60, 0.3)'
     },
     imageViewStyle: {
         height: SLIDER_HEIGHT,
