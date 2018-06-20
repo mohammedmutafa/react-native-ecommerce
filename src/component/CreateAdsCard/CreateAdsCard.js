@@ -129,5 +129,6 @@ CreateAdsCard.propTypes = {
     productPrice: PropTypes.number,
     productDescription: PropTypes.string,
     selectedCategory: PropTypes.string,
-    selectedSubCategory: PropTypes.string
+    selectedSubCategory: PropTypes.string,
+    selectedProductCondition: PropTypes.string
 };
