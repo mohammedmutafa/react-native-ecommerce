@@ -26,6 +26,7 @@ const {
     textInputTextStyle,
     textInputPlaceHolderStyle,
     textInputTitleStyle,
+    floatingNextButtonStyle,
     separatorStyle
 } = styles;
 
@@ -52,6 +53,36 @@ export class NewAdForm extends Component {
             color={Color.placeholderWhite}
         />
     );
+
+    goBack = () => {
+        this.props.navigation.goBack();
+    }
+
+    renderBackButton = () => (
+        <BackButton
+            style={{ left: 20 }}
+            onPress={this.goBack}
+        />
+    );
+
+    renderNextButton = () => {
+        return (
+            <View style={floatingNextButtonStyle}>
+                <Icon
+                    raised
+                    name="arrow-right"
+                    type="material-community"
+                    color={Color.lightWhite}
+                    //onPress={isUserLoggedIn ? onCreateAdButtonPress : changeLoginWithPhoneModalViewState}
+                    containerStyle={{
+                        backgroundColor: Color.dark,
+                        borderWidth: 0.5,
+                        borderColor: Color.golden
+                    }}
+                />
+            </View>
+        );
+    }
 
     renderPriceTextInput = () => {
         const { productPrice, onProductPriceInput } = this.props;
@@ -242,45 +273,39 @@ export class NewAdForm extends Component {
         );
     }
 
-    goBack = () => {
-        this.props.navigation.goBack();
-    }
-
-    renderBackButton = () => (
-        <BackButton
-            style={{ left: 20 }}
-            onPress={this.goBack}
-        />
-    );
-
     render() {
         return (
-            <ScrollView
-                bounces={false}
+            <View
                 style={container}
             >
-                {this.renderImageView()}
-                <View style={{ padding: 20 }}>
-                    {this.renderPriceTextInput()}
-                    {this.renderSeparator()}
-                    {this.renderTitleTextInput()}
-                    {this.renderSeparator()}
-                    {this.renderProductCondition()}
-                    {this.renderSeparator()}
-                    {this.renderProductDescription()}
-                    {this.renderSeparator()}
-                    {this.renderProductCategory()}
-                    {this.renderSeparator()}
-                    {this.renderLocationSelector()}
-                    {this.renderSeparator()}
-                    {this.renderProductConditionModalSelection()}
-                    {this.renderProductCategoryModalSelection()}
-                    {this.renderLocationModalSelection()}
-                    {this.renderProductDetailsModalSelection()}
-                    <View style={{ height: 50 }} />
-                </View>
+                <ScrollView
+                    bounces={false}
+                    style={container}
+                >
+                    {this.renderImageView()}
+                    <View style={{ padding: 20 }}>
+                        {this.renderPriceTextInput()}
+                        {this.renderSeparator()}
+                        {this.renderTitleTextInput()}
+                        {this.renderSeparator()}
+                        {this.renderProductCondition()}
+                        {this.renderSeparator()}
+                        {this.renderProductDescription()}
+                        {this.renderSeparator()}
+                        {this.renderProductCategory()}
+                        {this.renderSeparator()}
+                        {this.renderLocationSelector()}
+                        {this.renderSeparator()}
+                        {this.renderProductConditionModalSelection()}
+                        {this.renderProductCategoryModalSelection()}
+                        {this.renderLocationModalSelection()}
+                        {this.renderProductDetailsModalSelection()}
+                        <View style={{ height: 50 }} />
+                    </View>
+                </ScrollView>
                 {this.renderBackButton()}
-            </ScrollView>
+                {this.renderNextButton()}
+            </View>
         );
     }
 }

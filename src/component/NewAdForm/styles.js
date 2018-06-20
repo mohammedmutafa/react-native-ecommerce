@@ -30,5 +30,11 @@ export default StyleSheet.create({
         height: StyleSheet.hairlineWidth,
         backgroundColor: Color.placeholderWhite,
         marginVertical: 15
+    },
+    floatingNextButtonStyle: {
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        bottom: 35,
+        paddingRight: 15
     }
 });
