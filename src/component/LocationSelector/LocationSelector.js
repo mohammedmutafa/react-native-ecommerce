@@ -71,6 +71,8 @@ export class LocationSelector extends Component {
     }
 
     renderHeader = () => {
+        const { selectedLocation } = this.props;
+
         return (
             <View style={{ backgroundColor: Color.placeholderWhite, padding: 5, borderWidth: 1, borderColor: Color.placeholderWhite }}>
                 <TextInput
@@ -84,7 +86,7 @@ export class LocationSelector extends Component {
                     maxLength={20}
                     clearButtonMode="always"
                     onChangeText={this.searchText}
-                //value={`₹ ${numberWithCommas(productPrice)}`}
+                    value={selectedLocation}
                 />
             </View>
         );
