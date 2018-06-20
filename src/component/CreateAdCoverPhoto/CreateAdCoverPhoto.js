@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     View,
     Image
@@ -22,6 +22,7 @@ export const CreateAdCoverPhoto = ({ imageURL, localImageSource }) => (
         <Image
             source={localImageSource ? localImageSource : { uri: imageURL }}
             style={imageViewStyle}
+            resizeMode="cover"
         />
         <View style={semiTransparentViewStyle} />
         <View style={textContainerStyle}>
