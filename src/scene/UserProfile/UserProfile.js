@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {
     View,
     Text,
-    Image,
     TextInput,
     TouchableOpacity,
     ScrollView
@@ -11,7 +10,6 @@ import {
 import { Icon } from 'react-native-elements';
 
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
-import { CreateAdsCard } from '../../component/CreateAdsCard';
 import { BackButton } from '../../component/BackButton';
 import { GenderSelector } from '../../component/GenderSelector';
 
