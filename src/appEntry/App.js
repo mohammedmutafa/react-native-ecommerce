@@ -33,6 +33,7 @@ const StackNavigation = StackNavigator({
             },
             headerTintColor: '#FFFFFF',
             title: "Product Description",
+            drawerLockMode: 'locked-closed'
         })
     },
     CreateAd: {
@@ -53,6 +54,7 @@ const StackNavigation = StackNavigator({
             },
             headerTintColor: '#FFFFFF',
             title: "Product List",
+            drawerLockMode: 'locked-closed'
         })
     },
     ProfilePublic: {
@@ -63,7 +65,8 @@ const StackNavigation = StackNavigator({
                 elevation: 0 //Only for Android
             },
             headerTintColor: '#FFFFFF',
-            title: "Profile"
+            title: "Profile",
+            drawerLockMode: 'locked-closed'
         })
     },
     UserProfile: {
@@ -74,7 +77,8 @@ const StackNavigation = StackNavigator({
                 elevation: 0 //Only for Android
             },
             headerTintColor: '#FFFFFF',
-            title: "Edit Profile"
+            title: "Edit Profile",
+            drawerLockMode: 'locked-closed'
         })
     }
 });
