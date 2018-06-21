@@ -28,7 +28,7 @@ export default styles = StyleSheet.create({
     },
     textInputTitleStyle: {
         fontSize: 16,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: Color.dark,
         marginTop: 20,
         marginBottom: 10
