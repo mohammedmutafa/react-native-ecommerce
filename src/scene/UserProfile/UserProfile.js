@@ -13,7 +13,7 @@ import { Icon } from 'react-native-elements';
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
 import { BackButton } from '../../component/BackButton';
-import { NewAdForm } from '../../component/NewAdForm';
+import { GenderSelector } from '../../component/GenderSelector';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -183,6 +183,24 @@ class UserProfile extends Component {
         );
     }
 
+    renderGenderModalSelection = () => {
+        const {
+            isProductConditionModalViewVisible,
+            selectedProductCondition,
+            setProductConditionUsed,
+            setProductConditionNew
+        } = this.props;
+
+        return (
+            <GenderSelector
+                isProductConditionModalViewVisible={false}
+                selectedProductCondition={selectedProductCondition}
+                setProductConditionUsed={setProductConditionUsed}
+                setProductConditionNew={setProductConditionNew}
+            />
+        );
+    }
+
     render() {
         return (
             <View style={container}>
@@ -204,6 +222,7 @@ class UserProfile extends Component {
                         {this.renderSeparator()}
                         {this.renderAddressInput()}
                         {this.renderSeparator()}
+                        {this.renderGenderModalSelection()}
                         {/*this.renderTitleTextInput()}
                         {this.renderSeparator()}
                         {this.renderProductCondition()}
