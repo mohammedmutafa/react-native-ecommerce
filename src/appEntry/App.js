@@ -74,7 +74,7 @@ const StackNavigation = StackNavigator({
                 elevation: 0 //Only for Android
             },
             headerTintColor: '#FFFFFF',
-            title: "Profile"
+            title: "Edit Profile"
         })
     }
 });
