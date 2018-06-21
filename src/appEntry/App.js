@@ -9,7 +9,7 @@ import GeneralProductDetails from '../scene/GeneralProductDetails';
 import CreateAd from '../scene/CreateAd';
 import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
-import NewProfile from '../scene/NewProfile';
+import UserProfile from '../scene/UserProfile';
 import Drawer from '../scene/Drawer';
 
 const StackNavigation = StackNavigator({
@@ -66,8 +66,8 @@ const StackNavigation = StackNavigator({
             title: "Profile"
         })
     },
-    NewProfile: {
-        screen: NewProfile,
+    UserProfile: {
+        screen: UserProfile,
         navigationOptions: (props) => ({
             headerStyle: {
                 backgroundColor: '#2a2a2a',

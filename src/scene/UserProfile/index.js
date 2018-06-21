@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NewProfileContainer from './NewProfileContainer';
+import UserProfileContainer from './UserProfileContainer';
 
 const index = ({ navigation }) => {
     return (
-        <NewProfileContainer
+        <UserProfileContainer
             navigation={navigation}
         />
     );

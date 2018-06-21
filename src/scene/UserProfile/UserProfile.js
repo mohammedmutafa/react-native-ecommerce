@@ -15,7 +15,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
 import styles from './styles';
 
-class NewProfile extends Component {
+class UserProfile extends Component {
     render() {
         return (
             <View />
@@ -23,8 +23,8 @@ class NewProfile extends Component {
     }
 }
 
-NewProfile.propTypes = {
+UserProfile.propTypes = {
     navigation: PropTypes.object
 };
 
-export default NewProfile;
+export default UserProfile;

@@ -28,8 +28,8 @@ class Drawer extends Component {
                 firebase.auth().signOut().then((result) => console.log(result))
                     .catch((error) => console.log(error));//TODO: Use redux to trigger signout in Home Container
                 break;
-            case 'NewProfile':
-                navigation.navigate('NewProfile');//TODO: Replace with Private Profile component
+            case 'UserProfile':
+                navigation.navigate('UserProfile');//TODO: Replace with Private Profile component
                 break;
         }
     }
@@ -74,7 +74,7 @@ class Drawer extends Component {
                     onPress={this.toggleDrawer}
                 />
                 <View style={{ marginTop: 100 }}>
-                    {this.renderRow('NewProfile')}
+                    {this.renderRow('UserProfile')}
                     {this.renderRow('Bookmarked Items')}
                     {this.renderRow('Settings')}
                     {this.renderRow('About')}
