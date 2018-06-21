@@ -1,12 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
-import { StackNavigator, DrawerNavigator, } from 'react-navigation';
+import {
+    StackNavigator,
+    DrawerNavigator
+} from 'react-navigation';
 
 import Home from '../scene/Home';
 import GeneralProductDetails from '../scene/GeneralProductDetails';
 import CreateAd from '../scene/CreateAd';
 import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
+import NewProfile from '../scene/NewProfile';
 import Drawer from '../scene/Drawer';
 
 const StackNavigation = StackNavigator({
@@ -62,9 +65,19 @@ const StackNavigation = StackNavigator({
             headerTintColor: '#FFFFFF',
             title: "Profile"
         })
+    },
+    NewProfile: {
+        screen: NewProfile,
+        navigationOptions: (props) => ({
+            headerStyle: {
+                backgroundColor: '#2a2a2a',
+                elevation: 0 //Only for Android
+            },
+            headerTintColor: '#FFFFFF',
+            title: "Profile"
+        })
     }
 });
-
 
 const NavigationDrawer = DrawerNavigator(
     {
