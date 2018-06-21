@@ -223,20 +223,6 @@ class UserProfile extends Component {
                         {this.renderAddressInput()}
                         {this.renderSeparator()}
                         {this.renderGenderModalSelection()}
-                        {/*this.renderTitleTextInput()}
-                        {this.renderSeparator()}
-                        {this.renderProductCondition()}
-                        {this.renderSeparator()}
-                        {this.renderProductDescription()}
-                        {this.renderSeparator()}
-                        {this.renderProductCategory()}
-                        {this.renderSeparator()}
-                        {this.renderLocationSelector()}
-                        {this.renderSeparator()}
-                        {this.renderProductConditionModalSelection()}
-                        {this.renderProductCategoryModalSelection()}
-                        {this.renderLocationModalSelection()}
-        {this.renderProductDetailsModalSelection()*/}
                         <View style={{ height: 50 }} />
                     </View>
                 </ScrollView>
