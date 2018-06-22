@@ -10,7 +10,7 @@ export default StyleSheet.create({
         backgroundColor: Color.lightBlueWhite
     },
     locationFilterContainer: {
-        flex: 1,
+        // flex: 1,
         flexDirection: 'column',
         padding: 25
     },
@@ -35,5 +35,10 @@ export default StyleSheet.create({
         backgroundColor: Color.lightWhite,
         padding: 15,
         marginVertical: 10
+    },
+    navigationBarStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
 });

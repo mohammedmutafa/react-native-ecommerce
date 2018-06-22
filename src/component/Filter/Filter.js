@@ -16,12 +16,35 @@ const {
     container,
     locationFilterContainer,
     selectLocationButtonStyle,
-    priceFilterButtonStyle
+    priceFilterButtonStyle,
+    navigationBarStyle
 } = styles;
 
 //Location, sub-categort, price range
 
 export class Filter extends Component {
+
+    renderNavigationBar = () => {
+        return (
+            <View style={navigationBarStyle}>
+                <Icon
+                    containerStyle={{ padding: 10 }}
+                    name="ios-close-circle-outline"
+                    type="ionicon"
+                    size={30}
+                    color={Color.golden}
+                //onPress={changeLoginWithPhoneModalViewState}
+                />
+                <Text
+                    style={{ color: Color.golden, padding: 10, fontSize: 20 }}
+                >
+                    Apply
+                </Text>
+            </View>
+        );
+    }
+
+
     renderLocationFilter = () => {
         const { selectedLocation } = this.props;
 
@@ -106,6 +129,7 @@ export class Filter extends Component {
                 animationType="fade"
             // transparent={true}
             >
+                {this.renderNavigationBar()}
                 {this.renderLocationFilter()}
                 {this.renderPriceFilter()}
             </Modal >
