@@ -68,7 +68,7 @@ export class Filter extends Component {
                         underlineColorAndroid="transparent"
                     />
                 </View>
-                <TouchableOpacity
+                <View
                     style={priceFilterButtonStyle}
                 //onPress={changeStateOfSelectLocationModalView}
                 >
@@ -85,7 +85,7 @@ export class Filter extends Component {
                         value={''}
                         underlineColorAndroid="transparent"
                     />
-                </TouchableOpacity>
+                </View>
 
             </View>
         );
