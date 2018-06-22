@@ -55,7 +55,7 @@ export class Filter extends Component {
                 //onPress={changeStateOfSelectLocationModalView}
                 >
                     <TextInput
-                        style={{ fontSize: 16 }}
+                        style={{ color: Color.dark, fontSize: 16 }}
                         placeholderTextColor={Color.placeholderWhite}
                         keyboardType="numeric"
                         placeholder="₹ (Min Price)"
@@ -73,7 +73,7 @@ export class Filter extends Component {
                 //onPress={changeStateOfSelectLocationModalView}
                 >
                     <TextInput
-                        // style={value ? textInputTextStyle : textInputPlaceHolderStyle}
+                        style={{ color: Color.dark, fontSize: 16 }}
                         placeholderTextColor={Color.placeholderWhite}
                         keyboardType="numeric"
                         placeholder="₹ (Max Price)"

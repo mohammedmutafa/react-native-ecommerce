@@ -33,7 +33,7 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: Color.semiDarkWhite,
         backgroundColor: Color.lightWhite,
-        padding: 10,
+        padding: 15,
         marginVertical: 10
     }
 });
