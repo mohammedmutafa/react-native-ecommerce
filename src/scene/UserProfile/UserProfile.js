@@ -201,15 +201,17 @@ class UserProfile extends Component {
             isSelectGenderModalViewVisible,
             setGenderFemale,
             setGenderMale,
-            setGenderOther
+            setGenderOther,
+            gender
         } = this.props;
 
         return (
-            <View
+            <GenderSelector
                 isSelectGenderModalViewVisible={isSelectGenderModalViewVisible}
                 setGenderFemale={setGenderFemale}
                 setGenderMale={setGenderMale}
                 setGenderOther={setGenderOther}
+                gender={gender}
             />
         );
     }
@@ -276,9 +278,9 @@ UserProfile.propTypes = {
 
     //Gender
     gender: PropTypes.string,
-    setGenderFemale: PropTypes.string,
-    setGenderMale: PropTypes.string,
-    setGenderOther: PropTypes.string,
+    setGenderFemale: PropTypes.func,
+    setGenderMale: PropTypes.func,
+    setGenderOther: PropTypes.func,
 
     //Email
     email: PropTypes.string,
@@ -289,7 +291,7 @@ UserProfile.propTypes = {
     onAddressInput: PropTypes.func,
 
     isSelectGenderModalViewVisible: PropTypes.bool,
-    changeStateOfSelectGenderModalView: PropTypes.bool,
+    changeStateOfSelectGenderModalView: PropTypes.func,
 
     //Navigation
     navigation: PropTypes.object,

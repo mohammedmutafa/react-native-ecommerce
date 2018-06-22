@@ -37,21 +37,21 @@ class UserProfileContainer extends Component {
 
     setGenderMale = () => {
         this.setState({
-            selectedProductCondition: 'Male',
+            gender: 'Male',
             isSelectGenderModalViewVisible: false
         });
     }
 
     setGenderFemale = () => {
         this.setState({
-            selectedProductCondition: 'Female',
+            gender: 'Female',
             isSelectGenderModalViewVisible: false
         });
     }
 
     setGenderOther = () => {
         this.setState({
-            selectedProductCondition: 'Other',
+            gender: 'Other',
             isSelectGenderModalViewVisible: false
         });
     }

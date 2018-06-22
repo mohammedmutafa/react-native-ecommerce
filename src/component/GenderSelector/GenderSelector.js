@@ -11,42 +11,44 @@ import styles from './styles';
 import Color from '../../styles/Color';
 
 const {
-    container
+    container,
+    separatorStyle
 } = styles;
 
-export const GenderSelector = ({ selectedProductCondition, setProductConditionUsed, setProductConditionNew, isProductConditionModalViewVisible }) => (
+export const GenderSelector = ({ isSelectGenderModalViewVisible, gender, setGenderFemale, setGenderMale, setGenderOther }) => (
     <Modal
         style={{ flexDirection: 'column' }}
-        visible={isProductConditionModalViewVisible}
+        visible={isSelectGenderModalViewVisible}
         animationType="fade"
         transparent={true}
     >
-        <View style={{ flex: 1.4, backgroundColor: Color.semiTransparentDarkOverlay }} />
+        <View style={{ flex: 1.1, backgroundColor: Color.semiTransparentDarkOverlay }} />
         <View style={container}>
-            <Text>Select your Gender.</Text>
-            <View style={{ flexDirection: 'column', justifyContent: 'center', marginVertical: 10, alignItems: 'flex-start' }}>
-                <CheckBox
-                    containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
-                    title="Male"
-                    checkedColor={Color.dark}
-                    iconType="ionicon"
-                    checkedIcon="ios-checkmark-circle"
-                    textStyle={{ color: Color.dark }}
-                    uncheckedIcon="ios-checkmark-circle-outline"
-                    checked={selectedProductCondition === 'Male' ? true : false}
-                    onPress={setProductConditionNew}
-                    size={35}
-                />
+            <Text style={{ padding: 5 }}>Select your Gender</Text>
+            <View style={separatorStyle} />
+            <View style={{ flexDirection: 'column', justifyContent: 'center', marginVertical: 15, alignSelf: 'flex-start', alignItems: 'flex-start' }}>
                 <CheckBox
                     containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                     title="Female"
                     checkedColor={Color.dark}
+                    iconType="ionicon"
+                    checkedIcon="ios-checkmark-circle"
+                    textStyle={{ color: Color.dark }}
+                    uncheckedIcon="ios-checkmark-circle-outline"
+                    checked={gender === 'Female' ? true : false}
+                    onPress={setGenderFemale}
+                    size={35}
+                />
+                <CheckBox
+                    containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
+                    title="Male"
+                    checkedColor={Color.dark}
                     textStyle={{ color: Color.dark }}
                     iconType="ionicon"
                     checkedIcon="ios-checkmark-circle"
                     uncheckedIcon="ios-checkmark-circle-outline"
-                    checked={selectedProductCondition === 'Female' ? true : false}
-                    onPress={setProductConditionUsed}
+                    checked={gender === 'Male' ? true : false}
+                    onPress={setGenderMale}
                     size={35}
                 />
                 <CheckBox
@@ -57,8 +59,8 @@ export const GenderSelector = ({ selectedProductCondition, setProductConditionUs
                     iconType="ionicon"
                     checkedIcon="ios-checkmark-circle"
                     uncheckedIcon="ios-checkmark-circle-outline"
-                    checked={selectedProductCondition === 'Other' ? true : false}
-                    onPress={setProductConditionUsed}
+                    checked={gender === 'Other' ? true : false}
+                    onPress={setGenderOther}
                     size={35}
                 />
             </View>
@@ -67,8 +69,9 @@ export const GenderSelector = ({ selectedProductCondition, setProductConditionUs
 );
 
 GenderSelector.propTypes = {
-    selectedProductCondition: PropTypes.string,
-    setProductConditionUsed: PropTypes.func,
-    setProductConditionNew: PropTypes.func,
-    isProductConditionModalViewVisible: PropTypes.bool
+    isSelectGenderModalViewVisible: PropTypes.bool,
+    setGenderFemale: PropTypes.func,
+    setGenderMale: PropTypes.func,
+    setGenderOther: PropTypes.func,
+    gender: PropTypes.string
 };
