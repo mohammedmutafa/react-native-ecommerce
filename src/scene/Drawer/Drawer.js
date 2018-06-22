@@ -22,14 +22,14 @@ class Drawer extends Component {
 
     onPressRow = (key) => {
         const { navigation } = this.props;
-       
+
         switch (key) {
             case 'Logout':
                 firebase.auth().signOut().then((result) => console.log(result))
                     .catch((error) => console.log(error));//TODO: Use redux to trigger signout in Home Container
                 break;
-            case 'Profile':
-                navigation.navigate('ProfilePublic');//TODO: Replace with Private Profile component
+            case 'UserProfile':
+                navigation.navigate('UserProfile');//TODO: Replace with Private Profile component
                 break;
         }
     }
@@ -74,7 +74,7 @@ class Drawer extends Component {
                     onPress={this.toggleDrawer}
                 />
                 <View style={{ marginTop: 100 }}>
-                    {this.renderRow('Profile')}
+                    {this.renderRow('UserProfile')}
                     {this.renderRow('Bookmarked Items')}
                     {this.renderRow('Settings')}
                     {this.renderRow('About')}

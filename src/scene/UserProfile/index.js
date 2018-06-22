@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Drawer from './Drawer';
+import UserProfileContainer from './UserProfileContainer';
 
 const index = ({ navigation }) => {
-    return <Drawer
-        navigation={navigation}
-    />;
+    return (
+        <UserProfileContainer
+            navigation={navigation}
+        />
+    );
 };
 
 index.propTypes = {
