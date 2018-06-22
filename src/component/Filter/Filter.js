@@ -29,17 +29,20 @@ export class Filter extends Component {
             <View style={navigationBarStyle}>
                 <Icon
                     containerStyle={{ padding: 10 }}
-                    name="ios-close-circle-outline"
+                    name="ios-arrow-dropleft-outline"
                     type="ionicon"
-                    size={30}
+                    size={35}
                     color={Color.golden}
                 //onPress={changeLoginWithPhoneModalViewState}
                 />
-                <Text
-                    style={{ color: Color.golden, padding: 10, fontSize: 20 }}
-                >
-                    Apply
-                </Text>
+                <Icon
+                    containerStyle={{ padding: 10 }}
+                    name="ios-checkmark-circle-outline"
+                    type="ionicon"
+                    size={35}
+                    color={Color.golden}
+                //onPress={changeLoginWithPhoneModalViewState}
+                />
             </View>
         );
     }
@@ -126,12 +129,14 @@ export class Filter extends Component {
             <Modal
                 style={container}
                 visible={true}
-                animationType="fade"
+                animationType="slide"
             // transparent={true}
             >
-                {this.renderNavigationBar()}
-                {this.renderLocationFilter()}
-                {this.renderPriceFilter()}
+                <View style={container}>
+                    {this.renderNavigationBar()}
+                    {this.renderLocationFilter()}
+                    {this.renderPriceFilter()}
+                </View>
             </Modal >
         );
     }

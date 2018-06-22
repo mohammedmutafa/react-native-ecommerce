@@ -5,12 +5,10 @@ import Color from '../../styles/Color';
 export default StyleSheet.create({
     container: {
         flexDirection: 'column',
-        paddingHorizontal: 25,
-        paddingVertical: 25,
-        backgroundColor: Color.lightBlueWhite
+        backgroundColor: Color.lightWhite,
+        flex: 1
     },
     locationFilterContainer: {
-        // flex: 1,
         flexDirection: 'column',
         padding: 25
     },
@@ -20,7 +18,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: Color.semiDarkWhite,
+        borderColor: Color.placeholderWhite,
         backgroundColor: Color.lightWhite,
         padding: 10,
         marginVertical: 10
@@ -31,7 +29,7 @@ export default StyleSheet.create({
         alignItems: 'stretch',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: Color.semiDarkWhite,
+        borderColor: Color.placeholderWhite,
         backgroundColor: Color.lightWhite,
         padding: 15,
         marginVertical: 10
