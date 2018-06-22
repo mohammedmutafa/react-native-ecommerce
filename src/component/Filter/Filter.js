@@ -117,6 +117,28 @@ export class Filter extends Component {
         );
     }
 
+    renderCategoryFilter = () => {
+        const { selectedLocation } = this.props;
+
+        return (
+            <View style={locationFilterContainer}>
+                <Text style={{ color: Color.dark, fontSize: 16 }}>Choose Category</Text>
+                <TouchableOpacity
+                    style={selectLocationButtonStyle}
+                //onPress={changeStateOfSelectLocationModalView}
+                >
+                    <Text style={{ color: Color.lightDark, fontSize: 16 }}>All Categories</Text>
+                    <Icon
+                        name="menu-up"
+                        type="material-community"
+                        color={Color.lightDark}
+                    //onPress={changeLoginWithPhoneModalViewState}
+                    />
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     render() {
         const {
             selectedProductCondition,
@@ -136,6 +158,7 @@ export class Filter extends Component {
                     {this.renderNavigationBar()}
                     {this.renderLocationFilter()}
                     {this.renderPriceFilter()}
+                    {this.renderCategoryFilter()}
                 </View>
             </Modal >
         );
