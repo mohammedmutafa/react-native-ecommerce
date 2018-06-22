@@ -56,7 +56,7 @@ export class Filter extends Component {
                 >
                     <TextInput
                         style={{ color: Color.dark, fontSize: 16 }}
-                        placeholderTextColor={Color.placeholderWhite}
+                        placeholderTextColor={Color.lightDark}
                         keyboardType="numeric"
                         placeholder="₹ (Min Price)"
                         autoFocus={false}
@@ -74,7 +74,7 @@ export class Filter extends Component {
                 >
                     <TextInput
                         style={{ color: Color.dark, fontSize: 16 }}
-                        placeholderTextColor={Color.placeholderWhite}
+                        placeholderTextColor={Color.lightDark}
                         keyboardType="numeric"
                         placeholder="₹ (Max Price)"
                         autoFocus={false}
