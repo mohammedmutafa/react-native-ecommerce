@@ -1,7 +1,6 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import colors from '../../styles/Color';
-import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
+import { screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 
 export const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
 export const SLIDER_HEIGHT = screenWidth / 1.7;
