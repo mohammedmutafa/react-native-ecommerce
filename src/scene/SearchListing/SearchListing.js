@@ -29,8 +29,8 @@ class SearchListing extends Component {
             <View style={floatingFilterButtonStyle}>
                 <Icon
                     raised
-                    name="camera"
-                    type="font-awesome"
+                    name="filter-outline"
+                     type="material-community"
                     color={Color.lightWhite}
                     onPress={changeStateForFilterUI}
                     containerStyle={{

@@ -29,6 +29,7 @@ class SearchListingContainer extends Component {
          */
         this.setState({
             isFilterVisible: !this.state.isFilterVisible,
+            selectedLocation: '',
             minPriceFilter: undefined,
             maxPriceFilter: undefined,
             selectedCategory: undefined,
