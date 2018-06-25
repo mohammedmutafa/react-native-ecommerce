@@ -239,6 +239,7 @@ export class Filter extends Component {
                 style={container}
                 visible={isFilterVisible}
                 animationType="slide"
+                onRequestClose={() => null}
             // transparent={true}
             >
                 {this.renderNavigationBar()}

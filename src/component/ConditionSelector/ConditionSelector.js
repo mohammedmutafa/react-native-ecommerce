@@ -20,6 +20,7 @@ export const ConditionSelector = ({ selectedProductCondition, setProductConditio
         visible={isProductConditionModalViewVisible}
         animationType="fade"
         transparent={true}
+        onRequestClose={() => null}
     >
         <View style={{ flex: 1.5, backgroundColor: Color.semiTransparentDarkOverlay }} />
         <View style={container}>

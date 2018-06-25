@@ -163,6 +163,7 @@ export class CategorySelector extends Component {
                 transparent={true}
                 animationType="slide"
                 visible={this.props.isProductCategoryModalViewVisible}
+                onRequestClose={() => null}
             >
                 <View style={semiTransparentContainer}>
                     <View style={scrollViewConatinerStyle}>
