@@ -44,6 +44,7 @@ export default styles = StyleSheet.create({
         textAlign: 'center',
     },
     decsriptionTextStyle: {
+        fontFamily: 'Charter BT',
         // color: '#00',
         fontSize: 16,
         //fontStyle: 'italic',
