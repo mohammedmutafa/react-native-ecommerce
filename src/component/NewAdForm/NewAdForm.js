@@ -4,11 +4,11 @@ import {
     View,
     Text,
     TextInput,
-    ScrollView,
     TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -305,8 +305,8 @@ export class NewAdForm extends Component {
             <View
                 style={container}
             >
-                <ScrollView
-                    bounces={false}
+                <KeyboardAwareScrollView
+                    //  bounces={false}
                     showsVerticalScrollIndicator={false}
                     style={container}
                 >
@@ -330,7 +330,7 @@ export class NewAdForm extends Component {
                         {this.renderProductDetailsModalSelection()}
                         <View style={{ height: 50 }} />
                     </View>
-                </ScrollView>
+                </KeyboardAwareScrollView>
                 {this.renderBackButton()}
                 {this.renderNextButton()}
             </View>
