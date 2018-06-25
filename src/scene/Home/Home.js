@@ -128,10 +128,10 @@ export default class Home extends Component {
                 <ParallaxScrollView
                     bounces={false}
                     showsVerticalScrollIndicator={false}
-                    backgroundColor={Color.lightWhite}
+                    backgroundColor={"#FFFFFF"}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
                     renderForeground={() => (
-                        <View style={{ height: SLIDER_HEIGHT, backgroundColor: colors.lightWhite, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                             <BackButton
                                 style={{ left: 20 }}
                                 iconName="menu"
