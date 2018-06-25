@@ -13,6 +13,7 @@ import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
 import { BackButton } from '../../component/BackButton';
 import { NewAdForm } from '../../component/NewAdForm';
+import Color from '../../styles/Color';
 
 class CreateAd extends Component {
 
@@ -33,7 +34,8 @@ class CreateAd extends Component {
                     raised
                     name="chevron-thin-right"
                     type="entypo"
-                    color="#DAA520"
+                    color={Color.lightWhite}
+                    underlayColor="transparent"
                     containerStyle={floatingButtonContainerStyle}
                     onPress={null}
                 />

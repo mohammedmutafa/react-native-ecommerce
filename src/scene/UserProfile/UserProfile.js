@@ -26,6 +26,7 @@ class UserProfile extends Component {
             name="chevron-thin-right"
             size={20}
             type="entypo"
+            underlayColor="transparent"
             color={Color.placeholderWhite}
         />
     );

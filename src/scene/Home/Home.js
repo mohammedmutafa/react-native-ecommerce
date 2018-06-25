@@ -71,13 +71,14 @@ export default class Home extends Component {
                 <Icon
                     raised
                     name="camera"
-                    type="font-awesome"
+                    type="simple-line-icon"
+                    underlayColor="transparent"
                     color={Color.lightWhite}
                     onPress={isUserLoggedIn ? onCreateAdButtonPress : changeLoginWithPhoneModalViewState}
                     containerStyle={{
-                        backgroundColor: Color.dark,
-                        borderWidth: 0.5,
-                        borderColor: Color.golden
+                        backgroundColor: Color.semiTransparentDarkOverlay,
+                        //borderWidth: 0.5,
+                        //borderColor: Color.golden
                     }}
                 />
             </View>

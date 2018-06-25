@@ -13,8 +13,8 @@ export default styles = StyleSheet.create({
         bottom: 35
     },
     floatingButtonContainerStyle: {
-        backgroundColor: Colors.dark,
-        borderWidth: 0.5,
-        borderColor: Colors.golden
+        backgroundColor: Colors.semiTransparentDarkOverlay,
+        // borderWidth: 0.5,
+        //borderColor: Colors.golden
     }
 });
