@@ -2,17 +2,46 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
     View,
-    Text,
-    Image,
-    FlatList,
-    TouchableOpacity
+    FlatList
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import { FeedsCard } from '../../component/FeedsCard';
+import { Filter } from '../../component/Filter';
+
+import styles from './styles';
+import Color from '../../styles/Color';
+
+const {
+    floatingFilterButtonStyle
+} = styles;
 
 class SearchListing extends Component {
 
     keyExtractor = (item, index) => index.toString();
+
+    renderFloatingFilterButton = () => {
+        const {
+            changeStateForFilterUI
+        } = this.props;
+
+        return (
+            <View style={floatingFilterButtonStyle}>
+                <Icon
+                    raised
+                    name="filter-outline"
+                     type="material-community"
+                    color={Color.lightWhite}
+                    onPress={changeStateForFilterUI}
+                    containerStyle={{
+                        backgroundColor: Color.dark,
+                        borderWidth: 0.5,
+                        borderColor: Color.golden
+                    }}
+                />
+            </View>
+        );
+    }
 
     renderFeedsCard = ({ item }) => {
         const { navigation } = this.props;
@@ -40,15 +69,87 @@ class SearchListing extends Component {
         );
     }
 
+    renderFilter = () => {
+        const {
+            isFilterVisible,
+            changeStateForFilterUI,
+
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation,
+            maxPriceFilter,
+            minPriceFilter,
+            onMinPriceInput,
+            onMaxPriceInput,
+            updateProductCategory,
+            isCategorySelectorModalViewVisible,
+            isLocationFilterModalViewVisible,
+            updateSelectedLocations,
+            changeStateForCategorySelectorModalView,
+            changeStateForLocationFilterModalView
+        } = this.props;
+
+        if (!isFilterVisible) {
+            return <View />;
+        }
+
+        return (
+            <Filter
+                //Filters
+                isFilterVisible={isFilterVisible}
+                changeStateForFilterUI={changeStateForFilterUI}
+
+                maxPriceFilter={maxPriceFilter}
+                minPriceFilter={minPriceFilter}
+                onMinPriceInput={onMinPriceInput}
+                onMaxPriceInput={onMaxPriceInput}
+
+                selectedCategory={selectedCategory}
+                selectedSubCategory={selectedSubCategory}
+                selectedLocation={selectedLocation}
+
+                isCategorySelectorModalViewVisible={isCategorySelectorModalViewVisible}
+                changeStateForCategorySelectorModalView={changeStateForCategorySelectorModalView}
+                updateProductCategory={updateProductCategory}
+
+                isLocationFilterModalViewVisible={isLocationFilterModalViewVisible}
+                updateSelectedLocations={updateSelectedLocations}
+                changeStateForLocationFilterModalView={changeStateForLocationFilterModalView}
+            />
+        );
+    }
+
     render() {
         return (
-            this.renderFlatList()
+            <View>
+                {this.renderFlatList()}
+                {this.renderFloatingFilterButton()}
+                {this.renderFilter()}
+            </View>
+
         );
     }
 }
 
 SearchListing.propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+
+    //Filters
+    isFilterVisible: PropTypes.bool,
+    changeStateForFilterUI: PropTypes.func,
+    maxPriceFilter: PropTypes.number,
+    minPriceFilter: PropTypes.number,
+    onMinPriceInput: PropTypes.func,
+    onMaxPriceInput: PropTypes.func,
+    isCategorySelectorModalViewVisible: PropTypes.bool,
+    isLocationFilterModalViewVisible: PropTypes.bool,
+    changeStateForCategorySelectorModalView: PropTypes.func,
+    updateProductCategory: PropTypes.func,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string,
+    changeStateForLocationFilterModalView: PropTypes.func,
+    updateSelectedLocations: PropTypes.func,
+    selectedLocation: PropTypes.string
 };
 
 export default SearchListing;
