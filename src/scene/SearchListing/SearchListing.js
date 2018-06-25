@@ -2,18 +2,46 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
     View,
-    Text,
-    Image,
-    FlatList,
-    TouchableOpacity
+    FlatList
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import { FeedsCard } from '../../component/FeedsCard';
 import { Filter } from '../../component/Filter';
 
+import styles from './styles';
+import Color from '../../styles/Color';
+
+const {
+    floatingFilterButtonStyle
+} = styles;
+
 class SearchListing extends Component {
 
     keyExtractor = (item, index) => index.toString();
+
+    renderFloatingFilterButton = () => {
+        const {
+            changeStateForFilterUI
+        } = this.props;
+
+        return (
+            <View style={floatingFilterButtonStyle}>
+                <Icon
+                    raised
+                    name="camera"
+                    type="font-awesome"
+                    color={Color.lightWhite}
+                    onPress={changeStateForFilterUI}
+                    containerStyle={{
+                        backgroundColor: Color.dark,
+                        borderWidth: 0.5,
+                        borderColor: Color.golden
+                    }}
+                />
+            </View>
+        );
+    }
 
     renderFeedsCard = ({ item }) => {
         const { navigation } = this.props;
@@ -43,6 +71,9 @@ class SearchListing extends Component {
 
     renderFilter = () => {
         const {
+            isFilterVisible,
+            changeStateForFilterUI,
+
             selectedCategory,
             selectedSubCategory,
             selectedLocation,
@@ -58,9 +89,16 @@ class SearchListing extends Component {
             changeStateForLocationFilterModalView
         } = this.props;
 
+        if (!isFilterVisible) {
+            return <View />;
+        }
+
         return (
             <Filter
                 //Filters
+                isFilterVisible={isFilterVisible}
+                changeStateForFilterUI={changeStateForFilterUI}
+
                 maxPriceFilter={maxPriceFilter}
                 minPriceFilter={minPriceFilter}
                 onMinPriceInput={onMinPriceInput}
@@ -85,6 +123,7 @@ class SearchListing extends Component {
         return (
             <View>
                 {this.renderFlatList()}
+                {this.renderFloatingFilterButton()}
                 {this.renderFilter()}
             </View>
 
@@ -96,6 +135,8 @@ SearchListing.propTypes = {
     navigation: PropTypes.object,
 
     //Filters
+    isFilterVisible: PropTypes.bool,
+    changeStateForFilterUI: PropTypes.func,
     maxPriceFilter: PropTypes.number,
     minPriceFilter: PropTypes.number,
     onMinPriceInput: PropTypes.func,

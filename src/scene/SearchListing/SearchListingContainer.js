@@ -11,6 +11,7 @@ class SearchListingContainer extends Component {
         this.state = {
 
             //Filters
+            isFilterVisible: false,
             minPriceFilter: undefined,
             maxPriceFilter: undefined,
             selectedCategory: undefined,
@@ -19,6 +20,20 @@ class SearchListingContainer extends Component {
             isLocationFilterModalViewVisible: false,
             isCategorySelectorModalViewVisible: false
         }
+    }
+
+    changeStateForFilterUI = () => {
+        /**
+         * Its a reset button.
+         * If user clicks back button instead of apply button, clear the filters
+         */
+        this.setState({
+            isFilterVisible: !this.state.isFilterVisible,
+            minPriceFilter: undefined,
+            maxPriceFilter: undefined,
+            selectedCategory: undefined,
+            selectedSubCategory: undefined,
+        });
     }
 
     changeStateForLocationFilterModalView = () => {
@@ -64,6 +79,7 @@ class SearchListingContainer extends Component {
 
     render() {
         const {
+            isFilterVisible,
             maxPriceFilter,
             minPriceFilter,
             selectedCategory,
@@ -78,6 +94,9 @@ class SearchListingContainer extends Component {
                 navigation={this.props.navigation}
 
                 //Filters
+                isFilterVisible={isFilterVisible}
+                changeStateForFilterUI={this.changeStateForFilterUI}
+
                 maxPriceFilter={maxPriceFilter}
                 minPriceFilter={minPriceFilter}
                 onMinPriceInput={this.onMinPriceInput}

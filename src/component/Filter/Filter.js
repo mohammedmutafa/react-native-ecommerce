@@ -28,6 +28,8 @@ const {
 export class Filter extends Component {
 
     renderNavigationBar = () => {
+        const { changeStateForFilterUI } = this.props;
+
         return (
             <View style={navigationBarStyle}>
                 <Icon
@@ -36,7 +38,8 @@ export class Filter extends Component {
                     type="ionicon"
                     size={35}
                     color={Color.golden}
-                //onPress={changeLoginWithPhoneModalViewState}
+                    onPress={changeStateForFilterUI}
+                    underlayColor="transparent"
                 />
                 <Icon
                     containerStyle={{ padding: 10 }}
@@ -44,6 +47,7 @@ export class Filter extends Component {
                     type="ionicon"
                     size={35}
                     color={Color.golden}
+                    underlayColor="transparent"
                 //onPress={changeLoginWithPhoneModalViewState}
                 />
             </View>
@@ -198,10 +202,14 @@ export class Filter extends Component {
     }
 
     render() {
+        const {
+            isFilterVisible,
+            changeStateForFilterUI
+        } = this.props;
         return (
             <Modal
                 style={container}
-                visible={true}
+                visible={isFilterVisible}
                 animationType="slide"
             // transparent={true}
             >
@@ -219,6 +227,8 @@ export class Filter extends Component {
 }
 
 Filter.propTypes = {
+    isFilterVisible: PropTypes.bool,
+    changeStateForFilterUI: PropTypes.func,
     maxPriceFilter: PropTypes.number,
     minPriceFilter: PropTypes.number,
     onMinPriceInput: PropTypes.func,
