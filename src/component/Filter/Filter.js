@@ -11,6 +11,9 @@ import { Icon } from 'react-native-elements';
 
 import styles from './styles';
 import Color from '../../styles/Color';
+import { numberWithCommas } from '../../utilities/Functions';
+import { LocationSelector } from '../LocationSelector/LocationSelector';
+import { CategorySelector } from '../CategorySelector';
 
 const {
     container,
@@ -20,7 +23,7 @@ const {
     navigationBarStyle
 } = styles;
 
-//Location, sub-categort, price range
+//Location, sub-categort, price range  and also new and old
 
 export class Filter extends Component {
 
@@ -49,21 +52,27 @@ export class Filter extends Component {
 
 
     renderLocationFilter = () => {
-        const { selectedLocation } = this.props;
+        const {
+            changeStateForLocationFilterModalView,
+            selectedLocation
+        } = this.props;
 
         return (
             <View style={locationFilterContainer}>
                 <Text style={{ color: Color.dark, fontSize: 16 }}>Discover ads near you</Text>
                 <TouchableOpacity
                     style={selectLocationButtonStyle}
-                //onPress={changeStateOfSelectLocationModalView}
+                    onPress={changeStateForLocationFilterModalView}
                 >
-                    <Text style={{ color: Color.lightDark, fontSize: 16 }}>Select Location</Text>
+                    <Text
+                        style={{ color: Color.lightDark, fontSize: 16 }}
+                    >
+                        {selectedLocation ? selectedLocation : 'Select Location'}
+                    </Text>
                     <Icon
                         name="menu-up"
                         type="material-community"
                         color={Color.lightDark}
-                    //onPress={changeLoginWithPhoneModalViewState}
                     />
                 </TouchableOpacity>
             </View>
@@ -71,14 +80,21 @@ export class Filter extends Component {
     }
 
     renderPriceFilter = () => {
-        const { selectedLocation } = this.props;
+        const {
+            maxPriceFilter,
+            minPriceFilter,
+            onMinPriceInput,
+            onMaxPriceInput
+        } = this.props;
+
+        const minValue = minPriceFilter ? numberWithCommas(minPriceFilter) : undefined;
+        const maxValue = maxPriceFilter ? numberWithCommas(maxPriceFilter) : undefined;
 
         return (
             <View style={locationFilterContainer}>
                 <Text style={{ color: Color.dark, fontSize: 16 }}>Set a price range</Text>
                 <View
                     style={priceFilterButtonStyle}
-                //onPress={changeStateOfSelectLocationModalView}
                 >
                     <TextInput
                         style={{ color: Color.dark, fontSize: 16 }}
@@ -89,14 +105,13 @@ export class Filter extends Component {
                         clearButtonMode="always"
                         multiline={false}
                         maxLength={13}
-                        //onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
-                        value={''}
+                        onChangeText={(text) => onMinPriceInput(text.replace(/[^0-9]/g, ''))}
+                        value={minValue ? `₹ ${minValue}` : null}
                         underlineColorAndroid="transparent"
                     />
                 </View>
                 <View
                     style={priceFilterButtonStyle}
-                //onPress={changeStateOfSelectLocationModalView}
                 >
                     <TextInput
                         style={{ color: Color.dark, fontSize: 16 }}
@@ -107,27 +122,34 @@ export class Filter extends Component {
                         clearButtonMode="always"
                         multiline={false}
                         maxLength={13}
-                        //onChangeText={(text) => onProductPriceInput(text.replace(/[^0-9]/g, ''))}
-                        value={''}
+                        onChangeText={(text) => onMaxPriceInput(text.replace(/[^0-9]/g, ''))}
+                        value={maxValue ? `₹ ${maxValue}` : null}
                         underlineColorAndroid="transparent"
                     />
                 </View>
-
             </View>
         );
     }
 
     renderCategoryFilter = () => {
-        const { selectedLocation } = this.props;
+        const {
+            changeStateForCategorySelectorModalView,
+            selectedCategory,
+            selectedSubCategory
+        } = this.props;
 
         return (
             <View style={locationFilterContainer}>
                 <Text style={{ color: Color.dark, fontSize: 16 }}>Choose Category</Text>
                 <TouchableOpacity
                     style={selectLocationButtonStyle}
-                //onPress={changeStateOfSelectLocationModalView}
+                    onPress={changeStateForCategorySelectorModalView}
                 >
-                    <Text style={{ color: Color.lightDark, fontSize: 16 }}>All Categories</Text>
+                    <Text
+                        style={{ color: Color.lightDark, fontSize: 16 }}
+                    >
+                        {selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : 'Select Category'}
+                    </Text>
                     <Icon
                         name="menu-up"
                         type="material-community"
@@ -139,14 +161,43 @@ export class Filter extends Component {
         );
     }
 
-    render() {
+    renderLocationModalSelection = () => {
         const {
-            selectedProductCondition,
-            setProductConditionUsed,
-            setProductConditionNew,
-            isFilterModalViewVisible
+            isLocationFilterModalViewVisible,
+            updateSelectedLocations,
+            selectedLocation,
         } = this.props;
 
+        return (
+            <LocationSelector
+                isSelectLocationModalViewVisible={isLocationFilterModalViewVisible}
+                updateSelectedLocations={updateSelectedLocations}
+                selectedLocation={selectedLocation}
+            />
+        );
+    }
+
+    renderProductCategoryModalSelection = () => {
+        const {
+            updateProductCategory,
+            selectedCategory,
+            selectedSubCategory,
+            isCategorySelectorModalViewVisible,
+            changeStateForCategorySelectorModalView
+        } = this.props;
+
+        return (
+            <CategorySelector
+                isProductCategoryModalViewVisible={isCategorySelectorModalViewVisible}
+                updateProductDetails={updateProductCategory}
+                createAdStatusDone={changeStateForCategorySelectorModalView}//Hide Modal view for now instead of finishing the form UI.
+                selectedCategory={selectedCategory}
+                selectedSubCategory={selectedSubCategory}
+            />
+        );
+    }
+
+    render() {
         return (
             <Modal
                 style={container}
@@ -159,6 +210,8 @@ export class Filter extends Component {
                     {this.renderLocationFilter()}
                     {this.renderPriceFilter()}
                     {this.renderCategoryFilter()}
+                    {this.renderProductCategoryModalSelection()}
+                    {this.renderLocationModalSelection()}
                 </View>
             </Modal >
         );
@@ -166,8 +219,17 @@ export class Filter extends Component {
 }
 
 Filter.propTypes = {
-    selectedProductCondition: PropTypes.string,
-    setProductConditionUsed: PropTypes.func,
-    setProductConditionNew: PropTypes.func,
-    isProductConditionModalViewVisible: PropTypes.bool
+    maxPriceFilter: PropTypes.number,
+    minPriceFilter: PropTypes.number,
+    onMinPriceInput: PropTypes.func,
+    onMaxPriceInput: PropTypes.func,
+    isCategorySelectorModalViewVisible: PropTypes.bool,
+    isLocationFilterModalViewVisible: PropTypes.bool,
+    changeStateForCategorySelectorModalView: PropTypes.func,
+    updateProductCategory: PropTypes.func,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string,
+    changeStateForLocationFilterModalView: PropTypes.func,
+    updateSelectedLocations: PropTypes.func,
+    selectedLocation: PropTypes.string
 };

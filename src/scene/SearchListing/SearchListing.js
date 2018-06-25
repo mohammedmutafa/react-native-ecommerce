@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { FeedsCard } from '../../component/FeedsCard';
+import { Filter } from '../../component/Filter';
 
 class SearchListing extends Component {
 
@@ -40,15 +41,74 @@ class SearchListing extends Component {
         );
     }
 
+    renderFilter = () => {
+        const {
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation,
+            maxPriceFilter,
+            minPriceFilter,
+            onMinPriceInput,
+            onMaxPriceInput,
+            updateProductCategory,
+            isCategorySelectorModalViewVisible,
+            isLocationFilterModalViewVisible,
+            updateSelectedLocations,
+            changeStateForCategorySelectorModalView,
+            changeStateForLocationFilterModalView
+        } = this.props;
+
+        return (
+            <Filter
+                //Filters
+                maxPriceFilter={maxPriceFilter}
+                minPriceFilter={minPriceFilter}
+                onMinPriceInput={onMinPriceInput}
+                onMaxPriceInput={onMaxPriceInput}
+
+                selectedCategory={selectedCategory}
+                selectedSubCategory={selectedSubCategory}
+                selectedLocation={selectedLocation}
+
+                isCategorySelectorModalViewVisible={isCategorySelectorModalViewVisible}
+                changeStateForCategorySelectorModalView={changeStateForCategorySelectorModalView}
+                updateProductCategory={updateProductCategory}
+
+                isLocationFilterModalViewVisible={isLocationFilterModalViewVisible}
+                updateSelectedLocations={updateSelectedLocations}
+                changeStateForLocationFilterModalView={changeStateForLocationFilterModalView}
+            />
+        );
+    }
+
     render() {
         return (
-            this.renderFlatList()
+            <View>
+                {this.renderFlatList()}
+                {this.renderFilter()}
+            </View>
+
         );
     }
 }
 
 SearchListing.propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+
+    //Filters
+    maxPriceFilter: PropTypes.number,
+    minPriceFilter: PropTypes.number,
+    onMinPriceInput: PropTypes.func,
+    onMaxPriceInput: PropTypes.func,
+    isCategorySelectorModalViewVisible: PropTypes.bool,
+    isLocationFilterModalViewVisible: PropTypes.bool,
+    changeStateForCategorySelectorModalView: PropTypes.func,
+    updateProductCategory: PropTypes.func,
+    selectedCategory: PropTypes.string,
+    selectedSubCategory: PropTypes.string,
+    changeStateForLocationFilterModalView: PropTypes.func,
+    updateSelectedLocations: PropTypes.func,
+    selectedLocation: PropTypes.string
 };
 
 export default SearchListing;
