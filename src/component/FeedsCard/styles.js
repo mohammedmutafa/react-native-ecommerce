@@ -1,8 +1,7 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { screenWidth } from '../../utilities/ScreenSize';
 import colors from '../../styles/Color';
-import Fonts from '../../styles/Fonts';
 
 const containerWidth = screenWidth;
 const containerHeight = containerWidth * 0.8;
@@ -50,7 +49,6 @@ export default StyleSheet.create({
         marginVertical: 10,
         flex: 0.8,
         fontSize: 14,
-        marginHorizontal: 15,
-        fontFamily: Fonts.CharterBT
+        marginHorizontal: 15
     }
 });

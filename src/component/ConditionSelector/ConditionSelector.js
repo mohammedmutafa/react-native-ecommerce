@@ -9,7 +9,6 @@ import { CheckBox } from 'react-native-elements';
 
 import styles from './styles';
 import Color from '../../styles/Color';
-import Fonts from '../../styles/Fonts';
 
 const {
     container
@@ -32,7 +31,7 @@ export const ConditionSelector = ({ selectedProductCondition, setProductConditio
                 checkedColor={Color.dark}
                 iconType="ionicon"
                 checkedIcon="ios-checkmark-circle"
-                textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
+                textStyle={{ color: Color.dark }}
                 uncheckedIcon="ios-checkmark-circle-outline"
                 checked={selectedProductCondition === 'New' ? true : false}
                 onPress={setProductConditionNew}
@@ -42,7 +41,7 @@ export const ConditionSelector = ({ selectedProductCondition, setProductConditio
                 containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                 title="Used Product"
                 checkedColor={Color.dark}
-                textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
+                textStyle={{ color: Color.dark }}
                 iconType="ionicon"
                 checkedIcon="ios-checkmark-circle"
                 uncheckedIcon="ios-checkmark-circle-outline"
