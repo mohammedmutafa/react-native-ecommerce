@@ -8,6 +8,7 @@ import {
     ScrollView
 } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 //import { BackButton } from '../../component/BackButton';
@@ -226,8 +227,8 @@ class UserProfile extends Component {
     render() {
         return (
             <View style={container}>
-                <ScrollView
-                    bounces={false}
+                <KeyboardAwareScrollView
+                    // bounces={false}
                     showsVerticalScrollIndicator={false}
                     style={container}
                 >
@@ -247,7 +248,7 @@ class UserProfile extends Component {
                         {this.renderGenderModalSelection()}
                         <View style={{ height: 50 }} />
                     </View>
-                </ScrollView>
+                </KeyboardAwareScrollView>
                 {/*this.renderFloatingShareButton()}
                 {this.renderBackButton()*/}
                 {this.renderOverlayButton()}
