@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -165,6 +166,34 @@ export class Filter extends Component {
         );
     }
 
+    renderProductConditionFilter = () => {
+        const {
+            changeStateForLocationFilterModalView,
+            selectedLocation
+        } = this.props;
+
+        return (
+            <View style={locationFilterContainer}>
+                <Text style={{ color: Color.dark, fontSize: 16 }}>Discover ads near you</Text>
+                <TouchableOpacity
+                    style={selectLocationButtonStyle}
+                    onPress={changeStateForLocationFilterModalView}
+                >
+                    <Text
+                        style={{ color: Color.lightDark, fontSize: 16 }}
+                    >
+                        {selectedLocation ? selectedLocation : 'Both new & old'}
+                    </Text>
+                    <Icon
+                        name="menu-up"
+                        type="material-community"
+                        color={Color.lightDark}
+                    />
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     renderLocationModalSelection = () => {
         const {
             isLocationFilterModalViewVisible,
@@ -203,8 +232,7 @@ export class Filter extends Component {
 
     render() {
         const {
-            isFilterVisible,
-            changeStateForFilterUI
+            isFilterVisible
         } = this.props;
         return (
             <Modal
@@ -213,14 +241,18 @@ export class Filter extends Component {
                 animationType="slide"
             // transparent={true}
             >
-                <View style={container}>
-                    {this.renderNavigationBar()}
+                {this.renderNavigationBar()}
+                <KeyboardAwareScrollView
+                    showsVerticalScrollIndicator={false}
+                    style={container
+                    }
+                >
                     {this.renderLocationFilter()}
                     {this.renderPriceFilter()}
                     {this.renderCategoryFilter()}
                     {this.renderProductCategoryModalSelection()}
                     {this.renderLocationModalSelection()}
-                </View>
+                </KeyboardAwareScrollView>
             </Modal >
         );
     }

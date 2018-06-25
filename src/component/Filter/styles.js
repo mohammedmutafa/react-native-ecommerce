@@ -37,6 +37,7 @@ export default StyleSheet.create({
     navigationBarStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: Color.lightWhite
     }
 });
