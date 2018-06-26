@@ -12,6 +12,7 @@ import { Avatar, Icon } from 'react-native-elements';
 import styles from './styles';
 import colors from '../../styles/Color';
 import { numberWithCommas } from '../../utilities/Functions';
+import Fonts from '../../styles/Fonts'
 
 const {
     container,
@@ -93,7 +94,7 @@ export class FeedsCard extends Component {
                     />*/}
                     <View style={{ position: 'absolute', alignSelf: 'flex-end', bottom: 0, padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.4)' }}>
                         <Text
-                            style={{ color: colors.lightWhite, fontSize: 18 }}
+                            style={{ color: colors.lightWhite, fontSize: 18, fontFamily: Fonts.CharterBT }}
                         >
                             {`₹ ${numberWithCommas(price)}`}
                         </Text>
