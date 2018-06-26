@@ -8,6 +8,7 @@ import {
     ScrollView,
     TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import CategoryList from '../styles/Categories';
 import * as Animatable from 'react-native-animatable';
@@ -20,25 +21,45 @@ let delayTextAnimationCount = 0;
 class CategoriesList extends Component {
     keyExtractor = (item, index) => index;
 
+    navigateToSearchListing = () => {
+        this.props.navigation.navigate('SearchListing');
+    }
+
     renderCategoryCard = ({ item }) => {
-        const { evenCategoryCardStyle, oddCategoryCardStyle, imageRowStyle, semiTransparentViewStyle, textContainerStyle } = styles;
+        const {
+            evenCategoryCardStyle,
+            oddCategoryCardStyle,
+            imageRowStyle,
+            semiTransparentViewStyle,
+            textContainerStyle
+        } = styles;
         const isEven = item.id % 2 === 0;
 
         delayTextAnimationTitle = delayTextAnimationTitle + 100;
         delayTextAnimationCount = delayTextAnimationCount + 200;
 
         return (
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('SearchListing')} style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}>
+            <TouchableOpacity
+                onPress={this.navigateToSearchListing}
+                style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}
+            >
                 <Image
                     source={{ uri: item.thumbnail }}
                     style={imageRowStyle}
                 />
                 <View style={semiTransparentViewStyle} />
                 <View style={textContainerStyle}>
-                    <Animatable.Text style={styles.titleTextStyle} animation="fadeInLeft" delay={delayTextAnimationTitle}>{item.title}</Animatable.Text>
+                    <Animatable.Text
+                        style={styles.titleTextStyle}
+                        animation="fadeInLeft"
+                        delay={delayTextAnimationTitle}
+                    >
+                        {item.title}
+                    </Animatable.Text>
                     <View>
-                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}>______  805</Animatable.Text>
-                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}>           Items</Animatable.Text>
+                        <Animatable.Text
+                            style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}></Animatable.Text>
+                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}></Animatable.Text>
                     </View>
                 </View>
             </TouchableOpacity >
@@ -67,6 +88,10 @@ class CategoriesList extends Component {
         );
     }
 }
+
+CategoriesList.propTypes = {
+    navigation: PropTypes.object
+};
 
 const window = Dimensions.get('window');
 const cardWidth = (window.width / 2) - 15;
