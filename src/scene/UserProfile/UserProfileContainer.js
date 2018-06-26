@@ -72,8 +72,8 @@ class UserProfileContainer extends Component {
         this.setState({ address });
     }
 
-    onEmailInput = (address) => {
-        this.setState({ address });
+    onEmailInput = (email) => {
+        this.setState({ email });
     }
 
     //Image Picker Implementation
