@@ -5,7 +5,6 @@ import {
     Text,
     Image,
     FlatList,
-    Platform,
     Dimensions,
     TouchableOpacity,
     ScrollView
@@ -15,7 +14,6 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
 import styles from './styles';
 import colors from '../../styles/Color';
-import { screenHeight, screenWidth } from '../../utilities/ScreenSize';
 import Categories from '../../styles/Categories';
 
 const { MainCategory } = Categories;

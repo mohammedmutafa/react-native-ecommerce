@@ -1,7 +1,7 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import colors from '../../styles/Color';
-import { screenHeight, screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
+import { screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
+import Color from '../../styles/Color';
 
 export const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
 export const SLIDER_HEIGHT = screenWidth / 1.7;
@@ -44,7 +44,7 @@ export default styles = StyleSheet.create({
         textAlign: 'center',
     },
     decsriptionTextStyle: {
-        // color: '#00',
+        color: Color.dark,
         fontSize: 16,
         //fontStyle: 'italic',
         paddingLeft: 25,
@@ -63,9 +63,9 @@ export default styles = StyleSheet.create({
         marginBottom: 10
     },
     floatingButtonContainerStyle: {
-        backgroundColor: '#2a2a2a',
+        backgroundColor: Color.dark,
         borderWidth: 0.5,
-        borderColor: '#DAA520'
+        borderColor: Color.golden
     },
     semiTransparentViewStyle: {
         height: SLIDER_HEIGHT, // same width and height for the container

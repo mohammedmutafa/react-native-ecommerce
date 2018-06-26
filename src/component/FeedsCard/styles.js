@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { screenWidth } from '../../utilities/ScreenSize';
 import colors from '../../styles/Color';

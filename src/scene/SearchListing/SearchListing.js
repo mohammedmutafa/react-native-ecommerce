@@ -30,13 +30,14 @@ class SearchListing extends Component {
                 <Icon
                     raised
                     name="filter-outline"
-                     type="material-community"
+                    type="material-community"
                     color={Color.lightWhite}
+                    underlayColor="transparent"
                     onPress={changeStateForFilterUI}
                     containerStyle={{
-                        backgroundColor: Color.dark,
-                        borderWidth: 0.5,
-                        borderColor: Color.golden
+                        backgroundColor: Color.semiTransparentDarkOverlay,
+                        //borderWidth: 0.5,
+                        //borderColor: Color.golden
                     }}
                 />
             </View>

@@ -50,13 +50,17 @@ export default class HomeContainer extends Component {
 
     changeOTPVerificationUIState = () => {
         const { phoneNumberInput } = this.state;
-        //TODO: check phone no is undefined or equal or 10.
+
+        //Phone no validation.
+        if ((phoneNumberInput === undefined) || (phoneNumberInput.length < 10)) {
+            return;
+        }
         //TODO: show Activity Indicator and prevent user from double click.
 
         //TODO: it will only use captcha on iOS if you haven't set up the silent notifications as detailed here:
         // https://firebase.google.com/docs/auth/ios/phone-auth#start-receiving-silent-notifications
 
-        firebase.auth().signInWithPhoneNumber(phoneNumberInput)
+        firebase.auth().signInWithPhoneNumber(`+91${phoneNumberInput}`)
             .then((confirmResult) => this.setState({
                 otpVerificationUIVisible: !this.state.otpVerificationUIVisible,
                 confirmResult: confirmResult
@@ -102,13 +106,13 @@ export default class HomeContainer extends Component {
     onPhoneNumberInputChange = (text) => {
         let newText = '';
 
-        for (var i = 0; i < text.length; i++) {
+        for (let i = 0; i < text.length; i++) {
             if (text.indexOf(text[i]) > -1) {
                 newText = newText + text[i];
             }
         }
 
-        this.setState({ phoneNumberInput: '+917829366565' })
+        this.setState({ phoneNumberInput: newText })
     }
 
     render() {

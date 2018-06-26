@@ -34,11 +34,11 @@ class LoginWithPhone extends Component {
         const { otpVerificationUIVisible, changeOTPVerificationUIState } = this.props;
 
         return (
-            <View style={styles.floatingMenuButtonStyle}>
+            <View style={styles.floatingNextButtonStyle}>
                 <Icon
                     raised
-                    name="chevron-thin-right"
-                    type="entypo"
+                    name="arrow-right"
+                    type="material-community"
                     color="#2a2a2a"
                     onPress={!otpVerificationUIVisible ? changeOTPVerificationUIState : null}
                 />
@@ -161,6 +161,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         position: 'absolute',
         bottom: 35
+    },
+    floatingNextButtonStyle: {
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        bottom: 35,
+        paddingRight: 15
     },
     loginButtonStyle: {
         backgroundColor: 'transparent',

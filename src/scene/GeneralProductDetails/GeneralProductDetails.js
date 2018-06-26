@@ -17,6 +17,7 @@ import Categories from '../../styles/Categories';
 import { PhotoViewer } from '../../component/PhotoViewer';
 import styles, { STICKY_HEADER_HEIGHT, SLIDER_HEIGHT } from './styles';
 import { numberWithCommas } from '../../utilities/Functions';
+import Color from '../../styles/Color';
 
 const { MainCategory } = Categories;
 
@@ -76,7 +77,8 @@ class GeneralProductDetails extends Component {
                     raised
                     name="phone"
                     type="simple-line-icon"
-                    color="#DAA520"
+                    color={Color.golden}
+                    underlayColor="transparent"
                     containerStyle={floatingButtonContainerStyle}
                     onPress={null}
                 />

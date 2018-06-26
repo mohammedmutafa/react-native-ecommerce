@@ -21,6 +21,7 @@ export const GenderSelector = ({ isSelectGenderModalViewVisible, gender, setGend
         visible={isSelectGenderModalViewVisible}
         animationType="fade"
         transparent={true}
+        onRequestClose={() => null}
     >
         <View style={{ flex: 1.1, backgroundColor: Color.semiTransparentDarkOverlay }} />
         <View style={container}>

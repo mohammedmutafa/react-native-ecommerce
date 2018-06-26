@@ -20,10 +20,11 @@ export const ConditionSelector = ({ selectedProductCondition, setProductConditio
         visible={isProductConditionModalViewVisible}
         animationType="fade"
         transparent={true}
+        onRequestClose={() => null}
     >
         <View style={{ flex: 1.5, backgroundColor: Color.semiTransparentDarkOverlay }} />
         <View style={container}>
-            <Text>Select the condition of the product.</Text>
+            <Text >Select the condition of the product.</Text>
             <CheckBox
                 containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                 title="New Product"
