@@ -44,6 +44,7 @@ export default StyleSheet.create({
         paddingRight: 25,
         paddingTop: 10,
         textAlign: 'center',
+        fontFamily: Fonts.DancingScriptOT
     },
     dateTextStyle: {
         color: '#FFFFFF',

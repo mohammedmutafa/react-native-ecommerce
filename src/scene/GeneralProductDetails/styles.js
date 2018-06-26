@@ -38,11 +38,12 @@ export default styles = StyleSheet.create({
     },
     titleTextStyle: {
         color: '#FFFFFF',
-        fontSize: 18,
+        fontSize: 25,
         paddingLeft: 25,
         paddingRight: 25,
         paddingTop: 10,
         textAlign: 'center',
+        fontFamily: Fonts.DancingScriptOT
     },
     decsriptionTextStyle: {
         color: Color.dark,
