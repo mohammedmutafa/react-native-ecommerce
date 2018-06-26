@@ -22,8 +22,13 @@ class SearchListing extends Component {
 
     renderFloatingFilterButton = () => {
         const {
-            changeStateForFilterUI
+            changeStateForFilterUI,
+            isFetchingData
         } = this.props;
+
+        if (isFetchingData) {
+            return <View />;
+        }
 
         return (
             <View style={floatingFilterButtonStyle}>
