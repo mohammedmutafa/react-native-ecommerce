@@ -139,7 +139,7 @@ class GeneralProductDetails extends Component {
         return (
             <View style={mainConatinerStyle}>
                 <ParallaxScrollView
-                    bounces={false}
+                    // bounces={false}
                     showsVerticalScrollIndicator={false}
                     backgroundColor="#FFFFFF"
                     stickyHeaderHeight={STICKY_HEADER_HEIGHT}
