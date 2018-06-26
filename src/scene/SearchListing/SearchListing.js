@@ -59,8 +59,15 @@ class SearchListing extends Component {
     }
 
     renderFlatList = () => {
+        const {
+            isFetchingData,
+            onRefresh
+        } = this.props;
+
         return (
             <FlatList
+                onRefresh={onRefresh}
+                refreshing={isFetchingData}
                 data={dataSource}
                 renderItem={this.renderFeedsCard}
                 // removeClippedSubviews={false}
@@ -150,7 +157,11 @@ SearchListing.propTypes = {
     selectedSubCategory: PropTypes.string,
     changeStateForLocationFilterModalView: PropTypes.func,
     updateSelectedLocations: PropTypes.func,
-    selectedLocation: PropTypes.string
+    selectedLocation: PropTypes.string,
+
+    //Fetch Operation
+    isFetchingData: PropTypes.bool,
+    onRefresh: PropTypes.func
 };
 
 export default SearchListing;
