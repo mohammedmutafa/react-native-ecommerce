@@ -11,6 +11,7 @@ import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
 import UserProfile from '../scene/UserProfile';
 import Drawer from '../scene/Drawer';
+import Fonts from '../styles/Fonts';
 
 const StackNavigation = StackNavigator({
     Home: {
@@ -25,7 +26,7 @@ const StackNavigation = StackNavigator({
         screen: GeneralProductDetails,
         navigationOptions: (props) => ({
             headerTitleStyle: {
-                /*  */
+                fontFamily: Fonts.CharterBT
             },
             headerStyle: {
                 backgroundColor: '#2a2a2a',

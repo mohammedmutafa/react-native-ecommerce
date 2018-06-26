@@ -43,6 +43,7 @@ export default styles = StyleSheet.create({
         paddingRight: 25,
         paddingTop: 10,
         textAlign: 'center',
+        fontFamily:Fonts.CharterBT
     },
     decsriptionTextStyle: {
         color: Color.dark,
@@ -78,12 +79,14 @@ export default styles = StyleSheet.create({
         color: '#2a2a2a',
         fontSize: 30,
         textAlign: 'center',
-        marginTop: 10
+        marginTop: 10,
+        fontFamily:Fonts.CharterBT
     },
     dateTextStyle: {
         color: '#FFFFFF',
         fontSize: 12,
-        paddingBottom: 10
+        paddingBottom: 10,
+        fontFamily:Fonts.CharterBT
     },
     textContainerStyle: {
         height: SLIDER_HEIGHT, // same width and height for the container
