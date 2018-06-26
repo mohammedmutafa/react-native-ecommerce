@@ -40,7 +40,8 @@ export class PhotoViewer extends React.PureComponent {
                     onPress={hidePhotoViewer}
                 />
                 <Text
-                    style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}>
+                    style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}
+                >
                     {index + 1} / {images.length}
                 </Text>
             </View>

@@ -63,7 +63,7 @@ export default styles = StyleSheet.create({
         marginBottom: 10
     },
     floatingButtonContainerStyle: {
-        backgroundColor: Color.dark,
+        backgroundColor: Color.floatingButtonBackground,
         borderWidth: 0.5,
         borderColor: Color.golden
     },

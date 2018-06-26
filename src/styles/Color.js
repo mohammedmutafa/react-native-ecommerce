@@ -7,5 +7,6 @@ export default colors = {
     lightBlueWhite: '#F6F8FC',
     semiDarkWhite: '#D7D7D7',
     semiTransparentDarkOverlay: 'rgba(60, 60, 60, 0.5)',
-    placeholderWhite: '#C7C7CD'
+    placeholderWhite: '#C7C7CD',
+    floatingButtonBackground: 'rgba(60, 60, 60, 0.9)'
 }

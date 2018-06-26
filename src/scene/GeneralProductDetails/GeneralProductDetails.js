@@ -69,8 +69,8 @@ class GeneralProductDetails extends Component {
             <View style={floatingShareButtonStyle}>
                 <Icon
                     raised
-                    name="phone"
-                    type="simple-line-icon"
+                    name="ios-contacts-outline"
+                    type="ionicon"
                     color={Color.golden}
                     underlayColor="transparent"
                     containerStyle={floatingButtonContainerStyle}
