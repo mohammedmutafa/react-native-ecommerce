@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 import Color from '../../styles/Color';
+import Fonts from '../../styles/Fonts';
 
 export const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
 export const SLIDER_HEIGHT = screenWidth / 1.7;
@@ -107,8 +108,9 @@ export default styles = StyleSheet.create({
     },
     photoViewDividerTextstyle: {
         color: '#2a2a2a',
+        fontFamily: Fonts.DancingScriptOT,
         fontStyle: 'italic',
-        fontSize: 20
+        fontSize: 25
     },
     photoCardStyle: {
         width: cardWidth,
