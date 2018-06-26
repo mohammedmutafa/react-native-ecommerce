@@ -57,8 +57,7 @@ class CategoriesList extends Component {
                         {item.title}
                     </Animatable.Text>
                     <View>
-                        <Animatable.Text
-                            style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}></Animatable.Text>
+                        <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}></Animatable.Text>
                         <Animatable.Text style={styles.itemsCountTextStyle} animation="fadeInLeft" delay={delayTextAnimationCount}></Animatable.Text>
                     </View>
                 </View>
