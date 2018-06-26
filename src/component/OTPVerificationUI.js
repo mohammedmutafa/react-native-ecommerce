@@ -39,9 +39,6 @@ class OTPVerificationUI extends Component {
     }
 
     focusNextField(id, text, inputIndex) {
-        if (!text) {
-            return;
-        }
 
         if (inputIndex < 6) {
             this.inputs[id].focus();
@@ -127,11 +124,17 @@ class OTPVerificationUI extends Component {
     onPressVerifyButton = () => {
         const { OTP1, OTP2, OTP3, OTP4, OTP5, OTP6 } = this.state;
 
-        this.setState({
-            onOTPVerificationProgress: true
-        });
+        /**
+         * Make sure there are 6 verification digits before submitting
+         */
 
-        this.props.verifyOTP(`${OTP1}${OTP2}${OTP3}${OTP4}${OTP5}${OTP6}`)
+        if (OTP1 && OTP2 && OTP3 && OTP4 && OTP5 && OTP6) {
+            this.setState({
+                onOTPVerificationProgress: true
+            });
+
+            this.props.verifyOTP(`${OTP1}${OTP2}${OTP3}${OTP4}${OTP5}${OTP6}`)
+        }
     }
 
     renderVerifyOTPButton = () => {
@@ -145,7 +148,9 @@ class OTPVerificationUI extends Component {
                     title="Submit OTP"
                     onPress={this.onPressVerifyButton}
                 />
-                <Text style={{ color: 'red', padding: 10 }}>{isOTPVerified === false ? 'Verification Unsuccessful' : ''}</Text>
+                <Text style={{ color: 'red', padding: 10 }}>
+                    {isOTPVerified === false ? 'Verification Unsuccessful' : ''}
+                </Text>
             </View>
         );
     }
