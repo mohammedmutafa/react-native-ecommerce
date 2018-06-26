@@ -18,8 +18,18 @@ class SearchListingContainer extends Component {
             selectedSubCategory: undefined,
             selectedLocation: '',
             isLocationFilterModalViewVisible: false,
-            isCategorySelectorModalViewVisible: false
+            isCategorySelectorModalViewVisible: false,
+
+            //Data Fetch Opertions
+            isFetchingData: false
         }
+    }
+
+    onRefresh = () => {
+        this.setState({
+            isFetchingData: true
+        });
+        //FetchData operation goes here
     }
 
     changeStateForFilterUI = () => {
@@ -27,6 +37,7 @@ class SearchListingContainer extends Component {
          * Its a reset button.
          * If user clicks back button instead of apply button, clear the filters
          */
+
         this.setState({
             isFilterVisible: !this.state.isFilterVisible,
             selectedLocation: '',
@@ -87,7 +98,8 @@ class SearchListingContainer extends Component {
             selectedSubCategory,
             selectedLocation,
             isCategorySelectorModalViewVisible,
-            isLocationFilterModalViewVisible
+            isLocationFilterModalViewVisible,
+            isFetchingData
         } = this.state;
 
         return (
@@ -114,6 +126,10 @@ class SearchListingContainer extends Component {
                 isLocationFilterModalViewVisible={isLocationFilterModalViewVisible}
                 updateSelectedLocations={this.updateSelectedLocations}
                 changeStateForLocationFilterModalView={this.changeStateForLocationFilterModalView}
+
+                //Fetch Operation
+                isFetchingData={isFetchingData}
+                onRefresh={this.onRefresh}
             />
         );
     }

@@ -7,6 +7,7 @@ import {
     TextInput
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -58,19 +59,21 @@ export class ProductDetailsInput extends React.PureComponent {
                     >
                         <Text style={doneTextStyle}>Done</Text>
                     </TouchableOpacity>
-                    <Text style={titleTextStyle}>Product Description</Text>
-                    {this.renderSeparator()}
-                    <Text style={hintTextStyle}>User would like to know more about the product. Please provide the detail description.</Text>
-                    <TextInput
-                        style={textInputStyle}
-                        placeholder="Product Description"
-                        placeholderTextColor={Color.placeholderWhite}
-                        multiline={true}
-                        maxLength={200}
-                        autoFocus={true}
-                        onChangeText={this.onTextChange}
-                        value={text}
-                    />
+                    <KeyboardAwareScrollView>
+                        <Text style={titleTextStyle}>Product Description</Text>
+                        {this.renderSeparator()}
+                        <Text style={hintTextStyle}>User would like to know more about the product. Please provide the detail description.</Text>
+                        <TextInput
+                            style={textInputStyle}
+                            placeholder="Product Description"
+                            placeholderTextColor={Color.placeholderWhite}
+                            multiline={true}
+                            maxLength={200}
+                            autoFocus={true}
+                            onChangeText={this.onTextChange}
+                            value={text}
+                        />
+                    </KeyboardAwareScrollView>
                 </View>
             </Modal>
         );

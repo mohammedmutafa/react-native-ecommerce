@@ -91,7 +91,7 @@ class UserProfile extends Component {
                     clearButtonMode="always"
                     multiline={false}
                     maxLength={50}
-                    onChangeText={(text) => onFirstNameInput(text)}
+                    onChangeText={onFirstNameInput}
                     value={firstName}
                     underlineColorAndroid="transparent"
                 />
@@ -117,7 +117,7 @@ class UserProfile extends Component {
                     clearButtonMode="always"
                     multiline={false}
                     maxLength={50}
-                    onChangeText={(text) => onLastNameInput(text)}
+                    onChangeText={onLastNameInput}
                     value={lastName}
                     underlineColorAndroid="transparent"
                 />
@@ -163,7 +163,7 @@ class UserProfile extends Component {
                     clearButtonMode="always"
                     multiline={false}
                     maxLength={50}
-                    onChangeText={(text) => onEmailInput(text)}
+                    onChangeText={onEmailInput}
                     value={email}
                     underlineColorAndroid="transparent"
                 />
@@ -189,7 +189,7 @@ class UserProfile extends Component {
                     clearButtonMode="always"
                     multiline={true}
                     maxLength={200}
-                    onChangeText={(text) => onAddressInput(text)}
+                    onChangeText={onAddressInput}
                     value={address}
                     underlineColorAndroid="transparent"
                 />

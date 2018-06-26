@@ -18,6 +18,23 @@ class Drawer extends Component {
 
     constructor(props) {
         super(props);
+
+        this.unsubscribe = null;
+
+        this.state = {
+            user: undefined
+        };
+    }
+
+    componentDidMount() {
+        //More Details: https://firebase.google.com/docs/auth/web/manage-users
+        this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ user: user.toJSON() });
+            } else {
+                // User has been signed out, reset the state
+            }
+        });
     }
 
     onPressRow = (key) => {
@@ -25,11 +42,19 @@ class Drawer extends Component {
 
         switch (key) {
             case 'Logout':
-                firebase.auth().signOut().then((result) => console.log(result))
-                    .catch((error) => console.log(error));//TODO: Use redux to trigger signout in Home Container
+                //TODO: Use redux to trigger signout in Home Container
+                firebase.auth().signOut().then((result) =>
+                    this.setState({
+                        user: undefined
+                    })
+                ).catch((error) =>
+                    console.log(error)
+                );
                 break;
-            case 'UserProfile':
-                navigation.navigate('UserProfile');//TODO: Replace with Private Profile component
+            case 'Profile':
+                if (this.state.user) {
+                    navigation.navigate('UserProfile');
+                }
                 break;
         }
     }
@@ -74,7 +99,7 @@ class Drawer extends Component {
                     onPress={this.toggleDrawer}
                 />
                 <View style={{ marginTop: 100 }}>
-                    {this.renderRow('UserProfile')}
+                    {this.renderRow('Profile')}
                     {this.renderRow('Bookmarked Items')}
                     {this.renderRow('Settings')}
                     {this.renderRow('About')}
