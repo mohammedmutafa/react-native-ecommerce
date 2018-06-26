@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { SLIDER_HEIGHT, screenWidth } from '../../utilities/ScreenSize';
 import Colors from '../../styles/Color';
+import Fonts from '../../styles/Fonts';
 
 export default StyleSheet.create({
     containerStyle: {
@@ -46,7 +47,8 @@ export default StyleSheet.create({
     },
     dateTextStyle: {
         color: '#FFFFFF',
-        fontSize: 12,
-        paddingBottom: 10
+        fontSize: 20,
+        paddingBottom: 10,
+        fontFamily: Fonts.DancingScriptOT
     }
 });
