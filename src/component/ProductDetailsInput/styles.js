@@ -9,7 +9,7 @@ export default StyleSheet.create({
         marginHorizontal: 15
     },
     textInputStyle: {
-        height: screenHeight / 1.5,
+        // height: screenHeight / 1.5,
         fontSize: 16,
         marginTop: 5,
         color: Color.dark
