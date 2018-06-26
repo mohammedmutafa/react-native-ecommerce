@@ -64,7 +64,7 @@ export default styles = StyleSheet.create({
     },
     floatingButtonContainerStyle: {
         backgroundColor: Color.floatingButtonBackground,
-        borderWidth: 0.5,
+        borderWidth: 1,
         borderColor: Color.golden
     },
     semiTransparentViewStyle: {
