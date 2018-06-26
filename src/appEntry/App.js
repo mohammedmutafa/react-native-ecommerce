@@ -47,7 +47,7 @@ const StackNavigation = StackNavigator({
         screen: SearchListing,
         navigationOptions: (props) => ({
             headerTitleStyle: {
-                /*  */
+                fontFamily: Fonts.CharterBT
             },
             headerStyle: {
                 backgroundColor: '#2a2a2a',
@@ -73,6 +73,9 @@ const StackNavigation = StackNavigator({
     UserProfile: {
         screen: UserProfile,
         navigationOptions: (props) => ({
+            headerTitleStyle: {
+                fontFamily: Fonts.CharterBT
+            },
             headerStyle: {
                 backgroundColor: '#2a2a2a',
                 elevation: 0 //Only for Android
