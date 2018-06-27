@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 import Color from '../../styles/Color';
+import Fonts from '../../styles/Fonts';
 
 export const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
 export const SLIDER_HEIGHT = screenWidth / 1.7;
@@ -42,6 +43,7 @@ export default styles = StyleSheet.create({
         paddingRight: 25,
         paddingTop: 10,
         textAlign: 'center',
+        fontFamily:Fonts.CharterBT
     },
     decsriptionTextStyle: {
         color: Color.dark,
@@ -63,8 +65,8 @@ export default styles = StyleSheet.create({
         marginBottom: 10
     },
     floatingButtonContainerStyle: {
-        backgroundColor: Color.dark,
-        borderWidth: 0.5,
+        backgroundColor: Color.floatingButtonBackground,
+        borderWidth: 1,
         borderColor: Color.golden
     },
     semiTransparentViewStyle: {
@@ -77,12 +79,14 @@ export default styles = StyleSheet.create({
         color: '#2a2a2a',
         fontSize: 30,
         textAlign: 'center',
-        marginTop: 10
+        marginTop: 10,
+        fontFamily:Fonts.CharterBT
     },
     dateTextStyle: {
         color: '#FFFFFF',
         fontSize: 12,
-        paddingBottom: 10
+        paddingBottom: 10,
+        fontFamily:Fonts.CharterBT
     },
     textContainerStyle: {
         height: SLIDER_HEIGHT, // same width and height for the container
@@ -107,8 +111,9 @@ export default styles = StyleSheet.create({
     },
     photoViewDividerTextstyle: {
         color: '#2a2a2a',
+        fontFamily: Fonts.DancingScriptOT,
         fontStyle: 'italic',
-        fontSize: 20
+        fontSize: 25
     },
     photoCardStyle: {
         width: cardWidth,

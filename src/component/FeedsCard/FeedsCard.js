@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {
     Image,
     View,
-    Modal,
     Text,
     TouchableOpacity
 } from 'react-native';
@@ -13,6 +12,7 @@ import { Avatar, Icon } from 'react-native-elements';
 import styles from './styles';
 import colors from '../../styles/Color';
 import { numberWithCommas } from '../../utilities/Functions';
+import Fonts from '../../styles/Fonts'
 
 const {
     container,
@@ -55,7 +55,7 @@ export class FeedsCard extends Component {
                             />
                             <Text
                                 style={nameTextStyle}
-                                ellipsizeMode='tail'
+                                ellipsizeMode="tail"
                                 numberOfLines={1}
                             >
                                 {name}
@@ -63,7 +63,7 @@ export class FeedsCard extends Component {
                         </View>
                         <Text
                             style={{ alignSelf: 'flex-end', color: colors.lightDark, fontSize: 10 }}
-                            ellipsizeMode='tail'
+                            ellipsizeMode="tail"
                             numberOfLines={1}
                         >{time}
                         </Text>
@@ -84,17 +84,17 @@ export class FeedsCard extends Component {
                         source={{ uri: imageURL }}
                         style={imageViewStyle}
                     />
-                    <Icon
-                        underlayColor='transparent'
+                    {/*<Icon
+                        underlayColor="transparent"
                         name={bookmarked ? 'heart' : 'heart-outlined'}
                         type="entypo"
                         color={bookmarked ? colors.red : colors.lightDark}
                         containerStyle={{ position: 'absolute', alignSelf: 'flex-end', padding: 10 }}
                         onPress={this.onPressBookmarkButton}
-                    />
+                    />*/}
                     <View style={{ position: 'absolute', alignSelf: 'flex-end', bottom: 0, padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.4)' }}>
                         <Text
-                            style={{ color: colors.lightWhite, fontSize: 18 }}
+                            style={{ color: colors.lightWhite, fontSize: 18, fontFamily: Fonts.CharterBT }}
                         >
                             {`₹ ${numberWithCommas(price)}`}
                         </Text>
@@ -102,7 +102,7 @@ export class FeedsCard extends Component {
                 </TouchableOpacity>
                 <Text
                     style={productTitleTextStyle}
-                    ellipsizeMode='tail'
+                    ellipsizeMode="tail"
                     numberOfLines={2}
                 >
                     {title}

@@ -65,6 +65,7 @@ class UserProfile extends Component {
                         name="ios-camera-outline"
                         type="ionicon"
                         size={40}
+                        underlayColor="transparent"
                         color={Color.lightWhite}
                         onPress={selectPhotoTapped}
                     />

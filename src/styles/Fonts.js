@@ -1,3 +1,4 @@
 export default Fonts = {
-    CharterBT: 'Charter BT'
+    CharterBT: 'Charter BT',
+    DancingScriptOT: 'DancingScriptOT'
 }

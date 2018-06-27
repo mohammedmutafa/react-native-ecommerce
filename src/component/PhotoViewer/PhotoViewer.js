@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-    Image, View, Modal, Text,
-    TouchableOpacity
+    View,
+    Modal,
+    Text
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Gallery from 'react-native-image-gallery';
@@ -11,7 +12,6 @@ import styles from './styles';
 import Color from '../../styles/Color';
 
 const {
-    container,
     navigationBar
 } = styles;
 
@@ -33,14 +33,15 @@ export class PhotoViewer extends React.PureComponent {
             <View style={navigationBar}>
                 <Icon
                     containerStyle={{ padding: 5 }}
-                    underlayColor='transparent'
-                    name='close'
-                    type='evilIcons'
-                    color='#FFFFFF'
+                    underlayColor="transparent"
+                    name="close"
+                    type="evilIcons"
+                    color="#FFFFFF"
                     onPress={hidePhotoViewer}
                 />
                 <Text
-                    style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}>
+                    style={{ color: 'white', fontSize: 15, fontStyle: 'italic' }}
+                >
                     {index + 1} / {images.length}
                 </Text>
             </View>
@@ -52,7 +53,12 @@ export class PhotoViewer extends React.PureComponent {
     }
 
     render() {
-        const { isPhotoViewerVisible, hidePhotoViewer, dataSource, photoIndex } = this.props;
+        const {
+            isPhotoViewerVisible,
+            hidePhotoViewer,
+            dataSource,
+            photoIndex
+        } = this.props;
 
         return (
             <Modal
