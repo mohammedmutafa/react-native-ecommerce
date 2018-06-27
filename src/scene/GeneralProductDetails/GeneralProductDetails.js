@@ -47,6 +47,20 @@ class GeneralProductDetails extends Component {
         );
     }
 
+    renderLocation = () => {
+        return (
+            <View style={{ flexDirection: 'row', marginHorizontal: 25, marginBottom: 5, alignContent: 'center' }}>
+                <Icon
+                    name="ios-pin-outline"
+                    type="ionicon"
+                    color={Color.golden}
+                    underlayColor="transparent"
+                />
+                <Text style={locationTextStyle}>Dhankuta</Text>
+            </View>
+        );
+    }
+
     renderProductDescription = () => {
         const { details } = this.props;
 
@@ -147,7 +161,7 @@ class GeneralProductDetails extends Component {
                     //onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
                 />
-                <Text style={[followButtonTextstyle, { color: Color.dark }]}>7829366565</Text>
+                <Text style={[followButtonTextstyle, { color: Color.dark }]}>1234567890</Text>
             </View>
         );
     }
@@ -176,6 +190,7 @@ class GeneralProductDetails extends Component {
                     <Animatable.View animation="slideInUp" delay={200}>
                         {this.renderProductTitle()}
                         <Text style={boldSeparator}>______</Text>
+                        {this.renderLocation()}
                         {this.renderProductDescription()}
                         {this.renderPhotoViewDivider('Photos')}
                         {this.renderPhotoList()}
@@ -211,7 +226,8 @@ const {
     imageRowStyle,
     imageViewFlatListContainerStyle,
     followButtonContainerStyle,
-    followButtonTextstyle
+    followButtonTextstyle,
+    locationTextStyle
 } = styles;
 
 export default GeneralProductDetails;

@@ -146,5 +146,12 @@ export default styles = StyleSheet.create({
         color: Color.golden,
         fontWeight: 'bold',
         fontFamily: Fonts.CharterBT
+    },
+    locationTextStyle: {
+        fontSize: 20,
+        color: Color.dark,
+        fontWeight: 'bold',
+        fontFamily: Fonts.CharterBT,
+        paddingHorizontal: 10
     }
 });
