@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { screenWidth } from '../../utilities/ScreenSize';
 import Color from '../../styles/Color';
 
 export default StyleSheet.create({
@@ -8,7 +7,7 @@ export default StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center',
-        flex: 0.9,
+        flex: 0.8,
         paddingHorizontal: 25,
         paddingVertical: 25,
         borderWidth: StyleSheet.hairlineWidth,
@@ -16,13 +15,14 @@ export default StyleSheet.create({
         backgroundColor: Color.lightBlueWhite
     },
     separatorStyle: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        alignSelf: 'center',
-        height: StyleSheet.hairlineWidth,
-        width: screenWidth / 2.5,
+        height: 1,
         backgroundColor: Color.golden,
-        marginVertical: 10
+        flex: 1
+    },
+    titleTextContainer: {
+        flexDirection: 'row',
+        margin: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 });

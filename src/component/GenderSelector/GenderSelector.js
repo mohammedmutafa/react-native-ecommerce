@@ -9,10 +9,11 @@ import { CheckBox } from 'react-native-elements';
 
 import styles from './styles';
 import Color from '../../styles/Color';
-
+import Fonts from '../../styles/Fonts';
 const {
     container,
-    separatorStyle
+    separatorStyle,
+    titleTextContainer
 } = styles;
 
 export const GenderSelector = ({ isSelectGenderModalViewVisible, gender, setGenderFemale, setGenderMale, setGenderOther }) => (
@@ -23,10 +24,13 @@ export const GenderSelector = ({ isSelectGenderModalViewVisible, gender, setGend
         transparent={true}
         onRequestClose={() => null}
     >
-        <View style={{ flex: 1.1, backgroundColor: Color.semiTransparentDarkOverlay }} />
+        <View style={{ flex: 1.2, backgroundColor: Color.semiTransparentDarkOverlay }} />
         <View style={container}>
-            <Text style={{ padding: 5 }}>Select your Gender</Text>
-            <View style={separatorStyle} />
+            <View style={titleTextContainer}>
+                <Text style={{ fontFamily: Fonts.DancingScriptOT, fontSize: 25 }}>Select Gender  </Text>
+                <View style={separatorStyle} />
+            </View>
+
             <View style={{ flexDirection: 'column', justifyContent: 'center', marginVertical: 15, alignSelf: 'flex-start', alignItems: 'flex-start' }}>
                 <CheckBox
                     containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
@@ -34,7 +38,7 @@ export const GenderSelector = ({ isSelectGenderModalViewVisible, gender, setGend
                     checkedColor={Color.dark}
                     iconType="ionicon"
                     checkedIcon="ios-checkmark-circle"
-                    textStyle={{ color: Color.dark }}
+                    textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
                     uncheckedIcon="ios-checkmark-circle-outline"
                     checked={gender === 'Female' ? true : false}
                     onPress={setGenderFemale}
@@ -44,7 +48,7 @@ export const GenderSelector = ({ isSelectGenderModalViewVisible, gender, setGend
                     containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                     title="Male"
                     checkedColor={Color.dark}
-                    textStyle={{ color: Color.dark }}
+                    textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
                     iconType="ionicon"
                     checkedIcon="ios-checkmark-circle"
                     uncheckedIcon="ios-checkmark-circle-outline"
@@ -56,7 +60,7 @@ export const GenderSelector = ({ isSelectGenderModalViewVisible, gender, setGend
                     containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
                     title="Other"
                     checkedColor={Color.dark}
-                    textStyle={{ color: Color.dark }}
+                    textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
                     iconType="ionicon"
                     checkedIcon="ios-checkmark-circle"
                     uncheckedIcon="ios-checkmark-circle-outline"
