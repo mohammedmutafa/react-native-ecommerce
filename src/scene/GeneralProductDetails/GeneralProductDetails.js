@@ -83,7 +83,7 @@ class GeneralProductDetails extends Component {
             <View style={floatingShareButtonStyle}>
                 <Icon
                     raised
-                    name="ios-contacts-outline"
+                    name="md-share"
                     type="ionicon"
                     color={Color.golden}
                     underlayColor="transparent"
