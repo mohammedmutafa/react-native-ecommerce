@@ -43,7 +43,7 @@ export default styles = StyleSheet.create({
         paddingRight: 25,
         paddingTop: 10,
         textAlign: 'center',
-        fontFamily:Fonts.CharterBT
+        fontFamily: Fonts.CharterBT
     },
     decsriptionTextStyle: {
         color: Color.dark,
@@ -80,13 +80,13 @@ export default styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         marginTop: 10,
-        fontFamily:Fonts.CharterBT
+        fontFamily: Fonts.CharterBT
     },
     dateTextStyle: {
         color: '#FFFFFF',
         fontSize: 12,
         paddingBottom: 10,
-        fontFamily:Fonts.CharterBT
+        fontFamily: Fonts.CharterBT
     },
     textContainerStyle: {
         height: SLIDER_HEIGHT, // same width and height for the container
@@ -133,5 +133,18 @@ export default styles = StyleSheet.create({
         marginRight: 25,
         marginTop: 5,
         marginBottom: 20
+    },
+    followButtonContainerStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: 25,
+        marginVertical: 20,
+        alignItems: 'center'
+    },
+    followButtonTextstyle: {
+        fontSize: 18,
+        color: Color.golden,
+        fontWeight: 'bold',
+        fontFamily: Fonts.CharterBT
     }
 });
