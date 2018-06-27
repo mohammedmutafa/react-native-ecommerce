@@ -32,7 +32,7 @@ export default styles = StyleSheet.create({
     gridViewCardStyle: {
         justifyContent: 'center',
         width: screenWidth / 3.2,
-        backgroundColor: colors.lightWhite,
+        backgroundColor: colors.placeholderWhite,
         alignItems: 'center',
         height: screenWidth / 3.2,
         margin: 1.5,
