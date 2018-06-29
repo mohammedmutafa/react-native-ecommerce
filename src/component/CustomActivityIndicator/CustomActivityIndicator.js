@@ -8,8 +8,9 @@ import {
 import Animation from 'lottie-react-native';
 
 // Get screen dimensions
-const { width, height } = Dimensions.get('window');
-const lottiefile = require('../../../assets/lottieFiles/animation_loading.json');
+const { width } = Dimensions.get('window');
+//const lottiefile = require('../../../assets/lottieFiles/animation_loading.json');
+const lottiefile = require('../../../assets/lottieFiles/animation-ecommerce.json');
 
 export class CustomActivityIndicator extends Component {
 
@@ -41,7 +42,9 @@ export class CustomActivityIndicator extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: 'rgba(0, 0, 0, 0.4);' }}>
+            <View
+                style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: 'rgba(0, 0, 0, 0.4);' }}
+            >
                 <View style={{
                     width: width / 3,
                     height: width / 3,
