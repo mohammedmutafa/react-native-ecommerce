@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '9.0'
 
 target 'ecommerce' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
@@ -8,11 +8,12 @@ target 'ecommerce' do
   # Pods for ecommerce
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
 
   target 'ecommerce-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+    #pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
   end
 
