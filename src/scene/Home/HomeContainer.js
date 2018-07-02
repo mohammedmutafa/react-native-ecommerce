@@ -9,6 +9,7 @@ export default class HomeContainer extends Component {
     constructor(props) {
         super(props);
         this.unsubscribe = null;
+
         this.state = {
             isLoginWithPhoneModalVisible: false,
             phoneNumberInputUIVisible: false,
@@ -119,7 +120,9 @@ export default class HomeContainer extends Component {
             if (userExistInDB === true) {
                 this.props.navigation.navigate('CreateAd');
             } else if (userExistInDB === false) {
-                this.props.navigation.navigate('UserProfile');
+                this.props.navigation.navigate('UserProfile', {
+                    userID: user.phoneNumber
+                });
             } else {
                 //some network issue
                 console.log('unable to connect to server');
