@@ -56,10 +56,8 @@ export default class Home extends Component {
 
     renderFloatingMenu = () => {
         const {
-            changeLoginWithPhoneModalViewState,
             isLoginWithPhoneModalVisible,
-            onCreateAdButtonPress,
-            isUserLoggedIn
+            onPressFloatingMenu
         } = this.props;
 
         if (isLoginWithPhoneModalVisible) {
@@ -74,7 +72,7 @@ export default class Home extends Component {
                     type="simple-line-icon"
                     underlayColor="transparent"
                     color={Color.golden}
-                    onPress={isUserLoggedIn ? onCreateAdButtonPress : changeLoginWithPhoneModalViewState}
+                    onPress={onPressFloatingMenu}
                     containerStyle={{
                         backgroundColor: Color.floatingButtonBackground,
                         borderWidth: 1,
@@ -174,14 +172,13 @@ Home.propTypes = {
     navigation: PropTypes.object,
     changeLoginWithPhoneModalViewState: PropTypes.func,
     isLoginWithPhoneModalVisible: PropTypes.bool,
-    onCreateAdButtonPress: PropTypes.func,
     phoneNumberInput: PropTypes.string,
     onPhoneNumberInputChange: PropTypes.func,
     phoneNumberInputUIVisible: PropTypes.bool,
     changePhoneNumberInputUIState: PropTypes.func,
     otpVerificationUIVisible: PropTypes.bool,
-    isUserLoggedIn: PropTypes.bool,
     changeOTPVerificationUIState: PropTypes.func,
     verifyOTP: PropTypes.func,
+    onPressFloatingMenu: PropTypes.func,
     isOTPVerified: PropTypes.bool
 };
