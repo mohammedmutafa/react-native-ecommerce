@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import firebase from 'react-native-firebase';
 import ImagePicker from 'react-native-image-picker';
 
 import UserProfile from './UserProfile';
@@ -18,8 +19,8 @@ class UserProfileContainer extends Component {
             address: '',
 
             isSelectGenderModalViewVisible: false,
-
-            createAdStatus: true
+            createAdStatus: true,
+            isUserDataUpdating: false
         };
     }
 
@@ -110,6 +111,43 @@ class UserProfileContainer extends Component {
         });
     }
 
+    updateUserInfo = () => {
+        const { userID } = this.props;
+        const { firstName, lastName, gender, email, address } = this.state;
+
+        this.setState({
+            isUserDataUpdating: true
+        });
+
+        let userRef = firebase.firestore().collection('users').doc(`${userID}`);
+
+        let data = {
+            phoneNumber: `${userID}`,
+            firstName,
+            lastName,
+            gender,
+            email,
+            address
+        };
+
+        userRef.get()
+            .then((doc) => {
+                userRef.set(data).then(() => {
+                    this.setState({
+                        isUserDataUpdating: false
+                    });
+                }).catch((error) => {
+                    this.setState({
+                        isUserDataUpdating: false
+                    });
+                });
+            }).catch((err) => {
+                this.setState({
+                    isUserDataUpdating: false
+                });
+            });
+    }
+
     render() {
         const {
             selectedImageSource,
@@ -119,6 +157,7 @@ class UserProfileContainer extends Component {
             email,
             address,
             isSelectGenderModalViewVisible,
+            isUserDataUpdating
         } = this.state;
 
         const { navigation } = this.props;
@@ -149,6 +188,10 @@ class UserProfileContainer extends Component {
 
                 //createAdStatusDone={this.createAdStatusDone}
                 navigation={navigation}
+
+                //FireStore
+                isUserDataUpdating={isUserDataUpdating}
+                updateUserInfo={this.updateUserInfo}
             />
         );
     }
