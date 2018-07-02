@@ -32,7 +32,7 @@ export default class HomeContainer extends Component {
             if (user) {
                 const userID = user.phoneNumber
                 //Keep doc id as string.
-                let userRef = firebase.firestore().collection('users').doc(`${userID.replace('+91', '').trim()}`);
+                let userRef = firebase.firestore().collection('users').doc(`${userID}`);
                 /**
                  * Check if user already logged In with phone number and completed the sign-up form.
                  */
