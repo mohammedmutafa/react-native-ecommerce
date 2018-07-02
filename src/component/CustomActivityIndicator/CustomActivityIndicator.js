@@ -29,7 +29,7 @@ export class CustomActivityIndicator extends Component {
             // Change from 0 to 1 to run animation
             toValue: 1,
             // Animation duration
-            duration: 7000, // higher the value slower the animation and vice versa
+            duration: 5000, // higher the value slower the animation and vice versa
             // Linear easings
             easing: Easing.linear,
         }).start(() => {

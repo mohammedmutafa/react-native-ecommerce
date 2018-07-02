@@ -1,11 +1,16 @@
 import firebase from 'react-native-firebase';
 
-export const createNewUser = (id) => {
+export const createNewUser = (id, firstName, lastName, gender, email, address) => {
     //Keep doc id as string.
     let userRef = firebase.firestore().collection('users').doc(`${id}`);
 
     let data = {
-        id: `${id}`
+        phoneNumber: `${id}`,
+        firstName,
+        lastName,
+        gender,
+        email,
+        address
     };
 
     let getDoc = userRef.get()
