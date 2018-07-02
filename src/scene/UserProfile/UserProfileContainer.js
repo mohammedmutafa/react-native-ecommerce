@@ -24,6 +24,34 @@ class UserProfileContainer extends Component {
         };
     }
 
+    componentWillMount() {
+        const { userID } = this.props;
+
+        this.setState({
+            isUserDataUpdating: true
+        });
+
+        let userRef = firebase.firestore().collection('users').doc(`${userID}`);
+
+        userRef.get()
+            .then((doc) => {
+                const { firstName, lastName, gender, address, email } = doc.data();
+
+                this.setState({
+                    isUserDataUpdating: false,
+                    firstName,
+                    lastName,
+                    gender,
+                    email,
+                    address
+                });
+            }).catch((err) => {
+                this.setState({
+                    isUserDataUpdating: false
+                });
+            });
+    }
+
     changeStateOfSelectGenderModalView = () => {
         this.setState({
             isSelectGenderModalViewVisible: !this.state.isSelectGenderModalViewVisible
@@ -198,7 +226,8 @@ class UserProfileContainer extends Component {
 }
 
 UserProfileContainer.propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+    userID: PropTypes.string
 };
 
 export default UserProfileContainer;
