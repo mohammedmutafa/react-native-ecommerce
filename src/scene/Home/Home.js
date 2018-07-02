@@ -9,13 +9,13 @@ import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Icon } from 'react-native-elements';
-import { SearchBar } from '../../component/SearchBar';
 
+import { SearchBar } from '../../component/SearchBar';
 import LoginWithPhoneComponent from '../../component/LoginWithPhone';
 import CategoriesListComponent from '../../component/CategoriesList';
 import { BackButton } from '../../component/BackButton';
-import Color from '../../styles/Color';
 
+import Color from '../../styles/Color';
 import styles from './styles';
 
 export default class Home extends Component {
@@ -121,6 +121,21 @@ export default class Home extends Component {
         );
     }
 
+    renderForeground = () => {
+        const { navigation } = this.props;
+
+        return (
+            <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <BackButton
+                    style={{ left: 20 }}
+                    iconName="menu"
+                    iconColor={Color.dark}
+                    onPress={() => navigation.navigate('DrawerToggle')} />
+                {this.renderSwiper()}
+            </View>
+        );
+    }
+
     render() {
         const { navigation } = this.props;
 
@@ -131,16 +146,7 @@ export default class Home extends Component {
                     showsVerticalScrollIndicator={false}
                     backgroundColor={"#FFFFFF"}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
-                    renderForeground={() => (
-                        <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            <BackButton
-                                style={{ left: 20 }}
-                                iconName="menu"
-                                iconColor={Color.dark}
-                                onPress={() => navigation.navigate('DrawerToggle')} />
-                            {this.renderSwiper()}
-                        </View>
-                    )}
+                    renderForeground={this.renderForeground}
                 >
                     {this.renserLoginWithPhoneModalView()}
                     <CategoriesListComponent
