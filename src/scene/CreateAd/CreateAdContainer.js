@@ -147,7 +147,7 @@ class CreateAdContainer extends Component {
 
     //FireStore Implementation
     updateAdInFireStore = () => {
-        // const { userID } = this.props;
+        const { userID } = this.props;
         const {
             selectedCategory,
             selectedSubCategory,
@@ -162,8 +162,6 @@ class CreateAdContainer extends Component {
             isFirestoreDataUpdating: true
         });
 
-        const postCollectionRef = firebase.firestore().collection('posts');
-
         let data = {
             selectedCategory,
             selectedSubCategory,
@@ -174,17 +172,37 @@ class CreateAdContainer extends Component {
             productDescription
         };
 
-        postCollectionRef.add(data).then((ref) => {
-            console.log('Added document with ID: ', ref.id);
+        const postCollectionRef = firebase.firestore().collection('posts');
+        const userRef = firebase.firestore().collection('users').doc(`${userID}`);
 
-            this.setState({
-                isFirestoreDataUpdating: false
+        const updateFunction = async (transaction) => {
+            const [userDoc] = await Promise.all([
+                transaction.get(userRef)
+            ]);
+            /**
+             * First create new post & get post ID before updating the user profile
+             * Update user data with newly created post
+             * To update some fields of a document without overwriting the entire document, use the update() method:
+             * If you use set(), it will delete old data and add new one.
+             */
+            if (userDoc.exists) {
+                const newPostRef = postCollectionRef.doc();
+
+                transaction.set(newPostRef, data);
+                transaction.update(userRef, { newPost: newPostRef });
+            }
+        }
+
+        // run the transaction
+        firebase.firestore()
+            .runTransaction(updateFunction)
+            .then((result) => {
+                console.log(result);
+                // OUTPUTS:
+            })
+            .catch((error) => {
+                console.log('Transaction failed: ', error);
             });
-        }).catch((err) => {
-            this.setState({
-                isFirestoreDataUpdating: false
-            });
-        });
     }
 
     render() {

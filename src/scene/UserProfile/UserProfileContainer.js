@@ -157,23 +157,37 @@ class UserProfileContainer extends Component {
             email,
             address
         };
-
+        /**
+         * To update some fields of a document without overwriting the entire document, use the update() method:
+         * If you use set(), it will delete old data and add new one.
+         */
         userRef.get()
             .then((doc) => {
-                userRef.set(data).then(() => {
-                    this.setState({
-                        isUserDataUpdating: false
+                if (!doc.exists) {
+                    userRef.set(data).then(() => {
+                        //Creating new set of data
+                    }).catch((error) => {
+
                     });
-                }).catch((error) => {
-                    this.setState({
-                        isUserDataUpdating: false
+                } else {
+                    userRef.update(data).then(() => {
+                        //updating current set of data
+                    }).catch((error) => {
+                        //
                     });
+                }
+
+                this.setState({
+                    isUserDataUpdating: false
                 });
+
             }).catch((err) => {
                 this.setState({
                     isUserDataUpdating: false
                 });
             });
+
+        //TODO: check if updating failed
     }
 
     render() {
