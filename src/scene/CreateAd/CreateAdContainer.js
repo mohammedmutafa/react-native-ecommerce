@@ -162,6 +162,15 @@ class CreateAdContainer extends Component {
             isFirestoreDataUpdating: true
         });
 
+        const postCollectionRef = firebase.firestore().collection('posts');
+        const userRef = firebase.firestore().collection('users').doc(`${userID}`);
+        /**
+         * Important: Unlike "push IDs" in the Firebase Realtime Database, 
+         * Cloud Firestore auto-generated IDs do not provide any automatic ordering. 
+         * If you want to be able to order your documents by creation date, you should store a timestamp as a field in the documents.
+         */
+        const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
         let data = {
             selectedCategory,
             selectedSubCategory,
@@ -170,11 +179,9 @@ class CreateAdContainer extends Component {
             productPrice,
             productTitle,
             productDescription,
-            ownerID: userID
+            ownerID: userID,
+            updatedAt: timestamp
         };
-
-        const postCollectionRef = firebase.firestore().collection('posts');
-        const userRef = firebase.firestore().collection('users').doc(`${userID}`);
 
         const updateFunction = async (transaction) => {
             const [userDoc] = await Promise.all([
