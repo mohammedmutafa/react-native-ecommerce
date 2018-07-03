@@ -169,7 +169,8 @@ class CreateAdContainer extends Component {
             selectedProductCondition,
             productPrice,
             productTitle,
-            productDescription
+            productDescription,
+            ownerID: userID
         };
 
         const postCollectionRef = firebase.firestore().collection('posts');
