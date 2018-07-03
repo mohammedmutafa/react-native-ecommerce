@@ -129,6 +129,14 @@ class CreateAd extends Component {
             );
         }
 
+        renderForeground = () => {
+            return (
+                <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    {this.renderImageView()}
+                </View>
+            );
+        }
+
         return (
             <View style={mainConatinerStyle}>
                 <ParallaxScrollView
@@ -137,11 +145,7 @@ class CreateAd extends Component {
                     backgroundColor="#FFFFFF"
                     // stickyHeaderHeight={STICKY_HEADER_HEIGHT}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
-                    renderForeground={() => (
-                        <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            {this.renderImageView()}
-                        </View>
-                    )}
+                    renderForeground={this.renderForeground}
                 >
                     <CreateAdsCard
                         selectedLocation={selectedLocation}
