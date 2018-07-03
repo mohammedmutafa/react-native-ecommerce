@@ -60,7 +60,7 @@ class Drawer extends Component {
 
     onPressRow = (key) => {
         const { navigation } = this.props;
-        const { userExistInDB, user } = this.state;
+        const { user } = this.state;
 
         switch (key) {
             case 'Logout':
