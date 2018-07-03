@@ -74,7 +74,7 @@ class Drawer extends Component {
                 );
                 break;
             case 'Profile':
-                if (userExistInDB) {
+                if (user) {
                     navigation.navigate('UserProfile', {
                         userID: user.phoneNumber
                     });
