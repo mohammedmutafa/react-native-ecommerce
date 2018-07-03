@@ -198,10 +198,15 @@ class CreateAdContainer extends Component {
             .runTransaction(updateFunction)
             .then((result) => {
                 console.log(result);
-                // OUTPUTS:
+                this.setState({
+                    isFirestoreDataUpdating: false
+                });
             })
             .catch((error) => {
                 console.log('Transaction failed: ', error);
+                this.setState({
+                    isFirestoreDataUpdating: false
+                });
             });
     }
 
@@ -219,7 +224,8 @@ class CreateAdContainer extends Component {
             createAdStatus,
             productTitle,
             productDescription,
-            selectedImageSource
+            selectedImageSource,
+            isFirestoreDataUpdating
         } = this.state;
 
         const { navigation } = this.props;
@@ -264,6 +270,7 @@ class CreateAdContainer extends Component {
 
                 //FireStore
                 updateAdInFireStore={this.updateAdInFireStore}
+                isFirestoreDataUpdating={isFirestoreDataUpdating}
             />
         );
     }
