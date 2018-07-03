@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImagePicker from 'react-native-image-picker';
+import firebase from 'react-native-firebase';
 
 import CreateAd from './CreateAd';
 
@@ -23,7 +24,10 @@ class CreateAdContainer extends Component {
             isProductDescriptionModalViewVisible: false,
             isProductCategoryModalViewVisible: false,
 
-            createAdStatus: true
+            createAdStatus: true,
+            //FireStore
+            isFirestoreDataUpdating: false,
+            //Add server timestamps later to track when an update was received by the server
         };
     }
 
@@ -141,6 +145,48 @@ class CreateAdContainer extends Component {
         });
     }
 
+    //FireStore Implementation
+    updateAdInFireStore = () => {
+        // const { userID } = this.props;
+        const {
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation,
+            selectedProductCondition,
+            productPrice,
+            productTitle,
+            productDescription
+        } = this.state;
+
+        this.setState({
+            isFirestoreDataUpdating: true
+        });
+
+        const postCollectionRef = firebase.firestore().collection('posts');
+
+        let data = {
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation,
+            selectedProductCondition,
+            productPrice,
+            productTitle,
+            productDescription
+        };
+
+        postCollectionRef.add(data).then((ref) => {
+            console.log('Added document with ID: ', ref.id);
+
+            this.setState({
+                isFirestoreDataUpdating: false
+            });
+        }).catch((err) => {
+            this.setState({
+                isFirestoreDataUpdating: false
+            });
+        });
+    }
+
     render() {
         const {
             selectedCategory,
@@ -197,13 +243,19 @@ class CreateAdContainer extends Component {
                 createAdStatusDone={this.createAdStatusDone}
 
                 navigation={navigation}
+
+                //FireStore
+                updateAdInFireStore={this.updateAdInFireStore}
             />
         );
     }
 }
 
 CreateAdContainer.propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+
+    //FireStore
+    userID: PropTypes.string
 }
 
 export default CreateAdContainer;

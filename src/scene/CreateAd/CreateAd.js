@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     View,
+    TouchableOpacity,
     Dimensions
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -28,8 +29,13 @@ class CreateAd extends Component {
     }
 
     renderFloatingShareButton = () => {
+        const { updateAdInFireStore } = this.props;
+
         return (
-            <View style={floatingShareButtonStyle}>
+            <TouchableOpacity
+                style={floatingShareButtonStyle}
+                onPress={updateAdInFireStore}
+            >
                 <Icon
                     raised
                     name="chevron-thin-right"
@@ -39,7 +45,7 @@ class CreateAd extends Component {
                     containerStyle={floatingButtonContainerStyle}
                     onPress={null}
                 />
-            </View>
+            </TouchableOpacity>
         );
     }
 
@@ -212,7 +218,10 @@ CreateAd.propTypes = {
 
     //Image
     selectedImageSource: PropTypes.object,
-    selectPhotoTapped: PropTypes.func
+    selectPhotoTapped: PropTypes.func,
+
+    //FireStore
+    updateAdInFireStore: PropTypes.func
 }
 
 export default CreateAd;
