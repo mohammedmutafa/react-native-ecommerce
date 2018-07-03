@@ -52,6 +52,7 @@ export class NewAdForm extends Component {
                         type="ionicon"
                         size={40}
                         color={Color.lightWhite}
+                        underlayColor="transparent"
                         onPress={selectPhotoTapped}
                     />
                 </TouchableOpacity>

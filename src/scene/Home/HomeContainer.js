@@ -9,6 +9,7 @@ export default class HomeContainer extends Component {
     constructor(props) {
         super(props);
         this.unsubscribe = null;
+
         this.state = {
             isLoginWithPhoneModalVisible: false,
             phoneNumberInputUIVisible: false,
@@ -16,7 +17,9 @@ export default class HomeContainer extends Component {
             phoneNumberInput: undefined,
             confirmResult: undefined,
             isOTPVerified: undefined,
-            user: undefined
+            //Users
+            user: undefined,
+            userExistInDB: false
         };
     }
 
@@ -27,7 +30,29 @@ export default class HomeContainer extends Component {
         //More Details: https://firebase.google.com/docs/auth/web/manage-users
         this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                this.setState({ user: user.toJSON() });
+                const userID = user.phoneNumber
+                //Keep doc id as string.
+                let userRef = firebase.firestore().collection('users').doc(`${userID}`);
+                /**
+                 * Check if user already logged In with phone number and completed the sign-up form.
+                 */
+                userRef.get().then((doc) => {
+                    if (!doc.exists) {
+                        this.setState({
+                            user: user.toJSON(),
+                            userExistInDB: false
+                        });
+                    } else {
+                        this.setState({
+                            user: user.toJSON(),
+                            userExistInDB: true
+                        });
+                    }
+                }).catch((err) => {
+                    this.setState({
+                        userExistInDB: undefined //if undefined then some error in fetching data
+                    });
+                });
             } else {
                 // User has been signed out, reset the state
                 this.setState({
@@ -85,6 +110,28 @@ export default class HomeContainer extends Component {
         }
     }
 
+    onPressFloatingMenu = () => {
+        const {
+            user,
+            userExistInDB
+        } = this.state;
+
+        if (user) {
+            if (userExistInDB === true) {
+                this.props.navigation.navigate('CreateAd');
+            } else if (userExistInDB === false) {
+                this.props.navigation.navigate('UserProfile', {
+                    userID: user.phoneNumber
+                });
+            } else {
+                //some network issue
+                console.log('unable to connect to server');
+            }
+        } else {
+            this.changeLoginWithPhoneModalViewState();
+        }
+    }
+
     changeLoginWithPhoneModalViewState = () => {
         this.setState({
             isLoginWithPhoneModalVisible: !this.state.isLoginWithPhoneModalVisible,
@@ -97,10 +144,6 @@ export default class HomeContainer extends Component {
 
     changePhoneNumberInputUIState = () => {
         this.setState({ phoneNumberInputUIVisible: !this.state.phoneNumberInputUIVisible });
-    }
-
-    onCreateAdButtonPress = () => {
-        this.props.navigation.navigate('CreateAd');
     }
 
     onPhoneNumberInputChange = (text) => {
@@ -121,8 +164,7 @@ export default class HomeContainer extends Component {
             phoneNumberInput,
             phoneNumberInputUIVisible,
             otpVerificationUIVisible,
-            isOTPVerified,
-            user
+            isOTPVerified
         } = this.state;
 
         return (
@@ -136,10 +178,9 @@ export default class HomeContainer extends Component {
                 otpVerificationUIVisible={otpVerificationUIVisible}
                 changeOTPVerificationUIState={this.changeOTPVerificationUIState}
                 navigation={this.props.navigation}
-                onCreateAdButtonPress={this.onCreateAdButtonPress}
-                isUserLoggedIn={user ? true : false}
                 verifyOTP={this.verifyOTP}
                 isOTPVerified={isOTPVerified}
+                onPressFloatingMenu={this.onPressFloatingMenu}
             />
         );
     }

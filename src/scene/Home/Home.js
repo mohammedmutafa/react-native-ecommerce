@@ -9,13 +9,13 @@ import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Icon } from 'react-native-elements';
-import { SearchBar } from '../../component/SearchBar';
 
+import { SearchBar } from '../../component/SearchBar';
 import LoginWithPhoneComponent from '../../component/LoginWithPhone';
 import CategoriesListComponent from '../../component/CategoriesList';
 import { BackButton } from '../../component/BackButton';
-import Color from '../../styles/Color';
 
+import Color from '../../styles/Color';
 import styles from './styles';
 
 export default class Home extends Component {
@@ -56,10 +56,8 @@ export default class Home extends Component {
 
     renderFloatingMenu = () => {
         const {
-            changeLoginWithPhoneModalViewState,
             isLoginWithPhoneModalVisible,
-            onCreateAdButtonPress,
-            isUserLoggedIn
+            onPressFloatingMenu
         } = this.props;
 
         if (isLoginWithPhoneModalVisible) {
@@ -74,7 +72,7 @@ export default class Home extends Component {
                     type="simple-line-icon"
                     underlayColor="transparent"
                     color={Color.golden}
-                    onPress={isUserLoggedIn ? onCreateAdButtonPress : changeLoginWithPhoneModalViewState}
+                    onPress={onPressFloatingMenu}
                     containerStyle={{
                         backgroundColor: Color.floatingButtonBackground,
                         borderWidth: 1,
@@ -121,6 +119,21 @@ export default class Home extends Component {
         );
     }
 
+    renderForeground = () => {
+        const { navigation } = this.props;
+
+        return (
+            <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <BackButton
+                    style={{ left: 20 }}
+                    iconName="menu"
+                    iconColor={Color.dark}
+                    onPress={() => navigation.navigate('DrawerToggle')} />
+                {this.renderSwiper()}
+            </View>
+        );
+    }
+
     render() {
         const { navigation } = this.props;
 
@@ -131,16 +144,7 @@ export default class Home extends Component {
                     showsVerticalScrollIndicator={false}
                     backgroundColor={"#FFFFFF"}
                     parallaxHeaderHeight={SLIDER_HEIGHT}
-                    renderForeground={() => (
-                        <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            <BackButton
-                                style={{ left: 20 }}
-                                iconName="menu"
-                                iconColor={Color.dark}
-                                onPress={() => navigation.navigate('DrawerToggle')} />
-                            {this.renderSwiper()}
-                        </View>
-                    )}
+                    renderForeground={this.renderForeground}
                 >
                     {this.renserLoginWithPhoneModalView()}
                     <CategoriesListComponent
@@ -168,14 +172,13 @@ Home.propTypes = {
     navigation: PropTypes.object,
     changeLoginWithPhoneModalViewState: PropTypes.func,
     isLoginWithPhoneModalVisible: PropTypes.bool,
-    onCreateAdButtonPress: PropTypes.func,
     phoneNumberInput: PropTypes.string,
     onPhoneNumberInputChange: PropTypes.func,
     phoneNumberInputUIVisible: PropTypes.bool,
     changePhoneNumberInputUIState: PropTypes.func,
     otpVerificationUIVisible: PropTypes.bool,
-    isUserLoggedIn: PropTypes.bool,
     changeOTPVerificationUIState: PropTypes.func,
     verifyOTP: PropTypes.func,
+    onPressFloatingMenu: PropTypes.func,
     isOTPVerified: PropTypes.bool
 };

@@ -4,6 +4,7 @@ import {
     View,
     Text,
     TextInput,
+    Modal,
     TouchableOpacity
 } from 'react-native';
 import { Icon } from 'react-native-elements';
@@ -12,6 +13,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 //import { BackButton } from '../../component/BackButton';
 import { GenderSelector } from '../../component/GenderSelector';
+import { SubmitFormButton } from '../../component/SubmitFormButton';
+import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -219,8 +222,27 @@ class UserProfile extends Component {
     }
 
     renderOverlayButton = () => {
+        const { updateUserInfo } = this.props;
+
         return (
-            <View />
+            <SubmitFormButton
+                onPress={updateUserInfo}
+            />
+        );
+    }
+
+    renderActivityIndicator = () => {
+        const { isUserDataUpdating } = this.props;
+
+        return (
+            <Modal
+                visible={isUserDataUpdating}
+                transparent={true}
+                animationType="none"
+                onRequestClose={() => null}
+            >
+                <CustomActivityIndicator />
+            </Modal>
         );
     }
 
@@ -252,6 +274,7 @@ class UserProfile extends Component {
                 {/*this.renderFloatingShareButton()}
                 {this.renderBackButton()*/}
                 {this.renderOverlayButton()}
+                {this.renderActivityIndicator()}
             </View >
         );
     }
@@ -300,7 +323,11 @@ UserProfile.propTypes = {
 
     //Image
     selectedImageSource: PropTypes.object,
-    selectPhotoTapped: PropTypes.func
+    selectPhotoTapped: PropTypes.func,
+
+    //FireStore
+    updateUserInfo: PropTypes.func,
+    isUserDataUpdating: PropTypes.bool
 }
 
 export default UserProfile;

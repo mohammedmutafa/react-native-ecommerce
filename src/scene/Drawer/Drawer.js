@@ -22,7 +22,8 @@ class Drawer extends Component {
         this.unsubscribe = null;
 
         this.state = {
-            user: undefined
+            user: undefined,
+            userExistInDB: false
         };
     }
 
@@ -30,15 +31,36 @@ class Drawer extends Component {
         //More Details: https://firebase.google.com/docs/auth/web/manage-users
         this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                this.setState({ user: user.toJSON() });
-            } else {
-                // User has been signed out, reset the state
+                const userID = user.phoneNumber
+                //Keep doc id as string.
+                let userRef = firebase.firestore().collection('users').doc(`${userID}`);
+                /**
+                 * Check if user already logged In with phone number and completed the sign-up form.
+                 */
+                userRef.get().then((doc) => {
+                    if (!doc.exists) {
+                        this.setState({
+                            user: user.toJSON(),
+                            userExistInDB: false
+                        });
+                    } else {
+                        this.setState({
+                            user: user.toJSON(),
+                            userExistInDB: true
+                        });
+                    }
+                }).catch((err) => {
+                    this.setState({
+                        userExistInDB: undefined //if undefined then some error in fetching data
+                    });
+                });
             }
         });
     }
 
     onPressRow = (key) => {
         const { navigation } = this.props;
+        const { user } = this.state;
 
         switch (key) {
             case 'Logout':
@@ -52,8 +74,10 @@ class Drawer extends Component {
                 );
                 break;
             case 'Profile':
-                if (this.state.user) {
-                    navigation.navigate('UserProfile');
+                if (user) {
+                    navigation.navigate('UserProfile', {
+                        userID: user.phoneNumber
+                    });
                 }
                 break;
         }
