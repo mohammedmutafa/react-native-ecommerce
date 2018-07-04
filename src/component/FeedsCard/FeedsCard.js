@@ -38,7 +38,7 @@ export class FeedsCard extends Component {
     }
 
     render() {
-        const { name, title, price, time, imageURL, thumbnailURL, navigation } = this.props;
+        const { name, title, productDescription, price, time, imageURL, selectedLocation, thumbnailURL, navigation } = this.props;
         const { bookmarked } = this.state;
 
         return (
@@ -74,10 +74,12 @@ export class FeedsCard extends Component {
                     onPress={() => navigation.navigate('GeneralProductDetails',
                         {
                             time: time,
-                            name: this.props.name,
-                            price: this.props.price,
-                            title: this.props.title,
-                            thumbnailURL: this.props.thumbnailURL
+                            name: name,
+                            price: price,
+                            title: title,
+                            productDescription: productDescription,
+                            thumbnailURL: thumbnailURL,
+                            selectedLocation: selectedLocation
                         })}
                 >
                     <Image

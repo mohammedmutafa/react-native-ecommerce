@@ -41,7 +41,7 @@ class GeneralProductDetailsContainer extends Component {
 
     render() {
         const { isPhotoViewerVisible, clickedPhotoIndex } = this.state;
-        const { thumbnailURL, time, details, price } = this.props;
+        const { thumbnailURL, time, title, details, price, location } = this.props;
 
         return (
             <GeneralProductDetails
@@ -51,6 +51,8 @@ class GeneralProductDetailsContainer extends Component {
                 thumbnailURL={thumbnailURL}
                 time={time}
                 price={price}
+                title={title}
+                location={location}
                 details={details}
                 clickedPhotoIndex={clickedPhotoIndex}
                 photoViewerDataSource={this.photoViewerDataSource()}

@@ -56,7 +56,9 @@ class SearchListing extends Component {
             updatedAt,
             ownerID,
             productPrice,
-            productTitle
+            productTitle,
+            productDescription,
+            selectedLocation
         } = item;
 
         let formatedDate = '';
@@ -72,6 +74,8 @@ class SearchListing extends Component {
                 name={ownerID}
                 price={productPrice}
                 title={productTitle}
+                productDescription={productDescription}
+                selectedLocation={selectedLocation}
                 // imageURL={item.url}
                 // thumbnailURL={item.url}
                 navigation={navigation}
