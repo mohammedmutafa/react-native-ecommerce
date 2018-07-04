@@ -156,7 +156,7 @@ class SearchListing extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 {this.renderFlatList()}
                 {this.renderFloatingFilterButton()}
                 {this.renderFilter()}
