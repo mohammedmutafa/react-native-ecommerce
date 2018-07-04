@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import firebase from 'react-native-firebase';
 
 import SearchListing from './SearchListing';
 
@@ -21,8 +22,32 @@ class SearchListingContainer extends Component {
             isCategorySelectorModalViewVisible: false,
 
             //Data Fetch Opertions
-            isFetchingData: false
+            isFetchingData: false,
+            //FireStore
+            postListDataSource: []
         }
+    }
+
+    async componentDidMount() {
+        let postCollectionRef = firebase.firestore().collection('posts');
+
+        const { postListDataSource } = this.state;
+        let copyPostListDataSource = [...postListDataSource];
+
+        await postCollectionRef.get().then(function (querySnapshot) {
+            let dSArray = [];
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                dSArray.push(doc.data());
+            });
+            copyPostListDataSource = [...copyPostListDataSource, ...dSArray];
+        }).catch((err) => {
+            //
+        });
+
+        this.setState({
+            postListDataSource: copyPostListDataSource
+        });
     }
 
     onRefresh = () => {
@@ -99,7 +124,8 @@ class SearchListingContainer extends Component {
             selectedLocation,
             isCategorySelectorModalViewVisible,
             isLocationFilterModalViewVisible,
-            isFetchingData
+            isFetchingData,
+            postListDataSource
         } = this.state;
 
         return (
@@ -130,6 +156,9 @@ class SearchListingContainer extends Component {
                 //Fetch Operation
                 isFetchingData={isFetchingData}
                 onRefresh={this.onRefresh}
+
+                //FireStore
+                postListDataSource={postListDataSource}
             />
         );
     }

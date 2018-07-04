@@ -22,7 +22,7 @@ const { MainCategory } = Categories;
 class GeneralProductDetails extends Component {
 
     renderImageView = () => {
-        const { thumbnailURL, time } = this.props;
+        const { thumbnailURL, time, title } = this.props;
 
         return (
             <View style={containerStyle}>
@@ -33,7 +33,7 @@ class GeneralProductDetails extends Component {
                 <View style={semiTransparentViewStyle} />
                 <View style={textContainerStyle}>
                     <Animatable.Text style={titleTextStyle} animation="fadeInLeft" delay={200}></Animatable.Text>
-                    <Animatable.Text style={titleTextStyle} animation="fadeInLeft" delay={200}>This is a demo title for the product descriptions.</Animatable.Text>
+                    <Animatable.Text style={titleTextStyle} animation="fadeInLeft" delay={200}>{title}</Animatable.Text>
                     <Animatable.Text style={dateTextStyle} animation="fadeInLeft" delay={200}>{time}</Animatable.Text>
                 </View>
             </View >
@@ -48,6 +48,8 @@ class GeneralProductDetails extends Component {
     }
 
     renderLocation = () => {
+        const { location } = this.props;
+
         return (
             <View style={{ flexDirection: 'row', marginHorizontal: 25, marginBottom: 5, alignContent: 'center' }}>
                 <Icon
@@ -56,7 +58,7 @@ class GeneralProductDetails extends Component {
                     color={Color.golden}
                     underlayColor="transparent"
                 />
-                <Text style={locationTextStyle}>Dhankuta</Text>
+                <Text style={locationTextStyle}>{location}</Text>
             </View>
         );
     }

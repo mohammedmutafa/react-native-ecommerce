@@ -38,7 +38,7 @@ export class FeedsCard extends Component {
     }
 
     render() {
-        const { name, title, price, time, imageURL, thumbnailURL, navigation } = this.props;
+        const { name, title, productDescription, price, time, imageURL, selectedLocation, thumbnailURL, navigation } = this.props;
         const { bookmarked } = this.state;
 
         return (
@@ -73,11 +73,13 @@ export class FeedsCard extends Component {
                     style={imageViewContainerStyle}
                     onPress={() => navigation.navigate('GeneralProductDetails',
                         {
-                            time: this.props.time,
-                            name: this.props.name,
-                            price: this.props.price,
-                            title: this.props.title,
-                            thumbnailURL: this.props.thumbnailURL
+                            time: time,
+                            name: name,
+                            price: price,
+                            title: title,
+                            productDescription: productDescription,
+                            thumbnailURL: thumbnailURL,
+                            selectedLocation: selectedLocation
                         })}
                 >
                     <Image
@@ -116,7 +118,7 @@ export class FeedsCard extends Component {
 FeedsCard.propTypes = {
     time: PropTypes.string,
     name: PropTypes.string,
-    price: PropTypes.string,
+    price: PropTypes.number,
     title: PropTypes.string,
     imageURL: PropTypes.string,
     thumbnailURL: PropTypes.string,

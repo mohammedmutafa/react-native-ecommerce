@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import CreateAdContainer from './CreateAdContainer';
 
 const index = ({ navigation }) => {
-    return <CreateAdContainer
-        navigation={navigation}
-    />;
+    const { params } = navigation.state;
+    const userID = params ? params.userID : null;
+
+    return (
+        <CreateAdContainer
+            navigation={navigation}
+            userID={userID}
+        />
+    );
 };
 
 index.propTypes = {

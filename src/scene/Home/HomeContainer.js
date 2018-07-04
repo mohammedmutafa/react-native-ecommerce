@@ -118,7 +118,9 @@ export default class HomeContainer extends Component {
 
         if (user) {
             if (userExistInDB === true) {
-                this.props.navigation.navigate('CreateAd');
+                this.props.navigation.navigate('CreateAd', {
+                    userID: user.phoneNumber
+                });
             } else if (userExistInDB === false) {
                 this.props.navigation.navigate('UserProfile', {
                     userID: user.phoneNumber

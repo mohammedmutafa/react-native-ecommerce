@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
     View,
-    Dimensions
+    TouchableOpacity,
+    Dimensions,
+    Modal
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
@@ -13,6 +15,8 @@ import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
 import { BackButton } from '../../component/BackButton';
 import { NewAdForm } from '../../component/NewAdForm';
+import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
+
 import Color from '../../styles/Color';
 
 class CreateAd extends Component {
@@ -28,8 +32,13 @@ class CreateAd extends Component {
     }
 
     renderFloatingShareButton = () => {
+        const { updateAdInFireStore } = this.props;
+
         return (
-            <View style={floatingShareButtonStyle}>
+            <TouchableOpacity
+                style={floatingShareButtonStyle}
+                onPress={updateAdInFireStore}
+            >
                 <Icon
                     raised
                     name="chevron-thin-right"
@@ -39,7 +48,7 @@ class CreateAd extends Component {
                     containerStyle={floatingButtonContainerStyle}
                     onPress={null}
                 />
-            </View>
+            </TouchableOpacity>
         );
     }
 
@@ -53,6 +62,21 @@ class CreateAd extends Component {
                 style={{ left: 20 }}
                 onPress={this.goBack}
             />
+        );
+    }
+
+    renderActivityIndicator = () => {
+        const { isFirestoreDataUpdating } = this.props;
+
+        return (
+            <Modal
+                visible={isFirestoreDataUpdating}
+                transparent={true}
+                animationType="none"
+                onRequestClose={() => null}
+            >
+                <CustomActivityIndicator />
+            </Modal>
         );
     }
 
@@ -156,6 +180,7 @@ class CreateAd extends Component {
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
                 {this.renderBackButton()}
+                {this.renderActivityIndicator()}
             </View >
         );
     }
@@ -212,7 +237,11 @@ CreateAd.propTypes = {
 
     //Image
     selectedImageSource: PropTypes.object,
-    selectPhotoTapped: PropTypes.func
+    selectPhotoTapped: PropTypes.func,
+
+    //FireStore
+    updateAdInFireStore: PropTypes.func,
+    isFirestoreDataUpdating: PropTypes.bool
 }
 
 export default CreateAd;

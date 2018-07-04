@@ -8,15 +8,21 @@ const index = ({ navigation }) => {
     const thumbnailURL = params ? params.thumbnailURL : null;
     const time = params ? params.time : '';
     const price = params ? params.price : 0;
-    const details = params ? params.title : '';
+    const title = params ? params.title : '';
+    const details = params ? params.productDescription : '';
+    const location = params ? params.selectedLocation : '';
 
-    return <GeneralProductDetailsContainer
-        navigation={navigation}
-        thumbnailURL={thumbnailURL}
-        time={time}
-        price={price}
-        details={details}
-    />;
+    return (
+        <GeneralProductDetailsContainer
+            navigation={navigation}
+            thumbnailURL={thumbnailURL}
+            time={time}
+            price={price}
+            title={title}
+            details={details}
+            location={location}
+        />
+    )
 };
 
 index.propTypes = {

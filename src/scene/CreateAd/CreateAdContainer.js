@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImagePicker from 'react-native-image-picker';
+import firebase from 'react-native-firebase';
 
 import CreateAd from './CreateAd';
 
@@ -23,7 +24,10 @@ class CreateAdContainer extends Component {
             isProductDescriptionModalViewVisible: false,
             isProductCategoryModalViewVisible: false,
 
-            createAdStatus: true
+            createAdStatus: true,
+            //FireStore
+            isFirestoreDataUpdating: false,
+            //Add server timestamps later to track when an update was received by the server
         };
     }
 
@@ -141,6 +145,79 @@ class CreateAdContainer extends Component {
         });
     }
 
+    //FireStore Implementation
+    updateAdInFireStore = () => {
+        const { userID } = this.props;
+        const {
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation,
+            selectedProductCondition,
+            productPrice,
+            productTitle,
+            productDescription
+        } = this.state;
+
+        this.setState({
+            isFirestoreDataUpdating: true
+        });
+
+        const postCollectionRef = firebase.firestore().collection('posts');
+        const userRef = firebase.firestore().collection('users').doc(`${userID}`);
+        /**
+         * Important: Unlike "push IDs" in the Firebase Realtime Database, 
+         * Cloud Firestore auto-generated IDs do not provide any automatic ordering. 
+         * If you want to be able to order your documents by creation date, you should store a timestamp as a field in the documents.
+         */
+        const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
+        let data = {
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation,
+            selectedProductCondition,
+            productPrice,
+            productTitle,
+            productDescription,
+            ownerID: userID,
+            updatedAt: timestamp
+        };
+
+        const updateFunction = async (transaction) => {
+            const [userDoc] = await Promise.all([
+                transaction.get(userRef)
+            ]);
+            /**
+             * First create new post & get post ID before updating the user profile
+             * Update user data with newly created post
+             * To update some fields of a document without overwriting the entire document, use the update() method:
+             * If you use set(), it will delete old data and add new one.
+             */
+            if (userDoc.exists) {
+                const newPostRef = postCollectionRef.doc();
+
+                transaction.set(newPostRef, data);
+                transaction.update(userRef, { newPost: newPostRef });
+            }
+        }
+
+        // run the transaction
+        firebase.firestore()
+            .runTransaction(updateFunction)
+            .then((result) => {
+                console.log(result);
+                this.setState({
+                    isFirestoreDataUpdating: false
+                });
+            })
+            .catch((error) => {
+                console.log('Transaction failed: ', error);
+                this.setState({
+                    isFirestoreDataUpdating: false
+                });
+            });
+    }
+
     render() {
         const {
             selectedCategory,
@@ -155,7 +232,8 @@ class CreateAdContainer extends Component {
             createAdStatus,
             productTitle,
             productDescription,
-            selectedImageSource
+            selectedImageSource,
+            isFirestoreDataUpdating
         } = this.state;
 
         const { navigation } = this.props;
@@ -197,13 +275,20 @@ class CreateAdContainer extends Component {
                 createAdStatusDone={this.createAdStatusDone}
 
                 navigation={navigation}
+
+                //FireStore
+                updateAdInFireStore={this.updateAdInFireStore}
+                isFirestoreDataUpdating={isFirestoreDataUpdating}
             />
         );
     }
 }
 
 CreateAdContainer.propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+
+    //FireStore
+    userID: PropTypes.string
 }
 
 export default CreateAdContainer;

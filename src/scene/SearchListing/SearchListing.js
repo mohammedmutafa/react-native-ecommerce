@@ -5,6 +5,7 @@ import {
     FlatList
 } from 'react-native';
 import { Icon } from 'react-native-elements';
+import Moment from 'moment';
 
 import { FeedsCard } from '../../component/FeedsCard';
 import { Filter } from '../../component/Filter';
@@ -51,29 +52,50 @@ class SearchListing extends Component {
 
     renderFeedsCard = ({ item }) => {
         const { navigation } = this.props;
+        const {
+            updatedAt,
+            ownerID,
+            productPrice,
+            productTitle,
+            productDescription,
+            selectedLocation
+        } = item;
 
-        return <FeedsCard
-            time={item.time}
-            name={item.owner}
-            price={item.price}
-            title={item.title}
-            imageURL={item.url}
-            thumbnailURL={item.url}
-            navigation={navigation}
-        />
+        let formatedDate = '';
+
+        if (updatedAt) {
+            Moment.locale('en');
+            formatedDate = Moment(item.updatedAt).format("Do-MMM-YYYY");
+        }
+
+        return (
+            <FeedsCard
+                time={formatedDate}
+                name={ownerID}
+                price={productPrice}
+                title={productTitle}
+                productDescription={productDescription}
+                selectedLocation={selectedLocation}
+                // imageURL={item.url}
+                // thumbnailURL={item.url}
+                navigation={navigation}
+            />
+        );
     }
 
     renderFlatList = () => {
         const {
             isFetchingData,
-            onRefresh
+            onRefresh,
+            postListDataSource
         } = this.props;
 
         return (
             <FlatList
                 onRefresh={onRefresh}
                 refreshing={isFetchingData}
-                data={dataSource}
+                extraData={postListDataSource}
+                data={postListDataSource}
                 renderItem={this.renderFeedsCard}
                 // removeClippedSubviews={false}
                 keyExtractor={this.keyExtractor}
@@ -134,7 +156,7 @@ class SearchListing extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 {this.renderFlatList()}
                 {this.renderFloatingFilterButton()}
                 {this.renderFilter()}
