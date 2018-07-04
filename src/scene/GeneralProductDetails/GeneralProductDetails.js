@@ -182,11 +182,10 @@ class GeneralProductDetails extends Component {
 
 
     renderActivityIndicator = () => {
-        const { isUserDataUpdating } = this.props;
 
         return (
             <Modal
-                visible={isUserDataUpdating}
+                visible={false}
                 transparent={true}
                 animationType="none"
                 onRequestClose={() => null}
