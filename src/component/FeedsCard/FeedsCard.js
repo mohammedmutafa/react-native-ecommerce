@@ -73,7 +73,7 @@ export class FeedsCard extends Component {
                     style={imageViewContainerStyle}
                     onPress={() => navigation.navigate('GeneralProductDetails',
                         {
-                            time: this.props.time,
+                            time: time,
                             name: this.props.name,
                             price: this.props.price,
                             title: this.props.title,
@@ -116,7 +116,7 @@ export class FeedsCard extends Component {
 FeedsCard.propTypes = {
     time: PropTypes.string,
     name: PropTypes.string,
-    price: PropTypes.string,
+    price: PropTypes.number,
     title: PropTypes.string,
     imageURL: PropTypes.string,
     thumbnailURL: PropTypes.string,
