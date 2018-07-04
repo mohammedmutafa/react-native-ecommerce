@@ -4,8 +4,7 @@ import {
     Image,
     FlatList,
     TouchableOpacity,
-    Text,
-    Modal
+    Text
 } from 'react-native';
 import { Icon, Avatar } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
@@ -13,7 +12,6 @@ import * as Animatable from 'react-native-animatable';
 
 import Categories from '../../styles/Categories';
 import { PhotoViewer } from '../../component/PhotoViewer';
-import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
 import styles, { STICKY_HEADER_HEIGHT, SLIDER_HEIGHT } from './styles';
 import { numberWithCommas } from '../../utilities/Functions';
@@ -180,22 +178,6 @@ class GeneralProductDetails extends Component {
         );
     }
 
-
-    renderActivityIndicator = () => {
-        const { isUserDataUpdating } = this.props;
-
-        return (
-            <Modal
-                visible={isUserDataUpdating}
-                transparent={true}
-                animationType="none"
-                onRequestClose={() => null}
-            >
-                <CustomActivityIndicator />
-            </Modal>
-        );
-    }
-
     render() {
         return (
             <View style={mainConatinerStyle}>
@@ -221,7 +203,6 @@ class GeneralProductDetails extends Component {
                     </Animatable.View>
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
-                {this.renderActivityIndicator()}
             </View >
         );
     }

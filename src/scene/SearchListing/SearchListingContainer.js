@@ -24,17 +24,12 @@ class SearchListingContainer extends Component {
             //Data Fetch Opertions
             isFetchingData: false,
             //FireStore
-            postListDataSource: [],
-            isFetchingDataFromFirestore: false
+            postListDataSource: []
         }
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         let postCollectionRef = firebase.firestore().collection('posts');
-
-        this.setState({
-            isFetchingDataFromFirestore: true
-        });
 
         const { postListDataSource } = this.state;
         let copyPostListDataSource = [...postListDataSource];
@@ -47,14 +42,11 @@ class SearchListingContainer extends Component {
             });
             copyPostListDataSource = [...copyPostListDataSource, ...dSArray];
         }).catch((err) => {
-            this.setState({
-                isFetchingDataFromFirestore: false
-            });
+            //
         });
 
         this.setState({
-            postListDataSource: copyPostListDataSource,
-            isFetchingDataFromFirestore: false
+            postListDataSource: copyPostListDataSource
         });
     }
 
@@ -133,8 +125,7 @@ class SearchListingContainer extends Component {
             isCategorySelectorModalViewVisible,
             isLocationFilterModalViewVisible,
             isFetchingData,
-            postListDataSource,
-            isFetchingDataFromFirestore
+            postListDataSource
         } = this.state;
 
         return (
@@ -168,7 +159,6 @@ class SearchListingContainer extends Component {
 
                 //FireStore
                 postListDataSource={postListDataSource}
-                isFetchingDataFromFirestore={isFetchingDataFromFirestore}
             />
         );
     }
