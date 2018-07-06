@@ -4,7 +4,8 @@ import {
     Image,
     FlatList,
     TouchableOpacity,
-    Text
+    Text,
+    Modal
 } from 'react-native';
 import { Icon, Avatar } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
@@ -12,6 +13,7 @@ import * as Animatable from 'react-native-animatable';
 
 import Categories from '../../styles/Categories';
 import { PhotoViewer } from '../../component/PhotoViewer';
+import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
 import styles, { STICKY_HEADER_HEIGHT, SLIDER_HEIGHT } from './styles';
 import { numberWithCommas } from '../../utilities/Functions';
@@ -152,6 +154,8 @@ class GeneralProductDetails extends Component {
     }
 
     renderProfileHeader = () => {
+        const { phoneNumber } = this.props.sellerData;
+
         return (
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Avatar
@@ -163,7 +167,7 @@ class GeneralProductDetails extends Component {
                     //onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
                 />
-                <Text style={[followButtonTextstyle, { color: Color.dark }]}>1234567890</Text>
+                <Text style={[followButtonTextstyle, { color: Color.dark }]}>{phoneNumber}</Text>
             </View>
         );
     }
@@ -175,6 +179,21 @@ class GeneralProductDetails extends Component {
                 <Text style={{ fontSize: 18, color: Color.placeholderWhite }}>|</Text>
                 <Text style={followButtonTextstyle}>CONTACT</Text>
             </View>
+        );
+    }
+
+
+    renderActivityIndicator = () => {
+
+        return (
+            <Modal
+                visible={false}
+                transparent={true}
+                animationType="none"
+                onRequestClose={() => null}
+            >
+                <CustomActivityIndicator />
+            </Modal>
         );
     }
 
@@ -203,6 +222,7 @@ class GeneralProductDetails extends Component {
                     </Animatable.View>
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
+                {this.renderActivityIndicator()}
             </View >
         );
     }
