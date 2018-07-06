@@ -73,7 +73,7 @@ class SearchListing extends Component {
         return (
             <FeedsCard
                 time={formatedDate}
-                name={ownerID}
+                ownerID={ownerID}
                 price={productPrice}
                 title={productTitle}
                 productDescription={productDescription}

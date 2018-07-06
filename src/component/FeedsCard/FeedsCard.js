@@ -38,7 +38,7 @@ export class FeedsCard extends Component {
     }
 
     render() {
-        const { name, title, productDescription, price, time, imageURL, selectedLocation, thumbnailURL, navigation } = this.props;
+        const { ownerID, title, productDescription, price, time, imageURL, selectedLocation, thumbnailURL, navigation } = this.props;
         const { bookmarked } = this.state;
 
         return (
@@ -58,7 +58,7 @@ export class FeedsCard extends Component {
                                 ellipsizeMode="tail"
                                 numberOfLines={1}
                             >
-                                {name}
+                                {ownerID}
                             </Text>
                         </View>
                         <Text
@@ -74,7 +74,7 @@ export class FeedsCard extends Component {
                     onPress={() => navigation.navigate('GeneralProductDetails',
                         {
                             time: time,
-                            name: name,
+                            ownerID: ownerID,
                             price: price,
                             title: title,
                             productDescription: productDescription,
@@ -117,7 +117,7 @@ export class FeedsCard extends Component {
 
 FeedsCard.propTypes = {
     time: PropTypes.string,
-    name: PropTypes.string,
+    ownerID: PropTypes.string,
     price: PropTypes.number,
     title: PropTypes.string,
     imageURL: PropTypes.string,

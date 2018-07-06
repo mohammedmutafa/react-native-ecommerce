@@ -154,6 +154,8 @@ class GeneralProductDetails extends Component {
     }
 
     renderProfileHeader = () => {
+        const { phoneNumber } = this.props.sellerData;
+
         return (
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Avatar
@@ -165,7 +167,7 @@ class GeneralProductDetails extends Component {
                     //onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
                 />
-                <Text style={[followButtonTextstyle, { color: Color.dark }]}>1234567890</Text>
+                <Text style={[followButtonTextstyle, { color: Color.dark }]}>{phoneNumber}</Text>
             </View>
         );
     }
