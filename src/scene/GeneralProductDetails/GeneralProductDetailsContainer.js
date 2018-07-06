@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'react-native-firebase';
 
 import GeneralProductDetails from './GeneralProductDetails';
 import Categories from '../../styles/Categories';
@@ -11,8 +12,28 @@ class GeneralProductDetailsContainer extends Component {
 
         this.state = {
             isPhotoViewerVisible: false,
-            clickedPhotoIndex: 0
+            clickedPhotoIndex: 0,
+
+            //FireStore
+            sellerData: {}
         };
+    }
+
+    componentWillMount() {
+        const { ownerID } = this.props;
+        let userRef = firebase.firestore().collection('users').doc(`${ownerID}`);
+
+        userRef.get()
+            .then((doc) => {
+                const { firstName, lastName, phoneNumber, gender, address, email } = doc.data();
+                const sellerData = { firstName, lastName, phoneNumber, gender, address, email }
+
+                this.setState({
+                    sellerData
+                });
+            }).catch((err) => {
+                //
+            });
     }
 
     showPhotoViewer = (index) => {
@@ -40,8 +61,20 @@ class GeneralProductDetailsContainer extends Component {
     }
 
     render() {
-        const { isPhotoViewerVisible, clickedPhotoIndex } = this.state;
-        const { thumbnailURL, time, title, details, price, location } = this.props;
+        const {
+            isPhotoViewerVisible,
+            clickedPhotoIndex,
+            sellerData
+        } = this.state;
+
+        const {
+            thumbnailURL,
+            time,
+            title,
+            details,
+            price,
+            location
+        } = this.props;
 
         return (
             <GeneralProductDetails
@@ -56,6 +89,8 @@ class GeneralProductDetailsContainer extends Component {
                 details={details}
                 clickedPhotoIndex={clickedPhotoIndex}
                 photoViewerDataSource={this.photoViewerDataSource()}
+                //FireStore
+                sellerData={sellerData}
             />
         );
     }

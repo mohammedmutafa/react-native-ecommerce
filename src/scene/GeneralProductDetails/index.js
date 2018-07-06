@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import GeneralProductDetailsContainer from './GeneralProductDetailsContainer';
@@ -11,6 +11,7 @@ const index = ({ navigation }) => {
     const title = params ? params.title : '';
     const details = params ? params.productDescription : '';
     const location = params ? params.selectedLocation : '';
+    const ownerID = params ? params.ownerID : '';
 
     return (
         <GeneralProductDetailsContainer
@@ -21,6 +22,7 @@ const index = ({ navigation }) => {
             title={title}
             details={details}
             location={location}
+            ownerID={ownerID}
         />
     )
 };

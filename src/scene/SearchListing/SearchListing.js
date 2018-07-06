@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
     View,
-    FlatList
+    FlatList,
+    Modal
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import Moment from 'moment';
 
 import { FeedsCard } from '../../component/FeedsCard';
 import { Filter } from '../../component/Filter';
+import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -71,7 +73,7 @@ class SearchListing extends Component {
         return (
             <FeedsCard
                 time={formatedDate}
-                name={ownerID}
+                ownerID={ownerID}
                 price={productPrice}
                 title={productTitle}
                 productDescription={productDescription}
@@ -154,12 +156,28 @@ class SearchListing extends Component {
         );
     }
 
+    renderActivityIndicator = () => {
+        const { isFetchingDataFromFirestore } = this.props;
+
+        return (
+            <Modal
+                visible={isFetchingDataFromFirestore}
+                transparent={true}
+                animationType="none"
+                onRequestClose={() => null}
+            >
+                <CustomActivityIndicator />
+            </Modal>
+        );
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
                 {this.renderFlatList()}
                 {this.renderFloatingFilterButton()}
                 {this.renderFilter()}
+                {this.renderActivityIndicator()}
             </View>
 
         );
@@ -188,7 +206,10 @@ SearchListing.propTypes = {
 
     //Fetch Operation
     isFetchingData: PropTypes.bool,
-    onRefresh: PropTypes.func
+    onRefresh: PropTypes.func,
+
+    //FireStore
+    isFetchingDataFromFirestore: PropTypes.bool
 };
 
 export default SearchListing;
