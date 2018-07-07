@@ -25,8 +25,8 @@ class GeneralProductDetailsContainer extends Component {
 
         userRef.get()
             .then((doc) => {
-                const { firstName, lastName, phoneNumber, gender, address, email } = doc.data();
-                const sellerData = { firstName, lastName, phoneNumber, gender, address, email }
+                const { firstName, lastName, phoneNumber, gender, address, email, profileImageURL } = doc.data();
+                const sellerData = { firstName, lastName, phoneNumber, gender, address, email, profileImageURL }
 
                 this.setState({
                     sellerData
