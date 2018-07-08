@@ -112,8 +112,8 @@ class UserProfileContainer extends Component {
     selectPhotoTapped = () => {
         const options = {
             quality: 1.0,
-            maxWidth: 500,
-            maxHeight: 500,
+            maxWidth: 300,
+            maxHeight: 300,
             storageOptions: {
                 skipBackup: true
             }
