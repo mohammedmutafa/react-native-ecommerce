@@ -154,7 +154,12 @@ class GeneralProductDetails extends Component {
     }
 
     renderProfileHeader = () => {
-        const { phoneNumber, profileImageURL } = this.props.sellerData;
+        const {
+            phoneNumber,
+            profileImageURL,
+            firstName,
+            lastName
+        } = this.props.sellerData;
 
         return (
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -166,7 +171,11 @@ class GeneralProductDetails extends Component {
                     source={{ uri: profileImageURL }}//onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
                 />
-                <Text style={[followButtonTextstyle, { color: Color.dark }]}>{phoneNumber}</Text>
+                <View style={{ flexDirection: 'column' }}>
+                    <Text style={[followButtonTextstyle, { color: Color.dark, marginBottom: 5 }]}>{firstName + ' ' + lastName}</Text>
+                    <Text style={[followButtonTextstyle, { color: Color.dark, fontSize: 14 }]}>{phoneNumber}</Text>
+                </View>
+
             </View>
         );
     }
