@@ -60,6 +60,12 @@ class GeneralProductDetailsContainer extends Component {
         return modifiedDS;
     }
 
+    onPressSellerAvatar = () => {
+        const { navigation } = this.props;
+
+        navigation.navigate('ProfilePublic');
+    }
+
     render() {
         const {
             isPhotoViewerVisible,
@@ -89,6 +95,7 @@ class GeneralProductDetailsContainer extends Component {
                 details={details}
                 clickedPhotoIndex={clickedPhotoIndex}
                 photoViewerDataSource={this.photoViewerDataSource()}
+                onPressSellerAvatar={this.onPressSellerAvatar}
                 //FireStore
                 sellerData={sellerData}
             />

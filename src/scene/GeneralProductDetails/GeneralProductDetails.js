@@ -154,12 +154,13 @@ class GeneralProductDetails extends Component {
     }
 
     renderProfileHeader = () => {
+        const { onPressSellerAvatar, sellerData } = this.props;
         const {
             phoneNumber,
             profileImageURL,
             firstName,
             lastName
-        } = this.props.sellerData;
+        } = sellerData;
 
         return (
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -168,12 +169,13 @@ class GeneralProductDetails extends Component {
                     width={50}
                     height={50}
                     containerStyle={{ marginHorizontal: 25 }}
-                    source={{ uri: profileImageURL }}//onPress={() => console.log("Works!")}
+                    source={{ uri: profileImageURL }}
                     activeOpacity={0.7}
+                    onPress={onPressSellerAvatar}
                 />
                 <View style={{ flexDirection: 'column' }}>
                     <Text style={[followButtonTextstyle, { color: Color.dark, marginBottom: 5 }]}>{firstName + ' ' + lastName}</Text>
-                    <Text style={[followButtonTextstyle, { color: Color.dark, fontSize: 14 }]}>{phoneNumber}</Text>
+                    <Text style={[followButtonTextstyle, { color: Color.lightDark, fontSize: 14 }]}>{phoneNumber}</Text>
                 </View>
 
             </View>
@@ -181,11 +183,19 @@ class GeneralProductDetails extends Component {
     }
 
     renderFollowButton = () => {
+        const { onPressSellerAvatar } = this.props;
+
         return (
             <View style={followButtonContainerStyle}>
-                <Text style={followButtonTextstyle}>PROFILE</Text>
-                <Text style={{ fontSize: 18, color: Color.placeholderWhite }}>|</Text>
-                <Text style={followButtonTextstyle}>CONTACT</Text>
+                <TouchableOpacity style={{ flex: 1 }} onPress={onPressSellerAvatar}>
+                    <Text style={followButtonTextstyle}>PROFILE</Text>
+                </TouchableOpacity>
+                <View style={{ flex: 1, alignItems: 'center' }}>
+                    <Text style={{ fontSize: 18, color: Color.placeholderWhite }}>|</Text>
+                </View>
+                <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }}>
+                    <Text style={followButtonTextstyle}>CONTACT</Text>
+                </TouchableOpacity>
             </View>
         );
     }
