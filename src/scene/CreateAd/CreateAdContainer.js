@@ -8,7 +8,7 @@ import CreateAd from './CreateAd';
 import {
     userCollectionRef,
     postCollectionRef,
-    getPostStorageReference
+    getPostStorageLocation
 } from '../../utilities/DBReferences';
 
 class CreateAdContainer extends Component {
@@ -121,8 +121,8 @@ class CreateAdContainer extends Component {
     selectPhotoTapped = () => {
         const options = {
             quality: 1.0,
-            maxWidth: 1000,
-            maxHeight: 1000,
+            maxWidth: 600,
+            maxHeight: 600,
             storageOptions: {
                 skipBackup: true
             }
@@ -220,15 +220,15 @@ class CreateAdContainer extends Component {
         firebase.firestore()
             .runTransaction(updateFunction)
             .then((result) => {
-                const postStorageRef = getPostStorageReference(userID, newPostId, 0);
+                const postStorageRef = getPostStorageLocation(userID, newPostId, 0);
 
                 firebase.storage()
                     .ref(postStorageRef)
                     .putFile(imageSourceURI, metadata)
                     .on('state_changed', (snapshot) => {
                         //Current upload state
-                        let data = {
-                            profileImageURL: postStorageRef
+                        let imageData = {
+                            coverImageURL: snapshot.downloadURL
                         };
                         /**
                          * To update some fields of a document without overwriting the entire document, use the update() method:
@@ -237,7 +237,7 @@ class CreateAdContainer extends Component {
                         newPostRef.get()
                             .then((doc) => {
                                 if (!doc.exists) {
-                                    userRef.set(data).then(() => {
+                                    userRef.set(imageData).then(() => {
                                         //Creating new set of data
                                         this.setState({
                                             isFirestoreDataUpdating: false
@@ -248,7 +248,7 @@ class CreateAdContainer extends Component {
                                         });
                                     });
                                 } else {
-                                    newPostRef.update(data).then(() => {
+                                    newPostRef.update(imageData).then(() => {
                                         //updating current set of data
                                         this.setState({
                                             isFirestoreDataUpdating: false

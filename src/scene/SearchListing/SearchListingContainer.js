@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import firebase from 'react-native-firebase';
 
 import SearchListing from './SearchListing';
+
+import {
+    postCollectionRef
+} from '../../utilities/DBReferences';
 
 class SearchListingContainer extends Component {
 
@@ -30,8 +33,6 @@ class SearchListingContainer extends Component {
     }
 
     async componentWillMount() {
-        let postCollectionRef = firebase.firestore().collection('posts');
-
         this.setState({
             isFetchingDataFromFirestore: true
         });

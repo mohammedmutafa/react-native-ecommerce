@@ -38,7 +38,16 @@ export class FeedsCard extends Component {
     }
 
     render() {
-        const { ownerID, title, productDescription, price, time, imageURL, selectedLocation, thumbnailURL, navigation } = this.props;
+        const {
+            ownerID,
+            title,
+            productDescription,
+            price,
+            time,
+            selectedLocation,
+            thumbnailURL,
+            navigation
+        } = this.props;
         const { bookmarked } = this.state;
 
         return (
@@ -83,7 +92,7 @@ export class FeedsCard extends Component {
                         })}
                 >
                     <Image
-                        source={{ uri: imageURL }}
+                        source={{ uri: thumbnailURL }}
                         style={imageViewStyle}
                     />
                     {/*<Icon
