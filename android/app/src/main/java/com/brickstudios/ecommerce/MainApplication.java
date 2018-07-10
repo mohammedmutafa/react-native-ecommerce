@@ -5,8 +5,12 @@ import android.app.Application;
 import com.brickstudios.ecommerce.BuildConfig;
 import com.facebook.react.ReactApplication;
 import com.imagepicker.ImagePickerPackage;
+
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
+import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.wix.interactable.Interactable;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -20,39 +24,41 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+        @Override
+        public boolean getUseDeveloperSupport() {
+            return BuildConfig.DEBUG;
+        }
+
+        @Override
+        protected List<ReactPackage> getPackages() {
+            return Arrays.<ReactPackage>asList(
+                    new MainReactPackage(),
+                    new ImagePickerPackage(),
+                    new RNFirebasePackage(),
+                    new RNFirebaseFirestorePackage(),
+                    new RNFirebaseStoragePackage(),
+                    new RNFirebaseAuthPackage(),
+                    new LottiePackage(),
+                    new Interactable(),
+                    new VectorIconsPackage()
+            );
+        }
+
+        @Override
+        protected String getJSMainModuleName() {
+            return "index";
+        }
+    };
+
     @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
     }
 
     @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new ImagePickerPackage(),
-              new RNFirebasePackage(),
-              new RNFirebaseAuthPackage(),
-            new LottiePackage(),
-            new Interactable(),
-            new VectorIconsPackage()
-      );
+    public void onCreate() {
+        super.onCreate();
+        SoLoader.init(this, /* native exopackage */ false);
     }
-
-    @Override
-    protected String getJSMainModuleName() {
-      return "index";
-    }
-  };
-
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
-  }
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
-  }
 }
