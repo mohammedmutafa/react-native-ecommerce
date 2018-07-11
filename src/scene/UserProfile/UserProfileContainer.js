@@ -20,7 +20,9 @@ class UserProfileContainer extends Component {
 
             isSelectGenderModalViewVisible: false,
             createAdStatus: true,
-            isUserDataUpdating: false
+            isUserDataUpdating: false,
+            //FireStore
+            profileImageURL: undefined
         };
     }
 
@@ -35,7 +37,7 @@ class UserProfileContainer extends Component {
 
         userRef.get()
             .then((doc) => {
-                const { firstName, lastName, gender, address, email } = doc.data();
+                const { firstName, lastName, gender, address, email, profileImageURL } = doc.data();
 
                 this.setState({
                     isUserDataUpdating: false,
@@ -43,7 +45,8 @@ class UserProfileContainer extends Component {
                     lastName,
                     gender,
                     email,
-                    address
+                    address,
+                    profileImageURL
                 });
             }).catch((err) => {
                 this.setState({
@@ -109,8 +112,8 @@ class UserProfileContainer extends Component {
     selectPhotoTapped = () => {
         const options = {
             quality: 1.0,
-            maxWidth: 1000,
-            maxHeight: 1000,
+            maxWidth: 300,
+            maxHeight: 300,
             storageOptions: {
                 skipBackup: true
             }
@@ -135,8 +138,68 @@ class UserProfileContainer extends Component {
                 this.setState({
                     selectedImageSource: source
                 });
+
+                this.updateProfileImage(response.uri);
             }
         });
+    }
+
+    getUserDocRef = () => {
+        const { userID } = this.props;
+
+        return firebase.firestore().collection('users').doc(`${userID}`);
+    }
+
+    updateProfileImage = (selectedImageSource) => {
+        const { userID } = this.props;
+
+        let userRef = this.getUserDocRef();
+
+        const metadata = {
+            contentType: 'image/jpeg'
+        }
+
+        firebase.storage()
+            .ref('/images/' + userID + `/${userID}_image_profile`)
+            .putFile(selectedImageSource, metadata)
+            .on('state_changed', (snapshot) => {
+                //Current upload state
+                let data = {
+                    profileImageURL: snapshot.downloadURL
+                };
+                /**
+                 * To update some fields of a document without overwriting the entire document, use the update() method:
+                 * If you use set(), it will delete old data and add new one.
+                 */
+                userRef.get()
+                    .then((doc) => {
+                        if (!doc.exists) {
+                            userRef.set(data).then(() => {
+                                //Creating new set of data
+                            }).catch((error) => {
+
+                            });
+                        } else {
+                            userRef.update(data).then(() => {
+                                //updating current set of data
+                            }).catch((error) => {
+                                //
+                            });
+                        }
+
+                    }).catch((err) => {
+                        //
+                    });
+
+                //TODO: check if updating failed
+
+            }, (err) => {
+                //Error
+                //unsubscribe();
+            }, (uploadedFile) => {
+                //Success
+                //unsubscribe();
+            });
     }
 
     updateUserInfo = () => {
@@ -147,7 +210,7 @@ class UserProfileContainer extends Component {
             isUserDataUpdating: true
         });
 
-        let userRef = firebase.firestore().collection('users').doc(`${userID}`);
+        let userRef = this.getUserDocRef();
 
         let data = {
             phoneNumber: `${userID}`,
@@ -199,7 +262,8 @@ class UserProfileContainer extends Component {
             email,
             address,
             isSelectGenderModalViewVisible,
-            isUserDataUpdating
+            isUserDataUpdating,
+            profileImageURL
         } = this.state;
 
         const { navigation } = this.props;
@@ -234,6 +298,7 @@ class UserProfileContainer extends Component {
                 //FireStore
                 isUserDataUpdating={isUserDataUpdating}
                 updateUserInfo={this.updateUserInfo}
+                profileImageURL={profileImageURL}
             />
         );
     }

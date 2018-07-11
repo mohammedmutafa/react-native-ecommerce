@@ -25,8 +25,8 @@ class GeneralProductDetailsContainer extends Component {
 
         userRef.get()
             .then((doc) => {
-                const { firstName, lastName, phoneNumber, gender, address, email } = doc.data();
-                const sellerData = { firstName, lastName, phoneNumber, gender, address, email }
+                const { firstName, lastName, phoneNumber, gender, address, email, profileImageURL } = doc.data();
+                const sellerData = { firstName, lastName, phoneNumber, gender, address, email, profileImageURL }
 
                 this.setState({
                     sellerData
@@ -60,6 +60,12 @@ class GeneralProductDetailsContainer extends Component {
         return modifiedDS;
     }
 
+    onPressSellerAvatar = () => {
+        const { navigation } = this.props;
+
+        navigation.navigate('ProfilePublic');
+    }
+
     render() {
         const {
             isPhotoViewerVisible,
@@ -89,6 +95,7 @@ class GeneralProductDetailsContainer extends Component {
                 details={details}
                 clickedPhotoIndex={clickedPhotoIndex}
                 photoViewerDataSource={this.photoViewerDataSource()}
+                onPressSellerAvatar={this.onPressSellerAvatar}
                 //FireStore
                 sellerData={sellerData}
             />

@@ -60,7 +60,8 @@ class SearchListing extends Component {
             productPrice,
             productTitle,
             productDescription,
-            selectedLocation
+            selectedLocation,
+            coverImageURL
         } = item;
 
         let formatedDate = '';
@@ -78,8 +79,7 @@ class SearchListing extends Component {
                 title={productTitle}
                 productDescription={productDescription}
                 selectedLocation={selectedLocation}
-                // imageURL={item.url}
-                // thumbnailURL={item.url}
+                thumbnailURL={coverImageURL}
                 navigation={navigation}
             />
         );

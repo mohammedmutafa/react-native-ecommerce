@@ -52,6 +52,7 @@ class UserProfile extends Component {
     renderImageView = () => {
         const {
             selectedImageSource,
+            profileImageURL,
             selectPhotoTapped
         } = this.props;
 
@@ -59,6 +60,7 @@ class UserProfile extends Component {
             <View>
                 <CreateAdCoverPhoto
                     localImageSource={selectedImageSource ? selectedImageSource : null}
+                    imageURL={profileImageURL}
                     isUserProfile={true}
                 />
                 <TouchableOpacity
@@ -324,10 +326,12 @@ UserProfile.propTypes = {
     //Image
     selectedImageSource: PropTypes.object,
     selectPhotoTapped: PropTypes.func,
+    profileImageURL: PropTypes.string,
 
     //FireStore
     updateUserInfo: PropTypes.func,
-    isUserDataUpdating: PropTypes.bool
+    isUserDataUpdating: PropTypes.bool,
+
 }
 
 export default UserProfile;

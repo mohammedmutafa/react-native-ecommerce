@@ -5,6 +5,12 @@ import firebase from 'react-native-firebase';
 
 import CreateAd from './CreateAd';
 
+import {
+    userCollectionRef,
+    postCollectionRef,
+    getPostStorageLocation
+} from '../../utilities/DBReferences';
+
 class CreateAdContainer extends Component {
     constructor(props) {
         super(props);
@@ -115,8 +121,8 @@ class CreateAdContainer extends Component {
     selectPhotoTapped = () => {
         const options = {
             quality: 1.0,
-            maxWidth: 1000,
-            maxHeight: 1000,
+            maxWidth: 600,
+            maxHeight: 600,
             storageOptions: {
                 skipBackup: true
             }
@@ -149,6 +155,7 @@ class CreateAdContainer extends Component {
     updateAdInFireStore = () => {
         const { userID } = this.props;
         const {
+            selectedImageSource,
             selectedCategory,
             selectedSubCategory,
             selectedLocation,
@@ -162,14 +169,24 @@ class CreateAdContainer extends Component {
             isFirestoreDataUpdating: true
         });
 
-        const postCollectionRef = firebase.firestore().collection('posts');
-        const userRef = firebase.firestore().collection('users').doc(`${userID}`);
+        //TODO: check is any value is missing before updating
+
         /**
          * Important: Unlike "push IDs" in the Firebase Realtime Database, 
          * Cloud Firestore auto-generated IDs do not provide any automatic ordering. 
          * If you want to be able to order your documents by creation date, you should store a timestamp as a field in the documents.
          */
+
+        const imageSourceURI = selectedImageSource.uri;
         const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
+        const userRef = userCollectionRef.doc(`${userID}`);
+        const newPostRef = postCollectionRef.doc();
+        const newPostId = newPostRef.id;
+
+        const metadata = {
+            contentType: 'image/jpeg'
+        }
 
         let data = {
             selectedCategory,
@@ -194,8 +211,6 @@ class CreateAdContainer extends Component {
              * If you use set(), it will delete old data and add new one.
              */
             if (userDoc.exists) {
-                const newPostRef = postCollectionRef.doc();
-
                 transaction.set(newPostRef, data);
                 transaction.update(userRef, { newPost: newPostRef });
             }
@@ -205,13 +220,62 @@ class CreateAdContainer extends Component {
         firebase.firestore()
             .runTransaction(updateFunction)
             .then((result) => {
-                console.log(result);
-                this.setState({
-                    isFirestoreDataUpdating: false
-                });
+                const postStorageRef = getPostStorageLocation(userID, newPostId, 0);
+
+                firebase.storage()
+                    .ref(postStorageRef)
+                    .putFile(imageSourceURI, metadata)
+                    .on('state_changed', (snapshot) => {
+                        //Current upload state
+                        let imageData = {
+                            coverImageURL: snapshot.downloadURL
+                        };
+                        /**
+                         * To update some fields of a document without overwriting the entire document, use the update() method:
+                         * If you use set(), it will delete old data and add new one.
+                         */
+                        newPostRef.get()
+                            .then((doc) => {
+                                if (!doc.exists) {
+                                    userRef.set(imageData).then(() => {
+                                        //Creating new set of data
+                                        this.setState({
+                                            isFirestoreDataUpdating: false
+                                        });
+                                    }).catch((error) => {
+                                        this.setState({
+                                            isFirestoreDataUpdating: false
+                                        });
+                                    });
+                                } else {
+                                    newPostRef.update(imageData).then(() => {
+                                        //updating current set of data
+                                        this.setState({
+                                            isFirestoreDataUpdating: false
+                                        });
+                                    }).catch((error) => {
+                                        this.setState({
+                                            isFirestoreDataUpdating: false
+                                        });
+                                    });
+                                }
+                            }).catch((err) => {
+                                this.setState({
+                                    isFirestoreDataUpdating: false
+                                });
+                            });
+                        //TODO: check if updating failed
+                    }, (err) => {
+                        this.setState({
+                            isFirestoreDataUpdating: false
+                        });
+                    }, (uploadedFile) => {
+                        this.setState({
+                            isFirestoreDataUpdating: false
+                        });
+                    });
             })
             .catch((error) => {
-                console.log('Transaction failed: ', error);
                 this.setState({
                     isFirestoreDataUpdating: false
                 });

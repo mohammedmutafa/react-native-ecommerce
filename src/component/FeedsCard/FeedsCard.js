@@ -7,7 +7,6 @@ import {
     TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { Avatar, Icon } from 'react-native-elements';
 
 import styles from './styles';
 import colors from '../../styles/Color';
@@ -16,13 +15,12 @@ import Fonts from '../../styles/Fonts'
 
 const {
     container,
-    avatarContainer,
-    profileConatiner,
     imageViewContainerStyle,
     imageViewStyle,
-    nameTextStyle,
-    productTitleTextStyle,
-    detailContainerStyle
+    titleTextStyle,
+    dateTextStyle,
+    productDescriptionTextStyle,
+    titleContainerStyle
 } = styles;
 
 export class FeedsCard extends Component {
@@ -37,56 +35,47 @@ export class FeedsCard extends Component {
         this.setState({ bookmarked: !this.state.bookmarked });
     }
 
-    render() {
-        const { ownerID, title, productDescription, price, time, imageURL, selectedLocation, thumbnailURL, navigation } = this.props;
-        const { bookmarked } = this.state;
+    onCardPress = () => {
+        const {
+            ownerID,
+            price,
+            time,
+            title,
+            thumbnailURL,
+            productDescription,
+            navigation,
+            selectedLocation
+        } = this.props;
+
+        navigation.navigate('GeneralProductDetails',
+            {
+                time: time,
+                ownerID: ownerID,
+                price: price,
+                title: title,
+                productDescription: productDescription,
+                thumbnailURL: thumbnailURL,
+                selectedLocation: selectedLocation
+            })
+
+    }
+
+    renderImageView = () => {
+        const {
+            price,
+            thumbnailURL
+        } = this.props;
 
         return (
-            <View style={container}>
-                <View style={detailContainerStyle}>
-                    <View style={avatarContainer}>
-                        <View style={profileConatiner}>
-                            <Avatar
-                                small
-                                rounded
-                                source={{ uri: thumbnailURL }}
-                                onPress={() => navigation.navigate('ProfilePublic')}
-                                activeOpacity={0.7}
-                            />
-                            <Text
-                                style={nameTextStyle}
-                                ellipsizeMode="tail"
-                                numberOfLines={1}
-                            >
-                                {ownerID}
-                            </Text>
-                        </View>
-                        <Text
-                            style={{ alignSelf: 'flex-end', color: colors.lightDark, fontSize: 10 }}
-                            ellipsizeMode="tail"
-                            numberOfLines={1}
-                        >{time}
-                        </Text>
-                    </View>
-                </View>
-                <TouchableOpacity
-                    style={imageViewContainerStyle}
-                    onPress={() => navigation.navigate('GeneralProductDetails',
-                        {
-                            time: time,
-                            ownerID: ownerID,
-                            price: price,
-                            title: title,
-                            productDescription: productDescription,
-                            thumbnailURL: thumbnailURL,
-                            selectedLocation: selectedLocation
-                        })}
-                >
-                    <Image
-                        source={{ uri: imageURL }}
-                        style={imageViewStyle}
-                    />
-                    {/*<Icon
+            <TouchableOpacity
+                style={imageViewContainerStyle}
+                onPress={this.onCardPress}
+            >
+                <Image
+                    source={{ uri: thumbnailURL }}
+                    style={imageViewStyle}
+                />
+                {/*<Icon
                         underlayColor="transparent"
                         name={bookmarked ? 'heart' : 'heart-outlined'}
                         type="entypo"
@@ -94,23 +83,69 @@ export class FeedsCard extends Component {
                         containerStyle={{ position: 'absolute', alignSelf: 'flex-end', padding: 10 }}
                         onPress={this.onPressBookmarkButton}
                     />*/}
-                    <View style={{ position: 'absolute', alignSelf: 'flex-end', bottom: 0, padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.4)' }}>
-                        <Text
-                            style={{ color: colors.lightWhite, fontSize: 18, fontFamily: Fonts.CharterBT }}
-                        >
-                            {`₹ ${numberWithCommas(price)}`}
-                        </Text>
-                    </View>
-                </TouchableOpacity>
+                <View style={{ position: 'absolute', alignSelf: 'flex-end', bottom: 0, padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.4)' }}>
+                    <Text
+                        style={{ color: colors.lightWhite, fontSize: 18, fontFamily: Fonts.CharterBT }}
+                    >
+                        {`₹ ${numberWithCommas(price)}`}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+
+    renderTitleContainer = () => {
+        const {
+            title,
+            time
+        } = this.props;
+
+        return (
+            <View style={titleContainerStyle}>
                 <Text
-                    style={productTitleTextStyle}
+                    style={titleTextStyle}
                     ellipsizeMode="tail"
-                    numberOfLines={2}
+                    numberOfLines={1}
                 >
                     {title}
                 </Text>
+                <View style={{ flex: 2 }}>
+                    <Text
+                        style={dateTextStyle}
+                        ellipsizeMode="tail"
+                        numberOfLines={1}
+                    >{time}
+                    </Text>
+                </View>
             </View>
+        );
+    }
 
+    render() {
+        const {
+            ownerID,
+            title,
+            productDescription,
+            price,
+            time,
+            selectedLocation,
+            thumbnailURL,
+            navigation
+        } = this.props;
+        const { bookmarked } = this.state;
+
+        return (
+            <View style={container}>
+                {this.renderTitleContainer()}
+                {this.renderImageView()}
+                {/*<Text
+                    style={productDescriptionTextStyle}
+                    ellipsizeMode="tail"
+                    numberOfLines={1}
+                >
+                    {title}
+                </Text>*/}
+            </View>
         );
     }
 }
