@@ -12,11 +12,8 @@ import { Avatar } from 'react-native-elements';
 
 import styles from './styles';
 import colors from '../../styles/Color';
-import Categories from '../../styles/Categories';
 import Color from '../../styles/Color';
 import Fonts from '../../styles/Fonts';
-
-const { MainCategory } = Categories;
 
 class ProfilePublic extends Component {
 
@@ -26,7 +23,7 @@ class ProfilePublic extends Component {
         return (
             <TouchableOpacity>
                 <Image
-                    source={{ uri: item.thumbnail }}
+                    source={{ uri: item.coverImageURL }}
                     style={gridViewCardStyle}
                 />
             </TouchableOpacity >
@@ -34,11 +31,13 @@ class ProfilePublic extends Component {
     }
 
     renderPublishedPostList = () => {
+        const { sellerAdsList } = this.props;
+
         return (
             <FlatList
                 showsVerticalScrollIndicator={false}
                 style={{ alignSelf: 'center', marginTop: 10, backgroundColor: colors.lightBlueWhite }}
-                data={MainCategory}
+                data={sellerAdsList}
                 renderItem={this.renderItemCard}
                 // removeClippedSubviews={false}
                 keyExtractor={this.keyExtractor}
