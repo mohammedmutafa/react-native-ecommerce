@@ -74,6 +74,11 @@ class GeneralProductDetailsContainer extends Component {
     onPressSellerAvatar = () => {
         const { navigation } = this.props;
         const { sellerData } = this.state;
+        const { ownerID } = sellerData;
+
+        if (!ownerID) {
+            return;
+        }
 
         navigation.navigate('ProfilePublic', {
             sellerData: sellerData
