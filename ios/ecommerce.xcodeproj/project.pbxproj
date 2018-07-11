@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -62,7 +61,6 @@
 		FBA729F120B00D20005F4ACF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA729F020B00D20005F4ACF /* GoogleService-Info.plist */; };
 		FBBAD57E20D191CC001DA5B8 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBBAD57C20D191B8001DA5B8 /* libRNImagePicker.a */; };
 		FC484B62D5764BD88D758A7B /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A88A55C8C67B4498ABB3C060 /* libLottieReactNative.a */; };
-		FE057DAFAD45458783C79BCD /* DancingScriptOT.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7C922DA038847E39D9E3346 /* DancingScriptOT.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1427,7 +1425,6 @@
 				F4D735F531394BCE9A1997BE /* Zocial.ttf in Resources */,
 				FBA729F120B00D20005F4ACF /* GoogleService-Info.plist in Resources */,
 				28E1BC40342045619446CBCD /* Charter BT.ttf in Resources */,
-				FE057DAFAD45458783C79BCD /* DancingScriptOT.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
