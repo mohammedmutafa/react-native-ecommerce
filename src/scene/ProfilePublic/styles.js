@@ -67,7 +67,7 @@ export default styles = StyleSheet.create({
         fontFamily: Fonts.CharterBT
     },
     activityIndicatorStyle: {
-        marginTop: 25,
+        marginTop: 35,
         alignItems: 'center'
     }
 });
