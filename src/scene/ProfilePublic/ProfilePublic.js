@@ -92,10 +92,13 @@ class ProfilePublic extends Component {
     }
 
     renderProfileStatInfo = () => {
+        const { sellerAdsList } = this.props;
+        const postCount = sellerAdsList ? sellerAdsList.length : 0;
+
         return (
             <View style={profileStatInfoStyle}>
                 <View style={profileStatTextContainerStyle}>
-                    <Text style={profileStatCountTextStyle}>86</Text>
+                    <Text style={profileStatCountTextStyle}>{postCount}</Text>
                     <Text style={profileStatTitleTextStyle}>Posts</Text>
                 </View>
                 <View style={profileStatTextContainerStyle}>
