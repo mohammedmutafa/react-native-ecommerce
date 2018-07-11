@@ -218,7 +218,8 @@ class UserProfileContainer extends Component {
             lastName,
             gender,
             email,
-            address
+            address,
+            ownerID: `${userID}`
         };
         /**
          * To update some fields of a document without overwriting the entire document, use the update() method:

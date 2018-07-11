@@ -3,20 +3,66 @@ import PropTypes from 'prop-types';
 
 import ProfilePublic from './ProfilePublic';
 
-class SearchListingContainer extends Component {
+import { postCollectionRef } from '../../utilities/DBReferences';
 
+class ProfilePublicContainer extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            sellerAdsList: [],
+            isFetchingAdsDataFromFirestore: false
+        }
+    }
+
+    async componentWillMount() {
+        const { sellerData } = this.props;
+        const { ownerID } = sellerData;
+
+        this.setState({
+            isFetchingAdsDataFromFirestore: true
+        });
+
+        const { sellerAdsList } = this.state;
+        let copySellerAdsList = [...sellerAdsList];
+
+        await postCollectionRef.where('ownerID', '==', ownerID).get()
+            .then((snapshot) => {
+                let dSArray = [];
+                snapshot.forEach((doc) => {
+                    dSArray.push(doc.data());
+                });
+                copySellerAdsList = [...copySellerAdsList, ...dSArray];
+            })
+            .catch((err) => {
+                //console.log('Error getting documents', err);
+                this.setState({
+                    isFetchingAdsDataFromFirestore: false
+                });
+            });
+
+        this.setState({
+            sellerAdsList: copySellerAdsList,
+            isFetchingAdsDataFromFirestore: false
+        });
     }
 
     render() {
+        const { sellerData } = this.props;
+        const { sellerAdsList, isFetchingAdsDataFromFirestore } = this.state;
 
-        return <ProfilePublic />
+        return (
+            <ProfilePublic
+                sellerData={sellerData}
+                sellerAdsList={sellerAdsList}
+                isFetchingAdsDataFromFirestore={isFetchingAdsDataFromFirestore}
+            />
+        );
     }
 }
 
-ProfilePublic.propTypes = {
-
+ProfilePublicContainer.propTypes = {
+    sellerData: PropTypes.object
 };
 
-export default ProfilePublic;
+export default ProfilePublicContainer;

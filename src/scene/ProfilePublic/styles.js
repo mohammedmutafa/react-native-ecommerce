@@ -55,7 +55,6 @@ export default styles = StyleSheet.create({
     profileStatCountTextStyle: {
         fontSize: 18,
         color: Color.dark,
-        fontWeight: 'bold',
         fontFamily: Fonts.CharterBT
     },
     profileStatTitleTextStyle: {
@@ -65,7 +64,10 @@ export default styles = StyleSheet.create({
     followButtonTextstyle: {
         fontSize: 18,
         color: Color.golden,
-        fontWeight: 'bold',
         fontFamily: Fonts.CharterBT
+    },
+    activityIndicatorStyle: {
+        marginTop: 35,
+        alignItems: 'center'
     }
 });
