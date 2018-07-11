@@ -27,7 +27,7 @@ export default styles = StyleSheet.create({
         alignSelf: 'center',
         color: colors.lightDark,
         fontFamily: Fonts.CharterBT,
-        paddingVertical: 5
+        marginHorizontal: 5
     },
     gridViewCardStyle: {
         justifyContent: 'center',

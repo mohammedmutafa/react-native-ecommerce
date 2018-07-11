@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     ScrollView
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Icon } from 'react-native-elements';
 
 import styles from './styles';
 import colors from '../../styles/Color';
@@ -86,7 +86,15 @@ class ProfilePublic extends Component {
         return (
             <View style={{ flexDirection: 'column', backgroundColor: colors.lightBlueWhite }}>
                 <Text style={nameTextStyle}>{sellerFirstName + ' ' + sellerLastName}</Text>
-                <Text style={addressTextStyle}>{address}</Text>
+                <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 10 }}>
+                    <Icon
+                        name="ios-pin-outline"
+                        type="ionicon"
+                        color={Color.golden}
+                        underlayColor="transparent"
+                    />
+                    <Text style={addressTextStyle}>{address}</Text>
+                </View>
             </View>
         );
     }
