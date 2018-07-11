@@ -112,7 +112,6 @@ export default styles = StyleSheet.create({
     photoViewDividerTextstyle: {
         color: '#2a2a2a',
         fontFamily: Fonts.DancingScriptOT,
-        fontStyle: 'italic',
         fontSize: 25
     },
     photoCardStyle: {
@@ -144,13 +143,11 @@ export default styles = StyleSheet.create({
     followButtonTextstyle: {
         fontSize: 18,
         color: Color.golden,
-        fontWeight: 'bold',
         fontFamily: Fonts.CharterBT
     },
     locationTextStyle: {
         fontSize: 20,
         color: Color.dark,
-        fontWeight: 'bold',
         fontFamily: Fonts.CharterBT,
         paddingHorizontal: 10
     }
