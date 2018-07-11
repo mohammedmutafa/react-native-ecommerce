@@ -5,6 +5,7 @@ import {
     Text,
     Image,
     FlatList,
+    ActivityIndicator,
     TouchableOpacity,
     ScrollView
 } from 'react-native';
@@ -31,7 +32,17 @@ class ProfilePublic extends Component {
     }
 
     renderPublishedPostList = () => {
-        const { sellerAdsList } = this.props;
+        const { sellerAdsList, isFetchingAdsDataFromFirestore } = this.props;
+
+        if (isFetchingAdsDataFromFirestore) {
+            return (
+                <ActivityIndicator
+                    size="small"
+                    color={Color.golden}
+                    style={activityIndicatorStyle}
+                />
+            );
+        }
 
         return (
             <FlatList
@@ -135,7 +146,8 @@ const {
     profileStatTextContainerStyle,
     profileStatCountTextStyle,
     profileStatTitleTextStyle,
-    followButtonTextstyle
+    followButtonTextstyle,
+    activityIndicatorStyle
 } = styles;
 
 ProfilePublic.propTypes = {

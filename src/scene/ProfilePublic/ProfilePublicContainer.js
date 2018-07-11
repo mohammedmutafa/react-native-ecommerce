@@ -10,13 +10,18 @@ class ProfilePublicContainer extends Component {
         super(props);
 
         this.state = {
-            sellerAdsList: []
+            sellerAdsList: [],
+            isFetchingAdsDataFromFirestore: false
         }
     }
 
     async componentWillMount() {
         const { sellerData } = this.props;
         const { ownerID } = sellerData;
+
+        this.setState({
+            isFetchingAdsDataFromFirestore: true
+        });
 
         const { sellerAdsList } = this.state;
         let copySellerAdsList = [...sellerAdsList];
@@ -30,22 +35,27 @@ class ProfilePublicContainer extends Component {
                 copySellerAdsList = [...copySellerAdsList, ...dSArray];
             })
             .catch((err) => {
-                console.log('Error getting documents', err);
+                //console.log('Error getting documents', err);
+                this.setState({
+                    isFetchingAdsDataFromFirestore: false
+                });
             });
 
         this.setState({
-            sellerAdsList: copySellerAdsList
+            sellerAdsList: copySellerAdsList,
+            isFetchingAdsDataFromFirestore: false
         });
     }
 
     render() {
         const { sellerData } = this.props;
-        const { sellerAdsList } = this.state;
+        const { sellerAdsList, isFetchingAdsDataFromFirestore } = this.state;
 
         return (
             <ProfilePublic
                 sellerData={sellerData}
                 sellerAdsList={sellerAdsList}
+                isFetchingAdsDataFromFirestore={isFetchingAdsDataFromFirestore}
             />
         );
     }
