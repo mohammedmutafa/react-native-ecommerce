@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import firebase from 'react-native-firebase';
+import PropTypes from 'prop-types';
 
 import GeneralProductDetails from './GeneralProductDetails';
 import Categories from '../../styles/Categories';
+
+import { userCollectionRef } from '../../utilities/DBReferences';
 
 const { MainCategory } = Categories;
 
@@ -21,12 +23,21 @@ class GeneralProductDetailsContainer extends Component {
 
     componentWillMount() {
         const { ownerID } = this.props;
-        let userRef = firebase.firestore().collection('users').doc(`${ownerID}`);
+        let userRef = userCollectionRef.doc(`${ownerID}`);
 
         userRef.get()
             .then((doc) => {
-                const { firstName, lastName, phoneNumber, gender, address, email, profileImageURL } = doc.data();
-                const sellerData = { firstName, lastName, phoneNumber, gender, address, email, profileImageURL }
+                const { firstName, lastName, ownerID, phoneNumber, gender, address, email, profileImageURL } = doc.data();
+                const sellerData = {
+                    firstName,
+                    lastName,
+                    ownerID,
+                    phoneNumber,
+                    gender,
+                    address,
+                    email,
+                    profileImageURL
+                }
 
                 this.setState({
                     sellerData
@@ -62,8 +73,11 @@ class GeneralProductDetailsContainer extends Component {
 
     onPressSellerAvatar = () => {
         const { navigation } = this.props;
+        const { sellerData } = this.state;
 
-        navigation.navigate('ProfilePublic');
+        navigation.navigate('ProfilePublic', {
+            sellerData: sellerData
+        });
     }
 
     render() {
@@ -102,5 +116,16 @@ class GeneralProductDetailsContainer extends Component {
         );
     }
 }
+
+GeneralProductDetailsContainer.propTypes = {
+    navigation: PropTypes.object,
+    thumbnailURL: PropTypes.string,
+    time: PropTypes.string,
+    title: PropTypes.string,
+    details: PropTypes.string,
+    price: PropTypes.number,
+    location: PropTypes.string,
+    ownerID: PropTypes.string
+};
 
 export default GeneralProductDetailsContainer;

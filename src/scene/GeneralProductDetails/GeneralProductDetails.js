@@ -7,6 +7,7 @@ import {
     Text,
     Modal
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { Icon, Avatar } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
@@ -161,6 +162,9 @@ class GeneralProductDetails extends Component {
             firstName,
             lastName
         } = sellerData;
+        const sellerFirstName = firstName ? firstName : '';
+        const sellerLastName = lastName ? lastName : '';
+        const sellerPhoneNumber = phoneNumber ? phoneNumber : '';
 
         return (
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -174,10 +178,9 @@ class GeneralProductDetails extends Component {
                     onPress={onPressSellerAvatar}
                 />
                 <View style={{ flexDirection: 'column' }}>
-                    <Text style={[followButtonTextstyle, { color: Color.dark, marginBottom: 5 }]}>{firstName + ' ' + lastName}</Text>
-                    <Text style={[followButtonTextstyle, { color: Color.lightDark, fontSize: 14 }]}>{phoneNumber}</Text>
+                    <Text style={[followButtonTextstyle, { color: Color.dark, marginBottom: 5 }]}>{sellerFirstName + ' ' + sellerLastName}</Text>
+                    <Text style={[followButtonTextstyle, { color: Color.lightDark, fontSize: 14 }]}>{sellerPhoneNumber}</Text>
                 </View>
-
             </View>
         );
     }
@@ -269,5 +272,23 @@ const {
     followButtonTextstyle,
     locationTextStyle
 } = styles;
+
+GeneralProductDetails.propTypes = {
+    navigation: PropTypes.object,
+    thumbnailURL: PropTypes.string,
+    time: PropTypes.string,
+    title: PropTypes.string,
+    details: PropTypes.string,
+    price: PropTypes.number,
+    location: PropTypes.string,
+    ownerID: PropTypes.string,
+    isPhotoViewerVisible: PropTypes.bool,
+    hidePhotoViewer: PropTypes.func,
+    clickedPhotoIndex: PropTypes.number,
+    photoViewerDataSource: PropTypes.array,
+    onPressSellerAvatar: PropTypes.func,
+    sellerData: PropTypes.object,
+    showPhotoViewer: PropTypes.func
+};
 
 export default GeneralProductDetails;

@@ -10,13 +10,18 @@ class SearchListingContainer extends Component {
     }
 
     render() {
+        const { sellerData } = this.props;
 
-        return <ProfilePublic />
+        return (
+            <ProfilePublic
+                sellerData={sellerData}
+            />
+        );
     }
 }
 
 ProfilePublic.propTypes = {
-
+    sellerData: PropTypes.object
 };
 
 export default ProfilePublic;
