@@ -26,7 +26,8 @@ class ProfilePublicContainer extends Component {
         const { sellerAdsList } = this.state;
         let copySellerAdsList = [...sellerAdsList];
 
-        await postCollectionRef.where('ownerID', '==', ownerID).get()
+        //For order by issue refer this discussion : https://github.com/invertase/react-native-firebase/issues/568
+        await postCollectionRef.where('ownerID', '==', ownerID).orderBy('updatedAt', 'desc').get()
             .then((snapshot) => {
                 let dSArray = [];
                 snapshot.forEach((doc) => {
@@ -35,7 +36,7 @@ class ProfilePublicContainer extends Component {
                 copySellerAdsList = [...copySellerAdsList, ...dSArray];
             })
             .catch((err) => {
-                //console.log('Error getting documents', err);
+                console.log('Error getting documents', err);
                 this.setState({
                     isFetchingAdsDataFromFirestore: false
                 });
