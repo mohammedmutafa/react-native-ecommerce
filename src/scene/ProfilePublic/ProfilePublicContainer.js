@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'moment';
 
 import ProfilePublic from './ProfilePublic';
 
@@ -48,6 +49,36 @@ class ProfilePublicContainer extends Component {
         });
     }
 
+    onPressAdsCard = (item) => {
+        const { navigation } = this.props;
+        const {
+            coverImageURL,
+            updatedAt,
+            productPrice,
+            productTitle,
+            productDescription,
+            selectedLocation,
+            ownerID
+        } = item;
+        let formatedDate = '';
+
+        if (updatedAt) {
+            Moment.locale('en');
+            formatedDate = Moment(updatedAt).format("Do-MMM-YYYY");
+        }
+
+        navigation.navigate('GeneralProductDetails', {
+            thumbnailURL: coverImageURL,
+            time: formatedDate,
+            price: productPrice,
+            title: productTitle,
+            productDescription: productDescription,
+            selectedLocation: selectedLocation,
+            ownerID: ownerID
+        });
+
+    }
+
     render() {
         const { sellerData } = this.props;
         const { sellerAdsList, isFetchingAdsDataFromFirestore } = this.state;
@@ -57,6 +88,7 @@ class ProfilePublicContainer extends Component {
                 sellerData={sellerData}
                 sellerAdsList={sellerAdsList}
                 isFetchingAdsDataFromFirestore={isFetchingAdsDataFromFirestore}
+                onPressAdsCard={this.onPressAdsCard}
             />
         );
     }

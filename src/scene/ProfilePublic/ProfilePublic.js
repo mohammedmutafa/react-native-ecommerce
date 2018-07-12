@@ -21,8 +21,12 @@ class ProfilePublic extends Component {
     keyExtractor = (item, index) => index.toString();
 
     renderItemCard = ({ item }) => {
+        const { onPressAdsCard } = this.props;
+
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => onPressAdsCard(item)}
+            >
                 <Image
                     source={{ uri: item.coverImageURL }}
                     style={gridViewCardStyle}
