@@ -162,7 +162,10 @@ const {
 } = styles;
 
 ProfilePublic.propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+    sellerAdsList: PropTypes.array,
+    isFetchingAdsDataFromFirestore: PropTypes.bool,
+    sellerData: PropTypes.object
 };
 
 export default ProfilePublic;
