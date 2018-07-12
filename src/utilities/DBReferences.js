@@ -3,6 +3,8 @@ import firebase from 'react-native-firebase';
 export const postCollectionRef = firebase.firestore().collection('posts');
 export const userCollectionRef = firebase.firestore().collection('users');
 
+//For order by issue refer this discussion : https://github.com/invertase/react-native-firebase/issues/568
+
 export const getPostStorageLocation = (userId, postId, imageIndex) => {
 
     return `/images/${userId}/${postId}/image_${imageIndex}`;

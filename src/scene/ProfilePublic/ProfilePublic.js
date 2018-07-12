@@ -9,7 +9,7 @@ import {
     TouchableOpacity,
     ScrollView
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Icon } from 'react-native-elements';
 
 import styles from './styles';
 import colors from '../../styles/Color';
@@ -21,8 +21,12 @@ class ProfilePublic extends Component {
     keyExtractor = (item, index) => index.toString();
 
     renderItemCard = ({ item }) => {
+        const { onPressAdsCard } = this.props;
+
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => onPressAdsCard(item)}
+            >
                 <Image
                     source={{ uri: item.coverImageURL }}
                     style={gridViewCardStyle}
@@ -78,15 +82,26 @@ class ProfilePublic extends Component {
         const {
             firstName,
             lastName,
-            address
+            address,
+            phoneNumber
         } = sellerData;
         const sellerFirstName = firstName ? firstName : '';
         const sellerLastName = lastName ? lastName : '';
+        const sellerphoneNumber = phoneNumber ? phoneNumber : '';
 
         return (
             <View style={{ flexDirection: 'column', backgroundColor: colors.lightBlueWhite }}>
                 <Text style={nameTextStyle}>{sellerFirstName + ' ' + sellerLastName}</Text>
-                <Text style={addressTextStyle}>{address}</Text>
+                <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 10 }}>
+                    <Icon
+                        name="ios-pin-outline"
+                        type="ionicon"
+                        color={Color.golden}
+                        underlayColor="transparent"
+                    />
+                    <Text style={addressTextStyle}>{address}</Text>
+                </View>
+                <Text style={addressTextStyle}>{sellerphoneNumber}</Text>
             </View>
         );
     }
@@ -154,7 +169,10 @@ const {
 } = styles;
 
 ProfilePublic.propTypes = {
-    navigation: PropTypes.object
+    navigation: PropTypes.object,
+    sellerAdsList: PropTypes.array,
+    isFetchingAdsDataFromFirestore: PropTypes.bool,
+    sellerData: PropTypes.object
 };
 
 export default ProfilePublic;
