@@ -72,11 +72,11 @@ class GeneralProductDetailsContainer extends Component {
     }
 
     onPressSellerAvatar = () => {
-        const { navigation } = this.props;
+        const { navigation, isNavigatedFromPublicProfile } = this.props;
         const { sellerData } = this.state;
         const { ownerID } = sellerData;
 
-        if (!ownerID) {
+        if (!ownerID || isNavigatedFromPublicProfile) {
             return;
         }
 
@@ -130,7 +130,8 @@ GeneralProductDetailsContainer.propTypes = {
     details: PropTypes.string,
     price: PropTypes.number,
     location: PropTypes.string,
-    ownerID: PropTypes.string
+    ownerID: PropTypes.string,
+    isNavigatedFromPublicProfile: PropTypes.bool
 };
 
 export default GeneralProductDetailsContainer;

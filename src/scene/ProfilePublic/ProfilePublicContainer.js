@@ -74,7 +74,8 @@ class ProfilePublicContainer extends Component {
             title: productTitle,
             productDescription: productDescription,
             selectedLocation: selectedLocation,
-            ownerID: ownerID
+            ownerID: ownerID,
+            isNavigatedFromPublicProfile: true
         });
 
     }
