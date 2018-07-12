@@ -78,10 +78,12 @@ class ProfilePublic extends Component {
         const {
             firstName,
             lastName,
-            address
+            address,
+            phoneNumber
         } = sellerData;
         const sellerFirstName = firstName ? firstName : '';
         const sellerLastName = lastName ? lastName : '';
+        const sellerphoneNumber = phoneNumber ? phoneNumber : '';
 
         return (
             <View style={{ flexDirection: 'column', backgroundColor: colors.lightBlueWhite }}>
@@ -95,6 +97,7 @@ class ProfilePublic extends Component {
                     />
                     <Text style={addressTextStyle}>{address}</Text>
                 </View>
+                <Text style={addressTextStyle}>{sellerphoneNumber}</Text>
             </View>
         );
     }
