@@ -1,53 +1,112 @@
-import { StyleSheet } from 'react-native';
+import {
+    StyleSheet,
+    Platform
+} from 'react-native';
 
-import { screenWidth } from '../../utilities/ScreenSize';
-import colors from '../../styles/Color';
+import {
+    screenWidth,
+    deviceScaledWidth
+} from '../../utilities/ScreenSize';
+import Color from '../../styles/Color';
+import Fonts from '../../styles/Fonts';
 
-const containerWidth = screenWidth;
-const containerHeight = containerWidth * 0.7;
+const cardwidth = screenWidth;
+const cardHeight = cardwidth * 0.7;
 
 export default StyleSheet.create({
     container: {
-        width: containerWidth,
-        height: containerHeight,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        backgroundColor: '#F7F7F7',
-        marginVertical: 5
-    },
-    titleContainerStyle: {
-        paddingVertical: 5,
-        paddingHorizontal: 5,
-        flex: 0.8,
-        flexDirection: 'row',
+        height: cardHeight,
+        width: cardwidth,
         justifyContent: 'space-between',
-        alignItems: 'center'
+        marginVertical: 10,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0, .3)',
+                shadowOffset: { height: 0, width: 0 },
+                shadowOpacity: 1,
+                shadowRadius: 2,
+            },
+            android: {
+                elevation: 2,
+            }
+        })
     },
-    imageViewContainerStyle: {
-        flex: 5,
-        backgroundColor: '#D7D7D7',
+    imageBackgroundStyle: {
+        height: cardHeight,
+        width: cardwidth,
+        justifyContent: 'space-between'
     },
-    imageViewStyle: {
-        resizeMode: 'cover',
-        flex: 5
+    semiTransparentViewStyle: {
+        height: cardHeight,
+        width: cardwidth,
+        position: 'absolute',
+        backgroundColor: 'rgba(60, 60, 60, 0.5)'
     },
-    titleTextStyle: {
-        fontSize: 14,
-        flex: 4,
-        //fontWeight: 'bold',
-        color: colors.dark,
-        alignSelf: 'center'
+    dateBoxStyle: {
+        height: deviceScaledWidth(180),
+        width: deviceScaledWidth(180),
+        padding: 10,
+        backgroundColor: Color.lightBlueWhite,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        marginTop: -5,
+        marginRight: -5,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0, .3)',
+                shadowOffset: { height: 0, width: 0 },
+                shadowOpacity: 1,
+                shadowRadius: 2,
+            },
+            android: {
+                elevation: 2,
+            }
+        })
+    },
+    priceBoxStyle: {
+        padding: 10,
+        backgroundColor: 'rgba(218,165,32,0.3)',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRightWidth: 2,
+        borderRightColor: Color.golden,
+        marginHorizontal: 20
+    },
+    categoryTextStyle: {
+        color: Color.lightBlueWhite,
+        fontFamily: Fonts.CharterBT,
+        fontSize: 16
     },
     dateTextStyle: {
-        alignSelf: 'flex-end',
-        color: colors.lightDark,
-        fontSize: 10
+        color: Color.dark,
+        fontFamily: Fonts.CharterBT,
+        fontSize: 14
     },
-    productDescriptionTextStyle: {
-        color: colors.dark,
-        marginVertical: 10,
-        flex: 0.5,
+    titleTextStyle: {
+        color: Color.lightBlueWhite,
+        fontFamily: Fonts.DancingScriptOT,
+        fontSize: 20,
+        width: cardwidth / 1.5
+    },
+    priceSymbolTextStyle: {
+        color: Color.lightBlueWhite,
+        fontSize: 50,
+        textAlign: 'center',
+        fontFamily: Fonts.CharterBT
+    },
+    priceTextStyle: {
+        color: Color.lightBlueWhite,
+        fontSize: 25,
+        textAlign: 'center',
+        fontFamily: Fonts.CharterBT
+    },
+    addressTextStyle: {
+        color: Color.placeholderWhite,
         fontSize: 14,
-        marginHorizontal: 5
+        fontFamily: Fonts.CharterBT,
+        paddingHorizontal: 5,
+        alignSelf: 'center'
     }
 });

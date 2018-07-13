@@ -65,15 +65,24 @@ class SearchListing extends Component {
         } = item;
 
         let formatedDate = '';
+        let formatedDay = '';
+        let formatedMonth = '';
+        let formatedYear = '';
 
         if (updatedAt) {
             Moment.locale('en');
             formatedDate = Moment(item.updatedAt).format("Do-MMM-YYYY");
+            formatedDay = Moment(item.updatedAt).format("D");
+            formatedMonth = Moment(item.updatedAt).format("MMM");
+            formatedYear = Moment(item.updatedAt).format("YYYY");
         }
 
         return (
             <FeedsCard
                 time={formatedDate}
+                formatedDay={formatedDay}
+                formatedMonth={formatedMonth}
+                formatedYear={formatedYear}
                 ownerID={ownerID}
                 price={productPrice}
                 title={productTitle}

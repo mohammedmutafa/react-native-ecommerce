@@ -1,26 +1,30 @@
 
 import React, { Component } from 'react';
 import {
-    Image,
     View,
     Text,
+    ImageBackground,
     TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { Icon } from 'react-native-elements';
 
 import styles from './styles';
-import colors from '../../styles/Color';
+import Color from '../../styles/Color';
 import { numberWithCommas } from '../../utilities/Functions';
-import Fonts from '../../styles/Fonts'
 
 const {
     container,
-    imageViewContainerStyle,
-    imageViewStyle,
-    titleTextStyle,
+    imageBackgroundStyle,
+    semiTransparentViewStyle,
+    categoryTextStyle,
+    dateBoxStyle,
+    priceBoxStyle,
     dateTextStyle,
-    productDescriptionTextStyle,
-    titleContainerStyle
+    titleTextStyle,
+    priceSymbolTextStyle,
+    priceTextStyle,
+    addressTextStyle
 } = styles;
 
 export class FeedsCard extends Component {
@@ -56,102 +60,110 @@ export class FeedsCard extends Component {
                 productDescription: productDescription,
                 thumbnailURL: thumbnailURL,
                 selectedLocation: selectedLocation
-            })
-
+            });
     }
 
-    renderImageView = () => {
+    renderHeader = () => {
         const {
-            price,
-            thumbnailURL
+            //time,
+            formatedDay,
+            formatedMonth,
+            formatedYear
         } = this.props;
 
         return (
-            <TouchableOpacity
-                style={imageViewContainerStyle}
-                onPress={this.onCardPress}
-            >
-                <Image
-                    source={{ uri: thumbnailURL }}
-                    style={imageViewStyle}
-                />
-                {/*<Icon
-                        underlayColor="transparent"
-                        name={bookmarked ? 'heart' : 'heart-outlined'}
-                        type="entypo"
-                        color={bookmarked ? colors.red : colors.lightDark}
-                        containerStyle={{ position: 'absolute', alignSelf: 'flex-end', padding: 10 }}
-                        onPress={this.onPressBookmarkButton}
-                    />*/}
-                <View style={{ position: 'absolute', alignSelf: 'flex-end', bottom: 0, padding: 10, backgroundColor: 'rgba(60, 60, 60, 0.4)' }}>
-                    <Text
-                        style={{ color: colors.lightWhite, fontSize: 18, fontFamily: Fonts.CharterBT }}
-                    >
-                        {`₹ ${numberWithCommas(price)}`}
-                    </Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'column', paddingLeft: 25, }}>
+                    <Text style={categoryTextStyle}>Technology</Text>
+                    <Text style={{ color: '#FFFFFF' }}>__</Text>
                 </View>
-            </TouchableOpacity>
+
+                <View style={dateBoxStyle}>
+                    <Text style={dateTextStyle}>{formatedMonth}</Text>
+                    <Text style={[dateTextStyle, { fontWeight: 'bold' }]}>{formatedDay}</Text>
+                    <Text style={dateTextStyle}>{formatedYear}</Text>
+                </View>
+            </View >
         );
     }
 
-    renderTitleContainer = () => {
+    renderMiddleView = () => {
         const {
-            title,
-            time
+            price,
         } = this.props;
 
         return (
-            <View style={titleContainerStyle}>
-                <Text
-                    style={titleTextStyle}
-                    ellipsizeMode="tail"
-                    numberOfLines={1}
-                >
-                    {title}
-                </Text>
-                <View style={{ flex: 2 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={priceSymbolTextStyle}>{`₹`}</Text>
+
+                <View style={priceBoxStyle}>
+                    <Text style={priceTextStyle}>{`${numberWithCommas(price)}`}</Text>
+                </View>
+            </View >
+        );
+    }
+
+    renderFooter = () => {
+        const {
+            title,
+            selectedLocation
+        } = this.props;
+
+        return (
+            <View style={{ flexDirection: 'column', justifyContent: 'space-around', marginBottom: 10 }}>
+                <View style={{ flexDirection: 'column', alignItems: 'flex-start', paddingLeft: 25, }}>
                     <Text
-                        style={dateTextStyle}
                         ellipsizeMode="tail"
                         numberOfLines={1}
-                    >{time}
+                        style={titleTextStyle}
+                    >
+                        {title}
                     </Text>
+                    <Text style={{ color: '#FFFFFF' }}>__</Text>
+                    <View style={{ flexDirection: 'row', alignSelf: 'flex-start', justifyContent: 'center', marginTop: 10 }}>
+                        <Icon
+                            name="ios-pin-outline"
+                            type="ionicon"
+                            color={Color.placeholderWhite}
+                            underlayColor="transparent"
+                        />
+                        <Text style={addressTextStyle}>{selectedLocation}</Text>
+                    </View>
                 </View>
-            </View>
+            </View >
         );
     }
 
     render() {
         const {
-            ownerID,
-            title,
-            productDescription,
-            price,
-            time,
-            selectedLocation,
-            thumbnailURL,
-            navigation
+            thumbnailURL
         } = this.props;
-        const { bookmarked } = this.state;
 
         return (
-            <View style={container}>
-                {this.renderTitleContainer()}
-                {this.renderImageView()}
-                {/*<Text
-                    style={productDescriptionTextStyle}
-                    ellipsizeMode="tail"
-                    numberOfLines={1}
+            <TouchableOpacity
+                style={container}
+                onPress={this.onCardPress}
+            >
+                <ImageBackground
+                    resizeMode="cover"
+                    source={{ uri: thumbnailURL }}
+                    style={imageBackgroundStyle}
                 >
-                    {title}
-                </Text>*/}
-            </View>
+                    <View style={semiTransparentViewStyle} />
+                    {this.renderHeader()}
+                    {this.renderMiddleView()}
+                    {this.renderFooter()}
+                </ImageBackground>
+            </TouchableOpacity>
         );
     }
 }
 
 FeedsCard.propTypes = {
     time: PropTypes.string,
+    formatedDay: PropTypes.string,
+    formatedMonth: PropTypes.string,
+    formatedYear: PropTypes.string,
     ownerID: PropTypes.string,
     price: PropTypes.number,
     title: PropTypes.string,
