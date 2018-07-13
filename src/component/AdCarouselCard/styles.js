@@ -11,15 +11,14 @@ import Color from '../../styles/Color';
 import Fonts from '../../styles/Fonts';
 
 const cardwidth = screenWidth * 0.8;
-const cardHeight = cardwidth * 1.5;
+const cardHeight = cardwidth * 1.3;
 
 export default StyleSheet.create({
     container: {
         height: cardHeight,
         width: cardwidth,
         justifyContent: 'space-between',
-        marginTop: 50,
-        marginHorizontal: 25,
+        marginVertical: 10,
         ...Platform.select({
             ios: {
                 shadowColor: 'rgba(0,0,0, .3)',
@@ -103,5 +102,5 @@ export default StyleSheet.create({
         fontFamily: Fonts.CharterBT,
         paddingHorizontal: 5,
         alignSelf: 'center'
-    },
+    }
 });
