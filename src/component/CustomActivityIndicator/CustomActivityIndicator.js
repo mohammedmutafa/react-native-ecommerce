@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import Animation from 'lottie-react-native';
 
+import { deviceScaledWidth } from '../../utilities/ScreenSize';
+
 // Get screen dimensions
 const { width } = Dimensions.get('window');
 //const lottiefile = require('../../../assets/lottieFiles/animation_loading.json');
@@ -56,8 +58,8 @@ export class CustomActivityIndicator extends Component {
                 >
                     <Animation
                         style={{
-                            width: (width / 3) - 40,
-                            height: (width / 3) - 40
+                            width: (width / 3) - deviceScaledWidth(40),
+                            height: (width / 3) - deviceScaledWidth(40)
                         }}
                         // Load animation from json file
                         source={lottiefile}
