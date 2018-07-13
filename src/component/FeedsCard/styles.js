@@ -86,9 +86,9 @@ export default StyleSheet.create({
     },
     titleTextStyle: {
         color: Color.lightBlueWhite,
-        fontFamily: Fonts.DancingScriptOT,
-        fontSize: 20,
-        width: cardwidth / 1.5
+        fontFamily: Fonts.CharterBT,
+        fontSize: 16,
+        //  width: cardwidth / 1.5
     },
     priceSymbolTextStyle: {
         color: Color.lightBlueWhite,

@@ -74,8 +74,8 @@ export class FeedsCard extends Component {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 <View style={{ flexDirection: 'column', paddingLeft: 25, }}>
-                    <Text style={categoryTextStyle}>Technology</Text>
-                    <Text style={{ color: '#FFFFFF' }}>__</Text>
+                    <Text style={categoryTextStyle}></Text>
+                    <Text style={{ color: '#FFFFFF' }}></Text>
                 </View>
 
                 <View style={dateBoxStyle}>
@@ -111,10 +111,10 @@ export class FeedsCard extends Component {
 
         return (
             <View style={{ flexDirection: 'column', justifyContent: 'space-around', marginBottom: 10 }}>
-                <View style={{ flexDirection: 'column', alignItems: 'flex-start', paddingLeft: 25, }}>
+                <View style={{ flexDirection: 'column', alignItems: 'flex-start', paddingHorizontal: 25, }}>
                     <Text
                         ellipsizeMode="tail"
-                        numberOfLines={1}
+                        numberOfLines={2}
                         style={titleTextStyle}
                     >
                         {title}
