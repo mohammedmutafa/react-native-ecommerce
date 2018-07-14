@@ -18,9 +18,7 @@ const {
     imageBackgroundStyle,
     semiTransparentViewStyle,
     categoryTextStyle,
-    dateBoxStyle,
     priceBoxStyle,
-    dateTextStyle,
     titleTextStyle,
     priceSymbolTextStyle,
     priceTextStyle,
@@ -30,6 +28,7 @@ const {
 export class FeedsCard extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             bookmarked: false
         }
@@ -65,47 +64,39 @@ export class FeedsCard extends Component {
 
     renderHeader = () => {
         const {
+            price,
             //time,
-            formatedDay,
-            formatedMonth,
-            formatedYear
+            //formatedDay,
+            //formatedMonth,
+            // formatedYear
         } = this.props;
 
         return (
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View
+                style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 25, paddingVertical: 15 }}
+            >
+                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={priceSymbolTextStyle}>{`₹`}</Text>
+                    <View style={priceBoxStyle}>
+                        <Text style={priceTextStyle}>{`${numberWithCommas(price)}`}</Text>
+                    </View>
+                </View >
                 <View style={{ flexDirection: 'column', paddingLeft: 25, }}>
                     <Text style={categoryTextStyle}></Text>
                     <Text style={{ color: '#FFFFFF' }}></Text>
-                </View>
-
-                <View style={dateBoxStyle}>
-                    <Text style={dateTextStyle}>{formatedMonth}</Text>
-                    <Text style={[dateTextStyle, { fontWeight: 'bold' }]}>{formatedDay}</Text>
-                    <Text style={dateTextStyle}>{formatedYear}</Text>
                 </View>
             </View >
         );
     }
 
     renderMiddleView = () => {
-        const {
-            price,
-        } = this.props;
-
-        return (
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={priceSymbolTextStyle}>{`₹`}</Text>
-
-                <View style={priceBoxStyle}>
-                    <Text style={priceTextStyle}>{`${numberWithCommas(price)}`}</Text>
-                </View>
-            </View >
-        );
+        return <View />
     }
 
     renderFooter = () => {
         const {
             title,
+            time,
             selectedLocation
         } = this.props;
 
@@ -128,6 +119,15 @@ export class FeedsCard extends Component {
                             underlayColor="transparent"
                         />
                         <Text style={addressTextStyle}>{selectedLocation}</Text>
+                        <Text style={addressTextStyle}>|</Text>
+                        <Icon
+                            name="ios-time-outline"
+                            type="ionicon"
+                            size={20}
+                            color={Color.placeholderWhite}
+                            underlayColor="transparent"
+                        />
+                        <Text style={addressTextStyle}>{time}</Text>
                     </View>
                 </View>
             </View >

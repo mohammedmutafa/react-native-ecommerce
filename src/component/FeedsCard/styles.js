@@ -4,8 +4,7 @@ import {
 } from 'react-native';
 
 import {
-    screenWidth,
-    deviceScaledWidth
+    screenWidth
 } from '../../utilities/ScreenSize';
 import Color from '../../styles/Color';
 import Fonts from '../../styles/Fonts';
@@ -18,18 +17,7 @@ export default StyleSheet.create({
         height: cardHeight,
         width: cardwidth,
         justifyContent: 'space-between',
-        marginVertical: 10,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .3)',
-                shadowOffset: { height: 0, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 2,
-            }
-        })
+        marginVertical: 5
     },
     imageBackgroundStyle: {
         height: cardHeight,
@@ -41,28 +29,6 @@ export default StyleSheet.create({
         width: cardwidth,
         position: 'absolute',
         backgroundColor: 'rgba(60, 60, 60, 0.5)'
-    },
-    dateBoxStyle: {
-        height: deviceScaledWidth(180),
-        width: deviceScaledWidth(180),
-        padding: 10,
-        backgroundColor: Color.lightBlueWhite,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        marginTop: -5,
-        marginRight: -5,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .3)',
-                shadowOffset: { height: 0, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 2,
-            }
-        })
     },
     priceBoxStyle: {
         padding: 10,
@@ -79,11 +45,6 @@ export default StyleSheet.create({
         fontFamily: Fonts.CharterBT,
         fontSize: 16
     },
-    dateTextStyle: {
-        color: Color.dark,
-        fontFamily: Fonts.CharterBT,
-        fontSize: 14
-    },
     titleTextStyle: {
         color: Color.lightBlueWhite,
         fontFamily: Fonts.CharterBT,
@@ -92,13 +53,13 @@ export default StyleSheet.create({
     },
     priceSymbolTextStyle: {
         color: Color.lightBlueWhite,
-        fontSize: 50,
+        fontSize: 30,
         textAlign: 'center',
         fontFamily: Fonts.CharterBT
     },
     priceTextStyle: {
         color: Color.lightBlueWhite,
-        fontSize: 25,
+        fontSize: 18,
         textAlign: 'center',
         fontFamily: Fonts.CharterBT
     },
