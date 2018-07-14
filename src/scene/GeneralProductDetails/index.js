@@ -12,6 +12,7 @@ const index = ({ navigation }) => {
     const details = params ? params.productDescription : '';
     const location = params ? params.selectedLocation : '';
     const ownerID = params ? params.ownerID : '';
+    const isNavigatedFromPublicProfile = params ? params.isNavigatedFromPublicProfile : false
 
     return (
         <GeneralProductDetailsContainer
@@ -23,6 +24,7 @@ const index = ({ navigation }) => {
             details={details}
             location={location}
             ownerID={ownerID}
+            isNavigatedFromPublicProfile={isNavigatedFromPublicProfile}
         />
     )
 };

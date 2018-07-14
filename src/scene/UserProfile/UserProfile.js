@@ -15,6 +15,7 @@ import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 import { GenderSelector } from '../../component/GenderSelector';
 import { SubmitFormButton } from '../../component/SubmitFormButton';
 import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
+import { UserProfileDetails } from '../../component/UserProfileDetails';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -248,7 +249,37 @@ class UserProfile extends Component {
         );
     }
 
+    renderUserProfileDetails = () => {
+        const {
+            userID,
+            firstName,
+            lastName,
+            profileImageURL,
+            address,
+            gender,
+            onPressEditProfile
+        } = this.props;
+
+        return (
+            <UserProfileDetails
+                gender={gender}
+                userID={userID}
+                firstName={firstName}
+                lastName={lastName}
+                profileImageURL={profileImageURL}
+                address={address}
+                onPressEditButton={onPressEditProfile}
+            />
+        );
+    }
+
     render() {
+        const { isEditProfileClicked } = this.props;
+
+        if (!isEditProfileClicked) {
+            return this.renderUserProfileDetails()
+        }
+
         return (
             <View style={container}>
                 <KeyboardAwareScrollView

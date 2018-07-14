@@ -92,7 +92,7 @@ class ProfilePublic extends Component {
         return (
             <View style={{ flexDirection: 'column', backgroundColor: colors.lightBlueWhite }}>
                 <Text style={nameTextStyle}>{sellerFirstName + ' ' + sellerLastName}</Text>
-                <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 10 }}>
+                <View style={{ flexDirection: 'row', alignSelf: 'flex-start', marginTop: 10 }}>
                     <Icon
                         name="ios-pin-outline"
                         type="ionicon"
@@ -144,8 +144,10 @@ class ProfilePublic extends Component {
                 showsVerticalScrollIndicator={false}
                 style={conatinerStyle}
             >
-                {this.renderProfileHeader()}
-                {this.renderUserBasicInfo()}
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
+                    {this.renderProfileHeader()}
+                    {this.renderUserBasicInfo()}
+                </View>
                 {this.renderProfileStatInfo()}
                 {this.renderFollowButton()}
                 {this.renderPublishedPostList()}

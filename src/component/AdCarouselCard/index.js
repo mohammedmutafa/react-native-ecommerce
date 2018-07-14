@@ -1,0 +1,1 @@
+export { AdCarouselCard } from './AdCarouselCard';
