@@ -21,6 +21,7 @@ class UserProfileContainer extends Component {
             isSelectGenderModalViewVisible: false,
             createAdStatus: true,
             isUserDataUpdating: false,
+            isEditProfileClicked: false,
             //FireStore
             profileImageURL: undefined
         };
@@ -106,6 +107,12 @@ class UserProfileContainer extends Component {
 
     onEmailInput = (email) => {
         this.setState({ email });
+    }
+
+    onPressEditProfile = () => {
+        this.setState({
+            isEditProfileClicked: true
+        });
     }
 
     //Image Picker Implementation
@@ -264,10 +271,11 @@ class UserProfileContainer extends Component {
             address,
             isSelectGenderModalViewVisible,
             isUserDataUpdating,
-            profileImageURL
+            profileImageURL,
+            isEditProfileClicked
         } = this.state;
 
-        const { navigation } = this.props;
+        const { navigation, userID } = this.props;
 
         return (
             <UserProfile
@@ -300,6 +308,11 @@ class UserProfileContainer extends Component {
                 isUserDataUpdating={isUserDataUpdating}
                 updateUserInfo={this.updateUserInfo}
                 profileImageURL={profileImageURL}
+                userID={userID}
+
+                //EditProfile
+                onPressEditProfile={this.onPressEditProfile}
+                isEditProfileClicked={isEditProfileClicked}
             />
         );
     }
