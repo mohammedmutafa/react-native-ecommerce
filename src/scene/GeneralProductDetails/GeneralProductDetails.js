@@ -132,6 +132,14 @@ class GeneralProductDetails extends Component {
     renderPhotoList = () => {
         const { imageDataSource } = this.props;
 
+        if (imageDataSource.length < 1) {
+            return (
+                <View style={[photoCardStyle, { marginHorizontal: 25, justifyContent: 'center', alignItems: 'center' }]}>
+                    <Text style={imageNotAvailableTextStyle}>Not Available</Text>
+                </View >
+            );
+        }
+
         return (
             <View style={imageViewFlatListContainerStyle}>
                 <FlatList
@@ -269,7 +277,8 @@ const {
     imageViewFlatListContainerStyle,
     followButtonContainerStyle,
     followButtonTextstyle,
-    locationTextStyle
+    locationTextStyle,
+    imageNotAvailableTextStyle
 } = styles;
 
 GeneralProductDetails.propTypes = {

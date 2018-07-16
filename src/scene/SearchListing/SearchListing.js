@@ -79,7 +79,7 @@ class SearchListing extends Component {
         let formatedYear = '';
 
         const imageDataSource = [
-            { url: coverImageURL, index: 0 },
+           // { url: coverImageURL, index: 0 },
             { url: image_1, index: 1 },
             { url: image_2, index: 2 },
             { url: image_3, index: 3 },

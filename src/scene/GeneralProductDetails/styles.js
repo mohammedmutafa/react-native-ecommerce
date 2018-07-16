@@ -150,5 +150,9 @@ export default styles = StyleSheet.create({
         color: Color.dark,
         fontFamily: Fonts.CharterBT,
         paddingHorizontal: 10
+    },
+    imageNotAvailableTextStyle: {
+        color: Color.dark,
+        fontFamily: Fonts.CharterBT
     }
 });
