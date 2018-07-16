@@ -13,6 +13,7 @@ class UpdateAdPhotosContainer extends Component {
         this.state = {
             showActivityIndicator: false,
             isFibaseStorageInProgress: false,
+            fileIndexForCurrentFirebaseStorageProgress: undefined,
             //Firestore
             image_0: undefined,
             image_1: undefined,
@@ -112,7 +113,8 @@ class UpdateAdPhotosContainer extends Component {
         }
 
         this.setState({
-            isFibaseStorageInProgress: true
+            isFibaseStorageInProgress: true,
+            fileIndexForCurrentFirebaseStorageProgress: index
         });
 
         firebase.storage()
@@ -124,7 +126,6 @@ class UpdateAdPhotosContainer extends Component {
                     [fileName]: snapshot.downloadURL
                 };
                 this.setState({
-                    isFibaseStorageInProgress: false,
                     [fileName]: snapshot.downloadURL
                 });
                 /**
@@ -150,13 +151,13 @@ class UpdateAdPhotosContainer extends Component {
                 //Error
                 //unsubscribe();
                 this.setState({
-                    isFibaseStorageInProgress: false,
+                    isFibaseStorageInProgress: false
                 });
             }, (uploadedFile) => {
                 //Success
                 //unsubscribe();
                 this.setState({
-                    isFibaseStorageInProgress: false,
+                    isFibaseStorageInProgress: false
                 });
             });
     }
@@ -169,7 +170,8 @@ class UpdateAdPhotosContainer extends Component {
         const fileName = `image_${index}`;
 
         this.setState({
-            isFibaseStorageInProgress: true
+            isFibaseStorageInProgress: true,
+            fileIndexForCurrentFirebaseStorageProgress: index
         });
 
         firebase.storage()
@@ -210,6 +212,7 @@ class UpdateAdPhotosContainer extends Component {
         const {
             showActivityIndicator,
             isFibaseStorageInProgress,
+            fileIndexForCurrentFirebaseStorageProgress,
             image_0,
             image_1,
             image_2,
@@ -235,6 +238,7 @@ class UpdateAdPhotosContainer extends Component {
             <UpdateAdPhotos
                 selectPhotoTapped={this.selectPhotoTapped}
                 deleteImageFromStorage={this.deleteImageFromStorage}
+                fileIndexForCurrentFirebaseStorageProgress={fileIndexForCurrentFirebaseStorageProgress}
                 //FireStore
                 imageDataSource={imageDataSource}
                 coverImageURL={image_0}

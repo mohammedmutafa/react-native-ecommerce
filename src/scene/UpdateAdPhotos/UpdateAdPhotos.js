@@ -85,7 +85,8 @@ class UpdateAdPhotos extends Component {
         const {
             selectPhotoTapped,
             deleteImageFromStorage,
-            isFibaseStorageInProgress
+            isFibaseStorageInProgress,
+            fileIndexForCurrentFirebaseStorageProgress
         } = this.props;
 
         if (item.url) {
@@ -101,7 +102,13 @@ class UpdateAdPhotos extends Component {
                         type="material-community"
                         color={Color.lightBlueWhite}
                         underlayColor="transparent"
-                        containerStyle={{ top: 0, right: 0, position: 'absolute', backgroundColor: Color.semiTransparentDarkOverlay, padding: 10 }}
+                        containerStyle={{
+                            top: 0,
+                            right: 0,
+                            position: 'absolute',
+                            backgroundColor: Color.semiTransparentDarkOverlay,
+                            padding: 10
+                        }}
                         onPress={() => deleteImageFromStorage(item.index)}
                     />
                 </ImageBackground>
@@ -114,7 +121,7 @@ class UpdateAdPhotos extends Component {
                 onPress={() => selectPhotoTapped(item.index)}
             >
                 {
-                    isFibaseStorageInProgress ?
+                    isFibaseStorageInProgress && (fileIndexForCurrentFirebaseStorageProgress === item.index) ?
                         <ActivityIndicator
                             size="small"
                             color={Color.golden}
@@ -127,7 +134,11 @@ class UpdateAdPhotos extends Component {
                             size={50}
                         />
                 }
-                {isFibaseStorageInProgress ? <View /> : <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT }}>Upload Image</Text>}
+                {
+                    isFibaseStorageInProgress && (fileIndexForCurrentFirebaseStorageProgress === item.index) ?
+                        <View /> :
+                        <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT }}>Upload Image</Text>
+                }
             </TouchableOpacity>
         );
     }
@@ -190,6 +201,7 @@ UpdateAdPhotos.propTypes = {
     navigation: PropTypes.object,
     showActivityIndicator: PropTypes.bool,
     isFibaseStorageInProgress: PropTypes.bool,
+    fileIndexForCurrentFirebaseStorageProgress: PropTypes.number,
     imageDataSource: PropTypes.array,
     selectPhotoTapped: PropTypes.func,
     deleteImageFromStorage: PropTypes.func,
