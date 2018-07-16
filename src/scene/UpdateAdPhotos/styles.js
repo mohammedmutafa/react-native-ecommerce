@@ -6,8 +6,9 @@ import Fonts from '../../styles/Fonts';
 
 export const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
 export const SLIDER_HEIGHT = screenWidth / 1.7;
-const cardwidth = screenWidth * 0.8;
-const cardHeight = cardwidth * 1.2
+
+const cardWidth = screenWidth / 3;
+const cardHeight = cardWidth + 40;
 
 export default styles = StyleSheet.create({
     mainConatinerStyle: {
@@ -90,21 +91,11 @@ export default styles = StyleSheet.create({
     },
     carouselCardStyle: {
         height: cardHeight,
-        width: cardwidth,
+        width: cardWidth,
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 10,
         backgroundColor: Color.lightWhite,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .3)',
-                shadowOffset: { height: 0, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 2,
-            }
-        })
+        marginHorizontal: 5
     }
 });

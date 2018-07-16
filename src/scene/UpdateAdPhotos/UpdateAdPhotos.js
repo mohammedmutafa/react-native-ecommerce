@@ -4,27 +4,26 @@ import {
     Image,
     ImageBackground,
     TouchableOpacity,
+    FlatList,
     Text,
     Modal
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
-import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
-import Carousel from 'react-native-snap-carousel';
 
 import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
-import styles, { STICKY_HEADER_HEIGHT, SLIDER_HEIGHT } from './styles';
+import styles from './styles';
 import Color from '../../styles/Color';
-import { screenWidth } from '../../utilities/ScreenSize';
 import Fonts from '../../styles/Fonts';
-const cardwidth = screenWidth * 0.8;
 
 class UpdateAdPhotos extends Component {
 
+    keyExtractor = (item, index) => index.toString();
+
     renderImageView = () => {
-        // const { thumbnailURL, time, title } = this.props;
+        const { selectPhotoTapped } = this.props;
 
         return (
             <View style={containerStyle}>
@@ -46,7 +45,7 @@ class UpdateAdPhotos extends Component {
                     color={Color.lightBlueWhite}
                     underlayColor="transparent"
                     containerStyle={{ bottom: 0, right: 0, position: 'absolute', backgroundColor: Color.semiTransparentDarkOverlay, paddingHorizontal: 15, paddingVertical: 10 }}
-                    onPress={() => console.log('hello')}
+                    onPress={selectPhotoTapped}
                 />
             </View >
         );
@@ -68,14 +67,6 @@ class UpdateAdPhotos extends Component {
         );
     }
 
-    renderForeground = () => {
-        return (
-            <View style={{ height: SLIDER_HEIGHT, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                {this.renderImageView()}
-            </View>
-        );
-    }
-
     renderActivityIndicator = () => {
 
         return (
@@ -90,10 +81,33 @@ class UpdateAdPhotos extends Component {
         );
     }
 
-    renderUploadImageCard = () => {
+    renderPhotoCard = ({ item }) => {
+        const { selectPhotoTapped } = this.props;
+
+        if (item.url) {
+            return (
+                <ImageBackground
+                    resizeMode="cover"
+                    source={{
+                        uri: item.url
+                    }} style={carouselCardStyle}
+                >
+                    <Icon
+                        name="delete-forever"
+                        type="material-community"
+                        color={Color.lightBlueWhite}
+                        underlayColor="transparent"
+                        containerStyle={{ top: 0, right: 0, position: 'absolute', backgroundColor: Color.semiTransparentDarkOverlay, padding: 10 }}
+                    //onPress={() => console.log('hello')}
+                    />
+                </ImageBackground>
+            );
+        }
+
         return (
             <TouchableOpacity
                 style={carouselCardStyle}
+                onPress={() => selectPhotoTapped(item.index)}
             >
                 <Icon
                     name="photo"
@@ -101,37 +115,11 @@ class UpdateAdPhotos extends Component {
                     color={Color.lightDark}
                     underlayColor="transparent"
                     size={80}
-                    // containerStyle={{ backgroundColor: Color.semiTransparentDarkOverlay, padding: 10 }}
-                    onPress={() => console.log('hello')}
                 />
                 <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT }}>Upload Image</Text>
 
             </TouchableOpacity>
         );
-    }
-
-    renderImageBackground = () => {
-        return (
-            <ImageBackground
-                resizeMode="cover"
-                source={{
-                    uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_hotels.jpg?alt=media&token=a9f71dbe-ae30-41ea-8838-07042ce7a920'
-                }} style={carouselCardStyle}
-            >
-                <Icon
-                    name="delete-forever"
-                    type="material-community"
-                    color={Color.lightBlueWhite}
-                    underlayColor="transparent"
-                    containerStyle={{ top: 0, right: 0, position: 'absolute', backgroundColor: Color.semiTransparentDarkOverlay, padding: 10 }}
-                    onPress={() => console.log('hello')}
-                />
-            </ImageBackground>
-        );
-    }
-
-    _renderCarouselItem = ({ item, index }) => {
-        return this.renderImageBackground();
     }
 
     renderPhotoViewDivider = (title) => {
@@ -143,28 +131,29 @@ class UpdateAdPhotos extends Component {
         );
     }
 
+    renderPhotoList = () => {
+        const { imageDataSource } = this.props;
+
+        return (
+            <View style={{ marginHorizontal: 25 }}>
+                <FlatList
+                    data={imageDataSource}
+                    renderItem={this.renderPhotoCard}
+                    removeClippedSubviews={false}
+                    keyExtractor={this.keyExtractor}
+                    horizontal={true}
+                />
+            </View>
+        );
+    }
+
     render() {
         return (
             <View style={mainConatinerStyle}>
-                <ParallaxScrollView
-                    // bounces={false}
-                    showsVerticalScrollIndicator={false}
-                    backgroundColor="#FFFFFF"
-                    stickyHeaderHeight={STICKY_HEADER_HEIGHT}
-                    parallaxHeaderHeight={SLIDER_HEIGHT}
-                    renderForeground={this.renderForeground}
-                >
-                    {this.renderPhotoViewDivider('Gallery')}
-                    <Carousel
-                        ref={(c) => { this._carousel = c; }}
-                        data={[{ a: 1 }, { b: 1 }, { c: 1 }, { d: 1 }, { e: 1 }, { f: 1 }, { g: 1 }]}
-                        renderItem={this._renderCarouselItem}
-                        sliderWidth={screenWidth}
-                        itemWidth={cardwidth}
-                    />
-
-                </ParallaxScrollView>
-                {this.renderFloatingShareButton()}
+                {this.renderImageView()}
+                {this.renderPhotoViewDivider('Gallery')}
+                {this.renderPhotoList()}
+                {/*this.renderFloatingShareButton()*/}
                 {/*this.renderActivityIndicator()*/}
             </View >
         );
@@ -189,20 +178,8 @@ const {
 
 UpdateAdPhotos.propTypes = {
     navigation: PropTypes.object,
-    thumbnailURL: PropTypes.string,
-    time: PropTypes.string,
-    title: PropTypes.string,
-    details: PropTypes.string,
-    price: PropTypes.number,
-    location: PropTypes.string,
-    ownerID: PropTypes.string,
-    isPhotoViewerVisible: PropTypes.bool,
-    hidePhotoViewer: PropTypes.func,
-    clickedPhotoIndex: PropTypes.number,
-    photoViewerDataSource: PropTypes.array,
-    onPressSellerAvatar: PropTypes.func,
-    sellerData: PropTypes.object,
-    showPhotoViewer: PropTypes.func
+    imageDataSource: PropTypes.array,
+    selectPhotoTapped: PropTypes.func
 };
 
 export default UpdateAdPhotos;

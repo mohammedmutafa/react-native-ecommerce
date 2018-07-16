@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import UpdateAdPhotos from './UpdateAdPhotos';
+import UpdateAdPhotosContainer from './UpdateAdPhotosContainer';
 
 const index = ({ navigation }) => {
-    return <UpdateAdPhotos
+    return <UpdateAdPhotosContainer
         navigation={navigation}
     />;
 };
