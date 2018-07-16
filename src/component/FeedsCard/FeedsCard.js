@@ -47,7 +47,8 @@ export class FeedsCard extends Component {
             thumbnailURL,
             productDescription,
             navigation,
-            selectedLocation
+            selectedLocation,
+            imageDataSource
         } = this.props;
 
         navigation.navigate('GeneralProductDetails',
@@ -58,7 +59,8 @@ export class FeedsCard extends Component {
                 title: title,
                 productDescription: productDescription,
                 thumbnailURL: thumbnailURL,
-                selectedLocation: selectedLocation
+                selectedLocation: selectedLocation,
+                imageDataSource: imageDataSource
             });
     }
 
@@ -169,5 +171,6 @@ FeedsCard.propTypes = {
     title: PropTypes.string,
     imageURL: PropTypes.string,
     thumbnailURL: PropTypes.string,
+    imageDataSource: PropTypes.array,
     navigation: PropTypes.object
 };

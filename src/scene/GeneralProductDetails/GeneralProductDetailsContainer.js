@@ -61,11 +61,15 @@ class GeneralProductDetailsContainer extends Component {
     }
 
     photoViewerDataSource = () => {
+        const { imageDataSource } = this.props;
+
         let modifiedDS = [];
 
-        for (let obj of MainCategory) {
-            let modifiedObj = { source: { uri: obj.thumbnail } }
-            modifiedDS.push(modifiedObj)
+        for (let obj of imageDataSource) {
+            if (obj.url) {
+                let modifiedObj = { source: { uri: obj.url } }
+                modifiedDS.push(modifiedObj)
+            }
         }
 
         return modifiedDS;
@@ -98,7 +102,8 @@ class GeneralProductDetailsContainer extends Component {
             title,
             details,
             price,
-            location
+            location,
+            imageDataSource
         } = this.props;
 
         return (
@@ -113,6 +118,7 @@ class GeneralProductDetailsContainer extends Component {
                 location={location}
                 details={details}
                 clickedPhotoIndex={clickedPhotoIndex}
+                imageDataSource={imageDataSource} //PhotoView & Flatlist takes photo array in different format
                 photoViewerDataSource={this.photoViewerDataSource()}
                 onPressSellerAvatar={this.onPressSellerAvatar}
                 //FireStore
@@ -131,6 +137,7 @@ GeneralProductDetailsContainer.propTypes = {
     price: PropTypes.number,
     location: PropTypes.string,
     ownerID: PropTypes.string,
+    imageDataSource: PropTypes.array,
     isNavigatedFromPublicProfile: PropTypes.bool
 };
 

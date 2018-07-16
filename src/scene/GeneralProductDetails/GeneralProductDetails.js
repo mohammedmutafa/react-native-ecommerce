@@ -12,15 +12,12 @@ import { Icon, Avatar } from 'react-native-elements';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import * as Animatable from 'react-native-animatable';
 
-import Categories from '../../styles/Categories';
 import { PhotoViewer } from '../../component/PhotoViewer';
 import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
 import styles, { STICKY_HEADER_HEIGHT, SLIDER_HEIGHT } from './styles';
 import { numberWithCommas } from '../../utilities/Functions';
 import Color from '../../styles/Color';
-
-const { MainCategory } = Categories;
 
 class GeneralProductDetails extends Component {
 
@@ -125,7 +122,7 @@ class GeneralProductDetails extends Component {
         return (
             <TouchableOpacity onPress={() => showPhotoViewer(index)} style={photoCardStyle}>
                 <Image
-                    source={{ uri: item.thumbnail }}
+                    source={{ uri: item.url }}
                     style={imageRowStyle}
                 />
             </TouchableOpacity >
@@ -133,10 +130,12 @@ class GeneralProductDetails extends Component {
     }
 
     renderPhotoList = () => {
+        const { imageDataSource } = this.props;
+
         return (
             <View style={imageViewFlatListContainerStyle}>
                 <FlatList
-                    data={MainCategory}
+                    data={imageDataSource}
                     renderItem={this.renderPhotoCard}
                     removeClippedSubviews={false}
                     keyExtractor={this.keyExtractor}
@@ -286,6 +285,7 @@ GeneralProductDetails.propTypes = {
     hidePhotoViewer: PropTypes.func,
     clickedPhotoIndex: PropTypes.number,
     photoViewerDataSource: PropTypes.array,
+    imageDataSource: PropTypes.array,
     onPressSellerAvatar: PropTypes.func,
     sellerData: PropTypes.object,
     showPhotoViewer: PropTypes.func
