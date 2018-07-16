@@ -11,15 +11,17 @@ class UpdateAdPhotosContainer extends Component {
         super(props);
 
         this.state = {
+            showActivityIndicator: false,
+            isFibaseStorageInProgress: false,
             //Firestore
-            image_0: '',
-            image_1: '',
-            image_2: '',
-            image_3: '',
-            image_4: '',
-            image_5: '',
-            image_6: '',
-            image_7: ''
+            image_0: undefined,
+            image_1: undefined,
+            image_2: undefined,
+            image_3: undefined,
+            image_4: undefined,
+            image_5: undefined,
+            image_6: undefined,
+            image_7: undefined
         };
     }
 
@@ -27,11 +29,11 @@ class UpdateAdPhotosContainer extends Component {
         // const { postID } = this.props;
         const postID = '6UWAII7uurjI0dZpzjSY';
 
-        /* this.setState({
-             isUserDataUpdating: true
-         });*/
+        this.setState({
+            showActivityIndicator: true
+        });
 
-        let postRef = firebase.firestore().collection('posts').doc(`${postID}`);
+        const postRef = firebase.firestore().collection('posts').doc(`${postID}`);
 
         postRef.get()
             .then((doc) => {
@@ -47,6 +49,7 @@ class UpdateAdPhotosContainer extends Component {
                 } = doc.data();
 
                 this.setState({
+                    showActivityIndicator: false,
                     image_0: coverImageURL,
                     image_1,
                     image_2,
@@ -57,12 +60,11 @@ class UpdateAdPhotosContainer extends Component {
                     image_7
                 });
             }).catch((err) => {
-                /*this.setState({
-                    isUserDataUpdating: false
-                });*/
+                this.setState({
+                    showActivityIndicator: false
+                });
             });
     }
-
 
     //Image Picker Implementation
     selectPhotoTapped = (index) => {
@@ -88,12 +90,9 @@ class UpdateAdPhotosContainer extends Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-                let source = { uri: response.uri };
+                // let source = { uri: response.uri };
                 // You can also display the image using data:
                 // let source = { uri: 'data:image/jpeg;base64,' + response.data };
-                /*this.setState({
-                    selectedImageSource: source
-                });*/
 
                 this.updatePostImageGallery(response.uri, index);
             }
@@ -112,6 +111,10 @@ class UpdateAdPhotosContainer extends Component {
             contentType: 'image/jpeg'
         }
 
+        this.setState({
+            isFibaseStorageInProgress: true
+        });
+
         firebase.storage()
             .ref('/images/' + ownerID + `/${postID}/` + fileName)
             .putFile(selectedImageSource, metadata)
@@ -120,22 +123,23 @@ class UpdateAdPhotosContainer extends Component {
                 let data = {
                     [fileName]: snapshot.downloadURL
                 };
+                this.setState({
+                    isFibaseStorageInProgress: false,
+                    [fileName]: snapshot.downloadURL
+                });
                 /**
                  * To update some fields of a document without overwriting the entire document, use the update() method:
                  * If you use set(), it will delete old data and add new one.
                  */
                 postRef.get()
                     .then((doc) => {
-                        if (!doc.exists) {
-                            //Do Nothing
-                        } else {
+                        if (doc.exists) {
                             postRef.update(data).then(() => {
                                 //updating current set of data
                             }).catch((error) => {
                                 //
                             });
                         }
-
                     }).catch((err) => {
                         //
                     });
@@ -145,14 +149,67 @@ class UpdateAdPhotosContainer extends Component {
             }, (err) => {
                 //Error
                 //unsubscribe();
+                this.setState({
+                    isFibaseStorageInProgress: false,
+                });
             }, (uploadedFile) => {
                 //Success
                 //unsubscribe();
+                this.setState({
+                    isFibaseStorageInProgress: false,
+                });
+            });
+    }
+
+    deleteImageFromStorage = (index) => {
+        const postID = '6UWAII7uurjI0dZpzjSY';
+        const ownerID = '+917829366565';
+
+        const postRef = firebase.firestore().collection('posts').doc(`${postID}`);
+        const fileName = `image_${index}`;
+
+        this.setState({
+            isFibaseStorageInProgress: true
+        });
+
+        firebase.storage()
+            .ref('/images/' + ownerID + `/${postID}/` + fileName).
+            delete().then(() => {
+                // File deleted successfully
+                this.setState({
+                    isFibaseStorageInProgress: false,
+                    [fileName]: undefined
+                });
+                //Update FireStore
+                let dataToDelete = {
+                    [fileName]: null
+                };
+
+                postRef.get()
+                    .then((doc) => {
+                        if (doc.exists) {
+                            postRef.update(dataToDelete).then(() => {
+                                //updating current set of data
+                            }).catch((error) => {
+                                //
+                            });
+                        }
+                    }).catch((err) => {
+                        //
+                    });
+
+            }).catch(function (error) {
+                // Uh-oh, an error occurred!
+                this.setState({
+                    isFibaseStorageInProgress: false
+                });
             });
     }
 
     render() {
         const {
+            showActivityIndicator,
+            isFibaseStorageInProgress,
             image_0,
             image_1,
             image_2,
@@ -164,7 +221,7 @@ class UpdateAdPhotosContainer extends Component {
         } = this.state;
 
         const imageDataSource = [
-            { url: image_0, index: 0 },
+            // { url: image_0, index: 0 },
             { url: image_1, index: 1 },
             { url: image_2, index: 2 },
             { url: image_3, index: 3 },
@@ -177,9 +234,12 @@ class UpdateAdPhotosContainer extends Component {
         return (
             <UpdateAdPhotos
                 selectPhotoTapped={this.selectPhotoTapped}
-
+                deleteImageFromStorage={this.deleteImageFromStorage}
                 //FireStore
                 imageDataSource={imageDataSource}
+                coverImageURL={image_0}
+                showActivityIndicator={showActivityIndicator}
+                isFibaseStorageInProgress={isFibaseStorageInProgress}
             />
         );
     }

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {
     View,
+    Text,
     Image,
+    Modal,
     ImageBackground,
     TouchableOpacity,
     FlatList,
-    Text,
-    Modal
+    ActivityIndicator
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
@@ -23,14 +24,12 @@ class UpdateAdPhotos extends Component {
     keyExtractor = (item, index) => index.toString();
 
     renderImageView = () => {
-        const { selectPhotoTapped } = this.props;
+        const { selectPhotoTapped, coverImageURL } = this.props;
 
         return (
             <View style={containerStyle}>
                 <Image
-                    source={{
-                        uri: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_cars.jpg?alt=media&token=475bad74-d9d4-437e-bf61-992667d5c8d3'
-                    }}
+                    source={{ uri: coverImageURL }}
                     style={slide1}
                 />
                 <View style={semiTransparentViewStyle} />
@@ -68,10 +67,11 @@ class UpdateAdPhotos extends Component {
     }
 
     renderActivityIndicator = () => {
+        const { showActivityIndicator } = this.props;
 
         return (
             <Modal
-                visible={false}
+                visible={showActivityIndicator}
                 transparent={true}
                 animationType="none"
                 onRequestClose={() => null}
@@ -82,7 +82,11 @@ class UpdateAdPhotos extends Component {
     }
 
     renderPhotoCard = ({ item }) => {
-        const { selectPhotoTapped } = this.props;
+        const {
+            selectPhotoTapped,
+            deleteImageFromStorage,
+            isFibaseStorageInProgress
+        } = this.props;
 
         if (item.url) {
             return (
@@ -98,7 +102,7 @@ class UpdateAdPhotos extends Component {
                         color={Color.lightBlueWhite}
                         underlayColor="transparent"
                         containerStyle={{ top: 0, right: 0, position: 'absolute', backgroundColor: Color.semiTransparentDarkOverlay, padding: 10 }}
-                    //onPress={() => console.log('hello')}
+                        onPress={() => deleteImageFromStorage(item.index)}
                     />
                 </ImageBackground>
             );
@@ -109,15 +113,21 @@ class UpdateAdPhotos extends Component {
                 style={carouselCardStyle}
                 onPress={() => selectPhotoTapped(item.index)}
             >
-                <Icon
-                    name="photo"
-                    type="font-awesome"
-                    color={Color.lightDark}
-                    underlayColor="transparent"
-                    size={80}
-                />
-                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT }}>Upload Image</Text>
-
+                {
+                    isFibaseStorageInProgress ?
+                        <ActivityIndicator
+                            size="small"
+                            color={Color.golden}
+                        /> :
+                        <Icon
+                            name="photo"
+                            type="font-awesome"
+                            color={Color.lightDark}
+                            underlayColor="transparent"
+                            size={50}
+                        />
+                }
+                {isFibaseStorageInProgress ? <View /> : <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT }}>Upload Image</Text>}
             </TouchableOpacity>
         );
     }
@@ -154,7 +164,7 @@ class UpdateAdPhotos extends Component {
                 {this.renderPhotoViewDivider('Gallery')}
                 {this.renderPhotoList()}
                 {/*this.renderFloatingShareButton()*/}
-                {/*this.renderActivityIndicator()*/}
+                {this.renderActivityIndicator()}
             </View >
         );
     }
@@ -178,8 +188,12 @@ const {
 
 UpdateAdPhotos.propTypes = {
     navigation: PropTypes.object,
+    showActivityIndicator: PropTypes.bool,
+    isFibaseStorageInProgress: PropTypes.bool,
     imageDataSource: PropTypes.array,
-    selectPhotoTapped: PropTypes.func
+    selectPhotoTapped: PropTypes.func,
+    deleteImageFromStorage: PropTypes.func,
+    coverImageURL: PropTypes.string
 };
 
 export default UpdateAdPhotos;
