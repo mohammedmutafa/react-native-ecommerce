@@ -13,7 +13,7 @@ const index = ({ navigation }) => {
     const location = params ? params.selectedLocation : '';
     const ownerID = params ? params.ownerID : '';
     const isNavigatedFromPublicProfile = params ? params.isNavigatedFromPublicProfile : false;
-    const imageDataSource = params ? params.imageDataSource : null;
+    const imageDataSource = params ? params.imageDataSource : [];
 
     return (
         <GeneralProductDetailsContainer

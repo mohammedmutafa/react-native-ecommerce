@@ -58,13 +58,39 @@ class ProfilePublicContainer extends Component {
             productTitle,
             productDescription,
             selectedLocation,
-            ownerID
+            ownerID,
+            //Images
+            image_1,
+            image_2,
+            image_3,
+            image_4,
+            image_5,
+            image_6,
+            image_7
         } = item;
         let formatedDate = '';
 
         if (updatedAt) {
             Moment.locale('en');
             formatedDate = Moment(updatedAt).format("Do-MMM-YYYY");
+        }
+
+        const imageDataSource = [
+            // { url: coverImageURL, index: 0 },
+            { url: image_1, index: 1 },
+            { url: image_2, index: 2 },
+            { url: image_3, index: 3 },
+            { url: image_4, index: 4 },
+            { url: image_5, index: 5 },
+            { url: image_6, index: 6 },
+            { url: image_7, index: 7 }
+        ];
+        const filteredImageDataSource = [];
+
+        for (const obj of imageDataSource) {
+            if (obj && obj.url) {
+                filteredImageDataSource.push(obj)
+            }
         }
 
         navigation.navigate('GeneralProductDetails', {
@@ -75,6 +101,7 @@ class ProfilePublicContainer extends Component {
             productDescription: productDescription,
             selectedLocation: selectedLocation,
             ownerID: ownerID,
+            imageDataSource: filteredImageDataSource,
             isNavigatedFromPublicProfile: true
         });
 
