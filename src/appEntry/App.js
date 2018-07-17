@@ -7,6 +7,7 @@ import {
 import Home from '../scene/Home';
 import GeneralProductDetails from '../scene/GeneralProductDetails';
 import CreateAd from '../scene/CreateAd';
+import EditUserAd from '../scene/EditUserAd';
 import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
 import UserProfile from '../scene/UserProfile';
@@ -41,6 +42,21 @@ const StackNavigation = StackNavigator({
         screen: CreateAd,
         navigationOptions: (props) => ({
             header: null
+        })
+    },
+    EditUserAd: {
+        screen: EditUserAd,
+        navigationOptions: (props) => ({
+            headerTitleStyle: {
+                fontFamily: Fonts.CharterBT
+            },
+            headerStyle: {
+                backgroundColor: '#2a2a2a',
+                elevation: 0 //Only for Android
+            },
+            headerTintColor: '#FFFFFF',
+            title: "Ads",
+            drawerLockMode: 'locked-closed'
         })
     },
     SearchListing: {
