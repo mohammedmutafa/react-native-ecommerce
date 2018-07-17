@@ -107,10 +107,11 @@ class EditUserAdContainer extends Component {
 
     }
 
-    onPressUpdatePhotos = (item) => {
+    onPressUpdatePhotos = ({ postID, ownerID }) => {
         const { navigation } = this.props;
         navigation.navigate('UpdateAdPhotos', {
-            postID: item.postID
+            postID,
+            ownerID
         });
     }
 

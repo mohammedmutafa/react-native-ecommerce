@@ -100,9 +100,7 @@ class UpdateAdPhotosContainer extends Component {
     }
 
     updatePostImageGallery = (selectedImageSource, index) => {
-        // const { postID, ownerID } = this.props;
-        const postID = '6UWAII7uurjI0dZpzjSY';
-        const ownerID = '+917829366565';
+        const { postID, ownerID } = this.props;
 
         const postRef = firebase.firestore().collection('posts').doc(`${postID}`);
         const fileName = `image_${index}`;
@@ -162,8 +160,7 @@ class UpdateAdPhotosContainer extends Component {
     }
 
     deleteImageFromStorage = (index) => {
-        const postID = '6UWAII7uurjI0dZpzjSY';
-        const ownerID = '+917829366565';
+        const { postID, ownerID } = this.props;
 
         const postRef = firebase.firestore().collection('posts').doc(`${postID}`);
         const fileName = `image_${index}`;
@@ -250,7 +247,8 @@ class UpdateAdPhotosContainer extends Component {
 
 UpdateAdPhotosContainer.propTypes = {
     navigation: PropTypes.object,
-    postID: PropTypes.string
+    postID: PropTypes.string,
+    ownerID: PropTypes.string
 };
 
 export default UpdateAdPhotosContainer;
