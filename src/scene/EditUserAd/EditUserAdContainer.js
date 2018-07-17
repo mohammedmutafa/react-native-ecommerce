@@ -31,7 +31,8 @@ class EditUserAdContainer extends Component {
             .then((snapshot) => {
                 let dSArray = [];
                 snapshot.forEach((doc) => {
-                    dSArray.push(doc.data());
+                    const mergedObj = { ...doc.data(), ...{ postID: doc.id } };
+                    dSArray.push(mergedObj);
                 });
                 copySellerAdsList = [...copySellerAdsList, ...dSArray];
             })
@@ -106,6 +107,13 @@ class EditUserAdContainer extends Component {
 
     }
 
+    onPressUpdatePhotos = (item) => {
+        const { navigation } = this.props;
+        navigation.navigate('UpdateAdPhotos', {
+            postID: item.postID
+        });
+    }
+
     render() {
         const { sellerAdsList, isFetchingAdsDataFromFirestore } = this.state;
 
@@ -114,6 +122,7 @@ class EditUserAdContainer extends Component {
                 sellerAdsList={sellerAdsList}
                 isFetchingAdsDataFromFirestore={isFetchingAdsDataFromFirestore}
                 onPressAdsCard={this.onPressAdsCard}
+                onPressUpdatePhotos={this.onPressUpdatePhotos}
             />
         );
     }
@@ -121,7 +130,8 @@ class EditUserAdContainer extends Component {
 
 EditUserAdContainer.propTypes = {
     navigation: PropTypes.object,
-    sellerData: PropTypes.object
+    sellerData: PropTypes.object,
+    userID: PropTypes.string
 };
 
 export default EditUserAdContainer;

@@ -18,7 +18,7 @@ class EditUserAd extends Component {
     keyExtractor = (item, index) => index.toString();
 
     renderItemCard = ({ item }) => {
-        const { onPressAdsCard } = this.props;
+        const { onPressAdsCard, onPressUpdatePhotos } = this.props;
 
         return (
             <View
@@ -41,6 +41,7 @@ class EditUserAd extends Component {
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
+                        onPress={() => onPressUpdatePhotos(item)}
                         style={{
                             flex: 1, justifyContent: 'center', alignItems: 'center',
                             borderWidth: 1, borderLeftColor: Color.golden,
@@ -136,6 +137,7 @@ EditUserAd.propTypes = {
     navigation: PropTypes.object,
     sellerAdsList: PropTypes.array,
     onPressAdsCard: PropTypes.func,
+    onPressUpdatePhotos: PropTypes.func,
     isFetchingAdsDataFromFirestore: PropTypes.bool
 };
 

@@ -27,8 +27,7 @@ class UpdateAdPhotosContainer extends Component {
     }
 
     componentWillMount() {
-        // const { postID } = this.props;
-        const postID = '6UWAII7uurjI0dZpzjSY';
+        const { postID } = this.props;
 
         this.setState({
             showActivityIndicator: true
