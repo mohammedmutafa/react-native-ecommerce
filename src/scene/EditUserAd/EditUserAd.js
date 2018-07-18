@@ -19,6 +19,7 @@ class EditUserAd extends Component {
 
     renderItemCard = ({ item }) => {
         const { onPressAdsCard, onPressUpdatePhotos } = this.props;
+        const coverImageURL = item ? item.image_0 : undefined;
 
         return (
             <View
@@ -78,7 +79,7 @@ class EditUserAd extends Component {
                     onPress={() => onPressAdsCard(item)}
                 >
                     <Image
-                        source={{ uri: item.coverImageURL }}
+                        source={{ uri: coverImageURL }}
                         style={listCardImageStyle}
                     />
                 </TouchableOpacity>

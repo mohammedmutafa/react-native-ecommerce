@@ -31,7 +31,7 @@ class UpdateAdPhotosContainer extends Component {
         const { postItem } = this.props;
         const {
             //Images
-            coverImageURL,
+            image_0,
             image_1,
             image_2,
             image_3,
@@ -42,7 +42,7 @@ class UpdateAdPhotosContainer extends Component {
         } = postItem;
 
         this.setState({
-            image_0: coverImageURL,
+            image_0,
             image_1,
             image_2,
             image_3,
