@@ -228,7 +228,7 @@ class CreateAdContainer extends Component {
                     .on('state_changed', (snapshot) => {
                         //Current upload state
                         let imageData = {
-                            coverImageURL: snapshot.downloadURL
+                            image_0: snapshot.downloadURL
                         };
                         /**
                          * To update some fields of a document without overwriting the entire document, use the update() method:

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 import { screenWidth, deviceScaledHeight } from '../../utilities/ScreenSize';
 import Color from '../../styles/Color';
@@ -6,6 +6,7 @@ import Fonts from '../../styles/Fonts';
 
 export const STICKY_HEADER_HEIGHT = deviceScaledHeight(110);
 export const SLIDER_HEIGHT = screenWidth / 1.7;
+
 const cardWidth = screenWidth / 3;
 const cardHeight = cardWidth + 40;
 
@@ -45,25 +46,6 @@ export default styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: Fonts.CharterBT
     },
-    decsriptionTextStyle: {
-        color: Color.dark,
-        fontSize: 16,
-        //fontStyle: 'italic',
-        paddingLeft: 25,
-        paddingRight: 25,
-        paddingTop: 10,
-        bottom: 5,
-        // textAlign: 'justify' //The value 'justify' is only supported on iOS and fallbacks to left on Android.
-    },
-    boldSeparator: {
-        color: '#DAA520',
-        fontWeight: 'bold',
-        fontSize: 30,
-        marginLeft: 25,
-        marginRight: 25,
-        marginTop: 5,
-        marginBottom: 10
-    },
     floatingButtonContainerStyle: {
         backgroundColor: Color.floatingButtonBackground,
         borderWidth: 1,
@@ -74,13 +56,6 @@ export default styles = StyleSheet.create({
         width: screenWidth,
         position: 'absolute',
         backgroundColor: 'rgba(60, 60, 60, 0.5)'
-    },
-    priceTextStyle: {
-        color: '#2a2a2a',
-        fontSize: 30,
-        textAlign: 'center',
-        marginTop: 10,
-        fontFamily: Fonts.CharterBT
     },
     dateTextStyle: {
         color: '#FFFFFF',
@@ -114,45 +89,13 @@ export default styles = StyleSheet.create({
         fontFamily: Fonts.DancingScriptOT,
         fontSize: 25
     },
-    photoCardStyle: {
-        width: cardWidth,
-        height: cardHeight,
-        backgroundColor: '#F7F7F7',
-        marginTop: 5,
-        marginBottom: 5,
-        marginRight: 5
-    },
-    imageRowStyle: {
+    carouselCardStyle: {
         height: cardHeight,
         width: cardWidth,
-        resizeMode: 'cover'
-    },
-    imageViewFlatListContainerStyle: {
-        marginLeft: 25,
-        marginRight: 25,
-        marginTop: 5,
-        marginBottom: 20
-    },
-    followButtonContainerStyle: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginHorizontal: 25,
-        marginVertical: 20,
-        alignItems: 'center'
-    },
-    followButtonTextstyle: {
-        fontSize: 18,
-        color: Color.golden,
-        fontFamily: Fonts.CharterBT
-    },
-    locationTextStyle: {
-        fontSize: 20,
-        color: Color.dark,
-        fontFamily: Fonts.CharterBT,
-        paddingHorizontal: 10
-    },
-    imageNotAvailableTextStyle: {
-        color: Color.dark,
-        fontFamily: Fonts.CharterBT
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 10,
+        backgroundColor: Color.lightWhite,
+        marginHorizontal: 5
     }
 });

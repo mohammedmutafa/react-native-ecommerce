@@ -80,6 +80,13 @@ class Drawer extends Component {
                     });
                 }
                 break;
+            case 'Ads':
+                if (user) {
+                    navigation.navigate('EditUserAd', {
+                        userID: user.phoneNumber
+                    });
+                }
+                break;
         }
     }
 
@@ -124,7 +131,7 @@ class Drawer extends Component {
                 />
                 <View style={{ marginTop: 100 }}>
                     {this.renderRow('Profile')}
-                    {this.renderRow('Bookmarked Items')}
+                    {this.renderRow('Ads')}
                     {this.renderRow('Settings')}
                     {this.renderRow('About')}
                     {this.renderRow('Logout')}

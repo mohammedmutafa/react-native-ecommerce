@@ -54,6 +54,7 @@ class SearchListing extends Component {
 
     renderFeedsCard = ({ item }) => {
         const { navigation } = this.props;
+
         const {
             updatedAt,
             ownerID,
@@ -61,13 +62,39 @@ class SearchListing extends Component {
             productTitle,
             productDescription,
             selectedLocation,
-            coverImageURL
+            //Images
+            image_0,
+            image_1,
+            image_2,
+            image_3,
+            image_4,
+            image_5,
+            image_6,
+            image_7
         } = item;
 
         let formatedDate = '';
         let formatedDay = '';
         let formatedMonth = '';
         let formatedYear = '';
+
+        const imageDataSource = [
+            // { url: coverImageURL, index: 0 },
+            { url: image_1, index: 1 },
+            { url: image_2, index: 2 },
+            { url: image_3, index: 3 },
+            { url: image_4, index: 4 },
+            { url: image_5, index: 5 },
+            { url: image_6, index: 6 },
+            { url: image_7, index: 7 }
+        ];
+        const filteredImageDataSource = [];
+
+        for (const obj of imageDataSource) {
+            if (obj && obj.url) {
+                filteredImageDataSource.push(obj)
+            }
+        }
 
         if (updatedAt) {
             Moment.locale('en');
@@ -88,7 +115,8 @@ class SearchListing extends Component {
                 title={productTitle}
                 productDescription={productDescription}
                 selectedLocation={selectedLocation}
-                thumbnailURL={coverImageURL}
+                thumbnailURL={image_0}
+                imageDataSource={filteredImageDataSource}
                 navigation={navigation}
             />
         );
@@ -218,7 +246,8 @@ SearchListing.propTypes = {
     onRefresh: PropTypes.func,
 
     //FireStore
-    isFetchingDataFromFirestore: PropTypes.bool
+    isFetchingDataFromFirestore: PropTypes.bool,
+    postListDataSource: PropTypes.array
 };
 
 export default SearchListing;

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
 
-import ProfilePublic from './ProfilePublic';
+import EditUserAd from './EditUserAd';
 
 import { postCollectionRef } from '../../utilities/DBReferences';
 
-class ProfilePublicContainer extends Component {
+class EditUserAdContainer extends Component {
     constructor(props) {
         super(props);
 
@@ -17,8 +17,7 @@ class ProfilePublicContainer extends Component {
     }
 
     async componentWillMount() {
-        const { sellerData } = this.props;
-        const { ownerID } = sellerData;
+        const { userID } = this.props;
 
         this.setState({
             isFetchingAdsDataFromFirestore: true
@@ -28,16 +27,17 @@ class ProfilePublicContainer extends Component {
         let copySellerAdsList = [...sellerAdsList];
 
         //For order by issue refer this discussion : https://github.com/invertase/react-native-firebase/issues/568
-        await postCollectionRef.where('ownerID', '==', ownerID).orderBy('updatedAt', 'desc').get()
+        await postCollectionRef.where('ownerID', '==', userID).orderBy('updatedAt', 'desc').get()
             .then((snapshot) => {
                 let dSArray = [];
                 snapshot.forEach((doc) => {
-                    dSArray.push(doc.data());
+                    const mergedObj = { ...doc.data(), ...{ postID: doc.id } };
+                    dSArray.push(mergedObj);
                 });
                 copySellerAdsList = [...copySellerAdsList, ...dSArray];
             })
             .catch((err) => {
-                console.log('Error getting documents', err);
+                //console.log('Error getting documents', err);
                 this.setState({
                     isFetchingAdsDataFromFirestore: false
                 });
@@ -102,28 +102,43 @@ class ProfilePublicContainer extends Component {
             selectedLocation: selectedLocation,
             ownerID: ownerID,
             imageDataSource: filteredImageDataSource,
-            isNavigatedFromPublicProfile: true
+            //isNavigatedFromPublicProfile: true
         });
 
     }
 
+    onPressUpdatePhotos = (item) => {
+        const { navigation } = this.props;
+        const {
+            ownerID,
+            postID
+        } = item;
+
+        navigation.navigate('UpdateAdPhotos', {
+            item,
+            postID,
+            ownerID
+        });
+    }
+
     render() {
-        const { sellerData } = this.props;
         const { sellerAdsList, isFetchingAdsDataFromFirestore } = this.state;
 
         return (
-            <ProfilePublic
-                sellerData={sellerData}
+            <EditUserAd
                 sellerAdsList={sellerAdsList}
                 isFetchingAdsDataFromFirestore={isFetchingAdsDataFromFirestore}
                 onPressAdsCard={this.onPressAdsCard}
+                onPressUpdatePhotos={this.onPressUpdatePhotos}
             />
         );
     }
 }
 
-ProfilePublicContainer.propTypes = {
-    sellerData: PropTypes.object
+EditUserAdContainer.propTypes = {
+    navigation: PropTypes.object,
+    sellerData: PropTypes.object,
+    userID: PropTypes.string
 };
 
-export default ProfilePublicContainer;
+export default EditUserAdContainer;

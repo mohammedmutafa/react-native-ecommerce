@@ -28,7 +28,7 @@ class ProfilePublic extends Component {
                 onPress={() => onPressAdsCard(item)}
             >
                 <Image
-                    source={{ uri: item.coverImageURL }}
+                    source={{ uri: item.image_0 }}
                     style={gridViewCardStyle}
                 />
             </TouchableOpacity >
