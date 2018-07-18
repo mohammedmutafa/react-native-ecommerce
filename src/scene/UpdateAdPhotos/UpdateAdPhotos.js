@@ -24,7 +24,12 @@ class UpdateAdPhotos extends Component {
     keyExtractor = (item, index) => index.toString();
 
     renderImageView = () => {
-        const { selectPhotoTapped, coverImageURL } = this.props;
+        const {
+            selectPhotoTapped,
+            coverImageURL,
+            productTitle,
+            updatedAt
+        } = this.props;
 
         return (
             <View style={containerStyle}>
@@ -35,8 +40,8 @@ class UpdateAdPhotos extends Component {
                 <View style={semiTransparentViewStyle} />
                 <View style={textContainerStyle}>
                     <Animatable.Text style={titleTextStyle} animation="fadeInLeft" delay={200}></Animatable.Text>
-                    <Animatable.Text style={titleTextStyle} animation="fadeInLeft" delay={200}>{'iPhoneX'}</Animatable.Text>
-                    <Animatable.Text style={dateTextStyle} animation="fadeInLeft" delay={200}>{'2018'}</Animatable.Text>
+                    <Animatable.Text style={titleTextStyle} animation="fadeInLeft" delay={200}>{productTitle}</Animatable.Text>
+                    <Animatable.Text style={dateTextStyle} animation="fadeInLeft" delay={200}>{updatedAt}</Animatable.Text>
                 </View>
                 <Icon
                     name="ios-camera-outline"
@@ -44,7 +49,7 @@ class UpdateAdPhotos extends Component {
                     color={Color.lightBlueWhite}
                     underlayColor="transparent"
                     containerStyle={{ bottom: 0, right: 0, position: 'absolute', backgroundColor: Color.semiTransparentDarkOverlay, paddingHorizontal: 15, paddingVertical: 10 }}
-                    onPress={selectPhotoTapped}
+                    onPress={() => selectPhotoTapped(0)}//Index 0: Cover Image
                 />
             </View >
         );
@@ -205,7 +210,9 @@ UpdateAdPhotos.propTypes = {
     imageDataSource: PropTypes.array,
     selectPhotoTapped: PropTypes.func,
     deleteImageFromStorage: PropTypes.func,
-    coverImageURL: PropTypes.string
+    coverImageURL: PropTypes.string,
+    productTitle: PropTypes.string,
+    updatedAt: PropTypes.string
 };
 
 export default UpdateAdPhotos;

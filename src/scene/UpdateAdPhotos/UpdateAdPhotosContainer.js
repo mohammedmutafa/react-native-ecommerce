@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'react-native-firebase';
 import ImagePicker from 'react-native-image-picker';
+import Moment from 'moment';
 
 import UpdateAdPhotos from './UpdateAdPhotos';
 
@@ -27,43 +28,29 @@ class UpdateAdPhotosContainer extends Component {
     }
 
     componentWillMount() {
-        const { postID } = this.props;
+        const { postItem } = this.props;
+        const {
+            //Images
+            coverImageURL,
+            image_1,
+            image_2,
+            image_3,
+            image_4,
+            image_5,
+            image_6,
+            image_7
+        } = postItem;
 
         this.setState({
-            showActivityIndicator: true
+            image_0: coverImageURL,
+            image_1,
+            image_2,
+            image_3,
+            image_4,
+            image_5,
+            image_6,
+            image_7
         });
-
-        const postRef = firebase.firestore().collection('posts').doc(`${postID}`);
-
-        postRef.get()
-            .then((doc) => {
-                const {
-                    coverImageURL,
-                    image_1,
-                    image_2,
-                    image_3,
-                    image_4,
-                    image_5,
-                    image_6,
-                    image_7
-                } = doc.data();
-
-                this.setState({
-                    showActivityIndicator: false,
-                    image_0: coverImageURL,
-                    image_1,
-                    image_2,
-                    image_3,
-                    image_4,
-                    image_5,
-                    image_6,
-                    image_7
-                });
-            }).catch((err) => {
-                this.setState({
-                    showActivityIndicator: false
-                });
-            });
     }
 
     //Image Picker Implementation
@@ -219,6 +206,15 @@ class UpdateAdPhotosContainer extends Component {
             image_7
         } = this.state;
 
+        const { postItem } = this.props;
+        const productTitle = postItem ? postItem.productTitle : '';
+        let formatedDate = postItem ? postItem.updatedAt : '';
+
+        if (postItem && postItem.updatedAt) {
+            Moment.locale('en');
+            formatedDate = Moment(postItem.updatedAt).format("Do-MMM-YYYY");
+        }
+
         const imageDataSource = [
             // { url: image_0, index: 0 },
             { url: image_1, index: 1 },
@@ -238,6 +234,8 @@ class UpdateAdPhotosContainer extends Component {
                 //FireStore
                 imageDataSource={imageDataSource}
                 coverImageURL={image_0}
+                productTitle={productTitle}
+                updatedAt={formatedDate}
                 showActivityIndicator={showActivityIndicator}
                 isFibaseStorageInProgress={isFibaseStorageInProgress}
             />
@@ -247,8 +245,9 @@ class UpdateAdPhotosContainer extends Component {
 
 UpdateAdPhotosContainer.propTypes = {
     navigation: PropTypes.object,
+    postItem: PropTypes.object,
     postID: PropTypes.string,
-    ownerID: PropTypes.string
+    ownerID: PropTypes.string,
 };
 
 export default UpdateAdPhotosContainer;
