@@ -28,7 +28,15 @@ class UserProfileContainer extends Component {
     }
 
     componentWillMount() {
-        const { userID } = this.props;
+        const { userID, userExistInDB } = this.props;
+
+        if (!userExistInDB) {
+            this.setState({
+                isEditProfileClicked: true
+            });
+
+            return;
+        }
 
         this.setState({
             isUserDataUpdating: true
@@ -320,7 +328,8 @@ class UserProfileContainer extends Component {
 
 UserProfileContainer.propTypes = {
     navigation: PropTypes.object,
-    userID: PropTypes.string
+    userID: PropTypes.string,
+    userExistInDB: PropTypes.bool
 };
 
 export default UserProfileContainer;
