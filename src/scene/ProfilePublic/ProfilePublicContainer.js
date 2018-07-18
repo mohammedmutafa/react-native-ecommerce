@@ -52,7 +52,6 @@ class ProfilePublicContainer extends Component {
     onPressAdsCard = (item) => {
         const { navigation } = this.props;
         const {
-            coverImageURL,
             updatedAt,
             productPrice,
             productTitle,
@@ -60,6 +59,7 @@ class ProfilePublicContainer extends Component {
             selectedLocation,
             ownerID,
             //Images
+            image_0,
             image_1,
             image_2,
             image_3,
@@ -94,7 +94,7 @@ class ProfilePublicContainer extends Component {
         }
 
         navigation.navigate('GeneralProductDetails', {
-            thumbnailURL: coverImageURL,
+            thumbnailURL: image_0,
             time: formatedDate,
             price: productPrice,
             title: productTitle,

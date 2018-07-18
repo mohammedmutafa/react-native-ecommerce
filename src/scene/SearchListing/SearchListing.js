@@ -62,8 +62,8 @@ class SearchListing extends Component {
             productTitle,
             productDescription,
             selectedLocation,
-            coverImageURL,
             //Images
+            image_0,
             image_1,
             image_2,
             image_3,
@@ -79,7 +79,7 @@ class SearchListing extends Component {
         let formatedYear = '';
 
         const imageDataSource = [
-           // { url: coverImageURL, index: 0 },
+            // { url: coverImageURL, index: 0 },
             { url: image_1, index: 1 },
             { url: image_2, index: 2 },
             { url: image_3, index: 3 },
@@ -115,7 +115,7 @@ class SearchListing extends Component {
                 title={productTitle}
                 productDescription={productDescription}
                 selectedLocation={selectedLocation}
-                thumbnailURL={coverImageURL}
+                thumbnailURL={image_0}
                 imageDataSource={filteredImageDataSource}
                 navigation={navigation}
             />
