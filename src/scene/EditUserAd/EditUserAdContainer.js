@@ -102,7 +102,7 @@ class EditUserAdContainer extends Component {
             selectedLocation: selectedLocation,
             ownerID: ownerID,
             imageDataSource: filteredImageDataSource,
-            isNavigatedFromPublicProfile: true
+            //isNavigatedFromPublicProfile: true
         });
 
     }
