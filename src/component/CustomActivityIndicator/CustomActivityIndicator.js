@@ -7,7 +7,10 @@ import {
 } from 'react-native';
 import Animation from 'lottie-react-native';
 
-import { deviceScaledWidth } from '../../utilities/ScreenSize';
+import {
+    deviceScaledHeight,
+    deviceScaledWidth
+} from '../../utilities/ScreenSize';
 
 // Get screen dimensions
 const { width } = Dimensions.get('window');
@@ -53,7 +56,8 @@ export class CustomActivityIndicator extends Component {
                     alignSelf: 'center',
                     backgroundColor: '#F7F7F7',
                     borderRadius: 5,
-                    padding: 10
+                    paddingHorizontal: deviceScaledWidth(10),
+                    paddingVertical: deviceScaledHeight(10)
                 }}
                 >
                     <Animation
