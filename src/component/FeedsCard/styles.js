@@ -1,61 +1,40 @@
-import {
-    StyleSheet,
-    Platform
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import {
-    screenWidth
-} from '../../utilities/ScreenSize';
+import { screenWidth } from '../../utilities/ScreenSize';
 import Color from '../../styles/Color';
 import Fonts from '../../styles/Fonts';
 
 const cardwidth = screenWidth;
-const cardHeight = cardwidth * 0.7;
+const cardHeight = cardwidth * 0.6;
+const contentHeight = cardHeight * 0.25
 
 export default StyleSheet.create({
     container: {
-        height: cardHeight,
+        height: cardHeight + contentHeight,
         width: cardwidth,
         justifyContent: 'space-between',
-        marginVertical: 5
+        marginVertical: 5,
+        backgroundColor: Color.lightWhite
     },
     imageBackgroundStyle: {
         height: cardHeight,
         width: cardwidth,
         justifyContent: 'space-between'
     },
-    semiTransparentViewStyle: {
-        height: cardHeight,
-        width: cardwidth,
-        position: 'absolute',
-        backgroundColor: 'rgba(60, 60, 60, 0.5)'
-    },
     priceBoxStyle: {
         padding: 10,
-        backgroundColor: 'rgba(218,165,32,0.3)',
+        backgroundColor: Color.semiTransparentDarkOverlay,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         borderRightWidth: 2,
-        borderRightColor: Color.golden,
-        marginHorizontal: 20
-    },
-    categoryTextStyle: {
-        color: Color.lightBlueWhite,
-        fontFamily: Fonts.CharterBT,
-        fontSize: 16
+        borderRightColor: Color.golden
     },
     titleTextStyle: {
-        color: Color.lightBlueWhite,
+        color: Color.dark,
         fontFamily: Fonts.CharterBT,
         fontSize: 16,
-        //  width: cardwidth / 1.5
-    },
-    priceSymbolTextStyle: {
-        color: Color.lightBlueWhite,
-        fontSize: 30,
-        textAlign: 'center',
-        fontFamily: Fonts.CharterBT
+        marginTop: 5
     },
     priceTextStyle: {
         color: Color.lightBlueWhite,
@@ -64,8 +43,8 @@ export default StyleSheet.create({
         fontFamily: Fonts.CharterBT
     },
     addressTextStyle: {
-        color: Color.placeholderWhite,
-        fontSize: 14,
+        color: Color.lightDark,
+        fontSize: 12,
         fontFamily: Fonts.CharterBT,
         paddingHorizontal: 5,
         alignSelf: 'center'
