@@ -37,15 +37,15 @@ class SearchListing extends Component {
             <View style={floatingFilterButtonStyle}>
                 <Icon
                     raised
-                    name="filter-outline"
+                    name="filter-variant"
                     type="material-community"
-                    color={Color.lightWhite}
+                    color={Color.golden}
                     underlayColor="transparent"
                     onPress={changeStateForFilterUI}
                     containerStyle={{
-                        backgroundColor: Color.semiTransparentDarkOverlay,
-                        //borderWidth: 0.5,
-                        //borderColor: Color.golden
+                        backgroundColor: Color.floatingButtonBackground,
+                        borderWidth: 1,
+                        borderColor: Color.golden
                     }}
                 />
             </View>
