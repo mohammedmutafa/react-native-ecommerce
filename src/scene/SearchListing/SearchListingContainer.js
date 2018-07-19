@@ -73,6 +73,8 @@ class SearchListingContainer extends Component {
          * If user clicks back button instead of apply button, clear the filters
          */
 
+        //TODO click filter icon should not reset it, only when back button pressed
+
         this.setState({
             isFilterVisible: !this.state.isFilterVisible,
             selectedLocation: '',
