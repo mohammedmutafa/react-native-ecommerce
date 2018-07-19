@@ -12,6 +12,7 @@ import Swiper from 'react-native-swiper';
 import styles from './styles';
 import { numberWithCommas } from '../../utilities/Functions';
 import Color from '../../styles/Color';
+import Fonts from '../../styles/Fonts';
 
 const {
     conatinerStyle,
@@ -57,7 +58,7 @@ export class CreateAdsCard extends Component {
 
         return (
             <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
-                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Location</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontFamily: Fonts.CharterBT, fontWeight: 'bold', color: Color.lightWhite }}>Location</Text>
                 <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{selectedLocation}</Text>
             </Animatable.View>
         );
@@ -66,7 +67,7 @@ export class CreateAdsCard extends Component {
     renderSwiperCardCondition = () => {
         return (
             <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
-                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Condition</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontFamily: Fonts.CharterBT, fontWeight: 'bold', color: Color.lightWhite }}>Condition</Text>
                 <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{this.props.selectedProductCondition}</Text>
             </Animatable.View>
         );
@@ -80,7 +81,7 @@ export class CreateAdsCard extends Component {
 
         return (
             <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
-                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Category</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontFamily: Fonts.CharterBT, fontWeight: 'bold', color: Color.lightWhite }}>Category</Text>
                 <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : ''}</Text>
             </Animatable.View>
         );
@@ -91,7 +92,7 @@ export class CreateAdsCard extends Component {
 
         return (
             <Animatable.View style={descriptionCardStyle} animation="zoomIn" delay={200}>
-                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Description</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontFamily: Fonts.CharterBT, fontWeight: 'bold', color: Color.lightWhite }}>Description</Text>
                 <Text style={{ textAlign: 'justify', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{productDescription}</Text>
             </Animatable.View>
         );
@@ -102,7 +103,7 @@ export class CreateAdsCard extends Component {
 
         return (
             <Animatable.View style={swipeCardStyle} animation="zoomIn" delay={200}>
-                <Text style={{ alignSelf: 'center', fontSize: 18, fontWeight: 'bold', color: Color.lightWhite }}>Title</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 18, fontFamily: Fonts.CharterBT, fontWeight: 'bold', color: Color.lightWhite }}>Title</Text>
                 <Text style={{ textAlign: 'center', marginTop: 10, alignSelf: 'center', fontSize: 14, color: Color.lightWhite }}>{productTitle}</Text>
             </Animatable.View>
         );
@@ -111,7 +112,7 @@ export class CreateAdsCard extends Component {
     render() {
         return (
             <View style={conatinerStyle}>
-                <Text style={{ color: Color.dark, alignSelf: 'center', fontSize: 35, fontWeight: 'bold', marginVertical: 10 }}>
+                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT, alignSelf: 'center', fontSize: 35, fontWeight: 'bold', marginVertical: 10 }}>
                     {`₹ ${numberWithCommas(this.props.productPrice)}`}
                 </Text>
                 <Text style={boldSeparator}>______</Text>

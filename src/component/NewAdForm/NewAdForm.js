@@ -85,12 +85,20 @@ export class NewAdForm extends Component {
         this.props.navigation.goBack();
     }
 
-    renderBackButton = () => (
-        <BackButton
-            style={{ left: 20 }}
-            onPress={this.goBack}
-        />
-    );
+    renderBackButton = () => {
+        const { isFromUpdateAdDetails } = this.props;
+
+        if (isFromUpdateAdDetails) {
+            return <View />
+        }
+
+        return (
+            <BackButton
+                style={{ left: 20 }}
+                onPress={this.goBack}
+            />
+        );
+    }
 
     renderNextButton = () => {
         const { createAdStatusDone } = this.props;

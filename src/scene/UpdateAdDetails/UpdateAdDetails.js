@@ -13,7 +13,6 @@ import styles from './styles';
 
 import { CreateAdCoverPhoto } from '../../component/CreateAdCoverPhoto';
 import { CreateAdsCard } from '../../component/CreateAdsCard';
-import { BackButton } from '../../component/BackButton';
 import { NewAdForm } from '../../component/NewAdForm';
 import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
 
@@ -49,19 +48,6 @@ class UpdateAdDetails extends Component {
                     onPress={null}
                 />
             </TouchableOpacity>
-        );
-    }
-
-    goBack = () => {
-        this.props.navigation.goBack();
-    }
-
-    renderBackButton = () => {
-        return (
-            <BackButton
-                style={{ left: 20 }}
-                onPress={this.goBack}
-            />
         );
     }
 
@@ -178,7 +164,6 @@ class UpdateAdDetails extends Component {
                     />
                 </ParallaxScrollView>
                 {this.renderFloatingShareButton()}
-                {this.renderBackButton()}
                 {this.renderActivityIndicator()}
             </View >
         );
