@@ -35,9 +35,19 @@ export class NewAdForm extends Component {
 
     renderImageView = () => {
         const {
+            imageURL,
+            selectPhotoTapped,
             selectedImageSource,
-            selectPhotoTapped
+            isFromUpdateAdDetails
         } = this.props;
+
+        if (isFromUpdateAdDetails) {
+            return (
+                <CreateAdCoverPhoto
+                    imageURL={imageURL ? imageURL : null}
+                />
+            );
+        }
 
         return (
             <View>
@@ -380,5 +390,7 @@ NewAdForm.propTypes = {
 
     //Image
     selectedImageSource: PropTypes.object,
+    imageURL: PropTypes.string,
+    isFromUpdateAdDetails: PropTypes.bool,
     selectPhotoTapped: PropTypes.func
 }

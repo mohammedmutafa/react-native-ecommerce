@@ -9,6 +9,7 @@ import GeneralProductDetails from '../scene/GeneralProductDetails';
 import CreateAd from '../scene/CreateAd';
 import EditUserAd from '../scene/EditUserAd';
 import UpdateAdPhotos from '../scene/UpdateAdPhotos';
+import UpdateAdDetails from '../scene/UpdateAdDetails';
 import SearchListing from '../scene/SearchListing';
 import ProfilePublic from '../scene/ProfilePublic';
 import UserProfile from '../scene/UserProfile';
@@ -72,6 +73,21 @@ const StackNavigation = StackNavigator({
             },
             headerTintColor: '#FFFFFF',
             title: "Update Photos",
+            drawerLockMode: 'locked-closed'
+        })
+    },
+    UpdateAdDetails: {
+        screen: UpdateAdDetails,
+        navigationOptions: (props) => ({
+            headerTitleStyle: {
+                fontFamily: Fonts.CharterBT
+            },
+            headerStyle: {
+                backgroundColor: '#2a2a2a',
+                elevation: 0 //Only for Android
+            },
+            headerTintColor: '#FFFFFF',
+            title: "Update Details",
             drawerLockMode: 'locked-closed'
         })
     },

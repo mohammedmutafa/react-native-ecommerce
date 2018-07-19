@@ -18,7 +18,6 @@ const {
 } = styles;
 
 export const CreateAdCoverPhoto = ({ imageURL, localImageSource, isUserProfile }) => {
-
     return (
         <View style={containerStyle}>
             {isUserProfile ?

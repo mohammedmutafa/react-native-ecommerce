@@ -121,6 +121,21 @@ class EditUserAdContainer extends Component {
         });
     }
 
+    onPressEditAdDetails = (item) => {
+        const { navigation } = this.props;
+        const {
+            ownerID,
+            postID
+        } = item;
+
+        navigation.navigate('UpdateAdDetails', {
+            postItem: item,
+            postID,
+            userID: ownerID,
+            isForUpdatingAd: true
+        });
+    }
+
     render() {
         const { sellerAdsList, isFetchingAdsDataFromFirestore } = this.state;
 
@@ -130,6 +145,7 @@ class EditUserAdContainer extends Component {
                 isFetchingAdsDataFromFirestore={isFetchingAdsDataFromFirestore}
                 onPressAdsCard={this.onPressAdsCard}
                 onPressUpdatePhotos={this.onPressUpdatePhotos}
+                onPressEditAdDetails={this.onPressEditAdDetails}
             />
         );
     }
