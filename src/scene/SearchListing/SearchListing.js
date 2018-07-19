@@ -98,10 +98,12 @@ class SearchListing extends Component {
 
         if (updatedAt) {
             Moment.locale('en');
-            formatedDate = Moment(item.updatedAt).format("Do-MMM-YYYY");
+            //formatedDate = Moment(item.updatedAt).format("Do-MMM-YYYY");
             formatedDay = Moment(item.updatedAt).format("D");
             formatedMonth = Moment(item.updatedAt).format("MMM");
             formatedYear = Moment(item.updatedAt).format("YYYY");
+
+            formatedDate = Moment(item.updatedAt).fromNow();
         }
 
         return (
