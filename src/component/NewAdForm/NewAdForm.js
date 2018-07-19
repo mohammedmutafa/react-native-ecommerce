@@ -35,9 +35,19 @@ export class NewAdForm extends Component {
 
     renderImageView = () => {
         const {
+            imageURL,
+            selectPhotoTapped,
             selectedImageSource,
-            selectPhotoTapped
+            isFromUpdateAdDetails
         } = this.props;
+
+        if (isFromUpdateAdDetails) {
+            return (
+                <CreateAdCoverPhoto
+                    imageURL={imageURL ? imageURL : null}
+                />
+            );
+        }
 
         return (
             <View>
@@ -75,12 +85,20 @@ export class NewAdForm extends Component {
         this.props.navigation.goBack();
     }
 
-    renderBackButton = () => (
-        <BackButton
-            style={{ left: 20 }}
-            onPress={this.goBack}
-        />
-    );
+    renderBackButton = () => {
+        const { isFromUpdateAdDetails } = this.props;
+
+        if (isFromUpdateAdDetails) {
+            return <View />
+        }
+
+        return (
+            <BackButton
+                style={{ left: 20 }}
+                onPress={this.goBack}
+            />
+        );
+    }
 
     renderNextButton = () => {
         const { createAdStatusDone } = this.props;
@@ -380,5 +398,7 @@ NewAdForm.propTypes = {
 
     //Image
     selectedImageSource: PropTypes.object,
+    imageURL: PropTypes.string,
+    isFromUpdateAdDetails: PropTypes.bool,
     selectPhotoTapped: PropTypes.func
 }

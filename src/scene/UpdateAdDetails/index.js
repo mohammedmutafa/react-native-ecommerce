@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import UserProfileContainer from './UserProfileContainer';
+import UpdateAdDetailsContainer from './UpdateAdDetailsContainer';
 
 const index = ({ navigation }) => {
     const { params } = navigation.state;
     const userID = params ? params.userID : null;
-    const userExistInDB = params ? params.userExistInDB : false;
+    const postID = params ? params.postID : undefined;
+    const postItem = params ? params.postItem : undefined;
 
     return (
-        <UserProfileContainer
+        <UpdateAdDetailsContainer
             navigation={navigation}
             userID={userID}
-            userExistInDB={userExistInDB}
+            postID={postID}
+            postItem={postItem}
         />
     );
 };

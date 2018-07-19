@@ -18,7 +18,7 @@ class EditUserAd extends Component {
     keyExtractor = (item, index) => index.toString();
 
     renderItemCard = ({ item }) => {
-        const { onPressAdsCard, onPressUpdatePhotos } = this.props;
+        const { onPressAdsCard, onPressUpdatePhotos, onPressEditAdDetails } = this.props;
         const coverImageURL = item ? item.image_0 : undefined;
 
         return (
@@ -27,6 +27,7 @@ class EditUserAd extends Component {
             >
                 <View style={{ flexDirection: 'column', flex: 1, backgroundColor: Color.dark }}>
                     <TouchableOpacity
+                        onPress={() => onPressEditAdDetails(item)}
                         style={{
                             flex: 1, justifyContent: 'center', alignItems: 'center',
                             borderWidth: 1, borderColor: Color.golden
@@ -38,7 +39,7 @@ class EditUserAd extends Component {
                             size={30}
                             underlayColor="transparent"
                             color={Color.golden}
-                        //onPress={selectPhotoTapped}
+                        //onPress={() => onPressEditAdDetails(item)}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity

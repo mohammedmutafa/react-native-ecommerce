@@ -173,12 +173,43 @@ class UpdateAdPhotos extends Component {
         );
     }
 
+    renderPreviewButton = () => {
+        return (
+            <View style={previewButtonContainer}>
+                <TouchableOpacity
+                    style={previewButtonStyle}
+                // onPress={changeStateForCategorySelectorModalView}
+                >
+                    <Icon
+                        name="ios-images-outline"
+                        type="ionicon"
+                        size={30}
+                        underlayColor="transparent"
+                        color={Color.dark}
+                    //onPress={selectPhotoTapped}
+                    />
+                    <Text
+                        style={{
+                            color: Color.dark,
+                            marginHorizontal: 10,
+                            fontFamily: Fonts.DancingScriptOT,
+                            fontSize: 20
+                        }}
+                    >
+                        Preview
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     render() {
         return (
             <View style={mainConatinerStyle}>
                 {this.renderImageView()}
                 {this.renderPhotoViewDivider('Gallery')}
                 {this.renderPhotoList()}
+                {this.renderPreviewButton()}
                 {/*this.renderFloatingShareButton()*/}
                 {this.renderActivityIndicator()}
             </View >
@@ -199,7 +230,9 @@ const {
     photoViewerDividerContainerStyle,
     photoViewerDividerStyle,
     photoViewDividerTextstyle,
-    carouselCardStyle
+    carouselCardStyle,
+    previewButtonContainer,
+    previewButtonStyle
 } = styles;
 
 UpdateAdPhotos.propTypes = {

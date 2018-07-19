@@ -96,6 +96,8 @@ class UpdateAdPhotosContainer extends Component {
             contentType: 'image/jpeg'
         }
 
+        const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
         this.setState({
             isFibaseStorageInProgress: true,
             fileIndexForCurrentFirebaseStorageProgress: index
@@ -107,7 +109,8 @@ class UpdateAdPhotosContainer extends Component {
             .on('state_changed', (snapshot) => {
                 //Current upload state
                 let data = {
-                    [fileName]: snapshot.downloadURL
+                    [fileName]: snapshot.downloadURL,
+                    updatedAt: timestamp
                 };
                 this.setState({
                     [fileName]: snapshot.downloadURL

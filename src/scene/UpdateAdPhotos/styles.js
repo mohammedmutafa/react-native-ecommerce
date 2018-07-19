@@ -97,5 +97,24 @@ export default styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: Color.lightWhite,
         marginHorizontal: 5
-    }
+    },
+    previewButtonContainer: {
+        flexDirection: 'column',
+        padding: 25,
+        //alignSelf: 'center',
+        width: screenWidth / 2
+    },
+    previewButtonStyle: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        borderWidth: 1,
+        // borderTopWidth: 1,
+        //borderBottomWidth: 1,
+        borderColor: Color.golden,
+        backgroundColor: 'transparent',
+        padding: 10,
+        marginVertical: 10
+    },
 });

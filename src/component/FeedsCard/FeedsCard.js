@@ -16,11 +16,8 @@ import { numberWithCommas } from '../../utilities/Functions';
 const {
     container,
     imageBackgroundStyle,
-    semiTransparentViewStyle,
-    categoryTextStyle,
     priceBoxStyle,
     titleTextStyle,
-    priceSymbolTextStyle,
     priceTextStyle,
     addressTextStyle
 } = styles;
@@ -65,27 +62,14 @@ export class FeedsCard extends Component {
     }
 
     renderHeader = () => {
-        const {
-            price,
-            //time,
-            //formatedDay,
-            //formatedMonth,
-            // formatedYear
-        } = this.props;
+        const { price } = this.props;
 
         return (
             <View
-                style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 25, paddingVertical: 15 }}
+                style={{ flexDirection: 'row', justifyContent: 'space-between', position: 'absolute', right: 0, bottom: 0 }}
             >
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={priceSymbolTextStyle}>{`₹`}</Text>
-                    <View style={priceBoxStyle}>
-                        <Text style={priceTextStyle}>{`${numberWithCommas(price)}`}</Text>
-                    </View>
-                </View >
-                <View style={{ flexDirection: 'column', paddingLeft: 25, }}>
-                    <Text style={categoryTextStyle}></Text>
-                    <Text style={{ color: '#FFFFFF' }}></Text>
+                <View style={priceBoxStyle}>
+                    <Text style={priceTextStyle}>{'₹ ' + `${numberWithCommas(price)}`}</Text>
                 </View>
             </View >
         );
@@ -103,34 +87,35 @@ export class FeedsCard extends Component {
         } = this.props;
 
         return (
-            <View style={{ flexDirection: 'column', justifyContent: 'space-around', marginBottom: 10 }}>
+            <View style={{ flexDirection: 'column', justifyContent: 'space-around', paddingVertical: 5, flex: 1 }}>
                 <View style={{ flexDirection: 'column', alignItems: 'flex-start', paddingHorizontal: 25, }}>
-                    <Text
-                        ellipsizeMode="tail"
-                        numberOfLines={2}
-                        style={titleTextStyle}
-                    >
-                        {title}
-                    </Text>
-                    <Text style={{ color: '#FFFFFF' }}>__</Text>
-                    <View style={{ flexDirection: 'row', alignSelf: 'flex-start', justifyContent: 'center', marginTop: 10 }}>
+                    <View style={{ flexDirection: 'row', alignSelf: 'flex-start', justifyContent: 'center' }}>
                         <Icon
                             name="ios-pin-outline"
                             type="ionicon"
-                            color={Color.placeholderWhite}
+                            size={18}
+                            color={Color.lightDark}
                             underlayColor="transparent"
                         />
                         <Text style={addressTextStyle}>{selectedLocation}</Text>
-                        <Text style={addressTextStyle}>|</Text>
+                        <Text style={addressTextStyle}>| </Text>
                         <Icon
                             name="ios-time-outline"
                             type="ionicon"
-                            size={20}
-                            color={Color.placeholderWhite}
+                            size={18}
+                            color={Color.lightDark}
                             underlayColor="transparent"
                         />
                         <Text style={addressTextStyle}>{time}</Text>
                     </View>
+                    <Text
+                        ellipsizeMode="tail"
+                        numberOfLines={1}
+                        style={titleTextStyle}
+                    >
+                        {title}
+                    </Text>
+
                 </View>
             </View >
         );
@@ -151,11 +136,10 @@ export class FeedsCard extends Component {
                     source={{ uri: thumbnailURL }}
                     style={imageBackgroundStyle}
                 >
-                    <View style={semiTransparentViewStyle} />
                     {this.renderHeader()}
                     {this.renderMiddleView()}
-                    {this.renderFooter()}
                 </ImageBackground>
+                {this.renderFooter()}
             </TouchableOpacity>
         );
     }
@@ -163,9 +147,6 @@ export class FeedsCard extends Component {
 
 FeedsCard.propTypes = {
     time: PropTypes.string,
-    formatedDay: PropTypes.string,
-    formatedMonth: PropTypes.string,
-    formatedYear: PropTypes.string,
     ownerID: PropTypes.string,
     price: PropTypes.number,
     title: PropTypes.string,
