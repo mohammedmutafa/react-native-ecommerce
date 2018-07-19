@@ -27,6 +27,7 @@ class EditUserAd extends Component {
             >
                 <View style={{ flexDirection: 'column', flex: 1, backgroundColor: Color.dark }}>
                     <TouchableOpacity
+                        onPress={() => onPressEditAdDetails(item)}
                         style={{
                             flex: 1, justifyContent: 'center', alignItems: 'center',
                             borderWidth: 1, borderColor: Color.golden
@@ -38,7 +39,7 @@ class EditUserAd extends Component {
                             size={30}
                             underlayColor="transparent"
                             color={Color.golden}
-                            onPress={() => onPressEditAdDetails(item)}
+                        //onPress={() => onPressEditAdDetails(item)}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
