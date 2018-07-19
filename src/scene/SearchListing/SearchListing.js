@@ -147,6 +147,7 @@ class SearchListing extends Component {
         const {
             isFilterVisible,
             changeStateForFilterUI,
+            onApplyFilterButtonPressed,
 
             selectedCategory,
             selectedSubCategory,
@@ -172,6 +173,7 @@ class SearchListing extends Component {
                 //Filters
                 isFilterVisible={isFilterVisible}
                 changeStateForFilterUI={changeStateForFilterUI}
+                onApplyFilterButtonPressed={onApplyFilterButtonPressed}
 
                 maxPriceFilter={maxPriceFilter}
                 minPriceFilter={minPriceFilter}

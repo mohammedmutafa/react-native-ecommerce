@@ -29,7 +29,7 @@ const {
 export class Filter extends Component {
 
     renderNavigationBar = () => {
-        const { changeStateForFilterUI } = this.props;
+        const { changeStateForFilterUI, onApplyFilterButtonPressed } = this.props;
 
         return (
             <View style={navigationBarStyle}>
@@ -49,7 +49,7 @@ export class Filter extends Component {
                     size={35}
                     color={Color.golden}
                     underlayColor="transparent"
-                //onPress={changeLoginWithPhoneModalViewState}
+                    onPress={onApplyFilterButtonPressed}
                 />
             </View>
         );
@@ -262,6 +262,7 @@ export class Filter extends Component {
 Filter.propTypes = {
     isFilterVisible: PropTypes.bool,
     changeStateForFilterUI: PropTypes.func,
+    onApplyFilterButtonPressed: PropTypes.func,
     maxPriceFilter: PropTypes.number,
     minPriceFilter: PropTypes.number,
     onMinPriceInput: PropTypes.func,

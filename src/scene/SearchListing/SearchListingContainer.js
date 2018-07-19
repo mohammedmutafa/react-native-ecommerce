@@ -83,6 +83,12 @@ class SearchListingContainer extends Component {
         });
     }
 
+    onApplyFilterButtonPressed = () => {
+        this.setState({
+            isFilterVisible: !this.state.isFilterVisible
+        });
+    }
+
     changeStateForLocationFilterModalView = () => {
         this.setState({
             isLocationFilterModalViewVisible: !this.state.isLocationFilterModalViewVisible
@@ -146,6 +152,7 @@ class SearchListingContainer extends Component {
                 //Filters
                 isFilterVisible={isFilterVisible}
                 changeStateForFilterUI={this.changeStateForFilterUI}
+                onApplyFilterButtonPressed={this.onApplyFilterButtonPressed}
 
                 maxPriceFilter={maxPriceFilter}
                 minPriceFilter={minPriceFilter}
