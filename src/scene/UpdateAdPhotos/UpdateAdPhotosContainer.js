@@ -13,6 +13,7 @@ class UpdateAdPhotosContainer extends Component {
 
         this.state = {
             showActivityIndicator: false,
+            isPhotoViewerVisible: false,
             isFibaseStorageInProgress: false,
             fileIndexForCurrentFirebaseStorageProgress: undefined,
             //Firestore
@@ -194,9 +195,22 @@ class UpdateAdPhotosContainer extends Component {
             });
     }
 
+    showPhotoViewer = (index) => {
+        this.setState({
+            isPhotoViewerVisible: true
+        });
+    }
+
+    hidePhotoViewer = () => {
+        this.setState({
+            isPhotoViewerVisible: false
+        });
+    }
+
     render() {
         const {
             showActivityIndicator,
+            isPhotoViewerVisible,
             isFibaseStorageInProgress,
             fileIndexForCurrentFirebaseStorageProgress,
             image_0,
@@ -241,6 +255,10 @@ class UpdateAdPhotosContainer extends Component {
                 updatedAt={formatedDate}
                 showActivityIndicator={showActivityIndicator}
                 isFibaseStorageInProgress={isFibaseStorageInProgress}
+                //PhotoViewer
+                isPhotoViewerVisible={isPhotoViewerVisible}
+                showPhotoViewer={this.showPhotoViewer}
+                hidePhotoViewer={this.hidePhotoViewer}
             />
         );
     }

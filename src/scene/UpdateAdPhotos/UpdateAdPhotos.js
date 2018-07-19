@@ -14,6 +14,7 @@ import { Icon } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 
 import { CustomActivityIndicator } from '../../component/CustomActivityIndicator';
+import { PhotoViewer } from '../../component/PhotoViewer';
 
 import styles from './styles';
 import Color from '../../styles/Color';
@@ -174,11 +175,13 @@ class UpdateAdPhotos extends Component {
     }
 
     renderPreviewButton = () => {
+        const { showPhotoViewer } = this.props;
+
         return (
             <View style={previewButtonContainer}>
                 <TouchableOpacity
                     style={previewButtonStyle}
-                // onPress={changeStateForCategorySelectorModalView}
+                    onPress={showPhotoViewer}
                 >
                     <Icon
                         name="ios-images-outline"
@@ -203,6 +206,31 @@ class UpdateAdPhotos extends Component {
         );
     }
 
+    renderPhotoViewer = () => {
+        const {
+            isPhotoViewerVisible,
+            hidePhotoViewer,
+            imageDataSource
+        } = this.props;
+
+        let modifiedDS = [];
+
+        for (let obj of imageDataSource) {
+            if (obj.url) {
+                let modifiedObj = { source: { uri: obj.url } }
+                modifiedDS.push(modifiedObj)
+            }
+        }
+
+        return (
+            <PhotoViewer
+                isPhotoViewerVisible={isPhotoViewerVisible}
+                hidePhotoViewer={hidePhotoViewer}
+                dataSource={modifiedDS}
+            />
+        );
+    }
+
     render() {
         return (
             <View style={mainConatinerStyle}>
@@ -210,7 +238,7 @@ class UpdateAdPhotos extends Component {
                 {this.renderPhotoViewDivider('Gallery')}
                 {this.renderPhotoList()}
                 {this.renderPreviewButton()}
-                {/*this.renderFloatingShareButton()*/}
+                {this.renderPhotoViewer()}
                 {this.renderActivityIndicator()}
             </View >
         );
@@ -243,6 +271,9 @@ UpdateAdPhotos.propTypes = {
     imageDataSource: PropTypes.array,
     selectPhotoTapped: PropTypes.func,
     deleteImageFromStorage: PropTypes.func,
+    showPhotoViewer: PropTypes.func,
+    hidePhotoViewer: PropTypes.func,
+    isPhotoViewerVisible: PropTypes.bool,
     coverImageURL: PropTypes.string,
     productTitle: PropTypes.string,
     updatedAt: PropTypes.string
