@@ -229,7 +229,8 @@ class UpdateAdPhotosContainer extends Component {
 
         if (postItem && postItem.updatedAt) {
             Moment.locale('en');
-            formatedDate = Moment(postItem.updatedAt).format("Do-MMM-YYYY");
+            //formatedDate = Moment(postItem.updatedAt).format("Do-MMM-YYYY");
+            formatedDate = Moment(postItem.updatedAt).fromNow();
         }
 
         const imageDataSource = [

@@ -24,6 +24,9 @@ class SearchListingContainer extends Component {
             isLocationFilterModalViewVisible: false,
             isCategorySelectorModalViewVisible: false,
 
+            //Sorting by Price
+            sortByPrice: 'none', //low: Low To High, high : High to Low
+
             //Data Fetch Opertions
             isFetchingData: false,
             //FireStore
@@ -73,6 +76,8 @@ class SearchListingContainer extends Component {
          * If user clicks back button instead of apply button, clear the filters
          */
 
+        //TODO click filter icon should not reset it, only when back button pressed
+
         this.setState({
             isFilterVisible: !this.state.isFilterVisible,
             selectedLocation: '',
@@ -81,6 +86,112 @@ class SearchListingContainer extends Component {
             selectedCategory: undefined,
             selectedSubCategory: undefined,
         });
+    }
+
+    async fetchDatafrom(query) {
+        /*this.setState({
+            isFetchingDataFromFirestore: true
+        });*/
+
+        let copyPostListDataSource = [];
+
+        //For order by issue refer this discussion : https://github.com/invertase/react-native-firebase/issues/568
+        await query.get().then(function (querySnapshot) {
+            let dSArray = [];
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                dSArray.push(doc.data());
+            });
+            copyPostListDataSource = [...copyPostListDataSource, ...dSArray];
+
+        }).catch((err) => {
+            this.setState({
+                isFetchingDataFromFirestore: false
+            });
+        });
+
+        this.setState({
+            postListDataSource: copyPostListDataSource,
+            isFetchingDataFromFirestore: false
+        });
+    }
+
+    onApplyFilterButtonPressed = () => {
+        const {
+            //Filters
+            minPriceFilter,
+            maxPriceFilter,
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation,
+            sortByPrice
+        } = this.state;
+
+        const filterArray = {
+            selectedLocation,
+            selectedCategory,
+            selectedSubCategory,
+            minPriceFilter,
+            maxPriceFilter
+        }
+
+        this.setState({
+            isFilterVisible: !this.state.isFilterVisible
+        });
+
+        //Note: Cloud Firestore requires an index for every query,
+        let combinedQuery = postCollectionRef;
+
+        Object.entries(filterArray).forEach(([key, value]) => {
+            switch (key) {
+                case 'selectedLocation':
+                    if (value) {
+                        combinedQuery = combinedQuery.where('selectedLocation', '==', `${value}`)
+                    }
+                    break;
+                case 'minPriceFilter':
+                    if (value) {
+                        //dataType of Price should be number
+                        combinedQuery = combinedQuery.where('productPrice', '>=', value)
+                    }
+                    break;
+                case 'maxPriceFilter':
+                    if (value) {
+                        combinedQuery = combinedQuery.where('productPrice', '<=', value)
+                    }
+                    break;
+            }
+        });
+
+        if (minPriceFilter || maxPriceFilter) {
+            //Add sorting by price fiter
+            switch (sortByPrice) {
+                case 'low':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'asc')
+                    break;
+                case 'high':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'desc')
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (sortByPrice) {
+                case 'low':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'asc')
+                    break;
+                case 'high':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'desc')
+                    break;
+                default:
+                    combinedQuery = combinedQuery.orderBy('updatedAt', 'desc')
+                    break;
+            }
+        }
+
+        if (minPriceFilter || maxPriceFilter || selectedCategory || selectedSubCategory || selectedLocation || sortByPrice !== 'none') {
+            this.fetchDatafrom(combinedQuery);
+        }
     }
 
     changeStateForLocationFilterModalView = () => {
@@ -124,6 +235,18 @@ class SearchListingContainer extends Component {
         });
     }
 
+    sortByPriceLowToHigh = () => {
+        this.setState({
+            sortByPrice: 'low'
+        });
+    }
+
+    sortByPriceHighToLow = () => {
+        this.setState({
+            sortByPrice: 'high'
+        });
+    }
+
     render() {
         const {
             isFilterVisible,
@@ -136,7 +259,8 @@ class SearchListingContainer extends Component {
             isLocationFilterModalViewVisible,
             isFetchingData,
             postListDataSource,
-            isFetchingDataFromFirestore
+            isFetchingDataFromFirestore,
+            sortByPrice
         } = this.state;
 
         return (
@@ -146,6 +270,7 @@ class SearchListingContainer extends Component {
                 //Filters
                 isFilterVisible={isFilterVisible}
                 changeStateForFilterUI={this.changeStateForFilterUI}
+                onApplyFilterButtonPressed={this.onApplyFilterButtonPressed}
 
                 maxPriceFilter={maxPriceFilter}
                 minPriceFilter={minPriceFilter}
@@ -171,6 +296,11 @@ class SearchListingContainer extends Component {
                 //FireStore
                 postListDataSource={postListDataSource}
                 isFetchingDataFromFirestore={isFetchingDataFromFirestore}
+
+                //Sorting
+                sortByPriceLowToHigh={this.sortByPriceLowToHigh}
+                sortByPriceHighToLow={this.sortByPriceHighToLow}
+                sortByPrice={sortByPrice}
             />
         );
     }

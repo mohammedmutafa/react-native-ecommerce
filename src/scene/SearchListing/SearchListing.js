@@ -37,15 +37,15 @@ class SearchListing extends Component {
             <View style={floatingFilterButtonStyle}>
                 <Icon
                     raised
-                    name="filter-outline"
+                    name="filter-variant"
                     type="material-community"
-                    color={Color.lightWhite}
+                    color={Color.golden}
                     underlayColor="transparent"
                     onPress={changeStateForFilterUI}
                     containerStyle={{
-                        backgroundColor: Color.semiTransparentDarkOverlay,
-                        //borderWidth: 0.5,
-                        //borderColor: Color.golden
+                        backgroundColor: Color.floatingButtonBackground,
+                        borderWidth: 1,
+                        borderColor: Color.golden
                     }}
                 />
             </View>
@@ -98,10 +98,12 @@ class SearchListing extends Component {
 
         if (updatedAt) {
             Moment.locale('en');
-            formatedDate = Moment(item.updatedAt).format("Do-MMM-YYYY");
+            //formatedDate = Moment(item.updatedAt).format("Do-MMM-YYYY");
             formatedDay = Moment(item.updatedAt).format("D");
             formatedMonth = Moment(item.updatedAt).format("MMM");
             formatedYear = Moment(item.updatedAt).format("YYYY");
+
+            formatedDate = Moment(item.updatedAt).fromNow();
         }
 
         return (
@@ -147,6 +149,7 @@ class SearchListing extends Component {
         const {
             isFilterVisible,
             changeStateForFilterUI,
+            onApplyFilterButtonPressed,
 
             selectedCategory,
             selectedSubCategory,
@@ -160,7 +163,11 @@ class SearchListing extends Component {
             isLocationFilterModalViewVisible,
             updateSelectedLocations,
             changeStateForCategorySelectorModalView,
-            changeStateForLocationFilterModalView
+            changeStateForLocationFilterModalView,
+            //Sorting
+            sortByPriceLowToHigh,
+            sortByPriceHighToLow,
+            sortByPrice
         } = this.props;
 
         if (!isFilterVisible) {
@@ -172,6 +179,7 @@ class SearchListing extends Component {
                 //Filters
                 isFilterVisible={isFilterVisible}
                 changeStateForFilterUI={changeStateForFilterUI}
+                onApplyFilterButtonPressed={onApplyFilterButtonPressed}
 
                 maxPriceFilter={maxPriceFilter}
                 minPriceFilter={minPriceFilter}
@@ -189,6 +197,10 @@ class SearchListing extends Component {
                 isLocationFilterModalViewVisible={isLocationFilterModalViewVisible}
                 updateSelectedLocations={updateSelectedLocations}
                 changeStateForLocationFilterModalView={changeStateForLocationFilterModalView}
+
+                sortByPriceLowToHigh={sortByPriceLowToHigh}
+                sortByPriceHighToLow={sortByPriceHighToLow}
+                sortByPrice={sortByPrice}
             />
         );
     }
@@ -247,7 +259,12 @@ SearchListing.propTypes = {
 
     //FireStore
     isFetchingDataFromFirestore: PropTypes.bool,
-    postListDataSource: PropTypes.array
+    postListDataSource: PropTypes.array,
+
+    //Sorting
+    sortByPriceLowToHigh: PropTypes.func,
+    sortByPriceHighToLow: PropTypes.func,
+    sortByPrice: PropTypes.string
 };
 
 export default SearchListing;

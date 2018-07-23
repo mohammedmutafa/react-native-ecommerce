@@ -7,7 +7,7 @@ import {
     TextInput
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { Icon } from 'react-native-elements';
+import { Icon, CheckBox } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import styles from './styles';
@@ -15,6 +15,7 @@ import Color from '../../styles/Color';
 import { numberWithCommas } from '../../utilities/Functions';
 import { LocationSelector } from '../LocationSelector/LocationSelector';
 import { CategorySelector } from '../CategorySelector';
+import Fonts from '../../styles/Fonts';
 
 const {
     container,
@@ -29,7 +30,7 @@ const {
 export class Filter extends Component {
 
     renderNavigationBar = () => {
-        const { changeStateForFilterUI } = this.props;
+        const { changeStateForFilterUI, onApplyFilterButtonPressed } = this.props;
 
         return (
             <View style={navigationBarStyle}>
@@ -49,7 +50,7 @@ export class Filter extends Component {
                     size={35}
                     color={Color.golden}
                     underlayColor="transparent"
-                //onPress={changeLoginWithPhoneModalViewState}
+                    onPress={onApplyFilterButtonPressed}
                 />
             </View>
         );
@@ -64,13 +65,13 @@ export class Filter extends Component {
 
         return (
             <View style={locationFilterContainer}>
-                <Text style={{ color: Color.dark, fontSize: 16 }}>Discover ads near you</Text>
+                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT, fontSize: 18 }}>Discover ads near you</Text>
                 <TouchableOpacity
                     style={selectLocationButtonStyle}
                     onPress={changeStateForLocationFilterModalView}
                 >
                     <Text
-                        style={{ color: Color.lightDark, fontSize: 16 }}
+                        style={{ color: Color.lightDark, fontFamily: Fonts.CharterBT, fontSize: 16 }}
                     >
                         {selectedLocation ? selectedLocation : 'Select Location'}
                     </Text>
@@ -89,7 +90,10 @@ export class Filter extends Component {
             maxPriceFilter,
             minPriceFilter,
             onMinPriceInput,
-            onMaxPriceInput
+            onMaxPriceInput,
+            sortByPriceLowToHigh,
+            sortByPriceHighToLow,
+            sortByPrice
         } = this.props;
 
         const minValue = minPriceFilter ? numberWithCommas(minPriceFilter) : undefined;
@@ -97,12 +101,12 @@ export class Filter extends Component {
 
         return (
             <View style={locationFilterContainer}>
-                <Text style={{ color: Color.dark, fontSize: 16 }}>Set a price range</Text>
+                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT, fontSize: 18 }}>Set a price range</Text>
                 <View
                     style={priceFilterButtonStyle}
                 >
                     <TextInput
-                        style={{ color: Color.dark, fontSize: 16 }}
+                        style={{ color: Color.dark, fontSize: 16, fontFamily: Fonts.CharterBT, }}
                         placeholderTextColor={Color.lightDark}
                         keyboardType="numeric"
                         placeholder="₹ (Min Price)"
@@ -119,7 +123,7 @@ export class Filter extends Component {
                     style={priceFilterButtonStyle}
                 >
                     <TextInput
-                        style={{ color: Color.dark, fontSize: 16 }}
+                        style={{ color: Color.dark, fontSize: 16, fontFamily: Fonts.CharterBT, }}
                         placeholderTextColor={Color.lightDark}
                         keyboardType="numeric"
                         placeholder="₹ (Max Price)"
@@ -130,6 +134,33 @@ export class Filter extends Component {
                         onChangeText={(text) => onMaxPriceInput(text.replace(/[^0-9]/g, ''))}
                         value={maxValue ? `₹ ${maxValue}` : null}
                         underlineColorAndroid="transparent"
+                    />
+                </View>
+
+                <View style={{ flexDirection: 'row' }}>
+                    <CheckBox
+                        containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
+                        title="Low to High"
+                        checkedColor={Color.lightDark}
+                        iconType="ionicon"
+                        checkedIcon="ios-checkmark-circle"
+                        textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
+                        uncheckedIcon="ios-radio-button-off-outline"
+                        checked={sortByPrice === 'low' ? true : false}
+                        onPress={sortByPriceLowToHigh}
+                        size={35}
+                    />
+                    <CheckBox
+                        containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
+                        title="High to Low"
+                        checkedColor={Color.lightDark}
+                        iconType="ionicon"
+                        checkedIcon="ios-checkmark-circle"
+                        textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
+                        uncheckedIcon="ios-radio-button-off-outline"
+                        checked={sortByPrice === 'high' ? true : false}
+                        onPress={sortByPriceHighToLow}
+                        size={35}
                     />
                 </View>
             </View>
@@ -145,13 +176,13 @@ export class Filter extends Component {
 
         return (
             <View style={locationFilterContainer}>
-                <Text style={{ color: Color.dark, fontSize: 16 }}>Choose Category</Text>
+                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT, fontSize: 18 }}>Choose Category</Text>
                 <TouchableOpacity
                     style={selectLocationButtonStyle}
                     onPress={changeStateForCategorySelectorModalView}
                 >
                     <Text
-                        style={{ color: Color.lightDark, fontSize: 16 }}
+                        style={{ color: Color.lightDark, fontSize: 16, fontFamily: Fonts.CharterBT, }}
                     >
                         {selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : 'Select Category'}
                     </Text>
@@ -262,6 +293,7 @@ export class Filter extends Component {
 Filter.propTypes = {
     isFilterVisible: PropTypes.bool,
     changeStateForFilterUI: PropTypes.func,
+    onApplyFilterButtonPressed: PropTypes.func,
     maxPriceFilter: PropTypes.number,
     minPriceFilter: PropTypes.number,
     onMinPriceInput: PropTypes.func,
@@ -274,5 +306,9 @@ Filter.propTypes = {
     selectedSubCategory: PropTypes.string,
     changeStateForLocationFilterModalView: PropTypes.func,
     updateSelectedLocations: PropTypes.func,
-    selectedLocation: PropTypes.string
+    selectedLocation: PropTypes.string,
+    //sorting
+    sortByPriceLowToHigh: PropTypes.func,
+    sortByPriceHighToLow: PropTypes.func,
+    sortByPrice: PropTypes.string
 };

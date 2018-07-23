@@ -72,7 +72,8 @@ class ProfilePublicContainer extends Component {
 
         if (updatedAt) {
             Moment.locale('en');
-            formatedDate = Moment(updatedAt).format("Do-MMM-YYYY");
+            //formatedDate = Moment(updatedAt).format("Do-MMM-YYYY");
+            formatedDate = Moment(updatedAt).fromNow();
         }
 
         const imageDataSource = [
