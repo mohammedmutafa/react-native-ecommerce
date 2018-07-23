@@ -15,6 +15,7 @@ import Color from '../../styles/Color';
 import { numberWithCommas } from '../../utilities/Functions';
 import { LocationSelector } from '../LocationSelector/LocationSelector';
 import { CategorySelector } from '../CategorySelector';
+import Fonts from '../../styles/Fonts';
 
 const {
     container,
@@ -64,13 +65,13 @@ export class Filter extends Component {
 
         return (
             <View style={locationFilterContainer}>
-                <Text style={{ color: Color.dark, fontSize: 16 }}>Discover ads near you</Text>
+                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT, fontSize: 18 }}>Discover ads near you</Text>
                 <TouchableOpacity
                     style={selectLocationButtonStyle}
                     onPress={changeStateForLocationFilterModalView}
                 >
                     <Text
-                        style={{ color: Color.lightDark, fontSize: 16 }}
+                        style={{ color: Color.lightDark, fontFamily: Fonts.CharterBT, fontSize: 16 }}
                     >
                         {selectedLocation ? selectedLocation : 'Select Location'}
                     </Text>
@@ -97,12 +98,12 @@ export class Filter extends Component {
 
         return (
             <View style={locationFilterContainer}>
-                <Text style={{ color: Color.dark, fontSize: 16 }}>Set a price range</Text>
+                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT, fontSize: 18 }}>Set a price range</Text>
                 <View
                     style={priceFilterButtonStyle}
                 >
                     <TextInput
-                        style={{ color: Color.dark, fontSize: 16 }}
+                        style={{ color: Color.dark, fontSize: 16, fontFamily: Fonts.CharterBT, }}
                         placeholderTextColor={Color.lightDark}
                         keyboardType="numeric"
                         placeholder="₹ (Min Price)"
@@ -119,7 +120,7 @@ export class Filter extends Component {
                     style={priceFilterButtonStyle}
                 >
                     <TextInput
-                        style={{ color: Color.dark, fontSize: 16 }}
+                        style={{ color: Color.dark, fontSize: 16, fontFamily: Fonts.CharterBT, }}
                         placeholderTextColor={Color.lightDark}
                         keyboardType="numeric"
                         placeholder="₹ (Max Price)"
@@ -145,13 +146,13 @@ export class Filter extends Component {
 
         return (
             <View style={locationFilterContainer}>
-                <Text style={{ color: Color.dark, fontSize: 16 }}>Choose Category</Text>
+                <Text style={{ color: Color.dark, fontFamily: Fonts.CharterBT, fontSize: 18 }}>Choose Category</Text>
                 <TouchableOpacity
                     style={selectLocationButtonStyle}
                     onPress={changeStateForCategorySelectorModalView}
                 >
                     <Text
-                        style={{ color: Color.lightDark, fontSize: 16 }}
+                        style={{ color: Color.lightDark, fontSize: 16, fontFamily: Fonts.CharterBT, }}
                     >
                         {selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : 'Select Category'}
                     </Text>
