@@ -7,7 +7,7 @@ import {
     TextInput
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { Icon } from 'react-native-elements';
+import { Icon, CheckBox } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import styles from './styles';
@@ -131,6 +131,33 @@ export class Filter extends Component {
                         onChangeText={(text) => onMaxPriceInput(text.replace(/[^0-9]/g, ''))}
                         value={maxValue ? `₹ ${maxValue}` : null}
                         underlineColorAndroid="transparent"
+                    />
+                </View>
+
+                <View style={{ flexDirection: 'row' }}>
+                    <CheckBox
+                        containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
+                        title="Low to High"
+                        checkedColor={Color.lightDark}
+                        iconType="ionicon"
+                        checkedIcon="ios-checkmark-circle"
+                        textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
+                        uncheckedIcon="ios-checkmark-circle-outline"
+                        checked={false}
+                        //onPress={() => this.props.updateSelectedLocations(item.name)}
+                        size={35}
+                    />
+                    <CheckBox
+                        containerStyle={{ borderWidth: 0, backgroundColor: 'transparent' }}
+                        title="High to Low"
+                        checkedColor={Color.lightDark}
+                        iconType="ionicon"
+                        checkedIcon="ios-checkmark-circle"
+                        textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
+                        uncheckedIcon="ios-checkmark-circle-outline"
+                        checked={true}
+                        //onPress={() => this.props.updateSelectedLocations(item.name)}
+                        size={35}
                     />
                 </View>
             </View>
