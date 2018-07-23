@@ -85,10 +85,91 @@ class SearchListingContainer extends Component {
         });
     }
 
+    async fetchDatafrom(query) {
+        this.setState({
+            isFetchingDataFromFirestore: true
+        });
+
+        let copyPostListDataSource = [];
+
+        //For order by issue refer this discussion : https://github.com/invertase/react-native-firebase/issues/568
+        await query.get().then(function (querySnapshot) {
+            let dSArray = [];
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                dSArray.push(doc.data());
+            });
+            copyPostListDataSource = [...copyPostListDataSource, ...dSArray];
+
+        }).catch((err) => {
+            this.setState({
+                isFetchingDataFromFirestore: false
+            });
+        });
+        this.setState({
+            postListDataSource: copyPostListDataSource,
+            isFetchingDataFromFirestore: false
+        });
+    }
+
     onApplyFilterButtonPressed = () => {
+        const {
+            //Filters
+            minPriceFilter,
+            maxPriceFilter,
+            selectedCategory,
+            selectedSubCategory,
+            selectedLocation
+        } = this.state;
+
+        const filterArray = {
+            selectedLocation,
+            selectedCategory,
+            selectedSubCategory,
+            minPriceFilter,
+            maxPriceFilter
+        }
+
         this.setState({
             isFilterVisible: !this.state.isFilterVisible
         });
+
+        //Note: Cloud Firestore requires an index for every query,
+        const postCollectionReference = postCollectionRef;
+        let combinedQuery = postCollectionReference;//.orderBy('updatedAt', 'desc');
+
+        Object.entries(filterArray).forEach(([key, value]) => {
+            switch (key) {
+                case 'selectedLocation':
+                    if (value) {
+                        combinedQuery = combinedQuery.where('selectedLocation', '==', `${value}`)
+                    }
+                    break;
+                case 'minPriceFilter':
+                    if (value) {
+                        //dataType of Price should be number
+                        combinedQuery = combinedQuery.where('productPrice', '>', value)
+                    }
+                    break;
+                case 'maxPriceFilter':
+                    if (value) {
+                        combinedQuery = combinedQuery.where('productPrice', '<=', value)
+                    }
+                    break;
+            }
+
+        });
+
+        if (minPriceFilter || maxPriceFilter) {
+            //TODO add sorting by price fiter
+            combinedQuery = combinedQuery.orderBy('productPrice', 'asc')
+        } else {
+            //  combinedQuery = combinedQuery.orderBy('updatedAt', 'desc')
+        }
+
+        if (minPriceFilter || maxPriceFilter || selectedCategory || selectedSubCategory || selectedLocation) {
+            this.fetchDatafrom(combinedQuery);
+        }
     }
 
     changeStateForLocationFilterModalView = () => {
