@@ -142,8 +142,8 @@ export class Filter extends Component {
                         iconType="ionicon"
                         checkedIcon="ios-checkmark-circle"
                         textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
-                        uncheckedIcon="ios-checkmark-circle-outline"
-                        checked={false}
+                        uncheckedIcon="ios-radio-button-off-outline"
+                        checked={true}
                         //onPress={() => this.props.updateSelectedLocations(item.name)}
                         size={35}
                     />
@@ -154,8 +154,8 @@ export class Filter extends Component {
                         iconType="ionicon"
                         checkedIcon="ios-checkmark-circle"
                         textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
-                        uncheckedIcon="ios-checkmark-circle-outline"
-                        checked={true}
+                        uncheckedIcon="ios-radio-button-off-outline"
+                        checked={false}
                         //onPress={() => this.props.updateSelectedLocations(item.name)}
                         size={35}
                     />
