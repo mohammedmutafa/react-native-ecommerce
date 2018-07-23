@@ -163,7 +163,11 @@ class SearchListing extends Component {
             isLocationFilterModalViewVisible,
             updateSelectedLocations,
             changeStateForCategorySelectorModalView,
-            changeStateForLocationFilterModalView
+            changeStateForLocationFilterModalView,
+            //Sorting
+            sortByPriceLowToHigh,
+            sortByPriceHighToLow,
+            sortByPrice
         } = this.props;
 
         if (!isFilterVisible) {
@@ -193,6 +197,10 @@ class SearchListing extends Component {
                 isLocationFilterModalViewVisible={isLocationFilterModalViewVisible}
                 updateSelectedLocations={updateSelectedLocations}
                 changeStateForLocationFilterModalView={changeStateForLocationFilterModalView}
+
+                sortByPriceLowToHigh={sortByPriceLowToHigh}
+                sortByPriceHighToLow={sortByPriceHighToLow}
+                sortByPrice={sortByPrice}
             />
         );
     }
@@ -251,7 +259,12 @@ SearchListing.propTypes = {
 
     //FireStore
     isFetchingDataFromFirestore: PropTypes.bool,
-    postListDataSource: PropTypes.array
+    postListDataSource: PropTypes.array,
+
+    //Sorting
+    sortByPriceLowToHigh: PropTypes.func,
+    sortByPriceHighToLow: PropTypes.func,
+    sortByPrice: PropTypes.string
 };
 
 export default SearchListing;

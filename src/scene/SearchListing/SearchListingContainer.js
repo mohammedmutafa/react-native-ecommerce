@@ -24,6 +24,9 @@ class SearchListingContainer extends Component {
             isLocationFilterModalViewVisible: false,
             isCategorySelectorModalViewVisible: false,
 
+            //Sorting by Price
+            sortByPrice: 'none', //low: Low To High, high : High to Low
+
             //Data Fetch Opertions
             isFetchingData: false,
             //FireStore
@@ -86,9 +89,9 @@ class SearchListingContainer extends Component {
     }
 
     async fetchDatafrom(query) {
-        this.setState({
+        /*this.setState({
             isFetchingDataFromFirestore: true
-        });
+        });*/
 
         let copyPostListDataSource = [];
 
@@ -106,6 +109,7 @@ class SearchListingContainer extends Component {
                 isFetchingDataFromFirestore: false
             });
         });
+
         this.setState({
             postListDataSource: copyPostListDataSource,
             isFetchingDataFromFirestore: false
@@ -119,7 +123,8 @@ class SearchListingContainer extends Component {
             maxPriceFilter,
             selectedCategory,
             selectedSubCategory,
-            selectedLocation
+            selectedLocation,
+            sortByPrice
         } = this.state;
 
         const filterArray = {
@@ -135,8 +140,7 @@ class SearchListingContainer extends Component {
         });
 
         //Note: Cloud Firestore requires an index for every query,
-        const postCollectionReference = postCollectionRef;
-        let combinedQuery = postCollectionReference;//.orderBy('updatedAt', 'desc');
+        let combinedQuery = postCollectionRef;
 
         Object.entries(filterArray).forEach(([key, value]) => {
             switch (key) {
@@ -148,7 +152,7 @@ class SearchListingContainer extends Component {
                 case 'minPriceFilter':
                     if (value) {
                         //dataType of Price should be number
-                        combinedQuery = combinedQuery.where('productPrice', '>', value)
+                        combinedQuery = combinedQuery.where('productPrice', '>=', value)
                     }
                     break;
                 case 'maxPriceFilter':
@@ -157,17 +161,35 @@ class SearchListingContainer extends Component {
                     }
                     break;
             }
-
         });
 
         if (minPriceFilter || maxPriceFilter) {
-            //TODO add sorting by price fiter
-            combinedQuery = combinedQuery.orderBy('productPrice', 'asc')
+            //Add sorting by price fiter
+            switch (sortByPrice) {
+                case 'low':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'asc')
+                    break;
+                case 'high':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'desc')
+                    break;
+                default:
+                    break;
+            }
         } else {
-            //  combinedQuery = combinedQuery.orderBy('updatedAt', 'desc')
+            switch (sortByPrice) {
+                case 'low':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'asc')
+                    break;
+                case 'high':
+                    combinedQuery = combinedQuery.orderBy('productPrice', 'desc')
+                    break;
+                default:
+                    combinedQuery = combinedQuery.orderBy('updatedAt', 'desc')
+                    break;
+            }
         }
 
-        if (minPriceFilter || maxPriceFilter || selectedCategory || selectedSubCategory || selectedLocation) {
+        if (minPriceFilter || maxPriceFilter || selectedCategory || selectedSubCategory || selectedLocation || sortByPrice !== 'none') {
             this.fetchDatafrom(combinedQuery);
         }
     }
@@ -213,6 +235,18 @@ class SearchListingContainer extends Component {
         });
     }
 
+    sortByPriceLowToHigh = () => {
+        this.setState({
+            sortByPrice: 'low'
+        });
+    }
+
+    sortByPriceHighToLow = () => {
+        this.setState({
+            sortByPrice: 'high'
+        });
+    }
+
     render() {
         const {
             isFilterVisible,
@@ -225,7 +259,8 @@ class SearchListingContainer extends Component {
             isLocationFilterModalViewVisible,
             isFetchingData,
             postListDataSource,
-            isFetchingDataFromFirestore
+            isFetchingDataFromFirestore,
+            sortByPrice
         } = this.state;
 
         return (
@@ -261,6 +296,11 @@ class SearchListingContainer extends Component {
                 //FireStore
                 postListDataSource={postListDataSource}
                 isFetchingDataFromFirestore={isFetchingDataFromFirestore}
+
+                //Sorting
+                sortByPriceLowToHigh={this.sortByPriceLowToHigh}
+                sortByPriceHighToLow={this.sortByPriceHighToLow}
+                sortByPrice={sortByPrice}
             />
         );
     }

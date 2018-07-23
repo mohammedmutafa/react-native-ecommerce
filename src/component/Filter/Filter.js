@@ -90,7 +90,10 @@ export class Filter extends Component {
             maxPriceFilter,
             minPriceFilter,
             onMinPriceInput,
-            onMaxPriceInput
+            onMaxPriceInput,
+            sortByPriceLowToHigh,
+            sortByPriceHighToLow,
+            sortByPrice
         } = this.props;
 
         const minValue = minPriceFilter ? numberWithCommas(minPriceFilter) : undefined;
@@ -143,8 +146,8 @@ export class Filter extends Component {
                         checkedIcon="ios-checkmark-circle"
                         textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
                         uncheckedIcon="ios-radio-button-off-outline"
-                        checked={true}
-                        //onPress={() => this.props.updateSelectedLocations(item.name)}
+                        checked={sortByPrice === 'low' ? true : false}
+                        onPress={sortByPriceLowToHigh}
                         size={35}
                     />
                     <CheckBox
@@ -155,8 +158,8 @@ export class Filter extends Component {
                         checkedIcon="ios-checkmark-circle"
                         textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
                         uncheckedIcon="ios-radio-button-off-outline"
-                        checked={false}
-                        //onPress={() => this.props.updateSelectedLocations(item.name)}
+                        checked={sortByPrice === 'high' ? true : false}
+                        onPress={sortByPriceHighToLow}
                         size={35}
                     />
                 </View>
@@ -303,5 +306,9 @@ Filter.propTypes = {
     selectedSubCategory: PropTypes.string,
     changeStateForLocationFilterModalView: PropTypes.func,
     updateSelectedLocations: PropTypes.func,
-    selectedLocation: PropTypes.string
+    selectedLocation: PropTypes.string,
+    //sorting
+    sortByPriceLowToHigh: PropTypes.func,
+    sortByPriceHighToLow: PropTypes.func,
+    sortByPrice: PropTypes.string
 };
