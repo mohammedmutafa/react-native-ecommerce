@@ -14,6 +14,7 @@ import styles from './styles';
 import Color from '../../styles/Color';
 import { screenHeight } from '../../utilities/ScreenSize';
 import districts from '../../utilities/districts';
+import Fonts from '../../styles/Fonts';
 
 const {
     container,
@@ -46,7 +47,7 @@ export class LocationSelector extends Component {
                     checkedColor={Color.dark}
                     iconType="ionicon"
                     checkedIcon="ios-checkmark-circle"
-                    textStyle={{ color: Color.dark }}
+                    textStyle={{ color: Color.dark, fontFamily: Fonts.CharterBT }}
                     uncheckedIcon="ios-checkmark-circle-outline"
                     checked={this.props.selectedLocation === item.name ? true : false}
                     onPress={() => this.props.updateSelectedLocations(item.name)}
