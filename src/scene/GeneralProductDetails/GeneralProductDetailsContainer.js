@@ -6,6 +6,7 @@ import { Share } from 'react-native';
 import GeneralProductDetails from './GeneralProductDetails';
 
 import { userCollectionRef } from '../../utilities/DBReferences';
+import { numberWithCommas } from '../../utilities/Functions';
 
 class GeneralProductDetailsContainer extends Component {
     constructor(props) {
@@ -99,12 +100,12 @@ class GeneralProductDetailsContainer extends Component {
             .android.setPackageName('com.brickstudios.ecommerce')
             .ios.setBundleId('com.brickstudios.ecommerce')
             .social.setImageUrl(thumbnailURL)
-            .social.setTitle(`Rs. ${price}\n${title}`);
+            .social.setTitle(`Rs. ${numberWithCommas(price)}\n${title}`);
 
         firebase.links()
             .createShortDynamicLink(link, 'UNGUESSABLE')
             .then((url) => {
-                //console.log(url);
+                console.log(url);
                 Share.share({
                     message: 'Inner Nepal: Platform where you can buy and sell products.',
                     url: url,
