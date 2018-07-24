@@ -63,20 +63,6 @@ export default class HomeContainer extends Component {
                 });
             }
         });
-
-        const link =
-            new firebase.links.DynamicLink('https://innernepal.com?param1=foo&param2=bar', 'innernepal.page.link')
-                .android.setPackageName('com.brickstudios.ecommerce')
-                .ios.setBundleId('com.brickstudios.ecommerce')
-                .social.setImageUrl('https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_realestate.jpg?alt=media&token=bb3545e4-d66d-494d-9525-38770840e79a'
-                ).social.setTitle('Demo Tile for Inner Nepal')
-                .social.setDescriptionText('This is a demo description for the product.....');
-
-        firebase.links()
-            .createShortDynamicLink(link, 'UNGUESSABLE')
-            .then((url) => {
-                // ...
-            });
     }
 
     componentWillReceiveProps(nextProps) {

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import firebase from 'react-native-firebase';
 
 import GeneralProductDetails from './GeneralProductDetails';
-import Categories from '../../styles/Categories';
 
 import { userCollectionRef } from '../../utilities/DBReferences';
-
-const { MainCategory } = Categories;
 
 class GeneralProductDetailsContainer extends Component {
     constructor(props) {
@@ -89,6 +87,28 @@ class GeneralProductDetailsContainer extends Component {
         });
     }
 
+    onPressShareButton = () => {
+        const {
+            thumbnailURL,
+            title,
+            details,
+            price
+        } = this.props;
+
+        const link = new firebase.links.DynamicLink('https://innernepal.com?param1=foo&param2=bar', 'innernepal.page.link')
+            .android.setPackageName('com.brickstudios.ecommerce')
+            .ios.setBundleId('brickstudios.gpsHack')
+            .social.setImageUrl(thumbnailURL)
+            .social.setTitle(`Rs. ${price}\n${title}`)
+            .social.setDescriptionText(details);
+
+        firebase.links()
+            .createShortDynamicLink(link, 'UNGUESSABLE')
+            .then((url) => {
+                console.log(url);
+            });
+    }
+
     render() {
         const {
             isPhotoViewerVisible,
@@ -121,6 +141,7 @@ class GeneralProductDetailsContainer extends Component {
                 imageDataSource={imageDataSource} //PhotoView & Flatlist takes photo array in different format
                 photoViewerDataSource={this.photoViewerDataSource()}
                 onPressSellerAvatar={this.onPressSellerAvatar}
+                onPressShareButton={this.onPressShareButton}
                 //FireStore
                 sellerData={sellerData}
             />
