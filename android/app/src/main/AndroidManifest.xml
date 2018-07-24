@@ -26,9 +26,6 @@
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
-            <category android:name="android.intent.category.BROWSABLE"/>
-            <data android:host="innernepal.com" android:scheme="http"/>
-            <data android:host="innernepal.com" android:scheme="https"/>
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />

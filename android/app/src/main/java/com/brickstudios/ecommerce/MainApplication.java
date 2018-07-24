@@ -10,7 +10,6 @@ import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
-import io.invertase.firebase.links.RNFirebaseLinksPackage;
 
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.wix.interactable.Interactable;
@@ -40,7 +39,6 @@ public class MainApplication extends Application implements ReactApplication {
                     new RNFirebaseFirestorePackage(),
                     new RNFirebaseStoragePackage(),
                     new RNFirebaseAuthPackage(),
-                    new RNFirebaseLinksPackage(),
                     new LottiePackage(),
                     new Interactable(),
                     new VectorIconsPackage()
