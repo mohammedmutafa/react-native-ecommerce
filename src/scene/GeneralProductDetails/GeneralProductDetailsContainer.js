@@ -91,16 +91,14 @@ class GeneralProductDetailsContainer extends Component {
         const {
             thumbnailURL,
             title,
-            details,
             price
         } = this.props;
 
         const link = new firebase.links.DynamicLink('https://innernepal.com?param1=foo&param2=bar', 'innernepal.page.link')
             .android.setPackageName('com.brickstudios.ecommerce')
-            .ios.setBundleId('brickstudios.gpsHack')
+            .ios.setBundleId('com.brickstudios.ecommerce')
             .social.setImageUrl(thumbnailURL)
-            .social.setTitle(`Rs. ${price}\n${title}`)
-            .social.setDescriptionText(details);
+            .social.setTitle(`Rs. ${price}\n${title}`);
 
         firebase.links()
             .createShortDynamicLink(link, 'UNGUESSABLE')
