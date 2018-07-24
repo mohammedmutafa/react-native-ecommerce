@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'react-native-firebase';
+import { Share } from 'react-native';
 
 import GeneralProductDetails from './GeneralProductDetails';
 
@@ -103,7 +104,12 @@ class GeneralProductDetailsContainer extends Component {
         firebase.links()
             .createShortDynamicLink(link, 'UNGUESSABLE')
             .then((url) => {
-                console.log(url);
+                //console.log(url);
+                Share.share({
+                    message: 'Inner Nepal: Platform where you can buy and sell products.',
+                    url: url,
+                    title: 'Inner Nepal'
+                });
             });
     }
 
