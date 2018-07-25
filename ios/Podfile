@@ -10,6 +10,7 @@ target 'ecommerce' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'Firebase/DynamicLinks'
 
   target 'ecommerce-tvOSTests' do
     inherit! :search_paths

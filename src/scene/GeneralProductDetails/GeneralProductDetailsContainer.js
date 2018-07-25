@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import firebase from 'react-native-firebase';
+import { Share } from 'react-native';
 
 import GeneralProductDetails from './GeneralProductDetails';
-import Categories from '../../styles/Categories';
 
 import { userCollectionRef } from '../../utilities/DBReferences';
-
-const { MainCategory } = Categories;
+import { numberWithCommas } from '../../utilities/Functions';
 
 class GeneralProductDetailsContainer extends Component {
     constructor(props) {
@@ -89,6 +89,31 @@ class GeneralProductDetailsContainer extends Component {
         });
     }
 
+    onPressShareButton = () => {
+        const {
+            thumbnailURL,
+            title,
+            price
+        } = this.props;
+
+        const link = new firebase.links.DynamicLink('https://innernepal.com?param1=foo&param2=bar', 'innernepal.page.link')
+            .android.setPackageName('com.brickstudios.ecommerce')
+            .ios.setBundleId('com.brickstudios.ecommerce')
+            .social.setImageUrl(thumbnailURL)
+            .social.setTitle(`Rs. ${numberWithCommas(price)}\n${title}`);
+
+        firebase.links()
+            .createShortDynamicLink(link, 'UNGUESSABLE')
+            .then((url) => {
+                console.log(url);
+                Share.share({
+                    message: 'Inner Nepal: Platform where you can buy and sell products.',
+                    url: url,
+                    title: 'Inner Nepal'
+                });
+            });
+    }
+
     render() {
         const {
             isPhotoViewerVisible,
@@ -121,6 +146,7 @@ class GeneralProductDetailsContainer extends Component {
                 imageDataSource={imageDataSource} //PhotoView & Flatlist takes photo array in different format
                 photoViewerDataSource={this.photoViewerDataSource()}
                 onPressSellerAvatar={this.onPressSellerAvatar}
+                onPressShareButton={this.onPressShareButton}
                 //FireStore
                 sellerData={sellerData}
             />

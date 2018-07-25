@@ -81,8 +81,13 @@ class GeneralProductDetails extends Component {
     }
 
     renderFloatingShareButton = () => {
+        const { onPressShareButton } = this.props;
+
         return (
-            <View style={floatingShareButtonStyle}>
+            <TouchableOpacity
+                style={floatingShareButtonStyle}
+                onPress={onPressShareButton}
+            >
                 <Icon
                     raised
                     name="md-share"
@@ -90,9 +95,8 @@ class GeneralProductDetails extends Component {
                     color={Color.golden}
                     underlayColor="transparent"
                     containerStyle={floatingButtonContainerStyle}
-                    onPress={null}
                 />
-            </View>
+            </TouchableOpacity>
         );
     }
 
@@ -297,7 +301,8 @@ GeneralProductDetails.propTypes = {
     imageDataSource: PropTypes.array,
     onPressSellerAvatar: PropTypes.func,
     sellerData: PropTypes.object,
-    showPhotoViewer: PropTypes.func
+    showPhotoViewer: PropTypes.func,
+    onPressShareButton: PropTypes.func
 };
 
 export default GeneralProductDetails;
