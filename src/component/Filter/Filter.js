@@ -184,7 +184,7 @@ export class Filter extends Component {
                     <Text
                         style={{ color: Color.lightDark, fontSize: 16, fontFamily: Fonts.CharterBT, }}
                     >
-                        {selectedCategory ? (selectedCategory + '/' + selectedSubCategory) : 'Select Category'}
+                        {selectedCategory ? selectedSubCategory : 'Select Category'}
                     </Text>
                     <Icon
                         name="menu-up"
