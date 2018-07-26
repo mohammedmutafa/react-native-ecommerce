@@ -46,7 +46,7 @@ export default styles = StyleSheet.create({
         marginTop: 5
     },
     cancelTextStyle: {
-        paddingLeft: 25,
+        paddingLeft: 5,
         fontSize: 20,
         color: color.golden,
         fontFamily: Fonts.CharterBT
