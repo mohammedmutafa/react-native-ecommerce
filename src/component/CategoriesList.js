@@ -21,8 +21,10 @@ let delayTextAnimationCount = 0;
 class CategoriesList extends Component {
     keyExtractor = (item, index) => index;
 
-    navigateToSearchListing = () => {
-        this.props.navigation.navigate('SearchListing');
+    navigateToSearchListing = (item) => {
+        this.props.navigation.navigate('SearchListing', {
+            mainCatSearchKey: item.searchKey
+        });
     }
 
     renderCategoryCard = ({ item }) => {
@@ -40,7 +42,7 @@ class CategoriesList extends Component {
 
         return (
             <TouchableOpacity
-                onPress={this.navigateToSearchListing}
+                onPress={() => this.navigateToSearchListing(item)}
                 style={isEven ? evenCategoryCardStyle : oddCategoryCardStyle}
             >
                 <Image

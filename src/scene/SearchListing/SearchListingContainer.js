@@ -40,22 +40,26 @@ class SearchListingContainer extends Component {
             isFetchingDataFromFirestore: true
         });
 
+        const { mainCatSearchKey } = this.props;//selectedCategory
         const { postListDataSource } = this.state;
         let copyPostListDataSource = [...postListDataSource];
 
         //For order by issue refer this discussion : https://github.com/invertase/react-native-firebase/issues/568
-        await postCollectionRef.orderBy('updatedAt', 'desc').get().then(function (querySnapshot) {
-            let dSArray = [];
-            querySnapshot.forEach(function (doc) {
-                // doc.data() is never undefined for query doc snapshots
-                dSArray.push(doc.data());
+        await postCollectionRef
+            .where('selectedCategory', '==', `${mainCatSearchKey}`)
+            .orderBy('updatedAt', 'desc')
+            .get().then(function (querySnapshot) {
+                let dSArray = [];
+                querySnapshot.forEach(function (doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    dSArray.push(doc.data());
+                });
+                copyPostListDataSource = [...copyPostListDataSource, ...dSArray];
+            }).catch((err) => {
+                this.setState({
+                    isFetchingDataFromFirestore: false
+                });
             });
-            copyPostListDataSource = [...copyPostListDataSource, ...dSArray];
-        }).catch((err) => {
-            this.setState({
-                isFetchingDataFromFirestore: false
-            });
-        });
 
         this.setState({
             postListDataSource: copyPostListDataSource,
