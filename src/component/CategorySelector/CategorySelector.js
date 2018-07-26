@@ -21,6 +21,8 @@ const {
     level2TitleHeaderContainerStyle,
     level2FlatListContainerStyle,
     dividerStyle,
+    parentTitleTextStyle,
+    rowTextStyle,
     cancelTextStyle,
     selectedCategoryTextStyle
 } = styles;
@@ -104,7 +106,7 @@ export class CategorySelector extends Component {
                         size={30}
                     />
 
-                    <Text style={{ paddingLeft: 10, fontSize: 16, color: Color.dark }}>{item.title}</Text>
+                    <Text style={rowTextStyle}>{item.title}</Text>
                 </View>
                 {
                     item.children ?
@@ -126,7 +128,7 @@ export class CategorySelector extends Component {
         return (
             <View>
                 <View style={level2TitleHeaderContainerStyle}>
-                    <Text style={{ color: Color.dark, fontSize: 18 }}>{parentDataSourceTitle}</Text>
+                    <Text style={parentTitleTextStyle}>{parentDataSourceTitle}</Text>
                     {drillIndex === 0 ? <View /> : <Icon
                         name="arrow-up"
                         type="feather"
