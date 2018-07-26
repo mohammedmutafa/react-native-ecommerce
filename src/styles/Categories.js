@@ -56,6 +56,8 @@ export default CategoryList = {
             searchKey: 'hotels',
             iconName: 'ios-restaurant-outline',
             iconType: 'ionicon',
+            parent: undefined,
+            children: 'Hotels',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_hotels.jpg?alt=media&token=a9f71dbe-ae30-41ea-8838-07042ce7a920'
         },
         {
@@ -64,6 +66,8 @@ export default CategoryList = {
             searchKey: 'furniture',
             iconName: 'weekend',
             iconType: 'materialicon',
+            parent: undefined,
+            children: 'Furniture',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/category_furniture.jpg?alt=media&token=0913af63-d24c-4315-b9a2-d888b2e63167'
         },
         {
@@ -72,6 +76,8 @@ export default CategoryList = {
             searchKey: 'jobs',
             iconName: 'ios-school-outline',
             iconType: 'ionicon',
+            parent: undefined,
+            children: 'Jobs',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/category_jobs.jpg?alt=media&token=78aa7265-97b4-4d0d-a10c-a7ea5465655e'
         },
         {
@@ -80,6 +86,8 @@ export default CategoryList = {
             searchKey: 'services',
             iconName: 'ios-rose-outline',
             iconType: 'ionicon',
+            parent: undefined,
+            children: 'Services',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_services.jpg?alt=media&token=d69708c3-ecc5-4cc5-8497-bfcbf0b682be'
         },
         {
@@ -88,6 +96,8 @@ export default CategoryList = {
             searchKey: 'pets',
             iconName: 'ios-paw-outline',
             iconType: 'ionicon',
+            parent: undefined,
+            children: 'Pets',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_pets.jpg?alt=media&token=b3a40604-8503-49ef-9f3d-edda476072ae'
         },
         {
@@ -164,5 +174,64 @@ export default CategoryList = {
         { id: 3, title: 'Rafting', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 4, title: 'Cycling & Bike Trip', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 5, title: 'Site Seeing', parent: 'MainCategory', parentTitle: 'Main Category' },
+    ],
+    'Hotels': [
+        { id: 0, title: 'All in Hotels', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Resort', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Hotel', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Serviced Apartments', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Conference & Convention Centres', parent: 'MainCategory', parentTitle: 'Main Category' }
+    ],
+    'Furniture': [
+        { id: 0, title: 'All in Furniture', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Sofa & Dining', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Bed & Wardrobes', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Home Decor & Garden', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Office Furnitures', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Other Household Items', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 6, title: 'Kids Furniture', parent: 'MainCategory', parentTitle: 'Main Category' }
+    ],
+    'Jobs': [
+        { id: 0, title: 'All in Jobs', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Accountant', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'IT Engineer & Developer', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Ofice Assistant', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Hotel & Travel Executive', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Sales & Marketing', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 6, title: 'Teacher', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 7, title: 'Receptionist & Front Office', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 8, title: 'Delivery & Collection', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 9, title: 'Designer', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 10, title: 'Driver', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 11, title: 'Cook', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 10, title: 'Operator & Technician', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 11, title: 'Data entry & Back office', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 12, title: 'BPO & Telecaller', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 13, title: 'Actor & Model', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 14, title: 'Freelancers', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 15, title: 'Internships', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 16, title: 'Part Time Jobs', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 17, title: 'Work From Home', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 18, title: 'Others', parent: 'MainCategory', parentTitle: 'Main Category' }
+    ],
+    'Services': [
+        { id: 0, title: 'All in Services', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Drivers & Taxi', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Education & Classes', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Electronics & Computer', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Health & Beauty', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Repair & Servicing', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 6, title: 'Home Services', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 7, title: 'Event Services', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 8, title: 'Photographers - Cameraman', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 9, title: 'Other Services', parent: 'MainCategory', parentTitle: 'Main Category' }
+    ],
+    'Pets': [
+        { id: 0, title: 'All in Pets', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Fishes & Aquarium', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Dogs', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Birds', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'other Pets', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Pet Food & Accessories', parent: 'MainCategory', parentTitle: 'Main Category' }
     ]
 }
