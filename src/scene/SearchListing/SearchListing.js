@@ -37,8 +37,8 @@ class SearchListing extends Component {
             <View style={floatingFilterButtonStyle}>
                 <Icon
                     raised
-                    name="filter-variant"
-                    type="material-community"
+                    name="sound-mix"
+                    type="entypo"
                     color={Color.golden}
                     underlayColor="transparent"
                     onPress={changeStateForFilterUI}
