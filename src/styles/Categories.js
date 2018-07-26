@@ -36,6 +36,8 @@ export default CategoryList = {
             searchKey: 'vehicles',
             iconName: 'ios-car-outline',
             iconType: 'ionicon',
+            parent: undefined,
+            children: 'Vehicles',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_cars.jpg?alt=media&token=475bad74-d9d4-437e-bf61-992667d5c8d3'
         },
         {
@@ -44,6 +46,8 @@ export default CategoryList = {
             searchKey: 'holiday',
             iconName: 'ios-image-outline',
             iconType: 'ionicon',
+            parent: undefined,
+            children: 'AdventureHolidayPackages',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_adventure.jpg?alt=media&token=ed714ad7-2c4e-4834-88da-f1b9a28abf84'
         },
         {
@@ -144,5 +148,21 @@ export default CategoryList = {
         { id: 4, title: 'Shops & Offices', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 5, title: 'Land & Plots', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 6, title: 'House & Villas', parent: 'MainCategory', parentTitle: 'Main Category' },
+    ],
+    'Vehicles': [
+        { id: 0, title: 'All in Vehicles', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Bikes', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Cars', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Commercial Vehicles', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Other Vehicles', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Spare Parts', parent: 'MainCategory', parentTitle: 'Main Category' },
+    ],
+    'AdventureHolidayPackages': [
+        { id: 0, title: 'All in Adventure & Holiday Packages', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Trekking', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Paraglyding', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Rafting', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Cycling & Bike Trip', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Site Seeing', parent: 'MainCategory', parentTitle: 'Main Category' },
     ]
 }
