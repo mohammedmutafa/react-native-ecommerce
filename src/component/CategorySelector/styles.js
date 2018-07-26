@@ -30,7 +30,8 @@ export default styles = StyleSheet.create({
     level2TitleHeaderContainerStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 25
+        paddingVertical: 20,
+        paddingHorizontal: 25
     },
     level2FlatListContainerStyle: {
         flexDirection: 'column',
@@ -53,7 +54,8 @@ export default styles = StyleSheet.create({
     selectedCategoryTextStyle: {
         paddingLeft: 5,
         fontSize: 14,
-        color: color.dark
+        color: color.golden,
+        fontFamily: Fonts.CharterBT
     },
     parentTitleTextStyle: {
         color: Color.dark,

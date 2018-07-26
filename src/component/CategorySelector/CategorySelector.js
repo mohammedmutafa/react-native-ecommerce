@@ -149,7 +149,7 @@ export class CategorySelector extends Component {
                         ItemSeparatorComponent={this.renderSeparator}
                     />
                 </View>
-                <View style={level2TitleHeaderContainerStyle}>
+                <View style={[level2TitleHeaderContainerStyle, { backgroundColor: Color.dark, borderTopWidth: 1, borderTopColor: Color.golden }]}>
                     <Text style={selectedCategoryTextStyle}>{selectedCategory ? (selectedCategory + '/' + '\n' + selectedSubCategory) : ''}</Text>
                     <TouchableOpacity onPress={selectedCategory ? createAdStatusDone : null}>
                         <Text style={cancelTextStyle}>Done</Text>
