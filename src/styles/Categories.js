@@ -26,6 +26,8 @@ export default CategoryList = {
             searchKey: 'properties',
             iconName: 'ios-home-outline',
             iconType: 'ionicon',
+            parent: undefined,
+            children: 'Properties',
             thumbnail: 'https://firebasestorage.googleapis.com/v0/b/innernepal-dca5b.appspot.com/o/categoryThumbnails%2Fcategory_realestate.jpg?alt=media&token=bb3545e4-d66d-494d-9525-38770840e79a'
         },
         {
@@ -123,8 +125,21 @@ export default CategoryList = {
         { id: 3, title: 'Accessories', parent: 'MainCategory', parentTitle: 'Main Category' }
     ],
     'ElectronicsAppliances': [
-        { id: 0, title: 'Heater', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 1, title: 'Car', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 3, title: 'Plugs', parent: 'MainCategory', parentTitle: 'Main Category' }
+        { id: 0, title: 'Computer & Appliances', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'TVs, Video-Audio', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Hard Disks, Printer & Monitors', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Washing Machines', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Fridges', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 6, title: 'Computer Accessories', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 7, title: 'Camera & Lenses', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 8, title: 'Games & Entertainment', parent: 'MainCategory', parentTitle: 'Main Category' }
+    ],
+    'Properties': [
+        { id: 0, title: 'Hostels', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Rental Rooms', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Apartments', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Shops & Offices', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Land & Plots', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'House & Villas', parent: 'MainCategory', parentTitle: 'Main Category' },
     ]
 }
