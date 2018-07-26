@@ -118,18 +118,13 @@ export default CategoryList = {
         }
     ],
     'Mobiles': [
-        { id: 0, title: 'Mobile Phones', parent: 'MainCategory', parentTitle: 'Main Category', children: 'MobilePhones' },
+        { id: 0, title: 'Mobile Phones', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 1, title: 'Tablet', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 3, title: 'Accessories', parent: 'MainCategory', parentTitle: 'Main Category' }
     ],
-    'MobilePhones': [
-        { id: 0, title: 'Samsung', mainCategory: 'Mobiles', parent: 'Mobiles', parentTitle: 'Mobiles' }
-    ],
     'ElectronicsAppliances': [
-        { id: 0, title: 'Heater', children: 'Heater', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 1, title: 'Car', children: 'Car', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 0, title: 'Heater', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Car', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 3, title: 'Plugs', parent: 'MainCategory', parentTitle: 'Main Category' }
-    ],
-    'Heater': [{ id: 0, title: 'ZEX', parent: 'ElectronicsAppliances', parentTitle: 'Electronics Appliances' }],
-    'Car': [{ id: 0, title: 'Max', parent: 'ElectronicsAppliances', parentTitle: 'Electronics Appliances' }]
+    ]
 }
