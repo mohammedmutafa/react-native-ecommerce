@@ -120,13 +120,15 @@ export default CategoryList = {
         }
     ],
     'Mobiles': [
-        { id: 0, title: 'Mobile Phones', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 1, title: 'Tablet', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 0, title: ' All in Mobiles', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Mobile Phones', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Tablet', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 3, title: 'Accessories', parent: 'MainCategory', parentTitle: 'Main Category' }
     ],
     'ElectronicsAppliances': [
-        { id: 0, title: 'Computer & Appliances', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 1, title: 'TVs, Video-Audio', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 0, title: 'All in Electronics & Appliances', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Computer & Appliances', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'TVs, Video-Audio', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 3, title: 'Hard Disks, Printer & Monitors', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 4, title: 'Washing Machines', parent: 'MainCategory', parentTitle: 'Main Category' },
         { id: 5, title: 'Fridges', parent: 'MainCategory', parentTitle: 'Main Category' },
@@ -135,11 +137,12 @@ export default CategoryList = {
         { id: 8, title: 'Games & Entertainment', parent: 'MainCategory', parentTitle: 'Main Category' }
     ],
     'Properties': [
-        { id: 0, title: 'Hostels', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 1, title: 'Rental Rooms', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 2, title: 'Apartments', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 3, title: 'Shops & Offices', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 4, title: 'Land & Plots', parent: 'MainCategory', parentTitle: 'Main Category' },
-        { id: 5, title: 'House & Villas', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 0, title: 'All in Properties', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 1, title: 'Hostels', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 2, title: 'Rental Rooms', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 3, title: 'Apartments', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 4, title: 'Shops & Offices', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 5, title: 'Land & Plots', parent: 'MainCategory', parentTitle: 'Main Category' },
+        { id: 6, title: 'House & Villas', parent: 'MainCategory', parentTitle: 'Main Category' },
     ]
 }
