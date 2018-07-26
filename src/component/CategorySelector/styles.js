@@ -62,6 +62,12 @@ export default styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: Fonts.CharterBT
     },
+    rowStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 20
+    },
     rowTextStyle: {
         paddingLeft: 10,
         fontSize: 16,
