@@ -99,8 +99,8 @@ export class CategorySelector extends Component {
             >
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <Icon
-                        name={item.icon}
-                        // type="ionicon"
+                        name={item.iconName}
+                        type={item.iconType}
                         underlayColor="transparent"
                         color={Color.lightDark}
                         size={30}
@@ -111,8 +111,9 @@ export class CategorySelector extends Component {
                 {
                     item.children ?
                         <Icon
-                            name="ios-arrow-forward-outline"
-                            type="ionicon"
+                            name="chevron-right"
+                            type="evilicon"
+                            size={30}
                             underlayColor="transparent"
                             color={Color.lightDark}
                         /> : <View />
