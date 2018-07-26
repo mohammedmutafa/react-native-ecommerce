@@ -37,7 +37,7 @@ export default styles = StyleSheet.create({
         height: screenHeight - (225)
     },
     dividerStyle: {
-        height: 1,//StyleSheet.hairlineWidth,
+        height: StyleSheet.hairlineWidth,
         backgroundColor: color.golden,
         flexDirection: 'column',
         justifyContent: 'center',
